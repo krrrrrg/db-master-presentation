@@ -450,7 +450,7 @@ body:hover .nav-dots{opacity:1}
         <div class="subtitle reveal" style="transition-delay:.3s">무엇을 선택하느냐보다, <strong>어디에 집중하느냐</strong>가 성과를 가른다</div>
         <div class="cards substep" data-substep="1">
             <div class="type-card best" style="transition-delay:.05s">
-                <div class="type-card-header"><div class="type-card-title">대면 DB</div><div class="best-badge">CORE</div></div>
+                <div class="type-card-header"><div class="type-card-title">대면 DB</div><div class="best-badge substep-fade" data-substep="2">CORE</div></div>
                 <div class="pro-con"><div class="pro-label"><i class="fas fa-check" style="font-size:10px"></i> 장점</div><div class="pro-text">• 바로 영업 시작 가능<br/>• 신뢰 기반 확장성 높음</div></div>
                 <div class="pro-con"><div class="con-label"><i class="fas fa-times" style="font-size:10px"></i> 단점</div><div class="con-text">• 비용이 발생<br/>• 이동 시간/건수 제한<br/>• DB업체 공급망 불투명성</div></div>
                 <div class="type-footer">즉시 실행 가능한 영업의 핵심 채널</div>
@@ -769,7 +769,7 @@ let isTransitioning = false;
 // Sub-step system
 const slideSteps = {
     2: { total: 4, current: 0 },  // Market: 0=initial, 1=RED, 2=BLUE, 3=PURPLE
-    3: { total: 2, current: 0 },  // 3Types: 0=hidden, 1=all visible
+    3: { total: 3, current: 0 },  // 3Types: 0=hidden, 1=cards visible, 2=CORE badge
     8: { total: 2, current: 0 },  // Customer: 0=process only, 1=brand+text
     9: { total: 2, current: 0 },  // Roadmap: 0=phases, 1=action box
     10: { total: 3, current: 0 }, // Closing: 0=sigh, 1=deep breath, 2=cheer
@@ -794,13 +794,17 @@ function applySubStep(slideIndex, step) {
         }
         case 3: { // 3 Types
             const cardsContainer = slide.querySelector('.cards.substep');
+            const coreBadge = slide.querySelector('.best-badge.substep-fade');
             if (step >= 1) {
                 cardsContainer.classList.add('visible');
             } else {
                 cardsContainer.classList.remove('visible');
             }
-            const hint = slide.querySelector('.click-hint');
-            if (hint) hint.style.display = step >= 1 ? 'none' : 'block';
+            if (step >= 2) {
+                coreBadge.classList.add('visible');
+            } else {
+                coreBadge.classList.remove('visible');
+            }
             break;
         }
         case 8: { // Customer management
