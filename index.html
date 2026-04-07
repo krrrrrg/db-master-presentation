@@ -171,8 +171,8 @@ body:hover .nav-dots{opacity:1}
 .s4 .type-footer{margin-top:auto;padding-top:16px;border-top:1px solid rgba(0,0,0,.04);font-size:13px;color:#3b82f6;font-weight:600}
 
 /* S4 sub-step visibility */
-.s4-sub{opacity:0;max-height:0;overflow:hidden;transition:opacity .5s cubic-bezier(.16,1,.3,1),max-height .5s cubic-bezier(.16,1,.3,1)}
-.s4-sub.visible{opacity:1;max-height:400px}
+.s4-sub{opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .4s ease,transform .4s ease;position:absolute;visibility:hidden}
+.s4-sub.visible{opacity:1;transform:translateY(0);pointer-events:auto;position:relative;visibility:visible}
 .s4-cards{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
 .s4-cards.visible{opacity:1;transform:translateY(0)}
 /* S4 overlay */
@@ -888,43 +888,26 @@ function applySubStep(slideIndex, step) {
         }
         case 3: { // 3 Types — 10 substeps
             const cards = slide.querySelector('.s4-cards');
-            const subs = slide.querySelectorAll('.s4-sub');
             const ov1 = document.getElementById('s4overlay-online1');
             const ov2 = document.getElementById('s4overlay-online2');
             const ov3 = document.getElementById('s4overlay-platform');
-            // Reset all
-            cards.classList.remove('visible');
-            subs.forEach(s => { s.classList.remove('visible'); s.style.opacity = ''; s.style.pointerEvents = ''; });
-            ov1.style.display = 'none';
-            ov2.style.display = 'none';
-            ov3.style.display = 'none';
-            // Step 1+: show card frames
-            if (step >= 1) cards.classList.add('visible');
-            // Step 2+: 대면 장단점
-            if (step >= 2) slide.querySelector('[data-s4step="2"]').classList.add('visible');
-            // Step 3+: 온라인 장점
-            if (step >= 3) slide.querySelector('[data-s4step="3"]').classList.add('visible');
-            // Step 4: 블로그/유튜브 오버레이
-            if (step === 4) ov1.style.display = 'flex';
-            // Step 5: 문의+카톡방 오버레이
-            if (step === 5) ov2.style.display = 'flex';
-            // Step 6+: 온라인 단점
-            if (step >= 6) slide.querySelector('[data-s4step="6"]').classList.add('visible');
-            // Step 7+: 플랫폼 장점
-            if (step >= 7) slide.querySelector('[data-s4step="7"]').classList.add('visible');
-            // Step 8: 토스 증거 오버레이
-            if (step === 8) ov3.style.display = 'flex';
-            // Step 9+: 플랫폼 단점
-            if (step >= 9) slide.querySelector('[data-s4step="9"]').classList.add('visible');
-            // Step 10: CORE badge
             const coreBadge = slide.querySelector('.s4-core');
-            if (step >= 10) {
-                coreBadge.style.opacity = '1';
-                coreBadge.style.pointerEvents = 'auto';
-            } else {
-                coreBadge.style.opacity = '0';
-                coreBadge.style.pointerEvents = 'none';
-            }
+            // Overlays: only show at exact step
+            ov1.style.display = step === 4 ? 'flex' : 'none';
+            ov2.style.display = step === 5 ? 'flex' : 'none';
+            ov3.style.display = step === 8 ? 'flex' : 'none';
+            // Cards frame
+            if (step >= 1) cards.classList.add('visible');
+            else cards.classList.remove('visible');
+            // Each sub: show at its step or above
+            [2,3,6,7,9].forEach(n => {
+                const el = slide.querySelector('[data-s4step="'+n+'"]');
+                if (step >= n) el.classList.add('visible');
+                else el.classList.remove('visible');
+            });
+            // CORE badge
+            coreBadge.style.opacity = step >= 10 ? '1' : '0';
+            coreBadge.style.pointerEvents = step >= 10 ? 'auto' : 'none';
             break;
         }
         case 8: { // Customer management
