@@ -10,8 +10,8 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Noto Sans KR',sans-serif;background:#000;overflow:hidden;width:100vw;height:100vh;display:flex;align-items:center;justify-content:center;cursor:none}
 
-.cursor{position:fixed;width:20px;height:20px;border:2px solid rgba(59,130,246,0.8);border-radius:50%;pointer-events:none;z-index:99999;transition:transform .15s ease,opacity .15s;mix-blend-mode:difference}
-.cursor-dot{position:fixed;width:6px;height:6px;background:#3b82f6;border-radius:50%;pointer-events:none;z-index:99999;transition:transform .05s}
+.cursor{position:fixed;width:20px;height:20px;border:2px solid rgba(59,130,246,0.8);border-radius:50%;pointer-events:none;z-index:99999;transition:transform .15s ease,opacity .3s;mix-blend-mode:difference}
+.cursor-dot{position:fixed;width:6px;height:6px;background:#3b82f6;border-radius:50%;pointer-events:none;z-index:99999;transition:transform .05s,opacity .3s}
 
 .presentation{position:relative;width:1280px;height:720px;transform-origin:center center;overflow:hidden;border-radius:4px;box-shadow:0 0 80px rgba(0,0,0,0.5)}
 
@@ -457,7 +457,6 @@ body:hover .nav-dots{opacity:1}
             <p><span class="accent">시장은 선택, 능력이 곧 자유다.</span></p>
             <span class="brand">시그니처 사업부</span>
         </div>
-        <div class="click-hint light">CLICK TO REVEAL ▸</div>
     </div>
 </div>
 
@@ -470,7 +469,7 @@ body:hover .nav-dots{opacity:1}
         <div class="cards s4-cards" id="s4Cards">
             <!-- 대면 DB -->
             <div class="type-card best s4-frame" data-s4="frame" style="transition-delay:.05s">
-                <div class="type-card-header"><div class="type-card-title">대면 DB</div><div class="best-badge s4-sub" data-s4step="10" style="opacity:0;pointer-events:none;transition:opacity .7s">CORE</div></div>
+                <div class="type-card-header"><div class="type-card-title">대면 DB</div><div class="best-badge s4-core" data-s4step="10" style="opacity:0;pointer-events:none;transition:opacity .7s">CORE</div></div>
                 <div class="s4-sub" data-s4step="2">
                     <div class="pro-con"><div class="pro-label"><i class="fas fa-check" style="font-size:10px"></i> 장점</div><div class="pro-text">• 바로 영업 시작 가능<br/>• 신뢰 기반 확장성 높음</div></div>
                     <div class="pro-con"><div class="con-label"><i class="fas fa-times" style="font-size:10px"></i> 단점</div><div class="con-text">• 비용이 발생<br/>• 이동 시간/건수 제한<br/>• DB업체 공급망 불투명성</div></div>
@@ -500,7 +499,6 @@ body:hover .nav-dots{opacity:1}
                 </div>
             </div>
         </div>
-        <div class="click-hint light">CLICK TO REVEAL ▸</div>
     </div>
     <!-- 온라인 증거: 블로그/유튜브 -->
     <div class="s4-overlay" id="s4overlay-online1" style="display:none">
@@ -509,7 +507,6 @@ body:hover .nav-dots{opacity:1}
             <div class="s4-evidence-row">
                 <img src="img/online-blog.jpeg" alt="1분보험 유튜브" class="s4-evidence-img"/>
             </div>
-            <div class="s4-overlay-hint">CLICK TO CONTINUE ▸</div>
         </div>
     </div>
     <!-- 온라인 증거: 문의 + 카톡방 -->
@@ -521,18 +518,16 @@ body:hover .nav-dots{opacity:1}
                 <img src="img/online-inquiry2.png" alt="상세 문의" class="s4-evidence-img"/>
                 <img src="img/online-chatroom.png" alt="상담 채팅방" class="s4-evidence-img"/>
             </div>
-            <div class="s4-overlay-hint">CLICK TO CONTINUE ▸</div>
         </div>
     </div>
     <!-- 플랫폼 증거: 토스 + 노트북 -->
     <div class="s4-overlay" id="s4overlay-platform" style="display:none">
         <div class="s4-overlay-inner">
-            <div class="s4-overlay-label"><i class="fas fa-mobile-alt" style="margin-right:8px"></i>플랫폼 DB — 토스 공급 실적</div>
+            <div class="s4-overlay-label"><i class="fas fa-mobile-alt" style="margin-right:8px"></i>플랫폼 DB — DB 공급 시스템</div>
             <div class="s4-evidence-row two">
-                <img src="img/platform-toss.png" alt="토스 알림톡" class="s4-evidence-img"/>
+                <img src="img/platform-toss.png" alt="DB 공급 시스템" class="s4-evidence-img"/>
                 <img src="img/platform-notebook.jpeg" alt="에버노트 노트북" class="s4-evidence-img"/>
             </div>
-            <div class="s4-overlay-hint">CLICK TO CONTINUE ▸</div>
         </div>
     </div>
 </div>
@@ -698,7 +693,6 @@ body:hover .nav-dots{opacity:1}
         <div class="bottom-bar substep" data-substep="1">
             <p><span class="accent">고객관리의 본질</span> — 소개 · 업셀링 · 리모델링, 전환 고객을 만드는 것</p>
         </div>
-        <div class="click-hint light">CLICK TO REVEAL ▸</div>
     </div>
 </div>
 
@@ -751,7 +745,6 @@ body:hover .nav-dots{opacity:1}
         <div class="bottom-bar reveal" style="transition-delay:1s">
             <p><span class="accent">DB영업은 하나의 수단일 뿐입니다.</span> '찐성장'을 통해 당당한 전문가로 성장하시길 바랍니다.</p>
         </div>
-        <div class="click-hint light">CLICK TO REVEAL ▸</div>
     </div>
 </div>
 
@@ -778,7 +771,6 @@ body:hover .nav-dots{opacity:1}
             <div class="closing-sub">Be your <b>Signature</b>.</div>
         </div>
 
-        <div class="click-hint" style="bottom:80px">CLICK ▸</div>
     </div>
     <div class="logo-bottom"><img src="img/logo-white.png" alt="시그니처"/></div>
     <div class="brand-bottom">시그니처 사업부</div>
@@ -813,26 +805,39 @@ function toggleFullscreen() {
 
 function updateFsButton() {
     const btn = document.getElementById('fsToggle');
-    const icon = document.getElementById('fsIcon');
     const isFs = !!(document.fullscreenElement || document.webkitFullscreenElement);
-    btn.style.display = 'flex';
-    icon.className = isFs ? 'fas fa-compress' : 'fas fa-expand';
+    btn.style.display = isFs ? 'none' : 'flex';
 }
 
 document.addEventListener('fullscreenchange', updateFsButton);
 document.addEventListener('webkitfullscreenchange', updateFsButton);
-// Show button after splash is dismissed
-setTimeout(() => { document.getElementById('fsToggle').style.display = 'flex'; }, 1500);
 
 // Custom cursor
 const cursor = document.getElementById('cursor');
 const cursorDot = document.getElementById('cursorDot');
 let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
 
+let hideTimer = null;
+function showCursor() {
+    document.body.style.cursor = '';
+    cursor.style.opacity = '1';
+    cursorDot.style.opacity = '1';
+}
+function hideCursor() {
+    const isFs = !!(document.fullscreenElement || document.webkitFullscreenElement);
+    if (!isFs) return;
+    document.body.style.cursor = 'none';
+    cursor.style.opacity = '0';
+    cursorDot.style.opacity = '0';
+}
+
 document.addEventListener('mousemove', e => {
     mouseX = e.clientX; mouseY = e.clientY;
     cursorDot.style.left = (mouseX - 3) + 'px';
     cursorDot.style.top = (mouseY - 3) + 'px';
+    showCursor();
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(hideCursor, 2000);
 });
 
 function animateCursor() {
@@ -879,9 +884,6 @@ function applySubStep(slideIndex, step) {
                     card.classList.remove('visible');
                 }
             });
-            // hide hint when all revealed
-            const hint = slide.querySelector('.click-hint');
-            if (hint) hint.style.display = step >= 3 ? 'none' : 'block';
             break;
         }
         case 3: { // 3 Types — 10 substeps
@@ -915,14 +917,14 @@ function applySubStep(slideIndex, step) {
             // Step 9+: 플랫폼 단점
             if (step >= 9) slide.querySelector('[data-s4step="9"]').classList.add('visible');
             // Step 10: CORE badge
+            const coreBadge = slide.querySelector('.s4-core');
             if (step >= 10) {
-                const badge = slide.querySelector('[data-s4step="10"]');
-                badge.style.opacity = '1';
-                badge.style.pointerEvents = 'auto';
+                coreBadge.style.opacity = '1';
+                coreBadge.style.pointerEvents = 'auto';
+            } else {
+                coreBadge.style.opacity = '0';
+                coreBadge.style.pointerEvents = 'none';
             }
-            // Hide hint at last step
-            const hint = slide.querySelector('.click-hint');
-            if (hint) hint.style.display = step >= 10 ? 'none' : 'block';
             break;
         }
         case 8: { // Customer management
@@ -931,8 +933,6 @@ function applySubStep(slideIndex, step) {
                 if (step >= 1) el.classList.add('visible');
                 else el.classList.remove('visible');
             });
-            const hint = slide.querySelector('.click-hint');
-            if (hint) hint.style.display = step >= 1 ? 'none' : 'block';
             break;
         }
         case 9: { // Roadmap action box
@@ -942,8 +942,6 @@ function applySubStep(slideIndex, step) {
             } else {
                 actionBox.classList.remove('visible');
             }
-            const hint = slide.querySelector('.click-hint');
-            if (hint) hint.style.display = step >= 1 ? 'none' : 'block';
             break;
         }
         case 10: { // Closing 3-step
@@ -956,8 +954,6 @@ function applySubStep(slideIndex, step) {
                     s.classList.remove('visible');
                 }
             });
-            const hint = slide.querySelector('.click-hint');
-            if (hint) hint.style.display = step >= 2 ? 'none' : 'block';
             break;
         }
     }
