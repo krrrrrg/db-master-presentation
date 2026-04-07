@@ -170,6 +170,22 @@ body:hover .nav-dots{opacity:1}
 .s4 .pro-text,.s4 .con-text{font-size:13px;color:#475569;line-height:1.5;padding-left:18px}
 .s4 .type-footer{margin-top:auto;padding-top:16px;border-top:1px solid rgba(0,0,0,.04);font-size:13px;color:#3b82f6;font-weight:600}
 
+/* S4 sub-step visibility */
+.s4-sub{opacity:0;max-height:0;overflow:hidden;transition:opacity .5s cubic-bezier(.16,1,.3,1),max-height .5s cubic-bezier(.16,1,.3,1)}
+.s4-sub.visible{opacity:1;max-height:400px}
+.s4-cards{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.s4-cards.visible{opacity:1;transform:translateY(0)}
+/* S4 overlay */
+.s4-overlay{position:absolute;top:0;left:0;width:100%;height:100%;z-index:20;background:linear-gradient(135deg,#0a0e1a,#111827);display:flex;align-items:center;justify-content:center;animation:s4fadeIn .5s ease}
+@keyframes s4fadeIn{from{opacity:0}to{opacity:1}}
+.s4-overlay-inner{display:flex;flex-direction:column;align-items:center;gap:24px;width:90%;max-width:1100px}
+.s4-overlay-label{font-family:'Space Grotesk',sans-serif;font-size:14px;color:#60a5fa;letter-spacing:2px;font-weight:600}
+.s4-evidence-row{display:flex;gap:20px;justify-content:center;align-items:center}
+.s4-evidence-row.two .s4-evidence-img{max-height:520px}
+.s4-evidence-row.three .s4-evidence-img{max-height:460px}
+.s4-evidence-img{max-height:560px;max-width:100%;border-radius:12px;box-shadow:0 8px 32px rgba(0,0,0,.4);object-fit:contain}
+.s4-overlay-hint{font-size:12px;color:rgba(255,255,255,.3);letter-spacing:1px;animation:pulse 2s ease-in-out infinite}
+
 /* ======================== SLIDE 5: WHY F2F ======================== */
 .s5{background:linear-gradient(135deg,#0a0e1a,#111827)}
 .s5 .bg-img{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0}
@@ -451,27 +467,73 @@ body:hover .nav-dots{opacity:1}
         <div class="eyebrow reveal" style="transition-delay:.1s;display:inline-flex;align-items:center;gap:8px;font-family:'Space Grotesk',sans-serif;font-size:12px;color:#3b82f6;font-weight:500;letter-spacing:2px;margin-bottom:12px"><i class="fas fa-layer-group" style="font-size:10px"></i> DB LANDSCAPE</div>
         <h2 class="reveal" style="transition-delay:.2s">DB영업의 <span class="accent">3가지 유형</span></h2>
         <div class="subtitle reveal" style="transition-delay:.3s">무엇을 선택하느냐보다, <strong>어디에 집중하느냐</strong>가 성과를 가른다</div>
-        <div class="cards substep" data-substep="1">
-            <div class="type-card best" style="transition-delay:.05s">
-                <div class="type-card-header"><div class="type-card-title">대면 DB</div><div class="best-badge substep-fade" data-substep="2">CORE</div></div>
-                <div class="pro-con"><div class="pro-label"><i class="fas fa-check" style="font-size:10px"></i> 장점</div><div class="pro-text">• 바로 영업 시작 가능<br/>• 신뢰 기반 확장성 높음</div></div>
-                <div class="pro-con"><div class="con-label"><i class="fas fa-times" style="font-size:10px"></i> 단점</div><div class="con-text">• 비용이 발생<br/>• 이동 시간/건수 제한<br/>• DB업체 공급망 불투명성</div></div>
-                <div class="type-footer">즉시 실행 가능한 영업의 핵심 채널</div>
+        <div class="cards s4-cards" id="s4Cards">
+            <!-- 대면 DB -->
+            <div class="type-card best s4-frame" data-s4="frame" style="transition-delay:.05s">
+                <div class="type-card-header"><div class="type-card-title">대면 DB</div><div class="best-badge s4-sub" data-s4step="10" style="opacity:0;pointer-events:none;transition:opacity .7s">CORE</div></div>
+                <div class="s4-sub" data-s4step="2">
+                    <div class="pro-con"><div class="pro-label"><i class="fas fa-check" style="font-size:10px"></i> 장점</div><div class="pro-text">• 바로 영업 시작 가능<br/>• 신뢰 기반 확장성 높음</div></div>
+                    <div class="pro-con"><div class="con-label"><i class="fas fa-times" style="font-size:10px"></i> 단점</div><div class="con-text">• 비용이 발생<br/>• 이동 시간/건수 제한<br/>• DB업체 공급망 불투명성</div></div>
+                    <div class="type-footer">즉시 실행 가능한 영업의 핵심 채널</div>
+                </div>
             </div>
-            <div class="type-card" style="transition-delay:.1s">
+            <!-- 온라인 DB -->
+            <div class="type-card s4-frame" data-s4="frame" style="transition-delay:.1s">
                 <div class="type-card-header"><div class="type-card-title">온라인 DB</div></div>
-                <div class="pro-con"><div class="pro-label"><i class="fas fa-check" style="font-size:10px"></i> 장점</div><div class="pro-text">• 니즈 있는 고객 창출<br/>• 24시간 돌아가는 시스템</div></div>
-                <div class="pro-con"><div class="con-label"><i class="fas fa-times" style="font-size:10px"></i> 단점</div><div class="con-text">• 성과를 위한 초기 시간 투자가 크다<br/>• 콘텐츠 지속 생산 부담<br/>• 금소법 심의</div></div>
-                <div class="type-footer">DB프로세스 자산화에 유리</div>
+                <div class="s4-sub" data-s4step="3">
+                    <div class="pro-con"><div class="pro-label"><i class="fas fa-check" style="font-size:10px"></i> 장점</div><div class="pro-text">• 니즈 있는 고객 창출<br/>• 24시간 돌아가는 시스템</div></div>
+                </div>
+                <div class="s4-sub" data-s4step="6">
+                    <div class="pro-con"><div class="con-label"><i class="fas fa-times" style="font-size:10px"></i> 단점</div><div class="con-text">• 성과를 위한 초기 시간 투자가 크다<br/>• 콘텐츠 지속 생산 부담<br/>• 금소법 심의</div></div>
+                    <div class="type-footer">DB프로세스 자산화에 유리</div>
+                </div>
             </div>
-            <div class="type-card" style="transition-delay:.15s">
+            <!-- 플랫폼 DB -->
+            <div class="type-card s4-frame" data-s4="frame" style="transition-delay:.15s">
                 <div class="type-card-header"><div class="type-card-title">플랫폼 DB</div></div>
-                <div class="pro-con"><div class="pro-label"><i class="fas fa-check" style="font-size:10px"></i> 장점</div><div class="pro-text">• 대면/온라인의 장점 융합<br/>• 플랫폼 브랜드 활용 가능</div></div>
-                <div class="pro-con"><div class="con-label"><i class="fas fa-times" style="font-size:10px"></i> 단점</div><div class="con-text">• 주도권이 나에게 없다, 모든 권한은 플랫폼의 것<br/>• 플랫폼 정책 변경 시 통제 불가<br/>• 원천디비급 터치</div></div>
-                <div class="type-footer">브랜딩&고객확보 용이</div>
+                <div class="s4-sub" data-s4step="7">
+                    <div class="pro-con"><div class="pro-label"><i class="fas fa-check" style="font-size:10px"></i> 장점</div><div class="pro-text">• 대면/온라인의 장점 융합<br/>• 플랫폼 브랜드 활용 가능</div></div>
+                </div>
+                <div class="s4-sub" data-s4step="9">
+                    <div class="pro-con"><div class="con-label"><i class="fas fa-times" style="font-size:10px"></i> 단점</div><div class="con-text">• 주도권이 나에게 없다, 모든 권한은 플랫폼의 것<br/>• 플랫폼 정책 변경 시 통제 불가<br/>• 원천디비급 터치</div></div>
+                    <div class="type-footer">브랜딩&고객확보 용이</div>
+                </div>
             </div>
         </div>
-        <div class="click-hint light">CLICK CORE TO REVEAL ▸</div>
+        <div class="click-hint light">CLICK TO REVEAL ▸</div>
+    </div>
+    <!-- 온라인 증거: 블로그/유튜브 -->
+    <div class="s4-overlay" id="s4overlay-online1" style="display:none">
+        <div class="s4-overlay-inner">
+            <div class="s4-overlay-label"><i class="fas fa-blog" style="margin-right:8px"></i>온라인 DB — 블로그 & 유튜브</div>
+            <div class="s4-evidence-row">
+                <img src="img/online-blog.jpeg" alt="1분보험 유튜브" class="s4-evidence-img"/>
+            </div>
+            <div class="s4-overlay-hint">CLICK TO CONTINUE ▸</div>
+        </div>
+    </div>
+    <!-- 온라인 증거: 문의 + 카톡방 -->
+    <div class="s4-overlay" id="s4overlay-online2" style="display:none">
+        <div class="s4-overlay-inner">
+            <div class="s4-overlay-label"><i class="fas fa-comments" style="margin-right:8px"></i>온라인 DB — 고객 문의 & 상담</div>
+            <div class="s4-evidence-row three">
+                <img src="img/online-inquiry1.png" alt="블로그 문의" class="s4-evidence-img"/>
+                <img src="img/online-inquiry2.png" alt="상세 문의" class="s4-evidence-img"/>
+                <img src="img/online-chatroom.png" alt="상담 채팅방" class="s4-evidence-img"/>
+            </div>
+            <div class="s4-overlay-hint">CLICK TO CONTINUE ▸</div>
+        </div>
+    </div>
+    <!-- 플랫폼 증거: 토스 + 노트북 -->
+    <div class="s4-overlay" id="s4overlay-platform" style="display:none">
+        <div class="s4-overlay-inner">
+            <div class="s4-overlay-label"><i class="fas fa-mobile-alt" style="margin-right:8px"></i>플랫폼 DB — 토스 공급 실적</div>
+            <div class="s4-evidence-row two">
+                <img src="img/platform-toss.png" alt="토스 알림톡" class="s4-evidence-img"/>
+                <img src="img/platform-notebook.jpeg" alt="에버노트 노트북" class="s4-evidence-img"/>
+            </div>
+            <div class="s4-overlay-hint">CLICK TO CONTINUE ▸</div>
+        </div>
     </div>
 </div>
 
@@ -732,7 +794,10 @@ function enterFullscreen() {
     else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
     else if (el.msRequestFullscreen) el.msRequestFullscreen();
     document.getElementById('splash').style.opacity = '0';
-    setTimeout(() => { document.getElementById('splash').style.display = 'none'; }, 600);
+    setTimeout(() => {
+        document.getElementById('splash').style.display = 'none';
+        document.getElementById('fsToggle').style.display = 'flex';
+    }, 600);
 }
 
 function toggleFullscreen() {
@@ -796,7 +861,7 @@ let isTransitioning = false;
 // Sub-step system
 const slideSteps = {
     2: { total: 4, current: 0 },  // Market: 0=initial, 1=RED, 2=BLUE, 3=PURPLE
-    3: { total: 3, current: 0 },  // 3Types: 0=hidden, 1=cards visible, 2=CORE badge
+    3: { total: 11, current: 0 }, // 3Types: 0=hidden, 1=frames, 2=대면장단, 3=온라인장, 4=블로그, 5=문의카톡, 6=온라인단, 7=플랫폼장, 8=토스증거, 9=플랫폼단, 10=CORE
     8: { total: 2, current: 0 },  // Customer: 0=process only, 1=brand+text
     9: { total: 2, current: 0 },  // Roadmap: 0=phases, 1=action box
     10: { total: 3, current: 0 }, // Closing: 0=sigh, 1=deep breath, 2=cheer
@@ -819,19 +884,45 @@ function applySubStep(slideIndex, step) {
             if (hint) hint.style.display = step >= 3 ? 'none' : 'block';
             break;
         }
-        case 3: { // 3 Types
-            const cardsContainer = slide.querySelector('.cards.substep');
-            const coreBadge = slide.querySelector('.best-badge.substep-fade');
-            if (step >= 1) {
-                cardsContainer.classList.add('visible');
-            } else {
-                cardsContainer.classList.remove('visible');
+        case 3: { // 3 Types — 10 substeps
+            const cards = slide.querySelector('.s4-cards');
+            const subs = slide.querySelectorAll('.s4-sub');
+            const ov1 = document.getElementById('s4overlay-online1');
+            const ov2 = document.getElementById('s4overlay-online2');
+            const ov3 = document.getElementById('s4overlay-platform');
+            // Reset all
+            cards.classList.remove('visible');
+            subs.forEach(s => { s.classList.remove('visible'); s.style.opacity = ''; s.style.pointerEvents = ''; });
+            ov1.style.display = 'none';
+            ov2.style.display = 'none';
+            ov3.style.display = 'none';
+            // Step 1+: show card frames
+            if (step >= 1) cards.classList.add('visible');
+            // Step 2+: 대면 장단점
+            if (step >= 2) slide.querySelector('[data-s4step="2"]').classList.add('visible');
+            // Step 3+: 온라인 장점
+            if (step >= 3) slide.querySelector('[data-s4step="3"]').classList.add('visible');
+            // Step 4: 블로그/유튜브 오버레이
+            if (step === 4) ov1.style.display = 'flex';
+            // Step 5: 문의+카톡방 오버레이
+            if (step === 5) ov2.style.display = 'flex';
+            // Step 6+: 온라인 단점
+            if (step >= 6) slide.querySelector('[data-s4step="6"]').classList.add('visible');
+            // Step 7+: 플랫폼 장점
+            if (step >= 7) slide.querySelector('[data-s4step="7"]').classList.add('visible');
+            // Step 8: 토스 증거 오버레이
+            if (step === 8) ov3.style.display = 'flex';
+            // Step 9+: 플랫폼 단점
+            if (step >= 9) slide.querySelector('[data-s4step="9"]').classList.add('visible');
+            // Step 10: CORE badge
+            if (step >= 10) {
+                const badge = slide.querySelector('[data-s4step="10"]');
+                badge.style.opacity = '1';
+                badge.style.pointerEvents = 'auto';
             }
-            if (step >= 2) {
-                coreBadge.classList.add('visible');
-            } else {
-                coreBadge.classList.remove('visible');
-            }
+            // Hide hint at last step
+            const hint = slide.querySelector('.click-hint');
+            if (hint) hint.style.display = step >= 10 ? 'none' : 'block';
             break;
         }
         case 8: { // Customer management
