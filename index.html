@@ -205,7 +205,7 @@ body:hover .nav-dots{opacity:1}
 .s6 .step::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,#3b82f6,#1e40af)}
 .s6 .step-num{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:800;color:#3b82f6;margin-bottom:8px}
 .s6 .step-title{font-size:17px;font-weight:700;color:#0f172a;margin-bottom:10px}
-.s6 .step-desc{font-size:13px;color:#475569;line-height:1.5;margin-bottom:12px}
+.s6 .step-desc{font-size:13px;color:#475569;line-height:1.5;margin-bottom:12px;word-break:keep-all}
 .s6 .step-desc strong{color:#3b82f6;font-weight:600}
 .s6 .step-tag{display:inline-flex;align-items:center;gap:6px;background:linear-gradient(90deg,rgba(59,130,246,.08),transparent);padding:6px 12px;border-radius:6px;font-size:12px;color:#3b82f6;font-weight:600;margin-top:auto}
 .s6 .connector{display:flex;align-items:center;justify-content:center;padding:0 2px}
@@ -330,6 +330,9 @@ body:hover .nav-dots{opacity:1}
 </style>
 </head>
 <body>
+
+<!-- Fullscreen toggle button -->
+<button id="fsToggle" onclick="toggleFullscreen()" style="position:fixed;bottom:20px;right:20px;z-index:99998;width:40px;height:40px;border:none;border-radius:10px;background:rgba(15,23,42,.6);backdrop-filter:blur(8px);color:rgba(255,255,255,.6);font-size:16px;cursor:pointer;display:none;align-items:center;justify-content:center;transition:all .3s" onmouseenter="this.style.background='rgba(59,130,246,.5)';this.style.color='#fff'" onmouseleave="this.style.background='rgba(15,23,42,.6)';this.style.color='rgba(255,255,255,.6)'"><i id="fsIcon" class="fas fa-expand"></i></button>
 
 <!-- Fullscreen splash -->
 <div id="splash" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#0a0e1a;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:opacity .6s" onclick="enterFullscreen()">
@@ -458,13 +461,13 @@ body:hover .nav-dots{opacity:1}
             <div class="type-card" style="transition-delay:.1s">
                 <div class="type-card-header"><div class="type-card-title">온라인 DB</div></div>
                 <div class="pro-con"><div class="pro-label"><i class="fas fa-check" style="font-size:10px"></i> 장점</div><div class="pro-text">• 니즈 있는 고객 창출<br/>• 24시간 돌아가는 시스템</div></div>
-                <div class="pro-con"><div class="con-label"><i class="fas fa-times" style="font-size:10px"></i> 단점</div><div class="con-text">• 성과를 위한 초기 시간 투자가 크다<br/>• 콘텐츠 지속 생산 부담</div></div>
+                <div class="pro-con"><div class="con-label"><i class="fas fa-times" style="font-size:10px"></i> 단점</div><div class="con-text">• 성과를 위한 초기 시간 투자가 크다<br/>• 콘텐츠 지속 생산 부담<br/>• 금소법 심의</div></div>
                 <div class="type-footer">DB프로세스 자산화에 유리</div>
             </div>
             <div class="type-card" style="transition-delay:.15s">
                 <div class="type-card-header"><div class="type-card-title">플랫폼 DB</div></div>
                 <div class="pro-con"><div class="pro-label"><i class="fas fa-check" style="font-size:10px"></i> 장점</div><div class="pro-text">• 대면/온라인의 장점 융합<br/>• 플랫폼 브랜드 활용 가능</div></div>
-                <div class="pro-con"><div class="con-label"><i class="fas fa-times" style="font-size:10px"></i> 단점</div><div class="con-text">• 주도권이 나에게 없다, 모든 권한은 플랫폼의 것<br/>• 플랫폼 정책 변경 시 통제 불가</div></div>
+                <div class="pro-con"><div class="con-label"><i class="fas fa-times" style="font-size:10px"></i> 단점</div><div class="con-text">• 주도권이 나에게 없다, 모든 권한은 플랫폼의 것<br/>• 플랫폼 정책 변경 시 통제 불가<br/>• 원천디비급 터치</div></div>
                 <div class="type-footer">브랜딩&고객확보 용이</div>
             </div>
         </div>
@@ -731,6 +734,30 @@ function enterFullscreen() {
     document.getElementById('splash').style.opacity = '0';
     setTimeout(() => { document.getElementById('splash').style.display = 'none'; }, 600);
 }
+
+function toggleFullscreen() {
+    if (document.fullscreenElement || document.webkitFullscreenElement) {
+        if (document.exitFullscreen) document.exitFullscreen();
+        else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+    } else {
+        const el = document.documentElement;
+        if (el.requestFullscreen) el.requestFullscreen();
+        else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+    }
+}
+
+function updateFsButton() {
+    const btn = document.getElementById('fsToggle');
+    const icon = document.getElementById('fsIcon');
+    const isFs = !!(document.fullscreenElement || document.webkitFullscreenElement);
+    btn.style.display = 'flex';
+    icon.className = isFs ? 'fas fa-compress' : 'fas fa-expand';
+}
+
+document.addEventListener('fullscreenchange', updateFsButton);
+document.addEventListener('webkitfullscreenchange', updateFsButton);
+// Show button after splash is dismissed
+setTimeout(() => { document.getElementById('fsToggle').style.display = 'flex'; }, 1500);
 
 // Custom cursor
 const cursor = document.getElementById('cursor');
