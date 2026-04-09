@@ -354,12 +354,12 @@ body:hover .nav-dots{opacity:1}
 .s-ev2 h2 .accent{color:#3b82f6}
 .s-ev2 .subtitle{font-size:15px;color:#64748b;margin-bottom:28px}
 .s-ev2 .subtitle strong{color:#3b82f6}
-.s-ev2 .ev2-cols{display:flex;gap:24px;flex:1;margin-bottom:20px}
-.s-ev2 .ev2-col{flex:1;background:#fff;border-radius:20px;padding:28px;display:flex;flex-direction:column;border:1px solid rgba(0,0,0,.04);box-shadow:0 4px 24px rgba(0,0,0,.03);transition:all .4s;overflow:hidden}
+.s-ev2 .ev2-cols{display:flex;gap:24px;flex:1;margin-bottom:20px;min-height:0}
+.s-ev2 .ev2-col{flex:1;background:#fff;border-radius:20px;padding:24px;display:flex;flex-direction:column;border:1px solid rgba(0,0,0,.04);box-shadow:0 4px 24px rgba(0,0,0,.03);transition:all .4s;overflow:hidden;min-height:0}
 .s-ev2 .ev2-col:hover{transform:translateY(-4px);box-shadow:0 16px 32px rgba(59,130,246,.08)}
-.s-ev2 .ev2-col-title{font-size:18px;font-weight:800;color:#0f172a;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.s-ev2 .ev2-col-title{font-size:18px;font-weight:800;color:#0f172a;margin-bottom:12px;display:flex;align-items:center;gap:10px;flex-shrink:0}
 .s-ev2 .ev2-col-title i{color:#3b82f6}
-.s-ev2 .ev2-col img{width:100%;flex:1;object-fit:cover;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.s-ev2 .ev2-col img{width:100%;object-fit:contain;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,.08);min-height:0;max-height:100%}
 .s-ev2 .bottom-bar{background:linear-gradient(135deg,#0f172a,#1e293b);border-radius:16px;padding:0 32px;height:56px;display:flex;align-items:center;justify-content:space-between}
 .s-ev2 .bottom-bar p{font-size:15px;color:#fff}
 .s-ev2 .bottom-bar .accent{color:#60a5fa;font-weight:700}
@@ -780,9 +780,9 @@ body:hover .nav-dots{opacity:1}
             </div>
             <div class="ev2-col reveal" style="transition-delay:.55s">
                 <div class="ev2-col-title"><i class="fas fa-graduation-cap"></i> 영업에 필요한 모든 것</div>
-                <div style="display:flex;flex-direction:column;gap:12px;flex:1">
-                    <img src="img/insurance-school.png" alt="보험학교" style="flex:1;width:100%;object-fit:cover;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,.08)"/>
-                    <img src="img/archiving.png" alt="지식 아카이브" style="flex:1;width:100%;object-fit:cover;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,.08)"/>
+                <div style="display:flex;flex-direction:column;gap:12px;flex:1;min-height:0">
+                    <img src="img/insurance-school.png" alt="보험학교" style="width:100%;object-fit:contain;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,.08);min-height:0;max-height:48%"/>
+                    <img src="img/archiving.png" alt="지식 아카이브" style="width:100%;object-fit:contain;border-radius:12px;box-shadow:0 4px 16px rgba(0,0,0,.08);min-height:0;max-height:48%"/>
                 </div>
             </div>
         </div>
