@@ -658,8 +658,8 @@ body:hover .nav-dots{opacity:1}
         <div class="timeline-row reveal" style="transition-delay:.4s">
             <div class="tl-item">
                 <div class="tl-year">26.07</div>
-                <div class="tl-label">1200% 룰</div>
-                <div class="tl-desc">수수료 총량 제한</div>
+                <div class="tl-label">보험대리점</div>
+                <div class="tl-desc">1200% 룰</div>
             </div>
             <div class="tl-item">
                 <div class="tl-year">27</div>
@@ -669,7 +669,7 @@ body:hover .nav-dots{opacity:1}
             <div class="tl-item">
                 <div class="tl-year">29</div>
                 <div class="tl-label">7년 분급제</div>
-                <div class="tl-desc">수수료 7년 분할 지급</div>
+                <div class="tl-desc">장기 유지수수료</div>
             </div>
         </div>
         <div class="reform-img reveal-scale" style="transition-delay:.55s">
@@ -963,9 +963,9 @@ let isTransitioning = false;
 const slideSteps = {
     2: { total: 4, current: 0 },  // Market: 0=initial, 1=RED, 2=BLUE, 3=PURPLE
     3: { total: 11, current: 0 }, // 3Types: 0=hidden, 1=frames, 2=대면장단, 3=온라인장, 4=블로그, 5=문의카톡, 6=온라인단, 7=플랫폼장, 8=토스증거, 9=플랫폼단, 10=CORE
-    8: { total: 2, current: 0 },  // Customer: 0=process only, 1=brand+text
-    9: { total: 2, current: 0 },  // Roadmap: 0=phases, 1=action box
-    10: { total: 3, current: 0 }, // Closing: 0=sigh, 1=deep breath, 2=cheer
+    7: { total: 2, current: 0 },  // Customer: 0=process only, 1=brand+text
+    11: { total: 2, current: 0 }, // Roadmap: 0=phases, 1=action box
+    12: { total: 3, current: 0 }, // Closing: 0=sigh, 1=deep breath, 2=cheer
 };
 
 function applySubStep(slideIndex, step) {
@@ -1006,7 +1006,7 @@ function applySubStep(slideIndex, step) {
             coreBadge.style.pointerEvents = step >= 10 ? 'auto' : 'none';
             break;
         }
-        case 8: { // Customer management
+        case 7: { // Customer management
             const els = slide.querySelectorAll('.substep[data-substep="1"]');
             els.forEach(el => {
                 if (step >= 1) el.classList.add('visible');
@@ -1014,7 +1014,7 @@ function applySubStep(slideIndex, step) {
             });
             break;
         }
-        case 9: { // Roadmap action box
+        case 11: { // Roadmap action box
             const actionBox = slide.querySelector('.action-box.substep');
             if (step >= 1) {
                 actionBox.classList.add('visible');
@@ -1023,7 +1023,7 @@ function applySubStep(slideIndex, step) {
             }
             break;
         }
-        case 10: { // Closing 3-step
+        case 12: { // Closing 3-step
             const steps = slide.querySelectorAll('.closing-step');
             steps.forEach(s => {
                 const idx = parseInt(s.dataset.closing);
@@ -1053,7 +1053,7 @@ for (let i = 0; i < total; i++) {
     navDots.appendChild(dot);
 }
 
-const darkSlides = [0, 4, 10];
+const darkSlides = [0, 4, 12];
 
 function updateUI() {
     progressBar.style.width = ((current + 1) / total * 100) + '%';
