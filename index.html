@@ -325,6 +325,33 @@ body:hover .nav-dots{opacity:1}
 .s10 .bottom-bar p{font-size:14px;color:#475569}
 .s10 .bottom-bar .accent{color:#2563eb;font-weight:600}
 
+/* ======================== SLIDE 6.5: DB GENERATIONS ======================== */
+.s-gen{background:linear-gradient(135deg,#f8fafc,#eef2f7)}
+.s-gen .content{position:relative;z-index:10;height:100%;padding:44px 60px;display:flex;flex-direction:column}
+.s-gen .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'Space Grotesk',sans-serif;font-size:12px;color:#3b82f6;font-weight:500;letter-spacing:2px;margin-bottom:12px}
+.s-gen h2{font-size:34px;font-weight:900;color:#0f172a;letter-spacing:-1px;margin-bottom:6px}
+.s-gen h2 .accent{color:#3b82f6}
+.s-gen .subtitle{font-size:15px;color:#64748b;margin-bottom:24px}
+.s-gen .subtitle strong{color:#3b82f6}
+.s-gen .gen-img-wrap{flex:1;display:flex;align-items:center;justify-content:center;margin-bottom:20px;min-height:0}
+.s-gen .gen-img-wrap img{max-width:100%;max-height:100%;border-radius:20px;box-shadow:0 8px 32px rgba(0,0,0,.08);object-fit:contain}
+.s-gen .bottom-bar{background:rgba(59,130,246,.04);border:1px solid rgba(59,130,246,.08);border-radius:16px;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+.s-gen .bottom-bar p{font-size:14px;color:#475569}
+.s-gen .bottom-bar .accent{color:#3b82f6;font-weight:700}
+
+/* ======================== SLIDE 6.6: BASEBALL ======================== */
+.s-baseball{background:linear-gradient(135deg,#0a0e1a,#111827)}
+.s-baseball .content{position:relative;z-index:10;height:100%;padding:60px 80px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.s-baseball .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'Space Grotesk',sans-serif;font-size:12px;color:#3b82f6;font-weight:500;letter-spacing:2px;margin-bottom:20px}
+.s-baseball .main-quote{font-size:36px;font-weight:900;color:#fff;text-align:center;line-height:1.5;margin-bottom:16px;letter-spacing:-1px}
+.s-baseball .main-quote .accent{background:linear-gradient(135deg,#3b82f6,#60a5fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.s-baseball .sub-quote{font-size:20px;color:rgba(255,255,255,.55);text-align:center;line-height:1.7;margin-bottom:48px;max-width:700px}
+.s-baseball .insight-box{background:linear-gradient(135deg,rgba(59,130,246,.12),rgba(30,58,138,.12));border:1px solid rgba(59,130,246,.25);border-radius:20px;padding:32px 48px;text-align:center;max-width:750px;width:100%}
+.s-baseball .insight-box p{font-size:20px;font-weight:700;color:#fff;line-height:1.6}
+.s-baseball .insight-box .highlight{color:#60a5fa;position:relative}
+.s-baseball .insight-box .highlight::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:#3b82f6;border-radius:1px}
+.s-baseball .baseball-icon{font-size:64px;margin-bottom:24px;animation:breathe 3s ease-in-out infinite}
+
 /* ======================== SLIDE 6.5: COMMISSION REFORM ======================== */
 .s-reform{background:linear-gradient(135deg,#0a0e1a,#111827)}
 .s-reform .content{position:relative;z-index:10;height:100%;padding:44px 80px;display:flex;flex-direction:column}
@@ -649,8 +676,41 @@ body:hover .nav-dots{opacity:1}
     </div>
 </div>
 
+<!-- ==================== SLIDE 6.5: DB GENERATIONS ==================== -->
+<div class="slide s-gen" data-slide="6">
+    <div class="content">
+        <div class="eyebrow reveal" style="transition-delay:.1s"><i class="fas fa-layer-group" style="font-size:10px"></i> SUCCESS STRATEGY 2</div>
+        <h2 class="reveal" style="transition-delay:.2s">대면 DB <span class="accent">성공전략 2</span></h2>
+        <div class="subtitle reveal" style="transition-delay:.3s"><strong>1~3세대 디비</strong>를 파악하고 공략하라</div>
+        <div class="gen-img-wrap reveal-scale" style="transition-delay:.45s">
+            <img src="img/db-generations.png" alt="1~3세대 마케팅 DB 진화"/>
+        </div>
+        <div class="bottom-bar reveal" style="transition-delay:.7s">
+            <p>퍼미션 → 리워드 → <span class="accent">상품기반 인바운드</span> — 3세대 DB로 갈수록 전환율이 높다</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SLIDE 6.6: BASEBALL ==================== -->
+<div class="slide s-baseball" data-slide="7">
+    <div class="content">
+        <div class="eyebrow reveal" style="transition-delay:.1s"><i class="fas fa-baseball-ball" style="font-size:10px"></i> MINDSET</div>
+        <div class="baseball-icon reveal-scale" style="transition-delay:.3s">&#9918;</div>
+        <div class="main-quote reveal" style="transition-delay:.4s">
+            대면 DB는 <span class="accent">야구</span>와 같다.
+        </div>
+        <div class="sub-quote reveal" style="transition-delay:.6s">
+            타석에 얼마나 많이 들어가서 휘두르느냐,<br/>
+            그리고 얼마나 <strong style="color:#fff">점수를 낼 수 있느냐</strong>
+        </div>
+        <div class="insight-box reveal" style="transition-delay:.9s">
+            <p>그러기 위해서는 <span class="highlight">솔팅</span>과 <span class="highlight">가격 경쟁력</span>까지<br/>함께 갖추는 <strong>'특이점'</strong>이 필요하다.</p>
+        </div>
+    </div>
+</div>
+
 <!-- ==================== SLIDE 6.5: COMMISSION REFORM ==================== -->
-<div class="slide s-reform" data-slide="6">
+<div class="slide s-reform" data-slide="8">
     <div class="content">
         <div class="eyebrow reveal" style="transition-delay:.1s"><i class="fas fa-chart-line" style="font-size:10px"></i> COMMISSION REFORM</div>
         <h2 class="reveal" style="transition-delay:.2s">수수료제도 <span class="accent">개편</span></h2>
@@ -682,7 +742,7 @@ body:hover .nav-dots{opacity:1}
 </div>
 
 <!-- ==================== SLIDE 8: CUSTOMER MANAGEMENT ==================== -->
-<div class="slide s9" data-slide="7">
+<div class="slide s9" data-slide="9">
     <div class="content">
         <div class="eyebrow reveal" style="transition-delay:.1s"><i class="fas fa-heart" style="font-size:10px"></i> CUSTOMER MANAGEMENT</div>
         <h2 class="reveal" style="transition-delay:.2s">어떤 유형의 영업이든, <span class="accent">'고객관리'</span>를 꾸준히 해야</h2>
@@ -710,7 +770,7 @@ body:hover .nav-dots{opacity:1}
 </div>
 
 <!-- ==================== SLIDE 9: DELEGATION ==================== -->
-<div class="slide s7" data-slide="8">
+<div class="slide s7" data-slide="10">
     <div class="content">
         <div class="eyebrow reveal" style="transition-delay:.1s;display:inline-flex;align-items:center;gap:8px;font-family:'Space Grotesk',sans-serif;font-size:12px;color:#3b82f6;font-weight:500;letter-spacing:2px;margin-bottom:12px"><i class="fas fa-users" style="font-size:10px"></i> DELEGATION</div>
         <h2 class="reveal" style="transition-delay:.2s">나머지는 <span class="accent">조직에 위탁</span>하라</h2>
@@ -743,7 +803,7 @@ body:hover .nav-dots{opacity:1}
 </div>
 
 <!-- ==================== SLIDE 8: EVIDENCE ==================== -->
-<div class="slide s8" data-slide="9">
+<div class="slide s8" data-slide="11">
     <div class="content">
         <div class="eyebrow reveal" style="transition-delay:.1s"><i class="fas fa-briefcase" style="font-size:10px"></i> ORGANIZATION SUPPORT</div>
         <h2 class="reveal" style="transition-delay:.2s">조직이 <span class="accent">실제로 하는 일</span></h2>
@@ -768,7 +828,7 @@ body:hover .nav-dots{opacity:1}
 </div>
 
 <!-- ==================== SLIDE: EVIDENCE 2 ==================== -->
-<div class="slide s-ev2" data-slide="10">
+<div class="slide s-ev2" data-slide="12">
     <div class="content">
         <div class="eyebrow reveal" style="transition-delay:.1s"><i class="fas fa-briefcase" style="font-size:10px"></i> ORGANIZATION SUPPORT 2</div>
         <h2 class="reveal" style="transition-delay:.2s">조직이 <span class="accent">실제로 하는 일</span> 2</h2>
@@ -793,7 +853,7 @@ body:hover .nav-dots{opacity:1}
 </div>
 
 <!-- ==================== SLIDE 10: ROADMAP ==================== -->
-<div class="slide s10" data-slide="11">
+<div class="slide s10" data-slide="13">
     <div class="content">
         <div class="eyebrow reveal" style="transition-delay:.1s">ROADMAP</div>
         <h2 class="reveal" style="transition-delay:.2s">DB시장 <span class="accent">졸업 로드맵</span></h2>
@@ -845,7 +905,7 @@ body:hover .nav-dots{opacity:1}
 </div>
 
 <!-- ==================== SLIDE 11: CLOSING ==================== -->
-<div class="slide s11" data-slide="12">
+<div class="slide s11" data-slide="14">
     <div class="bg-img"><img src="img/door-sign1.png" alt=""/></div>
     <div class="bg-gradient"></div>
     <div class="content">
