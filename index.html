@@ -10,6 +10,17 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Noto Sans KR',sans-serif;background:#000;overflow:hidden;width:100vw;height:100vh;display:flex;align-items:center;justify-content:center;cursor:none}
 
+/* Lock screen */
+#lock-screen{position:fixed;top:0;left:0;width:100vw;height:100vh;background:#000;z-index:100000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px}
+#lock-screen.hidden{display:none}
+#lock-screen input{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:8px;padding:12px 20px;font-size:16px;color:#fff;width:280px;text-align:center;outline:none;font-family:'Noto Sans KR',sans-serif;transition:border-color .3s}
+#lock-screen input:focus{border-color:#3b82f6}
+#lock-screen input::placeholder{color:rgba(255,255,255,0.3)}
+#lock-screen .lock-title{font-size:14px;color:rgba(255,255,255,0.4);letter-spacing:4px;text-transform:uppercase;font-family:'Space Grotesk',sans-serif}
+#lock-screen .lock-error{font-size:12px;color:#ef4444;height:16px;transition:opacity .3s}
+#lock-screen button{background:#3b82f6;border:none;border-radius:8px;padding:10px 40px;font-size:14px;color:#fff;cursor:pointer;font-family:'Noto Sans KR',sans-serif;transition:background .3s}
+#lock-screen button:hover{background:#2563eb}
+
 .cursor{position:fixed;width:20px;height:20px;border:2px solid rgba(59,130,246,0.8);border-radius:50%;pointer-events:none;z-index:99999;transition:transform .15s ease,opacity .3s;mix-blend-mode:difference}
 .cursor-dot{position:fixed;width:6px;height:6px;background:#3b82f6;border-radius:50%;pointer-events:none;z-index:99999;transition:transform .05s,opacity .3s}
 
@@ -412,6 +423,12 @@ body:hover .nav-dots{opacity:1}
 </style>
 </head>
 <body>
+<div id="lock-screen">
+<div class="lock-title">Password Required</div>
+<input type="password" id="lock-pw" placeholder="비밀번호를 입력하세요" autocomplete="off"/>
+<div class="lock-error" id="lock-error"></div>
+<button onclick="unlockPresentation()">입장</button>
+</div>
 
 <!-- Fullscreen toggle button -->
 <button id="fsToggle" onclick="toggleFullscreen()" style="position:fixed;bottom:20px;right:20px;z-index:99998;width:40px;height:40px;border:none;border-radius:10px;background:rgba(15,23,42,.6);backdrop-filter:blur(8px);color:rgba(255,255,255,.6);font-size:16px;cursor:pointer;display:none;align-items:center;justify-content:center;transition:all .3s" onmouseenter="this.style.background='rgba(59,130,246,.5)';this.style.color='#fff'" onmouseleave="this.style.background='rgba(15,23,42,.6)';this.style.color='rgba(255,255,255,.6)'"><i id="fsIcon" class="fas fa-expand"></i></button>
@@ -1280,5 +1297,10 @@ function addParticles(slide) {
 darkSlides.forEach(i => addParticles(slides[i]));
 </script>
 
+<script>
+async function sha256(msg){const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(msg));return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('')}
+async function unlockPresentation(){const pw=document.getElementById('lock-pw').value;const hash=await sha256(pw);if(hash==='203b7df61a742c704a032495263001cc0fcb70d6ec79322d03ee4448c4a61525'){document.getElementById('lock-screen').classList.add('hidden')}else{const err=document.getElementById('lock-error');err.textContent='비밀번호가 올바르지 않습니다.';err.style.opacity='1';setTimeout(()=>{err.style.opacity='0'},2000)}}
+document.getElementById('lock-pw').addEventListener('keydown',e=>{if(e.key==='Enter')unlockPresentation()});
+</script>
 </body>
 </html>
