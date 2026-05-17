@@ -196,9 +196,9 @@ body:hover .nav-dots{opacity:1}
 .sc-instructor .role.highlighted{border-color:#f59e0b;background:rgba(245,158,11,.04)}
 .sc-instructor .badges{border:2.5px solid transparent;border-radius:16px;padding:14px;transition:border-color .5s,background .5s}
 .sc-instructor .badges.highlighted{border-color:#f59e0b;background:rgba(245,158,11,.04)}
-.hl-label{opacity:0;transition:opacity .5s cubic-bezier(.16,1,.3,1);pointer-events:none;border-radius:12px;padding:8px 20px;color:#fff;font-weight:800;box-shadow:0 4px 16px rgba(0,0,0,.12)}
-.hl-rare{font-size:20px;background:linear-gradient(135deg,#6d28d9,#8b5cf6);letter-spacing:0.5px}
-.hl-authority{font-size:17px;background:linear-gradient(135deg,#ea580c,#f59e0b);letter-spacing:0.3px;margin-top:-4px;margin-bottom:4px}
+.hl-label{position:absolute;top:-12px;right:-10px;opacity:0;transition:opacity .5s cubic-bezier(.16,1,.3,1);pointer-events:none;border-radius:10px;padding:6px 14px;color:#fff;font-weight:800;font-size:13px;white-space:nowrap;box-shadow:0 4px 14px rgba(0,0,0,.15);z-index:5}
+.hl-rare{background:linear-gradient(135deg,#6d28d9,#8b5cf6)}
+.hl-authority{background:linear-gradient(135deg,#ea580c,#f59e0b)}
 
 /* Placeholder slide */
 .sc-placeholder{background:linear-gradient(135deg,#f8f7ff,#f0eeff)}
@@ -408,18 +408,17 @@ body:hover .back-btn{opacity:1}
     <div class="content">
         <div class="left">
             <div class="eyebrow reveal" style="transition-delay:.1s;font-size:14px;font-weight:700"><i class="fas fa-handshake" style="font-size:12px"></i> STEP 1 — 첫인사 & 약력소개</div>
-            <div style="display:flex;align-items:baseline;gap:24px">
-                <div class="name reveal" style="transition-delay:.25s"><span class="accent">강남규</span></div>
+            <div class="name reveal" style="transition-delay:.25s"><span class="accent">강남규</span></div>
+            <div class="role reveal" style="transition-delay:.35s;position:relative" id="inst-role">보험학교 DB세일즈학과장<br/>한국보험금융(주) SAG 시그니처 사업부 부지점장
                 <div class="hl-label hl-rare" id="hl-rare">희소성</div>
             </div>
-            <div class="role reveal" style="transition-delay:.35s" id="inst-role">보험학교 DB세일즈학과장<br/>한국보험금융(주) SAG 시그니처 사업부 부지점장</div>
-            <div class="badges reveal" style="transition-delay:.45s" id="inst-badges">
+            <div class="badges reveal" style="transition-delay:.45s;position:relative" id="inst-badges">
                 <div class="badge"><div class="badge-dot"></div>동국대학교 경영학과 졸업</div>
                 <div class="badge"><div class="badge-dot"></div>M생명 변액 상담 전국 최상위</div>
                 <div class="badge"><div class="badge-dot"></div>블로그/유튜브 온라인 영업</div>
                 <div class="badge"><div class="badge-dot"></div>T플랫폼 4,500명 상담</div>
+                <div class="hl-label hl-authority" id="hl-authority">권위의 법칙 & 후광 효과</div>
             </div>
-            <div class="hl-label hl-authority" id="hl-authority">권위의 법칙&후광 효과</div>
             <div class="timeline reveal" style="transition-delay:.55s">
                 <div class="timeline-title">TIME LINE</div>
                 <div class="timeline-items">
