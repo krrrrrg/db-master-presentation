@@ -487,86 +487,107 @@ body:hover .back-btn{opacity:1}
         <div class="step-badge reveal" style="transition-delay:.1s"><i class="fas fa-clipboard-check" style="margin-right:6px"></i>STEP 4</div>
         <h2 class="reveal" style="transition-delay:.2s">문제인식 및 <span class="accent">선택기준</span> 제시</h2>
         <div class="subtitle reveal" style="transition-delay:.3s">가입된 보험, 가입할 보험의 <strong>기준</strong>을 제시</div>
-        <div style="flex:1;display:flex;flex-direction:column;gap:14px;margin-bottom:16px;min-height:0" class="reveal" style="transition-delay:.4s">
-            <div style="flex:1;background:#fff;border-radius:16px;border:1px solid rgba(139,92,246,.08);box-shadow:0 4px 20px rgba(0,0,0,.04);overflow:hidden;display:flex;flex-direction:column;min-height:0">
-                <!-- 헤더 -->
-                <div style="display:grid;grid-template-columns:140px 80px 1fr;background:#1e1b4b;color:#fff;font-size:13px;font-weight:700;flex-shrink:0">
-                    <div style="padding:12px 16px;border-right:1px solid rgba(255,255,255,.1)">유형</div>
-                    <div style="padding:12px 8px;text-align:center;border-right:1px solid rgba(255,255,255,.1)">코드</div>
-                    <div style="padding:12px 16px">설명</div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:12px;margin-bottom:16px;min-height:0" class="reveal" style="transition-delay:.4s">
+            <div style="flex:1;position:relative;display:flex;min-height:0">
+                <!-- 테이블 -->
+                <div style="flex:1;background:#fff;border-radius:16px;border:1px solid rgba(139,92,246,.08);box-shadow:0 4px 20px rgba(0,0,0,.04);overflow:hidden;display:flex;flex-direction:column;min-height:0">
+                    <!-- 헤더 -->
+                    <div style="display:grid;grid-template-columns:130px 70px 1fr;background:#1e1b4b;color:#fff;font-size:12px;font-weight:700;flex-shrink:0">
+                        <div style="padding:10px 16px;border-right:1px solid rgba(255,255,255,.1)">유형</div>
+                        <div style="padding:10px 8px;text-align:center;border-right:1px solid rgba(255,255,255,.1)"></div>
+                        <div style="padding:10px 16px">설명</div>
+                    </div>
+                    <div style="flex:1;overflow:hidden;display:flex;flex-direction:column;font-size:12px">
+                        <!-- 건강고지형 3105 하이라이트 -->
+                        <div style="display:grid;grid-template-columns:130px 70px 1fr;background:#fef9c3;border-bottom:1px solid #e2e8f0">
+                            <div style="padding:7px 14px;font-weight:800;color:#1e1b4b;border-right:1px solid #e2e8f0;display:flex;align-items:center">건강고지형<br/><span style="font-size:10px;color:#8b5cf6;font-weight:600">(할인플랜)</span></div>
+                            <div style="padding:7px 8px;text-align:center;font-weight:700;color:#1e1b4b;border-right:1px solid #e2e8f0">3105</div>
+                            <div style="padding:7px 12px;font-weight:700;color:#1e1b4b">고객이 가입할 수 있는 가장 유리한 보험</div>
+                        </div>
+                        <!-- 395~365 -->
+                        <div style="display:grid;grid-template-columns:130px 70px 1fr;border-bottom:1px solid #f1f5f9">
+                            <div style="border-right:1px solid #e2e8f0"></div>
+                            <div style="padding:4px 8px;text-align:center;color:#94a3b8;border-right:1px solid #e2e8f0">395</div>
+                            <div></div>
+                        </div>
+                        <div style="display:grid;grid-template-columns:130px 70px 1fr;border-bottom:1px solid #f1f5f9">
+                            <div style="border-right:1px solid #e2e8f0"></div>
+                            <div style="padding:4px 8px;text-align:center;color:#94a3b8;border-right:1px solid #e2e8f0">385</div>
+                            <div></div>
+                        </div>
+                        <div style="display:grid;grid-template-columns:130px 70px 1fr;border-bottom:1px solid #f1f5f9">
+                            <div style="border-right:1px solid #e2e8f0"></div>
+                            <div style="padding:4px 8px;text-align:center;color:#94a3b8;border-right:1px solid #e2e8f0">375</div>
+                            <div></div>
+                        </div>
+                        <div style="display:grid;grid-template-columns:130px 70px 1fr;border-bottom:2px solid #e2e8f0">
+                            <div style="border-right:1px solid #e2e8f0"></div>
+                            <div style="padding:4px 8px;text-align:center;color:#94a3b8;border-right:1px solid #e2e8f0">365</div>
+                            <div></div>
+                        </div>
+                        <!-- 표준형 -->
+                        <div style="display:grid;grid-template-columns:130px 70px 1fr;border-bottom:2px solid #e2e8f0">
+                            <div style="padding:7px 14px;font-weight:800;color:#1e1b4b;border-right:1px solid #e2e8f0">표준형</div>
+                            <div style="padding:7px 8px;text-align:center;color:#64748b;border-right:1px solid #e2e8f0">355</div>
+                            <div style="padding:7px 12px;color:#475569">일반적으로 제안 받는 표준형</div>
+                        </div>
+                        <!-- 경증간편형 -->
+                        <div style="display:grid;grid-template-columns:130px 70px 1fr;border-bottom:2px solid #e2e8f0">
+                            <div style="padding:7px 14px;font-weight:800;color:#1e1b4b;border-right:1px solid #e2e8f0">경증간편형</div>
+                            <div style="padding:7px 8px;text-align:center;color:#64748b;border-right:1px solid #e2e8f0">31010</div>
+                            <div style="padding:7px 12px;color:#475569">유병자 보험 중 가장 저렴한 플랜</div>
+                        </div>
+                        <!-- 유병자보험 -->
+                        <div style="display:grid;grid-template-columns:130px 70px 1fr;border-bottom:1px solid #f1f5f9">
+                            <div style="padding:5px 14px;font-weight:800;color:#1e1b4b;border-right:1px solid #e2e8f0">유병자보험</div>
+                            <div style="padding:3px 8px;text-align:center;color:#94a3b8;border-right:1px solid #e2e8f0">345</div>
+                            <div></div>
+                        </div>
+                        <div style="display:grid;grid-template-columns:130px 70px 1fr;border-bottom:1px solid #f1f5f9">
+                            <div style="border-right:1px solid #e2e8f0"></div>
+                            <div style="padding:3px 8px;text-align:center;color:#94a3b8;border-right:1px solid #e2e8f0">335</div>
+                            <div></div>
+                        </div>
+                        <div style="display:grid;grid-template-columns:130px 70px 1fr;border-bottom:1px solid #f1f5f9">
+                            <div style="border-right:1px solid #e2e8f0"></div>
+                            <div style="padding:3px 8px;text-align:center;color:#94a3b8;border-right:1px solid #e2e8f0">325</div>
+                            <div></div>
+                        </div>
+                        <div style="display:grid;grid-template-columns:130px 70px 1fr;border-bottom:1px solid #f1f5f9">
+                            <div style="border-right:1px solid #e2e8f0"></div>
+                            <div style="padding:3px 8px;text-align:center;color:#94a3b8;border-right:1px solid #e2e8f0">315</div>
+                            <div></div>
+                        </div>
+                        <div style="display:grid;grid-template-columns:130px 70px 1fr;border-bottom:1px solid #f1f5f9">
+                            <div style="border-right:1px solid #e2e8f0"></div>
+                            <div style="padding:3px 8px;text-align:center;color:#94a3b8;border-right:1px solid #e2e8f0">305</div>
+                            <div></div>
+                        </div>
+                        <!-- 초간편 -->
+                        <div style="display:grid;grid-template-columns:130px 70px 1fr;background:linear-gradient(90deg,#d9f99d,#ecfccb)">
+                            <div style="border-right:1px solid #e2e8f0"></div>
+                            <div style="padding:5px 8px;text-align:center;font-weight:700;color:#1e1b4b;border-right:1px solid #e2e8f0;background:#a3e635">초간편</div>
+                            <div style="padding:5px 12px;font-weight:600;color:#1e1b4b">가장 비싼 보험</div>
+                        </div>
+                    </div>
                 </div>
-                <!-- 건강고지형 (할인플랜) - 노란 하이라이트 첫 행 -->
-                <div style="display:grid;grid-template-columns:140px 80px 1fr;border-bottom:1px solid #e2e8f0;background:linear-gradient(90deg,#fefce8,#fff);font-size:13px">
-                    <div style="padding:8px 16px;font-weight:800;color:#1e1b4b;grid-row:span 6;display:flex;align-items:center;border-right:1px solid #e2e8f0">건강고지형<br/><span style="font-size:11px;color:#8b5cf6;font-weight:600">(할인플랜)</span></div>
-                    <div style="padding:6px 8px;text-align:center;font-weight:700;color:#1e1b4b;background:#fef08a;border-right:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0">3105</div>
-                    <div style="padding:6px 12px;font-weight:700;color:#1e1b4b;background:#fef08a;border-bottom:1px solid #e2e8f0">고객이 가입할 수 있는 가장 유리한 보험</div>
-                </div>
-                <div style="display:grid;grid-template-columns:140px 80px 1fr;font-size:13px">
-                    <div style="border-right:1px solid #e2e8f0"></div>
-                    <div style="padding:4px 8px;text-align:center;color:#64748b;border-right:1px solid #e2e8f0;border-bottom:1px solid #f1f5f9">395</div>
-                    <div style="padding:4px 12px;border-bottom:1px solid #f1f5f9"></div>
-                </div>
-                <div style="display:grid;grid-template-columns:140px 80px 1fr;font-size:13px">
-                    <div style="border-right:1px solid #e2e8f0"></div>
-                    <div style="padding:4px 8px;text-align:center;color:#64748b;border-right:1px solid #e2e8f0;border-bottom:1px solid #f1f5f9">385</div>
-                    <div style="padding:4px 12px;border-bottom:1px solid #f1f5f9"></div>
-                </div>
-                <div style="display:grid;grid-template-columns:140px 80px 1fr;font-size:13px">
-                    <div style="border-right:1px solid #e2e8f0"></div>
-                    <div style="padding:4px 8px;text-align:center;color:#64748b;border-right:1px solid #e2e8f0;border-bottom:1px solid #f1f5f9">375</div>
-                    <div style="padding:4px 12px;border-bottom:1px solid #f1f5f9"></div>
-                </div>
-                <div style="display:grid;grid-template-columns:140px 80px 1fr;font-size:13px;border-bottom:2px solid #e2e8f0">
-                    <div style="border-right:1px solid #e2e8f0"></div>
-                    <div style="padding:4px 8px;text-align:center;color:#64748b;border-right:1px solid #e2e8f0">365</div>
-                    <div style="padding:4px 12px"></div>
-                </div>
-                <!-- 표준형 -->
-                <div style="display:grid;grid-template-columns:140px 80px 1fr;font-size:13px;border-bottom:2px solid #e2e8f0">
-                    <div style="padding:10px 16px;font-weight:800;color:#1e1b4b;border-right:1px solid #e2e8f0">표준형</div>
-                    <div style="padding:10px 8px;text-align:center;color:#64748b;border-right:1px solid #e2e8f0">355</div>
-                    <div style="padding:10px 12px;color:#475569">일반적으로 제안 받는 표준형</div>
-                </div>
-                <!-- 경증간편형 -->
-                <div style="display:grid;grid-template-columns:140px 80px 1fr;font-size:13px;border-bottom:2px solid #e2e8f0">
-                    <div style="padding:10px 16px;font-weight:800;color:#1e1b4b;border-right:1px solid #e2e8f0">경증간편형</div>
-                    <div style="padding:10px 8px;text-align:center;color:#64748b;border-right:1px solid #e2e8f0">31010</div>
-                    <div style="padding:10px 12px;color:#475569">유병자 보험 중 가장 저렴한 플랜</div>
-                </div>
-                <!-- 유병자보험 -->
-                <div style="display:grid;grid-template-columns:140px 80px 1fr;font-size:13px">
-                    <div style="padding:6px 16px;font-weight:800;color:#1e1b4b;border-right:1px solid #e2e8f0;grid-row:span 6;display:flex;align-items:center">유병자보험</div>
-                    <div style="padding:3px 8px;text-align:center;color:#64748b;border-right:1px solid #e2e8f0;border-bottom:1px solid #f1f5f9">345</div>
-                    <div style="padding:3px 12px;border-bottom:1px solid #f1f5f9"></div>
-                </div>
-                <div style="display:grid;grid-template-columns:140px 80px 1fr;font-size:13px">
-                    <div style="border-right:1px solid #e2e8f0"></div>
-                    <div style="padding:3px 8px;text-align:center;color:#64748b;border-right:1px solid #e2e8f0;border-bottom:1px solid #f1f5f9">335</div>
-                    <div style="padding:3px 12px;color:#475569;border-bottom:1px solid #f1f5f9">한화손해보험이 속한 곳</div>
-                </div>
-                <div style="display:grid;grid-template-columns:140px 80px 1fr;font-size:13px">
-                    <div style="border-right:1px solid #e2e8f0"></div>
-                    <div style="padding:3px 8px;text-align:center;color:#64748b;border-right:1px solid #e2e8f0;border-bottom:1px solid #f1f5f9">325</div>
-                    <div style="padding:3px 12px;border-bottom:1px solid #f1f5f9"></div>
-                </div>
-                <div style="display:grid;grid-template-columns:140px 80px 1fr;font-size:13px">
-                    <div style="border-right:1px solid #e2e8f0"></div>
-                    <div style="padding:3px 8px;text-align:center;color:#64748b;border-right:1px solid #e2e8f0;border-bottom:1px solid #f1f5f9">315</div>
-                    <div style="padding:3px 12px;border-bottom:1px solid #f1f5f9"></div>
-                </div>
-                <div style="display:grid;grid-template-columns:140px 80px 1fr;font-size:13px">
-                    <div style="border-right:1px solid #e2e8f0"></div>
-                    <div style="padding:3px 8px;text-align:center;color:#64748b;border-right:1px solid #e2e8f0;border-bottom:1px solid #f1f5f9">305</div>
-                    <div style="padding:3px 12px;border-bottom:1px solid #f1f5f9"></div>
-                </div>
-                <div style="display:grid;grid-template-columns:140px 80px 1fr;font-size:13px;background:linear-gradient(90deg,#d9f99d,#ecfccb)">
-                    <div style="border-right:1px solid #e2e8f0"></div>
-                    <div style="padding:4px 8px;text-align:center;font-weight:700;color:#1e1b4b;border-right:1px solid #e2e8f0;background:#a3e635;border-radius:0 0 0 0">초간편</div>
-                    <div style="padding:4px 12px;font-weight:600;color:#1e1b4b">가장 비싼 보험</div>
+                <!-- 보험료 화살표 (클릭 시 표시) -->
+                <div id="premium-arrow" style="width:100px;flex-shrink:0;opacity:0;transition:opacity .5s cubic-bezier(.16,1,.3,1);display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:10px 0;margin-left:14px">
+                    <div style="text-align:center">
+                        <div style="font-size:18px;font-weight:900;color:#6d28d9;letter-spacing:-0.5px">보험료 −</div>
+                    </div>
+                    <div style="flex:1;display:flex;align-items:center;justify-content:center;position:relative;margin:8px 0;width:100%">
+                        <div style="width:3px;height:100%;background:linear-gradient(180deg,#6d28d9,#a1a1aa,#dc2626);border-radius:2px"></div>
+                        <div style="position:absolute;top:-2px;font-size:16px;color:#6d28d9">▲</div>
+                        <div style="position:absolute;bottom:-2px;font-size:16px;color:#dc2626">▼</div>
+                    </div>
+                    <div style="text-align:center">
+                        <div style="font-size:18px;font-weight:900;color:#dc2626;letter-spacing:-0.5px">보험료 +</div>
+                    </div>
                 </div>
             </div>
             <!-- 핵심 메시지 -->
-            <div style="background:linear-gradient(135deg,rgba(139,92,246,.08),rgba(99,102,241,.08));border:1px solid rgba(139,92,246,.15);border-radius:14px;padding:14px 24px;text-align:center;flex-shrink:0">
+            <div style="background:linear-gradient(135deg,rgba(139,92,246,.08),rgba(99,102,241,.08));border:1px solid rgba(139,92,246,.15);border-radius:14px;padding:12px 24px;text-align:center;flex-shrink:0">
                 <p style="font-size:13px;color:#334155;line-height:1.6"><strong style="color:#8b5cf6;font-size:14px">핵심 메시지</strong> — 상품 수백 개 중 단 한 개를 고르는 기준입니다. 저는 단순히 상품만 들이미는 사람이 아닙니다. <strong style="color:#8b5cf6">정확하게 진단하고, 최적의 설계 및 추천</strong>을 해드립니다.</p>
             </div>
         </div>
@@ -713,6 +734,7 @@ let isTransitioning = false;
 const slideSteps = {
     5: { total: 2, current: 0 },   // Instructor: 0=normal, 1=highlights
     7: { total: 5, current: 0 },   // Framework: 0=empty, 1=진단비, 2=수술비, 3=치료비, 4=간병비
+    8: { total: 2, current: 0 },   // Table: 0=normal, 1=보험료 화살표
     11: { total: 3, current: 0 },  // Visual Signature: 0=지식의저주, 1=프로세스, 2=Be your Signature
 };
 
@@ -743,6 +765,11 @@ function applySubStep(slideIndex, step) {
                 if (i + 1 <= step) cell.classList.add('visible');
                 else cell.classList.remove('visible');
             });
+            break;
+        }
+        case 8: { // Table 보험료 화살표
+            const arrow = document.getElementById('premium-arrow');
+            arrow.style.opacity = step >= 1 ? '1' : '0';
             break;
         }
         case 11: { // Final closing 3-step
