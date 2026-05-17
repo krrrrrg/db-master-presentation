@@ -433,10 +433,29 @@ body:hover .nav-dots{opacity:1}
 <!-- Fullscreen toggle button -->
 <button id="fsToggle" onclick="toggleFullscreen()" style="position:fixed;bottom:20px;right:20px;z-index:99998;width:40px;height:40px;border:none;border-radius:10px;background:rgba(15,23,42,.6);backdrop-filter:blur(8px);color:rgba(255,255,255,.6);font-size:16px;cursor:pointer;display:none;align-items:center;justify-content:center;transition:all .3s" onmouseenter="this.style.background='rgba(59,130,246,.5)';this.style.color='#fff'" onmouseleave="this.style.background='rgba(15,23,42,.6)';this.style.color='rgba(255,255,255,.6)'"><i id="fsIcon" class="fas fa-expand"></i></button>
 
-<!-- Fullscreen splash -->
-<div id="splash" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#0a0e1a;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:opacity .6s" onclick="enterFullscreen()">
+<!-- Menu selection screen -->
+<div id="menu-screen" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#0a0e1a;z-index:99999;display:none;flex-direction:column;align-items:center;justify-content:center;transition:opacity .6s">
+    <img src="img/logo-white.png" alt="시그니처" style="height:36px;opacity:.6;margin-bottom:20px"/>
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;color:rgba(255,255,255,.4);letter-spacing:3px;margin-bottom:48px">SIGNATURE MASTER CLASS</div>
+    <div style="display:flex;flex-direction:column;gap:20px;width:360px">
+        <div onclick="selectPresentation('main')" style="background:rgba(255,255,255,.03);border:1px solid rgba(59,130,246,.3);border-radius:16px;padding:28px 32px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden" onmouseenter="this.style.borderColor='rgba(59,130,246,.6)';this.style.background='rgba(59,130,246,.06)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(59,130,246,.3)';this.style.background='rgba(255,255,255,.03)';this.style.transform='translateY(0)'">
+            <div style="font-size:11px;color:#3b82f6;font-family:'Space Grotesk',sans-serif;letter-spacing:2px;margin-bottom:10px;font-weight:600">CHAPTER 01</div>
+            <div style="font-size:22px;font-weight:800;color:#fff;margin-bottom:6px">DB 영업의 모든것</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.4)">시장분석 · 전략 · 조직 시스템</div>
+        </div>
+        <div onclick="selectPresentation('consultation')" style="background:rgba(255,255,255,.03);border:1px solid rgba(139,92,246,.3);border-radius:16px;padding:28px 32px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden" onmouseenter="this.style.borderColor='rgba(139,92,246,.6)';this.style.background='rgba(139,92,246,.06)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(139,92,246,.3)';this.style.background='rgba(255,255,255,.03)';this.style.transform='translateY(0)'">
+            <div style="font-size:11px;color:#8b5cf6;font-family:'Space Grotesk',sans-serif;letter-spacing:2px;margin-bottom:10px;font-weight:600">CHAPTER 02</div>
+            <div style="font-size:22px;font-weight:800;color:#fff;margin-bottom:6px">실전 상담 플로우</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.4)">3가지 원칙 · 5단계 프로세스</div>
+        </div>
+    </div>
+    <div style="font-size:12px;color:rgba(255,255,255,.15);margin-top:40px">선택 후 전체화면으로 시작됩니다</div>
+</div>
+
+<!-- Fullscreen splash (shown after menu selection) -->
+<div id="splash" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#0a0e1a;z-index:99998;display:none;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:opacity .6s" onclick="enterFullscreen()">
     <img src="img/logo-white.png" alt="시그니처" style="height:36px;opacity:.6;margin-bottom:32px"/>
-    <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;color:rgba(255,255,255,.5);letter-spacing:3px;margin-bottom:40px">DB영업의 모든것</div>
+    <div id="splash-title" style="font-family:'Space Grotesk',sans-serif;font-size:16px;color:rgba(255,255,255,.5);letter-spacing:3px;margin-bottom:40px">DB영업의 모든것</div>
     <div style="padding:14px 40px;border:1px solid rgba(59,130,246,.4);border-radius:12px;font-size:15px;color:#60a5fa;font-weight:600;letter-spacing:1px;transition:all .3s;animation:glow 2s ease-in-out infinite" onmouseenter="this.style.background='rgba(59,130,246,.1)'" onmouseleave="this.style.background='transparent'">
         <i class="fas fa-expand" style="margin-right:8px"></i>전체화면으로 시작
     </div>
@@ -1299,8 +1318,9 @@ darkSlides.forEach(i => addParticles(slides[i]));
 
 <script>
 async function sha256(msg){const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(msg));return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('')}
-async function unlockPresentation(){const pw=document.getElementById('lock-pw').value;const hash=await sha256(pw);if(hash==='203b7df61a742c704a032495263001cc0fcb70d6ec79322d03ee4448c4a61525'){document.getElementById('lock-screen').classList.add('hidden')}else{const err=document.getElementById('lock-error');err.textContent='비밀번호가 올바르지 않습니다.';err.style.opacity='1';setTimeout(()=>{err.style.opacity='0'},2000)}}
+async function unlockPresentation(){const pw=document.getElementById('lock-pw').value;const hash=await sha256(pw);if(hash==='203b7df61a742c704a032495263001cc0fcb70d6ec79322d03ee4448c4a61525'){document.getElementById('lock-screen').classList.add('hidden');document.getElementById('menu-screen').style.display='flex'}else{const err=document.getElementById('lock-error');err.textContent='비밀번호가 올바르지 않습니다.';err.style.opacity='1';setTimeout(()=>{err.style.opacity='0'},2000)}}
 document.getElementById('lock-pw').addEventListener('keydown',e=>{if(e.key==='Enter')unlockPresentation()});
+function selectPresentation(type){document.getElementById('menu-screen').style.opacity='0';setTimeout(()=>{document.getElementById('menu-screen').style.display='none';if(type==='consultation'){window.location.href='consultation.html'}else{document.getElementById('splash').style.display='flex'}},500)}
 </script>
 </body>
 </html>

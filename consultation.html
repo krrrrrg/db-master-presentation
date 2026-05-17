@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>실전 상담 플로우 - 시그니처</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans KR',sans-serif;background:#000;overflow:hidden;width:100vw;height:100vh;display:flex;align-items:center;justify-content:center;cursor:none}
+
+.cursor{position:fixed;width:20px;height:20px;border:2px solid rgba(139,92,246,0.8);border-radius:50%;pointer-events:none;z-index:99999;transition:transform .15s ease,opacity .3s;mix-blend-mode:difference}
+.cursor-dot{position:fixed;width:6px;height:6px;background:#8b5cf6;border-radius:50%;pointer-events:none;z-index:99999;transition:transform .05s,opacity .3s}
+
+.presentation{position:relative;width:1280px;height:720px;transform-origin:center center;overflow:hidden;border-radius:4px;box-shadow:0 0 80px rgba(0,0,0,0.5)}
+
+/* Slide system */
+.slide{position:absolute;top:0;left:0;width:1280px;height:720px;opacity:0;visibility:hidden;transition:none;overflow:hidden}
+.slide.active{opacity:1;visibility:visible}
+
+/* Animated elements */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.reveal.show{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-50px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.reveal-left.show{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(50px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.reveal-right.show{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(.85);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.reveal-scale.show{opacity:1;transform:scale(1)}
+.reveal-blur{opacity:0;filter:blur(10px);transition:opacity 1s cubic-bezier(.16,1,.3,1),filter 1s cubic-bezier(.16,1,.3,1)}
+.reveal-blur.show{opacity:1;filter:blur(0)}
+
+/* Sub-step system */
+.substep{opacity:0;transform:translateY(24px);pointer-events:none;transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.substep.visible{opacity:1;transform:translateY(0);pointer-events:auto}
+.substep-fade{opacity:0;pointer-events:none;transition:opacity .7s cubic-bezier(.16,1,.3,1)}
+.substep-fade.visible{opacity:1;pointer-events:auto}
+
+/* Progress bar */
+.progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#8b5cf6,#a78bfa);z-index:9999;transition:width .5s cubic-bezier(.16,1,.3,1)}
+
+/* Slide number */
+.slide-num{position:fixed;bottom:30px;right:40px;font-family:'Space Grotesk',sans-serif;font-size:14px;color:rgba(255,255,255,0.3);z-index:9998;letter-spacing:2px;transition:color .3s}
+
+/* Navigation dots */
+.nav-dots{position:fixed;right:30px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:12px;z-index:9998;opacity:0;transition:opacity .3s}
+body:hover .nav-dots{opacity:1}
+.nav-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.2);cursor:pointer;transition:all .3s;position:relative}
+.nav-dot.active{background:#8b5cf6;box-shadow:0 0 12px rgba(139,92,246,0.5)}
+.nav-dot:hover{background:rgba(255,255,255,0.5);transform:scale(1.3)}
+.nav-dot.active:hover{background:#8b5cf6}
+
+/* Particles */
+.particle{position:absolute;border-radius:50%;pointer-events:none;animation:float linear infinite}
+@keyframes float{0%{transform:translateY(0) rotate(0deg);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-720px) rotate(720deg);opacity:0}}
+
+/* Pulse */
+@keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
+@keyframes glow{0%,100%{box-shadow:0 0 20px rgba(139,92,246,0.2)}50%{box-shadow:0 0 40px rgba(139,92,246,0.4)}}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
+@keyframes gradient-shift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+
+/* ======================== SLIDE 1: TITLE ======================== */
+.sc1{background:#0a0e1a}
+.sc1 .bg-mesh{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 30% 70%,rgba(139,92,246,0.12) 0%,transparent 50%),radial-gradient(ellipse at 70% 30%,rgba(99,102,241,0.15) 0%,transparent 50%),radial-gradient(ellipse at 50% 50%,rgba(15,23,42,0.5) 0%,transparent 70%);z-index:1}
+.sc1 .content{position:relative;z-index:10;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 80px}
+.sc1 .eyebrow{font-family:'Space Grotesk',sans-serif;font-size:13px;color:#8b5cf6;letter-spacing:4px;margin-bottom:24px;font-weight:500}
+.sc1 h1{font-size:64px;font-weight:900;color:#fff;line-height:1.2;letter-spacing:-3px;margin-bottom:20px}
+.sc1 h1 .accent{background:linear-gradient(135deg,#8b5cf6,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sc1 .tagline{font-size:18px;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:40px}
+.sc1 .presenter{display:flex;align-items:center;gap:16px;padding:16px 24px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:16px}
+.sc1 .presenter-avatar{width:44px;height:44px;border-radius:50%;overflow:hidden;border:2px solid rgba(139,92,246,.3)}
+.sc1 .presenter-avatar img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.sc1 .presenter-name{font-size:15px;font-weight:700;color:#fff}
+.sc1 .presenter-role{font-size:12px;color:rgba(255,255,255,.4)}
+
+/* ======================== SLIDE 2: PRINCIPLE 1 ======================== */
+.sc-p{background:linear-gradient(135deg,#0a0e1a,#1a0b2e)}
+.sc-p .bg-mesh{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 20% 80%,rgba(139,92,246,.08) 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(99,102,241,.06) 0%,transparent 50%);z-index:1}
+.sc-p .content{position:relative;z-index:10;height:100%;padding:50px 80px;display:flex;flex-direction:column}
+.sc-p .principle-num{font-family:'Space Grotesk',sans-serif;font-size:12px;color:#8b5cf6;font-weight:600;letter-spacing:3px;margin-bottom:16px}
+.sc-p h2{font-size:38px;font-weight:900;color:#fff;letter-spacing:-1px;margin-bottom:8px;line-height:1.3}
+.sc-p h2 .accent{color:#a78bfa}
+.sc-p .subtitle{font-size:16px;color:rgba(255,255,255,.5);margin-bottom:32px;line-height:1.6}
+.sc-p .subtitle strong{color:#a78bfa}
+.sc-p .insight-cards{display:flex;gap:20px;flex:1;margin-bottom:24px;align-items:stretch}
+.sc-p .insight-card{flex:1;background:rgba(255,255,255,.03);border:1px solid rgba(139,92,246,.15);border-radius:20px;padding:28px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;transition:all .4s;cursor:default}
+.sc-p .insight-card:hover{background:rgba(139,92,246,.06);border-color:rgba(139,92,246,.3);transform:translateY(-4px)}
+.sc-p .insight-card .icon{font-size:36px;margin-bottom:16px}
+.sc-p .insight-card h3{font-size:18px;font-weight:800;color:#fff;margin-bottom:8px}
+.sc-p .insight-card p{font-size:14px;color:rgba(255,255,255,.5);line-height:1.6}
+.sc-p .insight-card .highlight{color:#a78bfa;font-weight:700}
+.sc-p .bottom-insight{background:linear-gradient(135deg,rgba(139,92,246,.1),rgba(99,102,241,.1));border:1px solid rgba(139,92,246,.2);border-radius:16px;padding:20px 32px;text-align:center}
+.sc-p .bottom-insight p{font-size:17px;font-weight:700;color:#fff;line-height:1.6}
+.sc-p .bottom-insight .hl{color:#a78bfa;position:relative}
+.sc-p .bottom-insight .hl::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:#8b5cf6;border-radius:1px}
+
+/* ======================== PRINCIPLE SUMMARY ======================== */
+.sc-sum{background:linear-gradient(135deg,#f8f7ff,#f0eeff)}
+.sc-sum .content{position:relative;z-index:10;height:100%;padding:50px 80px;display:flex;flex-direction:column}
+.sc-sum .eyebrow{font-family:'Space Grotesk',sans-serif;font-size:12px;color:#8b5cf6;font-weight:600;letter-spacing:2px;margin-bottom:16px}
+.sc-sum h2{font-size:38px;font-weight:900;color:#1e1b4b;letter-spacing:-1px;margin-bottom:32px}
+.sc-sum h2 .accent{color:#8b5cf6}
+.sc-sum .summary-cards{display:flex;gap:20px;flex:1;align-items:stretch;margin-bottom:24px}
+.sc-sum .sum-card{flex:1;background:#fff;border-radius:20px;padding:32px 28px;display:flex;flex-direction:column;border:1px solid rgba(139,92,246,.08);box-shadow:0 4px 24px rgba(139,92,246,.06);transition:all .4s;cursor:default;position:relative;overflow:hidden}
+.sc-sum .sum-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:linear-gradient(180deg,#8b5cf6,#6366f1);border-radius:0 4px 4px 0}
+.sc-sum .sum-card:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(139,92,246,.12)}
+.sc-sum .sum-card .num{font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:800;color:#8b5cf6;margin-bottom:12px}
+.sc-sum .sum-card h3{font-size:17px;font-weight:800;color:#1e1b4b;margin-bottom:10px}
+.sc-sum .sum-card p{font-size:14px;color:#64748b;line-height:1.6}
+.sc-sum .sum-card .tag{margin-top:auto;padding-top:16px;display:inline-flex;align-items:center;gap:6px;background:rgba(139,92,246,.06);padding:8px 14px;border-radius:8px;font-size:12px;color:#8b5cf6;font-weight:600}
+.sc-sum .bottom-bar{background:linear-gradient(135deg,#1e1b4b,#312e81);border-radius:16px;padding:20px 32px;text-align:center}
+.sc-sum .bottom-bar p{font-size:16px;color:#fff;font-weight:600}
+.sc-sum .bottom-bar .accent{color:#a78bfa}
+
+/* ======================== STEP SLIDES ======================== */
+.sc-step{background:linear-gradient(135deg,#f8f7ff,#f0eeff)}
+.sc-step .grid-bg{position:absolute;top:0;left:0;width:100%;height:100%;background-image:linear-gradient(rgba(139,92,246,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(139,92,246,.03) 1px,transparent 1px);background-size:60px 60px}
+.sc-step .content{position:relative;z-index:10;height:100%;padding:50px 80px;display:flex;flex-direction:column}
+.sc-step .step-badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#8b5cf6,#6366f1);color:#fff;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:16px;width:fit-content}
+.sc-step h2{font-size:36px;font-weight:900;color:#1e1b4b;letter-spacing:-1px;margin-bottom:8px}
+.sc-step h2 .accent{color:#8b5cf6}
+.sc-step .subtitle{font-size:15px;color:#64748b;margin-bottom:32px;line-height:1.6}
+.sc-step .subtitle strong{color:#8b5cf6}
+
+/* Step 3: 4분면 Framework */
+.sc-framework .framework-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;flex:1;margin-bottom:20px}
+.sc-framework .fw-cell{background:#fff;border-radius:20px;padding:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border:1px solid rgba(139,92,246,.08);box-shadow:0 4px 20px rgba(0,0,0,.03);transition:all .4s;cursor:default;position:relative;overflow:hidden}
+.sc-framework .fw-cell:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(139,92,246,.1);border-color:rgba(139,92,246,.2)}
+.sc-framework .fw-cell .fw-icon{font-size:32px;margin-bottom:12px}
+.sc-framework .fw-cell h3{font-size:20px;font-weight:800;color:#1e1b4b;margin-bottom:8px}
+.sc-framework .fw-cell p{font-size:13px;color:#64748b;line-height:1.5}
+.sc-framework .fw-cell .fw-tag{position:absolute;top:16px;right:16px;background:rgba(139,92,246,.08);color:#8b5cf6;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:600}
+.sc-framework .fw-cell.critical{border-color:rgba(239,68,68,.15);background:linear-gradient(135deg,#fff,#fef2f2)}
+.sc-framework .fw-cell.critical .fw-tag{background:rgba(239,68,68,.08);color:#ef4444}
+.sc-framework .fw-cell.growth{border-color:rgba(16,185,129,.15);background:linear-gradient(135deg,#fff,#f0fdf4)}
+.sc-framework .fw-cell.growth .fw-tag{background:rgba(16,185,129,.08);color:#10b981}
+.sc-framework .fw-cell.essential{border-color:rgba(59,130,246,.15);background:linear-gradient(135deg,#fff,#eff6ff)}
+.sc-framework .fw-cell.essential .fw-tag{background:rgba(59,130,246,.08);color:#3b82f6}
+
+/* Step 4: Table */
+.sc-table .table-wrap{flex:1;background:#fff;border-radius:20px;padding:24px;border:1px solid rgba(139,92,246,.08);box-shadow:0 4px 24px rgba(0,0,0,.04);margin-bottom:20px;display:flex;flex-direction:column;overflow:hidden}
+.sc-table .table-header{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr 1fr;gap:1px;background:#1e1b4b;border-radius:12px 12px 0 0;overflow:hidden;flex-shrink:0}
+.sc-table .table-header .th{padding:14px 12px;text-align:center;font-size:13px;font-weight:700;color:#fff}
+.sc-table .table-body{display:flex;flex-direction:column;gap:1px;background:rgba(139,92,246,.06);flex:1}
+.sc-table .table-row{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr 1fr;gap:1px;background:#fff}
+.sc-table .table-row .td{padding:12px;text-align:center;font-size:13px;color:#334155;display:flex;align-items:center;justify-content:center;background:#fff}
+.sc-table .table-row .td:first-child{font-weight:700;color:#1e1b4b;background:rgba(139,92,246,.03)}
+.sc-table .table-row .td.highlight-cell{background:rgba(139,92,246,.06);color:#8b5cf6;font-weight:600}
+.sc-table .table-note{margin-top:16px;padding:12px 20px;background:rgba(139,92,246,.04);border-radius:12px;font-size:13px;color:#64748b;text-align:center;flex-shrink:0}
+.sc-table .table-note strong{color:#8b5cf6}
+
+/* Step 5: Closing */
+.sc-close{background:#0a0e1a}
+.sc-close .bg-mesh{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 50% 50%,rgba(139,92,246,.1) 0%,transparent 60%);z-index:1}
+.sc-close .content{position:relative;z-index:10;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 80px}
+.sc-close h2{font-size:40px;font-weight:900;color:#fff;letter-spacing:-1px;margin-bottom:16px;line-height:1.4}
+.sc-close h2 .accent{background:linear-gradient(135deg,#8b5cf6,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sc-close .sub{font-size:18px;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:40px}
+.sc-close .cta-box{background:linear-gradient(135deg,rgba(139,92,246,.12),rgba(99,102,241,.12));border:1px solid rgba(139,92,246,.25);border-radius:20px;padding:32px 48px;max-width:700px}
+.sc-close .cta-box p{font-size:20px;font-weight:700;color:#fff;line-height:1.6}
+.sc-close .cta-box .hl{color:#a78bfa;position:relative}
+.sc-close .cta-box .hl::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:#8b5cf6;border-radius:1px}
+
+/* Instructor (reused from main) */
+.sc-instructor{background:linear-gradient(135deg,#fafbfe 0%,#f0f4f9 100%)}
+.sc-instructor .grid-bg{position:absolute;top:0;left:0;width:100%;height:100%;background-image:linear-gradient(rgba(139,92,246,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(139,92,246,.03) 1px,transparent 1px);background-size:60px 60px}
+.sc-instructor .content{position:relative;z-index:10;height:100%;display:flex;padding:0}
+.sc-instructor .left{flex:0 0 52%;display:flex;flex-direction:column;justify-content:center;padding:50px 40px 50px 80px}
+.sc-instructor .right{flex:0 0 48%;position:relative;overflow:hidden}
+.sc-instructor .right .photo-container{position:absolute;top:40px;right:40px;bottom:40px;left:20px;border-radius:24px;overflow:hidden;box-shadow:0 25px 60px rgba(0,0,0,.12)}
+.sc-instructor .right .photo-container img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform 6s ease}
+.sc-instructor .right .photo-container:hover img{transform:scale(1.05)}
+.sc-instructor .right .photo-overlay{position:absolute;bottom:0;left:0;right:0;height:50%;background:linear-gradient(transparent,rgba(15,23,42,.7));z-index:2}
+.sc-instructor .right .photo-brand{position:absolute;bottom:24px;left:24px;z-index:3}
+.sc-instructor .right .photo-brand img{height:28px;opacity:.9}
+.sc-instructor .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'Space Grotesk',sans-serif;font-size:12px;color:#8b5cf6;font-weight:500;letter-spacing:2px;margin-bottom:16px}
+.sc-instructor .name{font-size:52px;font-weight:900;color:#0f172a;letter-spacing:-2px;margin-bottom:6px}
+.sc-instructor .name .accent{background:linear-gradient(135deg,#6d28d9,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sc-instructor .role{font-size:14px;color:#64748b;line-height:1.6;margin-bottom:20px}
+.sc-instructor .badges{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px}
+.sc-instructor .badge{background:#fff;border:1px solid rgba(139,92,246,.08);border-radius:10px;padding:9px 14px;font-size:13px;color:#334155;font-weight:500;box-shadow:0 2px 8px rgba(0,0,0,.02);display:flex;align-items:center;gap:8px;transition:all .3s;cursor:default}
+.sc-instructor .badge:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(139,92,246,.08);border-color:rgba(139,92,246,.2)}
+.sc-instructor .badge-dot{width:6px;height:6px;background:linear-gradient(135deg,#8b5cf6,#6d28d9);border-radius:50%}
+.sc-instructor .timeline{padding-top:16px;border-top:1px solid rgba(139,92,246,.08)}
+.sc-instructor .timeline-title{font-family:'Space Grotesk',sans-serif;font-size:11px;color:#94a3b8;font-weight:600;letter-spacing:2px;margin-bottom:14px}
+.sc-instructor .timeline-items{display:flex;flex-direction:column;gap:8px}
+.sc-instructor .timeline-item{display:flex;align-items:center;gap:12px;font-size:13px;color:#475569;position:relative;padding-left:16px}
+.sc-instructor .timeline-item::before{content:'';position:absolute;left:0;top:50%;width:6px;height:6px;border-radius:50%;background:#8b5cf6;transform:translateY(-50%)}
+.sc-instructor .timeline-item .period{font-family:'Space Grotesk',sans-serif;font-weight:600;color:#6d28d9;min-width:100px}
+
+/* Placeholder slide */
+.sc-placeholder{background:linear-gradient(135deg,#f8f7ff,#f0eeff)}
+.sc-placeholder .content{position:relative;z-index:10;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 80px}
+.sc-placeholder .icon{font-size:64px;color:#8b5cf6;opacity:.4;margin-bottom:24px}
+.sc-placeholder h2{font-size:32px;font-weight:800;color:#1e1b4b;margin-bottom:12px}
+.sc-placeholder p{font-size:16px;color:#64748b}
+
+/* Final closing */
+.sc-final{background:#0a0e1a}
+.sc-final .bg-mesh{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 50% 50%,rgba(139,92,246,.08) 0%,transparent 60%);z-index:1}
+.sc-final .content{position:relative;z-index:10;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 80px}
+.sc-final .closing-step{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100%;padding:0 80px}
+.sc-final .closing-text{font-size:40px;font-weight:900;color:#fff;letter-spacing:-1px;line-height:1.5}
+.sc-final .closing-text .glow{background:linear-gradient(135deg,#8b5cf6,#a78bfa,#c4b5fd);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200% 200%;animation:gradient-shift 3s ease infinite;position:relative}
+.sc-final .closing-text .glow::after{content:'';position:absolute;bottom:-4px;left:0;width:100%;height:3px;background:linear-gradient(90deg,#8b5cf6,#a78bfa);border-radius:2px}
+.sc-final .closing-sub{font-size:20px;color:rgba(255,255,255,.4);margin-top:24px}
+.sc-final .logo-bottom{position:absolute;bottom:28px;left:80px;z-index:10}
+.sc-final .logo-bottom img{height:24px;opacity:.3}
+.sc-final .brand-bottom{position:absolute;bottom:32px;right:80px;font-size:14px;color:rgba(255,255,255,.2);z-index:10}
+
+/* Back button */
+.back-btn{position:fixed;top:20px;left:20px;z-index:99998;width:40px;height:40px;border:none;border-radius:10px;background:rgba(15,23,42,.6);backdrop-filter:blur(8px);color:rgba(255,255,255,.6);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;opacity:0}
+body:hover .back-btn{opacity:1}
+.back-btn:hover{background:rgba(139,92,246,.5);color:#fff}
+</style>
+</head>
+<body>
+
+<!-- Fullscreen splash -->
+<div id="splash" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#0a0e1a;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:opacity .6s" onclick="enterFullscreen()">
+    <img src="img/logo-white.png" alt="시그니처" style="height:36px;opacity:.6;margin-bottom:32px"/>
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;color:rgba(255,255,255,.5);letter-spacing:3px;margin-bottom:40px">실전 상담 플로우</div>
+    <div style="padding:14px 40px;border:1px solid rgba(139,92,246,.4);border-radius:12px;font-size:15px;color:#a78bfa;font-weight:600;letter-spacing:1px;transition:all .3s;animation:glow 2s ease-in-out infinite" onmouseenter="this.style.background='rgba(139,92,246,.1)'" onmouseleave="this.style.background='transparent'">
+        <i class="fas fa-expand" style="margin-right:8px"></i>전체화면으로 시작
+    </div>
+    <div style="font-size:12px;color:rgba(255,255,255,.2);margin-top:20px">또는 아무 곳이나 클릭하세요</div>
+</div>
+
+<button class="back-btn" onclick="window.location.href='index.html'" title="메뉴로 돌아가기"><i class="fas fa-arrow-left"></i></button>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="progress-bar" id="progressBar"></div>
+<div class="slide-num" id="slideNum">01 / 12</div>
+<div class="nav-dots" id="navDots"></div>
+
+<div class="presentation" id="presentation">
+
+<!-- ==================== SLIDE 1: TITLE ==================== -->
+<div class="slide sc1 active" data-slide="0">
+    <div class="bg-mesh"></div>
+    <div class="content">
+        <div class="eyebrow reveal" style="transition-delay:.2s">PRACTICAL CONSULTATION FLOW</div>
+        <h1 class="reveal" style="transition-delay:.4s">실전 <span class="accent">상담 플로우</span></h1>
+        <div class="tagline reveal" style="transition-delay:.6s">
+            고객의 심리를 설계하는 30분 컴팩트 상담<br/>
+            3가지 원칙 · 5단계 프로세스
+        </div>
+        <div class="presenter reveal" style="transition-delay:.8s">
+            <div class="presenter-avatar"><img src="img/instructor.jpeg" alt="강남규"/></div>
+            <div style="text-align:left"><div class="presenter-name">강남규</div><div class="presenter-role">보험학교 DB세일즈학과장 · 시그니처 사업부</div></div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SLIDE 2: PRINCIPLE 1 ==================== -->
+<div class="slide sc-p" data-slide="1">
+    <div class="bg-mesh"></div>
+    <div class="content">
+        <div class="principle-num reveal" style="transition-delay:.1s">PRINCIPLE 01</div>
+        <h2 class="reveal" style="transition-delay:.25s">내용보다 <span class="accent">프로세스</span>에 집중하라</h2>
+        <div class="subtitle reveal" style="transition-delay:.35s">메라비언 연구: 의사소통의 <strong>93%</strong>는 비언어적 요소가 결정한다</div>
+        <div class="insight-cards">
+            <div class="insight-card reveal" style="transition-delay:.45s">
+                <div class="icon">👁️</div>
+                <h3>시각 55%</h3>
+                <p>표정, 제스처, 자세<br/><span class="highlight">첫인상이 전부</span></p>
+            </div>
+            <div class="insight-card reveal" style="transition-delay:.55s">
+                <div class="icon">🎵</div>
+                <h3>청각 38%</h3>
+                <p>목소리 톤, 속도, 리듬<br/><span class="highlight">신뢰감의 핵심</span></p>
+            </div>
+            <div class="insight-card reveal" style="transition-delay:.65s">
+                <div class="icon">📝</div>
+                <h3>언어 7%</h3>
+                <p>실제 말하는 내용<br/><span class="highlight">내용은 7%에 불과</span></p>
+            </div>
+        </div>
+        <div class="bottom-insight reveal" style="transition-delay:.8s">
+            <p><span class="hl">첫인상</span> · <span class="hl">Peak 경험</span> · <span class="hl">마지막 인상</span> — 이 세 가지가 상담의 기억을 결정한다</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SLIDE 3: PRINCIPLE 2 ==================== -->
+<div class="slide sc-p" data-slide="2">
+    <div class="bg-mesh"></div>
+    <div class="content">
+        <div class="principle-num reveal" style="transition-delay:.1s">PRINCIPLE 02</div>
+        <h2 class="reveal" style="transition-delay:.25s">고객의 <span class="accent">입을 열어야</span> 성공한다</h2>
+        <div class="subtitle reveal" style="transition-delay:.35s">자기 이야기를 할 때 <strong>측좌핵(Nucleus Accumbens)</strong>이 활성화된다</div>
+        <div class="insight-cards">
+            <div class="insight-card reveal" style="transition-delay:.45s">
+                <div class="icon">🧠</div>
+                <h3>측좌핵 활성화</h3>
+                <p>자기 이야기를 하면<br/><span class="highlight">도파민이 분비</span>된다</p>
+            </div>
+            <div class="insight-card reveal" style="transition-delay:.55s">
+                <div class="icon">💬</div>
+                <h3>질문의 힘</h3>
+                <p>좋은 질문이<br/><span class="highlight">고객의 입을 연다</span></p>
+            </div>
+            <div class="insight-card reveal" style="transition-delay:.65s">
+                <div class="icon">🤝</div>
+                <h3>라포 형성</h3>
+                <p>경청 + 공감 = <br/><span class="highlight">무의식적 신뢰 구축</span></p>
+            </div>
+        </div>
+        <div class="bottom-insight reveal" style="transition-delay:.8s">
+            <p>고객이 <span class="hl">스스로 말할수록</span>, 상담사에 대한 <span class="hl">호감과 신뢰</span>가 무의식적으로 올라간다</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SLIDE 4: PRINCIPLE 3 ==================== -->
+<div class="slide sc-p" data-slide="3">
+    <div class="bg-mesh"></div>
+    <div class="content">
+        <div class="principle-num reveal" style="transition-delay:.1s">PRINCIPLE 03</div>
+        <h2 class="reveal" style="transition-delay:.25s"><span class="accent">30분</span> 컴팩트 상담</h2>
+        <div class="subtitle reveal" style="transition-delay:.35s">인간의 집중력은 <strong>20~30분</strong>이 한계. 전략적 여백을 남겨라</div>
+        <div class="insight-cards">
+            <div class="insight-card reveal" style="transition-delay:.45s">
+                <div class="icon">⏱️</div>
+                <h3>집중력 한계</h3>
+                <p>20~30분 이후<br/><span class="highlight">정보 수용력 급감</span></p>
+            </div>
+            <div class="insight-card reveal" style="transition-delay:.55s">
+                <div class="icon">🎯</div>
+                <h3>전략적 여백</h3>
+                <p>"다음에 더 말씀드릴게요"<br/><span class="highlight">궁금증 = 재방문 동기</span></p>
+            </div>
+            <div class="insight-card reveal" style="transition-delay:.65s">
+                <div class="icon">🔄</div>
+                <h3>2차 상담 확보</h3>
+                <p>30분에 끊으면<br/><span class="highlight">다음 약속이 자연스럽다</span></p>
+            </div>
+        </div>
+        <div class="bottom-insight reveal" style="transition-delay:.8s">
+            <p><span class="hl">30분 안에 끝내라.</span> 남은 이야기는 다음 상담의 <span class="hl">가장 강력한 무기</span>가 된다</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SLIDE 5: PRINCIPLE SUMMARY ==================== -->
+<div class="slide sc-sum" data-slide="4">
+    <div class="content">
+        <div class="eyebrow reveal" style="transition-delay:.1s"><i class="fas fa-star" style="font-size:10px;margin-right:6px"></i>3 PRINCIPLES SUMMARY</div>
+        <h2 class="reveal" style="transition-delay:.2s">상담의 <span class="accent">3가지 원칙</span> 요약</h2>
+        <div class="summary-cards">
+            <div class="sum-card reveal" style="transition-delay:.35s">
+                <div class="num">01</div>
+                <h3>프로세스 중심</h3>
+                <p>내용 7% vs 비언어 93%<br/>첫인상 · Peak · 마지막이 기억을 지배한다</p>
+                <div class="tag"><i class="fas fa-eye" style="font-size:10px"></i> 메라비언 법칙</div>
+            </div>
+            <div class="sum-card reveal" style="transition-delay:.5s">
+                <div class="num">02</div>
+                <h3>고객의 입을 열어라</h3>
+                <p>도파민 = 쾌감<br/>자기 이야기를 하면 무의식적 신뢰 구축</p>
+                <div class="tag"><i class="fas fa-brain" style="font-size:10px"></i> 측좌핵 활성화</div>
+            </div>
+            <div class="sum-card reveal" style="transition-delay:.65s">
+                <div class="num">03</div>
+                <h3>30분 컴팩트</h3>
+                <p>집중력 한계 = 20~30분<br/>여백이 다음 상담의 무기가 된다</p>
+                <div class="tag"><i class="fas fa-clock" style="font-size:10px"></i> 전략적 여백</div>
+            </div>
+        </div>
+        <div class="bottom-bar reveal" style="transition-delay:.8s">
+            <p>이 3가지 원칙 위에 <span class="accent">실전 5단계</span>를 쌓아올린다</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SLIDE 6: STEP 1 - INSTRUCTOR ==================== -->
+<div class="slide sc-instructor" data-slide="5">
+    <div class="grid-bg"></div>
+    <div class="content">
+        <div class="left">
+            <div class="eyebrow reveal" style="transition-delay:.1s"><i class="fas fa-handshake" style="font-size:10px"></i> STEP 1 — 첫인사 & 약력소개</div>
+            <div class="name reveal" style="transition-delay:.25s"><span class="accent">강남규</span></div>
+            <div class="role reveal" style="transition-delay:.35s">보험학교 DB세일즈학과장<br/>한국보험금융(주) SAG 시그니처 사업부 부지점장</div>
+            <div class="badges reveal" style="transition-delay:.45s">
+                <div class="badge"><div class="badge-dot"></div>동국대학교 경영학과 졸업</div>
+                <div class="badge"><div class="badge-dot"></div>M생명 변액 상담 전국 최상위</div>
+                <div class="badge"><div class="badge-dot"></div>블로그/유튜브 온라인 영업</div>
+                <div class="badge"><div class="badge-dot"></div>T플랫폼 4,500명 상담</div>
+            </div>
+            <div class="timeline reveal" style="transition-delay:.55s">
+                <div class="timeline-title">TIME LINE</div>
+                <div class="timeline-items">
+                    <div class="timeline-item"><span class="period">17년 ~ 20년</span>M생명</div>
+                    <div class="timeline-item"><span class="period">20년 ~ 22년</span>G사 온라인팀</div>
+                    <div class="timeline-item"><span class="period">22년 ~ 26년</span>T플랫폼</div>
+                    <div class="timeline-item"><span class="period">26년 ~ 현재</span>한국보험금융 SAG 시그니처 사업부</div>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="photo-container reveal-scale" style="transition-delay:.3s">
+                <img src="img/instructor.jpeg" alt="강남규 강사"/>
+                <div class="photo-overlay"></div>
+                <div class="photo-brand"><img src="img/logo-white.png" alt="시그니처"/></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SLIDE 7: STEP 2 - PLACEHOLDER ==================== -->
+<div class="slide sc-placeholder" data-slide="6">
+    <div class="content">
+        <div class="icon reveal-scale" style="transition-delay:.3s"><i class="fas fa-file-medical-alt"></i></div>
+        <h2 class="reveal" style="transition-delay:.5s">보장자산 조회 & 스토리 청취</h2>
+        <p class="reveal" style="transition-delay:.65s">자료 첨부 예정입니다</p>
+    </div>
+</div>
+
+<!-- ==================== SLIDE 8: STEP 3 - 4분면 FRAMEWORK ==================== -->
+<div class="slide sc-step sc-framework" data-slide="7">
+    <div class="grid-bg"></div>
+    <div class="content">
+        <div class="step-badge reveal" style="transition-delay:.1s"><i class="fas fa-th-large" style="margin-right:6px"></i>STEP 3</div>
+        <h2 class="reveal" style="transition-delay:.2s"><span class="accent">4분면</span> 프레임워크</h2>
+        <div class="subtitle reveal" style="transition-delay:.3s">보장 분석의 <strong>4가지 핵심 영역</strong>을 한눈에 보여주는 프레임</div>
+        <div class="framework-grid">
+            <div class="fw-cell critical substep" data-substep="1">
+                <div class="fw-tag">긴급</div>
+                <div class="fw-icon">🏥</div>
+                <h3>진단비</h3>
+                <p>암 · 뇌 · 심장<br/>큰 병에 대한 목돈 확보</p>
+            </div>
+            <div class="fw-cell essential substep" data-substep="2">
+                <div class="fw-tag">필수</div>
+                <div class="fw-icon">🔪</div>
+                <h3>수술비</h3>
+                <p>1~5종 수술<br/>실질적 치료비 보장</p>
+            </div>
+            <div class="fw-cell growth substep" data-substep="3">
+                <div class="fw-tag">성장</div>
+                <div class="fw-icon">💊</div>
+                <h3>치료비</h3>
+                <p>입원 · 통원 · 약제비<br/>일상적 의료비 커버</p>
+            </div>
+            <div class="fw-cell substep" data-substep="4">
+                <div class="fw-tag">장기</div>
+                <div class="fw-icon">🧑‍🦽</div>
+                <h3>간병비</h3>
+                <p>치매 · 장기요양<br/>노후 돌봄 비용 대비</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SLIDE 9: STEP 4 - TABLE ==================== -->
+<div class="slide sc-step sc-table" data-slide="8">
+    <div class="grid-bg"></div>
+    <div class="content">
+        <div class="step-badge reveal" style="transition-delay:.1s"><i class="fas fa-clipboard-check" style="margin-right:6px"></i>STEP 4</div>
+        <h2 class="reveal" style="transition-delay:.2s">문제인식 및 <span class="accent">선택기준</span> 제시</h2>
+        <div class="subtitle reveal" style="transition-delay:.3s">보험사 전체 <strong>고지사항 유형</strong>별 가입 가능 범위를 제시한다</div>
+        <div class="table-wrap reveal" style="transition-delay:.4s">
+            <div class="table-header">
+                <div class="th">구분</div>
+                <div class="th">건강고지형</div>
+                <div class="th">표준형</div>
+                <div class="th">경증간편형</div>
+                <div class="th">유병자보험</div>
+            </div>
+            <div class="table-body">
+                <div class="table-row">
+                    <div class="td">고지 범위</div>
+                    <div class="td">전체 질병이력</div>
+                    <div class="td">최근 5년</div>
+                    <div class="td">최근 3개월~1년</div>
+                    <div class="td">거의 없음</div>
+                </div>
+                <div class="table-row">
+                    <div class="td">보장 범위</div>
+                    <div class="td highlight-cell">가장 넓음</div>
+                    <div class="td">보통</div>
+                    <div class="td">제한적</div>
+                    <div class="td">최소</div>
+                </div>
+                <div class="table-row">
+                    <div class="td">보험료</div>
+                    <div class="td highlight-cell">가장 저렴</div>
+                    <div class="td">보통</div>
+                    <div class="td">높음</div>
+                    <div class="td">매우 높음</div>
+                </div>
+                <div class="table-row">
+                    <div class="td">가입 난이도</div>
+                    <div class="td">심사 엄격</div>
+                    <div class="td">보통</div>
+                    <div class="td">쉬움</div>
+                    <div class="td highlight-cell">매우 쉬움</div>
+                </div>
+                <div class="table-row">
+                    <div class="td">핵심 포인트</div>
+                    <div class="td highlight-cell">건강할 때 가입</div>
+                    <div class="td">5년 경과 후</div>
+                    <div class="td">경증 질환 보유</div>
+                    <div class="td">가입 자체 목적</div>
+                </div>
+            </div>
+            <div class="table-note">
+                <strong>핵심 메시지:</strong> "건강할 때 넓은 보장을 확보하는 것이 가장 유리합니다" → 자연스러운 긴급성 유도
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SLIDE 10: STEP 5 - 30분 컷 ==================== -->
+<div class="slide sc-p" data-slide="9">
+    <div class="bg-mesh"></div>
+    <div class="content">
+        <div class="principle-num reveal" style="transition-delay:.1s">STEP 5</div>
+        <h2 class="reveal" style="transition-delay:.25s"><span class="accent">30분 컷</span> 마무리 & 여백 활성화</h2>
+        <div class="subtitle reveal" style="transition-delay:.35s">상담을 <strong>전략적으로 끊는 것</strong>이 2차 상담의 시작이다</div>
+        <div class="insight-cards">
+            <div class="insight-card reveal" style="transition-delay:.45s">
+                <div class="icon">✂️</div>
+                <h3>30분에 끊기</h3>
+                <p>"오늘은 여기까지만"<br/><span class="highlight">미완결 효과(자이가르닉)</span></p>
+            </div>
+            <div class="insight-card reveal" style="transition-delay:.55s">
+                <div class="icon">🧲</div>
+                <h3>궁금증 유발</h3>
+                <p>"다음에 더 중요한 내용을"<br/><span class="highlight">재방문 동기 극대화</span></p>
+            </div>
+            <div class="insight-card reveal" style="transition-delay:.65s">
+                <div class="icon">📅</div>
+                <h3>2차 약속 확보</h3>
+                <p>자연스럽게 다음 일정<br/><span class="highlight">"언제가 편하세요?"</span></p>
+            </div>
+        </div>
+        <div class="bottom-insight reveal" style="transition-delay:.8s">
+            <p><span class="hl">미완결은 기억에 남는다.</span> 여백을 남겨야 고객이 <span class="hl">먼저 연락</span>한다</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SLIDE 11: CLOSING MESSAGE ==================== -->
+<div class="slide sc-close" data-slide="10">
+    <div class="bg-mesh"></div>
+    <div class="content">
+        <h2 class="reveal" style="transition-delay:.3s">상담은 <span class="accent">설득</span>이 아니라<br/><span class="accent">심리적 프로세스</span> 설계다</h2>
+        <div class="sub reveal" style="transition-delay:.5s">
+            고객이 스스로 말하고, 스스로 느끼고, 스스로 결정하게 만드는 것<br/>
+            그것이 진짜 상담이다.
+        </div>
+        <div class="cta-box reveal" style="transition-delay:.7s">
+            <p><span class="hl">프로세스</span>를 믿고, <span class="hl">30분</span>을 지키고, <span class="hl">여백</span>을 남겨라.<br/>결과는 따라온다.</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SLIDE 12: FINAL ==================== -->
+<div class="slide sc-final" data-slide="11">
+    <div class="bg-mesh"></div>
+    <div class="content">
+        <div class="closing-step substep-fade visible" data-closing="0">
+            <div class="closing-text">고객의 마음은<br/><span class="glow">설계</span>할 수 있습니다.</div>
+        </div>
+        <div class="closing-step substep-fade" data-closing="1">
+            <div class="closing-text">여러분의 <span class="glow">30분</span>이<br/>고객의 인생을 바꿉니다.</div>
+        </div>
+        <div class="closing-step substep-fade" data-closing="2">
+            <div class="closing-text">Be your <span class="glow">Signature</span>.</div>
+        </div>
+    </div>
+    <div class="logo-bottom"><img src="img/logo-white.png" alt="시그니처"/></div>
+    <div class="brand-bottom">시그니처 사업부</div>
+</div>
+
+</div><!-- /presentation -->
+
+<script>
+// Fullscreen
+function enterFullscreen() {
+    const el = document.documentElement;
+    if (el.requestFullscreen) el.requestFullscreen();
+    else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+    else if (el.msRequestFullscreen) el.msRequestFullscreen();
+    document.getElementById('splash').style.opacity = '0';
+    setTimeout(() => {
+        document.getElementById('splash').style.display = 'none';
+    }, 600);
+}
+
+function updateFsButton() {}
+document.addEventListener('fullscreenchange', updateFsButton);
+document.addEventListener('webkitfullscreenchange', updateFsButton);
+
+// Custom cursor
+const cursor = document.getElementById('cursor');
+const cursorDot = document.getElementById('cursorDot');
+let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+
+let hideTimer = null;
+function showCursor() {
+    document.body.style.cursor = '';
+    cursor.style.opacity = '1';
+    cursorDot.style.opacity = '1';
+}
+function hideCursor() {
+    const isFs = !!(document.fullscreenElement || document.webkitFullscreenElement);
+    if (!isFs) return;
+    document.body.style.cursor = 'none';
+    cursor.style.opacity = '0';
+    cursorDot.style.opacity = '0';
+}
+
+document.addEventListener('mousemove', e => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    cursorDot.style.left = (mouseX - 3) + 'px';
+    cursorDot.style.top = (mouseY - 3) + 'px';
+    showCursor();
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(hideCursor, 2000);
+});
+
+function animateCursor() {
+    cursorX += (mouseX - cursorX) * 0.35;
+    cursorY += (mouseY - cursorY) * 0.35;
+    cursor.style.left = (cursorX - 10) + 'px';
+    cursor.style.top = (cursorY - 10) + 'px';
+    requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+document.querySelectorAll('.insight-card,.sum-card,.fw-cell,.badge,.timeline-item').forEach(el => {
+    el.addEventListener('mouseenter', () => { cursor.style.transform = 'scale(1.8)'; cursor.style.borderColor = 'rgba(139,92,246,0.4)'; });
+    el.addEventListener('mouseleave', () => { cursor.style.transform = 'scale(1)'; cursor.style.borderColor = 'rgba(139,92,246,0.8)'; });
+});
+
+// Slide system
+let current = 0;
+const slides = document.querySelectorAll('.slide');
+const total = slides.length;
+const progressBar = document.getElementById('progressBar');
+const slideNum = document.getElementById('slideNum');
+const navDots = document.getElementById('navDots');
+let isTransitioning = false;
+
+// Sub-step system
+const slideSteps = {
+    7: { total: 5, current: 0 },   // Framework: 0=empty, 1=진단비, 2=수술비, 3=치료비, 4=간병비
+    11: { total: 3, current: 0 },  // Final closing: 0=설계, 1=30분, 2=Signature
+};
+
+function applySubStep(slideIndex, step) {
+    const slide = slides[slideIndex];
+    switch(slideIndex) {
+        case 7: { // Framework 4분면
+            const cells = slide.querySelectorAll('.fw-cell.substep');
+            cells.forEach((cell, i) => {
+                if (i + 1 <= step) cell.classList.add('visible');
+                else cell.classList.remove('visible');
+            });
+            break;
+        }
+        case 11: { // Final closing 3-step
+            const steps = slide.querySelectorAll('.closing-step');
+            steps.forEach(s => {
+                const idx = parseInt(s.dataset.closing);
+                if (idx === step) s.classList.add('visible');
+                else s.classList.remove('visible');
+            });
+            break;
+        }
+    }
+}
+
+function resetSubSteps(slideIndex) {
+    if (slideSteps[slideIndex]) {
+        slideSteps[slideIndex].current = 0;
+        applySubStep(slideIndex, 0);
+    }
+}
+
+// Create nav dots
+for (let i = 0; i < total; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => goToSlide(i));
+    navDots.appendChild(dot);
+}
+
+const darkSlides = [0, 1, 2, 3, 9, 10, 11];
+
+function updateUI() {
+    progressBar.style.width = ((current + 1) / total * 100) + '%';
+    slideNum.textContent = String(current + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+    slideNum.style.color = darkSlides.includes(current) ? 'rgba(255,255,255,0.3)' : 'rgba(0,0,0,0.2)';
+    document.querySelectorAll('.nav-dot').forEach((d, i) => d.classList.toggle('active', i === current));
+}
+
+function triggerReveals(slide) {
+    const els = slide.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale,.reveal-blur');
+    els.forEach(el => el.classList.remove('show'));
+    requestAnimationFrame(() => {
+        setTimeout(() => {
+            els.forEach(el => el.classList.add('show'));
+        }, 100);
+    });
+}
+
+function resetReveals(slide) {
+    slide.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale,.reveal-blur').forEach(el => el.classList.remove('show'));
+}
+
+function goToSlide(n) {
+    if (n === current || isTransitioning || n < 0 || n >= total) return;
+    isTransitioning = true;
+
+    const oldCurrent = current;
+    const oldSlide = slides[current];
+    const newSlide = slides[n];
+    const direction = n > current ? 1 : -1;
+
+    oldSlide.style.transition = 'opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1)';
+    newSlide.style.transition = 'opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1)';
+
+    newSlide.style.opacity = '0';
+    newSlide.style.transform = `translateX(${direction * 60}px)`;
+    newSlide.style.visibility = 'visible';
+    newSlide.classList.add('active');
+
+    requestAnimationFrame(() => {
+        oldSlide.style.opacity = '0';
+        oldSlide.style.transform = `translateX(${-direction * 60}px)`;
+        newSlide.style.opacity = '1';
+        newSlide.style.transform = 'translateX(0)';
+    });
+
+    setTimeout(() => {
+        oldSlide.classList.remove('active');
+        oldSlide.style.transition = 'none';
+        oldSlide.style.transform = '';
+        oldSlide.style.opacity = '';
+        newSlide.style.transition = 'none';
+        newSlide.style.transform = '';
+        resetReveals(oldSlide);
+        resetSubSteps(oldCurrent);
+        current = n;
+        updateUI();
+        triggerReveals(newSlide);
+        if (slideSteps[current]) {
+            applySubStep(current, 0);
+        }
+        isTransitioning = false;
+    }, 650);
+}
+
+function changeSlide(dir) {
+    if (slideSteps[current]) {
+        const ss = slideSteps[current];
+        if (dir === 1 && ss.current < ss.total - 1) {
+            ss.current++;
+            applySubStep(current, ss.current);
+            return;
+        }
+        if (dir === -1 && ss.current > 0) {
+            ss.current--;
+            applySubStep(current, ss.current);
+            return;
+        }
+    }
+    const next = current + dir;
+    if (next >= 0 && next < total) goToSlide(next);
+}
+
+// Keyboard
+document.addEventListener('keydown', e => {
+    if (['ArrowRight','ArrowDown',' ','PageDown'].includes(e.key)) { e.preventDefault(); changeSlide(1); }
+    else if (['ArrowLeft','ArrowUp','PageUp'].includes(e.key)) { e.preventDefault(); changeSlide(-1); }
+    else if (e.key === 'Home') { e.preventDefault(); goToSlide(0); }
+    else if (e.key === 'End') { e.preventDefault(); goToSlide(total - 1); }
+    else if (e.key === 'Escape') { window.location.href = 'index.html'; }
+});
+
+// Touch / wheel
+let touchStartX = 0;
+document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
+document.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) changeSlide(diff > 0 ? 1 : -1);
+});
+
+let wheelLock = false;
+document.addEventListener('wheel', e => {
+    if (wheelLock) return;
+    wheelLock = true;
+    if (e.deltaY > 30) changeSlide(1);
+    else if (e.deltaY < -30) changeSlide(-1);
+    setTimeout(() => { wheelLock = false; }, 800);
+}, { passive: true });
+
+// Click to advance
+document.querySelector('.presentation').addEventListener('click', e => {
+    if (e.target.closest('.nav-dot') || e.target.closest('.back-btn')) return;
+    if (slideSteps[current] && slideSteps[current].current < slideSteps[current].total - 1) {
+        changeSlide(1);
+    }
+});
+
+// Scale
+function scalePresentation() {
+    const p = document.getElementById('presentation');
+    const s = Math.min(window.innerWidth / 1280, window.innerHeight / 720);
+    p.style.transform = `scale(${s})`;
+}
+window.addEventListener('resize', scalePresentation);
+scalePresentation();
+
+// Init
+updateUI();
+triggerReveals(slides[0]);
+
+// Particles on dark slides
+function addParticles(slide) {
+    for (let i = 0; i < 15; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.bottom = '-10px';
+        p.style.width = p.style.height = (Math.random() * 3 + 1) + 'px';
+        p.style.background = `rgba(139,92,246,${Math.random() * 0.3 + 0.1})`;
+        p.style.animationDuration = (Math.random() * 15 + 10) + 's';
+        p.style.animationDelay = (Math.random() * 10) + 's';
+        slide.appendChild(p);
+    }
+}
+darkSlides.forEach(i => addParticles(slides[i]));
+</script>
+</body>
+</html>
