@@ -191,6 +191,13 @@ body:hover .nav-dots{opacity:1}
 .sc-instructor .timeline-item::before{content:'';position:absolute;left:0;top:50%;width:6px;height:6px;border-radius:50%;background:#8b5cf6;transform:translateY(-50%)}
 .sc-instructor .timeline-item .period{font-family:'Space Grotesk',sans-serif;font-weight:600;color:#6d28d9;min-width:100px}
 
+/* Instructor highlight labels */
+.hl-label{opacity:0;transform:translateY(8px) scale(.95);transition:all .5s cubic-bezier(.16,1,.3,1);pointer-events:none}
+.hl-rare{font-size:38px;font-weight:900;color:#0f172a;letter-spacing:-1px}
+.hl-authority{font-size:28px;font-weight:900;color:#0f172a;letter-spacing:-0.5px;margin-bottom:8px}
+.sc-instructor .role.highlighted{border:2.5px solid #f59e0b;border-radius:12px;padding:10px 14px;background:rgba(245,158,11,.04);transition:all .4s cubic-bezier(.16,1,.3,1)}
+.sc-instructor .badges.highlighted{border:2.5px solid #f59e0b;border-radius:16px;padding:14px;background:rgba(245,158,11,.04);transition:all .4s cubic-bezier(.16,1,.3,1)}
+
 /* Placeholder slide */
 .sc-placeholder{background:linear-gradient(135deg,#f8f7ff,#f0eeff)}
 .sc-placeholder .content{position:relative;z-index:10;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 80px}
@@ -394,19 +401,23 @@ body:hover .back-btn{opacity:1}
 </div>
 
 <!-- ==================== SLIDE 6: STEP 1 - INSTRUCTOR ==================== -->
-<div class="slide sc-instructor" data-slide="5">
+<div class="slide sc-instructor" data-slide="5" id="slide-instructor">
     <div class="grid-bg"></div>
     <div class="content">
         <div class="left">
             <div class="eyebrow reveal" style="transition-delay:.1s;font-size:14px;font-weight:700"><i class="fas fa-handshake" style="font-size:12px"></i> STEP 1 — 첫인사 & 약력소개</div>
-            <div class="name reveal" style="transition-delay:.25s"><span class="accent">강남규</span></div>
-            <div class="role reveal" style="transition-delay:.35s">보험학교 DB세일즈학과장<br/>한국보험금융(주) SAG 시그니처 사업부 부지점장</div>
-            <div class="badges reveal" style="transition-delay:.45s">
+            <div style="display:flex;align-items:baseline;gap:24px">
+                <div class="name reveal" style="transition-delay:.25s"><span class="accent">강남규</span></div>
+                <div class="hl-label hl-rare" id="hl-rare">희소성</div>
+            </div>
+            <div class="role reveal" style="transition-delay:.35s" id="inst-role">보험학교 DB세일즈학과장<br/>한국보험금융(주) SAG 시그니처 사업부 부지점장</div>
+            <div class="badges reveal" style="transition-delay:.45s" id="inst-badges">
                 <div class="badge"><div class="badge-dot"></div>동국대학교 경영학과 졸업</div>
                 <div class="badge"><div class="badge-dot"></div>M생명 변액 상담 전국 최상위</div>
                 <div class="badge"><div class="badge-dot"></div>블로그/유튜브 온라인 영업</div>
                 <div class="badge"><div class="badge-dot"></div>T플랫폼 4,500명 상담</div>
             </div>
+            <div class="hl-label hl-authority" id="hl-authority">권위의 법칙&후광 효과</div>
             <div class="timeline reveal" style="transition-delay:.55s">
                 <div class="timeline-title">TIME LINE</div>
                 <div class="timeline-items">
@@ -699,6 +710,7 @@ let isTransitioning = false;
 
 // Sub-step system
 const slideSteps = {
+    5: { total: 2, current: 0 },   // Instructor: 0=normal, 1=highlights
     7: { total: 5, current: 0 },   // Framework: 0=empty, 1=진단비, 2=수술비, 3=치료비, 4=간병비
     11: { total: 3, current: 0 },  // Visual Signature: 0=지식의저주, 1=프로세스, 2=Be your Signature
 };
@@ -706,6 +718,28 @@ const slideSteps = {
 function applySubStep(slideIndex, step) {
     const slide = slides[slideIndex];
     switch(slideIndex) {
+        case 5: { // Instructor highlights
+            const roleEl = document.getElementById('inst-role');
+            const badgesEl = document.getElementById('inst-badges');
+            const hlRare = document.getElementById('hl-rare');
+            const hlAuth = document.getElementById('hl-authority');
+            if (step >= 1) {
+                roleEl.classList.add('highlighted');
+                badgesEl.classList.add('highlighted');
+                hlRare.style.opacity = '1';
+                hlRare.style.transform = 'translateY(0) scale(1)';
+                hlAuth.style.opacity = '1';
+                hlAuth.style.transform = 'translateY(0) scale(1)';
+            } else {
+                roleEl.classList.remove('highlighted');
+                badgesEl.classList.remove('highlighted');
+                hlRare.style.opacity = '0';
+                hlRare.style.transform = 'translateY(8px) scale(.95)';
+                hlAuth.style.opacity = '0';
+                hlAuth.style.transform = 'translateY(8px) scale(.95)';
+            }
+            break;
+        }
         case 7: { // Framework 4분면
             const cells = slide.querySelectorAll('.fw-cell.substep');
             cells.forEach((cell, i) => {
