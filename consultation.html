@@ -292,7 +292,7 @@ body:hover .back-btn{opacity:1}
     <div class="content">
         <div class="principle-num reveal" style="transition-delay:.1s">PRINCIPLE 02</div>
         <h2 class="reveal" style="transition-delay:.25s">고객의 <span class="accent">입을 열어야</span> 성공한다</h2>
-        <div class="subtitle reveal" style="transition-delay:.35s">내가 말을 많이 한다고 주도권을 가지고 있는 게 아니다. <strong>측좌핵(Nucleus Accumbens)</strong>이 활성화될 때 주도권이 생긴다</div>
+        <div class="subtitle reveal" style="transition-delay:.35s">내가 말을 많이 한다고 주도권을 가지고 있는 게 아니다.</div>
         <div class="insight-cards">
             <div class="insight-card reveal" style="transition-delay:.45s">
                 <div class="icon">🧠</div>
@@ -302,7 +302,7 @@ body:hover .back-btn{opacity:1}
             <div class="insight-card reveal" style="transition-delay:.55s">
                 <div class="icon">💬</div>
                 <h3>질문의 힘</h3>
-                <p>좋은 질문이<br/><span class="highlight">고객의 입을 연다</span></p>
+                <p>좋은 질문 하나가<br/><span class="highlight">고객의 진짜 니즈를 끌어낸다</span></p>
             </div>
             <div class="insight-card reveal" style="transition-delay:.65s">
                 <div class="icon">👂</div>
@@ -311,7 +311,7 @@ body:hover .back-btn{opacity:1}
             </div>
         </div>
         <div class="bottom-insight reveal" style="transition-delay:.8s">
-            <p>고객이 <span class="hl">스스로 말할수록</span>, 상담사에 대한 <span class="hl">호감과 신뢰</span>가 무의식적으로 올라간다</p>
+            <p>고객이 <span class="hl">스스로 말할수록</span>, 설계사에 대한 <span class="hl">호감과 신뢰</span>가 무의식적으로 올라간다</p>
         </div>
     </div>
 </div>
@@ -400,24 +400,24 @@ body:hover .back-btn{opacity:1}
                     <div class="timeline-item"><span class="period">26년 ~ 현재</span>한국보험금융 SAG 시그니처 사업부</div>
                 </div>
             </div>
-            <!-- Substep annotations -->
-            <div class="instructor-annotation ann-role substep" data-substep="1" style="position:absolute;top:125px;left:80px;z-index:20">
-                <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(139,92,246,.12);border:2px solid #8b5cf6;border-radius:12px;padding:8px 16px;font-size:13px;color:#8b5cf6;font-weight:700">⭕ 희소성</div>
-            </div>
-            <div class="instructor-annotation ann-badges substep" data-substep="1" style="position:absolute;top:215px;left:80px;z-index:20">
-                <div style="display:inline-flex;align-items:center;gap:8px;background:rgba(249,115,22,.1);border:2px solid #f97316;border-radius:12px;padding:8px 16px;font-size:13px;color:#f97316;font-weight:700">⭕ 권위의 법칙 & 후광 효과</div>
-            </div>
-            <div class="instructor-conclusion substep" data-substep="2" style="position:absolute;bottom:30px;left:80px;right:40px;z-index:20">
-                <div style="background:linear-gradient(135deg,rgba(139,92,246,.1),rgba(99,102,241,.1));border:1px solid rgba(139,92,246,.3);border-radius:16px;padding:18px 28px;text-align:center">
-                    <p style="font-size:17px;font-weight:800;color:#1e1b4b">경계심을 낮추고, 나에게 <span style="color:#8b5cf6">집중</span>하게 만들 것</p>
-                </div>
-            </div>
         </div>
-        <div class="right">
+        <div class="right" style="position:relative">
             <div class="photo-container reveal-scale" style="transition-delay:.3s">
                 <img src="img/instructor.jpeg" alt="강남규 강사"/>
                 <div class="photo-overlay"></div>
                 <div class="photo-brand"><img src="img/logo-white.png" alt="시그니처"/></div>
+            </div>
+            <!-- Substep annotations - 사진 위에 배치 -->
+            <div class="substep" data-substep="1" style="position:absolute;top:60px;right:50px;z-index:30">
+                <div style="background:rgba(139,92,246,.95);backdrop-filter:blur(8px);border-radius:14px;padding:12px 20px;font-size:14px;color:#fff;font-weight:700;box-shadow:0 8px 24px rgba(139,92,246,.4)">⭕ 희소성<br/><span style="font-size:11px;font-weight:400;opacity:.8">보험학교 학과장 / 시그니처 부지점장</span></div>
+            </div>
+            <div class="substep" data-substep="1" style="position:absolute;bottom:140px;right:50px;z-index:30">
+                <div style="background:rgba(249,115,22,.95);backdrop-filter:blur(8px);border-radius:14px;padding:12px 20px;font-size:14px;color:#fff;font-weight:700;box-shadow:0 8px 24px rgba(249,115,22,.4)">⭕ 권위의 법칙 & 후광 효과<br/><span style="font-size:11px;font-weight:400;opacity:.8">4가지 스펙 → 전문가 포지셔닝</span></div>
+            </div>
+            <div class="substep" data-substep="2" style="position:absolute;bottom:50px;left:20px;right:40px;z-index:30">
+                <div style="background:linear-gradient(135deg,#1e1b4b,#312e81);border-radius:14px;padding:16px 24px;text-align:center;box-shadow:0 8px 32px rgba(30,27,75,.5)">
+                    <p style="font-size:16px;font-weight:800;color:#fff">경계심을 낮추고, 나에게 <span style="color:#a78bfa">집중</span>하게 만들 것</p>
+                </div>
             </div>
         </div>
     </div>
@@ -441,25 +441,21 @@ body:hover .back-btn{opacity:1}
         <div class="subtitle reveal" style="transition-delay:.3s">보장 분석의 <strong>4가지 핵심 영역</strong>을 한눈에 보여주는 프레임</div>
         <div class="framework-grid">
             <div class="fw-cell critical substep" data-substep="1">
-                <div class="fw-tag">긴급</div>
                 <div class="fw-icon">🏥</div>
                 <h3>진단비</h3>
                 <p>암 · 뇌 · 심장<br/>큰 병에 대한 목돈 확보</p>
             </div>
             <div class="fw-cell essential substep" data-substep="2">
-                <div class="fw-tag">필수</div>
                 <div class="fw-icon">⚕️</div>
                 <h3>수술비</h3>
                 <p>1~5종 수술<br/>실질적 치료비 보장</p>
             </div>
             <div class="fw-cell growth substep" data-substep="3">
-                <div class="fw-tag">성장</div>
                 <div class="fw-icon">💊</div>
                 <h3>치료비</h3>
                 <p>일상적인 의료비 커버부터<br/>고액 비급여 치료비까지</p>
             </div>
             <div class="fw-cell substep" data-substep="4">
-                <div class="fw-tag">장기</div>
                 <div class="fw-icon">🧑‍🦽</div>
                 <h3>간병비</h3>
                 <p>치매 · 장기요양<br/>노후 돌봄 비용 대비</p>
@@ -475,46 +471,12 @@ body:hover .back-btn{opacity:1}
         <div class="step-badge reveal" style="transition-delay:.1s"><i class="fas fa-clipboard-check" style="margin-right:6px"></i>STEP 4</div>
         <h2 class="reveal" style="transition-delay:.2s">문제인식 및 <span class="accent">선택기준</span> 제시</h2>
         <div class="subtitle reveal" style="transition-delay:.3s">보험사 전체 <strong>고지사항 유형</strong>별 가입 가능 범위를 제시한다</div>
-        <div class="table-wrap reveal" style="transition-delay:.4s">
-            <div class="table-header">
-                <div class="th"></div>
-                <div class="th" style="background:#1e40af">건강고지형<br/><span style="font-size:10px;opacity:.7">모든질환 고지</span></div>
-                <div class="th" style="background:#7c3aed">표준형<br/><span style="font-size:10px;opacity:.7">5년내 고지</span></div>
-                <div class="th" style="background:#db2777">경증간편형<br/><span style="font-size:10px;opacity:.7">3개월~1년</span></div>
-                <div class="th" style="background:#dc2626">유병자보험<br/><span style="font-size:10px;opacity:.7">고지 거의 無</span></div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:16px;margin-bottom:20px;min-height:0" class="reveal" >
+            <div style="flex:1;display:flex;align-items:center;justify-content:center;background:#fff;border-radius:20px;padding:20px;border:1px solid rgba(139,92,246,.08);box-shadow:0 4px 24px rgba(0,0,0,.04);min-height:0;overflow:hidden">
+                <img src="img/step4-table.png" alt="보험사 전체 고지사항" style="max-width:100%;max-height:100%;object-fit:contain;border-radius:12px"/>
             </div>
-            <div class="table-body">
-                <div class="table-row">
-                    <div class="td" style="font-weight:800;color:#8b5cf6">보장 범위</div>
-                    <div class="td highlight-cell" style="font-size:15px">★★★★★</div>
-                    <div class="td">★★★★</div>
-                    <div class="td">★★★</div>
-                    <div class="td">★★</div>
-                </div>
-                <div class="table-row">
-                    <div class="td" style="font-weight:800;color:#8b5cf6">보험료</div>
-                    <div class="td highlight-cell">가장 저렴</div>
-                    <div class="td">보통</div>
-                    <div class="td">높음</div>
-                    <div class="td" style="color:#dc2626;font-weight:600">매우 높음</div>
-                </div>
-                <div class="table-row">
-                    <div class="td" style="font-weight:800;color:#8b5cf6">가입 조건</div>
-                    <div class="td">심사 엄격</div>
-                    <div class="td">보통</div>
-                    <div class="td">간편 심사</div>
-                    <div class="td highlight-cell">거의 무조건</div>
-                </div>
-                <div class="table-row">
-                    <div class="td" style="font-weight:800;color:#8b5cf6">핵심</div>
-                    <div class="td highlight-cell" style="font-weight:700">건강할 때 가입!</div>
-                    <div class="td">5년 경과 후</div>
-                    <div class="td">경증 질환자</div>
-                    <div class="td">가입 자체 목적</div>
-                </div>
-            </div>
-            <div class="table-note" style="background:linear-gradient(135deg,rgba(139,92,246,.08),rgba(99,102,241,.08));border:1px solid rgba(139,92,246,.15)">
-                <strong style="font-size:14px">핵심 메시지:</strong><br/>상품 수백 개 중 단 한 개를 고르는 기준입니다.<br/>저는 단순히 상품 들이미는 사람이 아닙니다. <strong>정확하게 진단하고, 최적의 설계 및 추천</strong>을 해드립니다.
+            <div style="background:linear-gradient(135deg,rgba(139,92,246,.08),rgba(99,102,241,.08));border:1px solid rgba(139,92,246,.15);border-radius:14px;padding:16px 24px;text-align:center;flex-shrink:0">
+                <p style="font-size:14px;color:#334155;line-height:1.6"><strong style="color:#8b5cf6;font-size:15px">핵심 메시지</strong><br/>상품 수백 개 중 단 한 개를 고르는 기준입니다.<br/>저는 단순히 상품 들이미는 사람이 아닙니다. <strong style="color:#8b5cf6">정확하게 진단하고, 최적의 설계 및 추천</strong>을 해드립니다.</p>
             </div>
         </div>
     </div>
@@ -536,12 +498,12 @@ body:hover .back-btn{opacity:1}
             <div class="insight-card reveal" style="transition-delay:.55s">
                 <div class="icon">💡</div>
                 <h3>대비효과</h3>
-                <p>"이렇게 상담 받아본적 있으세요?"<br/><span class="highlight">고객 스스로 이 상담은 다르고, 만족한다고 말하게 만들기</span></p>
+                <p>"이렇게 상담 받아본적<br/>있으세요?"<br/><span class="highlight">고객 스스로 이 상담은<br/>다르다고 말하게 만들기</span></p>
             </div>
             <div class="insight-card reveal" style="transition-delay:.65s">
                 <div class="icon">👨‍👩‍👧</div>
                 <h3>질문유도 & 가족보장</h3>
-                <p>말씀드린 플랜은 다음주에 드리겠습니다.<br/><span class="highlight">궁금하신 부분이나 가족분들 보장도 편하게 말씀 주세요</span></p>
+                <p>"플랜은 다음주에<br/>드리겠습니다."<br/><span class="highlight">궁금하신 부분이나<br/>가족분들 보장도 말씀 주세요</span></p>
             </div>
         </div>
         <div class="bottom-insight reveal" style="transition-delay:.8s">
