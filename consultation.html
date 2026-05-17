@@ -8,7 +8,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Noto Sans KR',sans-serif;background:#000;overflow:hidden;width:100vw;height:100vh;display:flex;align-items:center;justify-content:center;cursor:none}
+body{font-family:'Noto Sans KR',sans-serif;background:#000;overflow:hidden;width:100vw;height:100vh;display:flex;align-items:center;justify-content:center;cursor:none;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.slide *{word-break:keep-all;overflow-wrap:break-word}
+table{border-collapse:collapse}
+table td,table th{vertical-align:middle}
 
 .cursor{position:fixed;width:20px;height:20px;border:2px solid rgba(139,92,246,0.8);border-radius:50%;pointer-events:none;z-index:99999;transition:transform .15s ease,opacity .3s;mix-blend-mode:difference}
 .cursor-dot{position:fixed;width:6px;height:6px;background:#8b5cf6;border-radius:50%;pointer-events:none;z-index:99999;transition:transform .05s,opacity .3s}
@@ -118,7 +121,7 @@ body:hover .nav-dots{opacity:1}
 /* ======================== STEP SLIDES ======================== */
 .sc-step{background:linear-gradient(135deg,#f8f7ff,#f0eeff)}
 .sc-step .grid-bg{position:absolute;top:0;left:0;width:100%;height:100%;background-image:linear-gradient(rgba(139,92,246,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(139,92,246,.03) 1px,transparent 1px);background-size:60px 60px}
-.sc-step .content{position:relative;z-index:10;height:100%;padding:50px 80px;display:flex;flex-direction:column}
+.sc-step .content{position:relative;z-index:10;height:100%;padding:50px 80px;display:flex;flex-direction:column;overflow:hidden}
 .sc-step .step-badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#8b5cf6,#6366f1);color:#fff;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:16px;width:fit-content}
 .sc-step h2{font-size:36px;font-weight:900;color:#1e1b4b;letter-spacing:-1px;margin-bottom:8px}
 .sc-step h2 .accent{color:#8b5cf6}
@@ -168,7 +171,7 @@ body:hover .nav-dots{opacity:1}
 .sc-instructor{background:linear-gradient(135deg,#fafbfe 0%,#f0f4f9 100%)}
 .sc-instructor .grid-bg{position:absolute;top:0;left:0;width:100%;height:100%;background-image:linear-gradient(rgba(139,92,246,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(139,92,246,.03) 1px,transparent 1px);background-size:60px 60px}
 .sc-instructor .content{position:relative;z-index:10;height:100%;display:flex;padding:0}
-.sc-instructor .left{flex:0 0 52%;display:flex;flex-direction:column;justify-content:center;padding:50px 40px 50px 80px}
+.sc-instructor .left{flex:0 0 52%;display:flex;flex-direction:column;justify-content:center;padding:50px 40px 50px 80px;overflow:hidden}
 .sc-instructor .right{flex:0 0 48%;position:relative;overflow:hidden}
 .sc-instructor .right .photo-container{position:absolute;top:40px;right:40px;bottom:40px;left:20px;border-radius:24px;overflow:hidden;box-shadow:0 25px 60px rgba(0,0,0,.12)}
 .sc-instructor .right .photo-container img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform 6s ease}
