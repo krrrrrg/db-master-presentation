@@ -791,7 +791,7 @@ const darkSlides = [0, 1, 2, 3, 9, 10, 11];
 function updateUI() {
     progressBar.style.width = ((current + 1) / total * 100) + '%';
     slideNum.textContent = String(current + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
-    slideNum.style.color = darkSlides.includes(current) ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.35)';
+    slideNum.style.color = darkSlides.includes(current) ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.2)';
     document.querySelectorAll('.nav-dot').forEach((d, i) => d.classList.toggle('active', i === current));
 }
 
