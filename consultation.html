@@ -211,6 +211,19 @@ body:hover .nav-dots{opacity:1}
 .sc-final .logo-bottom img{height:24px;opacity:.3}
 .sc-final .brand-bottom{position:absolute;bottom:32px;right:80px;font-size:14px;color:rgba(255,255,255,.2);z-index:10}
 
+/* Visual Signature */
+.sc-signature{background:#0a0e1a;overflow:hidden}
+.sc-signature .bg-img{position:absolute;top:0;left:0;width:100%;height:100%;z-index:0}
+.sc-signature .bg-img img{width:100%;height:100%;object-fit:cover;opacity:.15;filter:brightness(.4) saturate(1.2)}
+.sc-signature .bg-gradient{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 50% 50%,transparent 0%,#0a0e1a 70%);z-index:1}
+.sc-signature .content{position:relative;z-index:10;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.sc-signature .sig-text{display:flex;flex-direction:column;align-items:center;gap:16px}
+.sc-signature .sig-main{font-family:'Space Grotesk',sans-serif;font-size:52px;font-weight:700;color:#fff;letter-spacing:-1px}
+.sc-signature .sig-accent{background:linear-gradient(135deg,#8b5cf6,#a78bfa,#c4b5fd);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200% 200%;animation:gradient-shift 3s ease infinite}
+.sc-signature .sig-sub{font-size:16px;color:rgba(255,255,255,.3);font-weight:400;letter-spacing:4px;text-transform:uppercase}
+.sc-signature .logo-bottom{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:10}
+.sc-signature .logo-bottom img{height:28px;opacity:.4}
+
 /* Back button */
 .back-btn{position:fixed;top:20px;left:20px;z-index:99998;width:40px;height:40px;border:none;border-radius:10px;background:rgba(15,23,42,.6);backdrop-filter:blur(8px);color:rgba(255,255,255,.6);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;opacity:0}
 body:hover .back-btn{opacity:1}
@@ -619,6 +632,19 @@ body:hover .back-btn{opacity:1}
     <div class="brand-bottom">시그니처 사업부</div>
 </div>
 
+<!-- ==================== SLIDE 13: VISUAL SIGNATURE ==================== -->
+<div class="slide sc-signature" data-slide="12">
+    <div class="bg-img"><img src="img/door-sign1.png" alt=""/></div>
+    <div class="bg-gradient"></div>
+    <div class="content">
+        <div class="sig-text reveal-blur" style="transition-delay:.3s">
+            <p class="sig-main">Be your <span class="sig-accent">Signature</span>.</p>
+            <p class="sig-sub">시그니처 사업부</p>
+        </div>
+    </div>
+    <div class="logo-bottom"><img src="img/logo-white.png" alt="시그니처"/></div>
+</div>
+
 </div><!-- /presentation -->
 
 <script>
@@ -764,7 +790,7 @@ for (let i = 0; i < total; i++) {
     navDots.appendChild(dot);
 }
 
-const darkSlides = [0, 1, 2, 3, 9, 10, 11];
+const darkSlides = [0, 1, 2, 3, 9, 10, 11, 12];
 
 function updateUI() {
     progressBar.style.width = ((current + 1) / total * 100) + '%';
