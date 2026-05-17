@@ -488,102 +488,60 @@ body:hover .back-btn{opacity:1}
         <h2 class="reveal" style="transition-delay:.2s">문제인식 및 <span class="accent">선택기준</span> 제시</h2>
         <div class="subtitle reveal" style="transition-delay:.3s">가입된 보험, 가입할 보험의 <strong>기준</strong>을 제시</div>
         <div style="flex:1;display:flex;flex-direction:column;gap:12px;margin-bottom:16px;min-height:0" class="reveal" style="transition-delay:.4s">
-            <div style="flex:1;position:relative;display:flex;min-height:0">
-                <!-- 테이블 -->
-                <div style="flex:1;background:#fff;border-radius:16px;border:1px solid rgba(139,92,246,.08);box-shadow:0 4px 20px rgba(0,0,0,.04);overflow:hidden;display:flex;flex-direction:column;min-height:0">
-                    <!-- 헤더 -->
-                    <div style="display:grid;grid-template-columns:130px 70px 1fr;background:#1e1b4b;color:#fff;font-size:12px;font-weight:700;flex-shrink:0">
-                        <div style="padding:10px 16px;border-right:1px solid rgba(255,255,255,.1)">유형</div>
-                        <div style="padding:10px 8px;text-align:center;border-right:1px solid rgba(255,255,255,.1)"></div>
-                        <div style="padding:10px 16px">설명</div>
+            <div style="flex:1;position:relative;background:#fff;border-radius:16px;border:1px solid rgba(139,92,246,.08);box-shadow:0 4px 20px rgba(0,0,0,.04);overflow:hidden;min-height:0">
+                <table style="width:100%;border-collapse:collapse;font-size:12px;table-layout:fixed">
+                    <colgroup><col style="width:130px"/><col style="width:70px"/><col/></colgroup>
+                    <thead>
+                        <tr style="background:#1e1b4b;color:#fff;font-size:12px;font-weight:700">
+                            <th style="padding:10px 14px;text-align:left;border-right:1px solid rgba(255,255,255,.12)">유형</th>
+                            <th style="padding:10px 8px;text-align:center;border-right:1px solid rgba(255,255,255,.12)"></th>
+                            <th style="padding:10px 14px;text-align:left">설명</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background:#fef9c3">
+                            <td rowspan="5" style="padding:0 14px;font-weight:800;color:#1e1b4b;text-align:center;vertical-align:middle;border-right:1px solid #e2e8f0;border-bottom:2px solid #c7d2fe;line-height:1.4">건강고지형<br/><span style="font-size:10px;color:#8b5cf6;font-weight:600">(할인플랜)</span></td>
+                            <td style="padding:6px 8px;text-align:center;font-weight:700;color:#1e1b4b;border-right:1px solid #e2e8f0;border-bottom:1px solid #fde68a">3105</td>
+                            <td style="padding:6px 12px;font-weight:700;color:#1e1b4b;border-bottom:1px solid #fde68a">고객이 가입할 수 있는 가장 유리한 보험</td>
+                        </tr>
+                        <tr><td style="padding:4px 8px;text-align:center;color:#94a3b8;border-right:1px solid #e2e8f0;border-bottom:1px solid #f1f5f9">395</td><td style="border-bottom:1px solid #f1f5f9"></td></tr>
+                        <tr><td style="padding:4px 8px;text-align:center;color:#94a3b8;border-right:1px solid #e2e8f0;border-bottom:1px solid #f1f5f9">385</td><td style="border-bottom:1px solid #f1f5f9"></td></tr>
+                        <tr><td style="padding:4px 8px;text-align:center;color:#94a3b8;border-right:1px solid #e2e8f0;border-bottom:1px solid #f1f5f9">375</td><td style="border-bottom:1px solid #f1f5f9"></td></tr>
+                        <tr style="border-bottom:2px solid #c7d2fe"><td style="padding:4px 8px;text-align:center;color:#94a3b8;border-right:1px solid #e2e8f0">365</td><td></td></tr>
+                        <tr style="border-bottom:2px solid #c7d2fe">
+                            <td style="padding:7px 14px;font-weight:800;color:#1e1b4b;text-align:center;border-right:1px solid #e2e8f0">표준형</td>
+                            <td style="padding:7px 8px;text-align:center;color:#64748b;border-right:1px solid #e2e8f0">355</td>
+                            <td style="padding:7px 12px;color:#475569">일반적으로 제안 받는 표준형</td>
+                        </tr>
+                        <tr style="border-bottom:2px solid #c7d2fe">
+                            <td style="padding:7px 14px;font-weight:800;color:#1e1b4b;text-align:center;border-right:1px solid #e2e8f0">경증간편형</td>
+                            <td style="padding:7px 8px;text-align:center;color:#64748b;border-right:1px solid #e2e8f0">31010</td>
+                            <td style="padding:7px 12px;color:#475569">유병자 보험 중 가장 저렴한 플랜</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="7" style="padding:0 14px;font-weight:800;color:#1e1b4b;text-align:center;vertical-align:middle;border-right:1px solid #e2e8f0">유병자보험</td>
+                            <td style="padding:3px 8px;text-align:center;color:#94a3b8;border-right:1px solid #e2e8f0;border-bottom:1px solid #f1f5f9">345</td>
+                            <td style="border-bottom:1px solid #f1f5f9"></td>
+                        </tr>
+                        <tr><td style="padding:3px 8px;text-align:center;color:#94a3b8;border-right:1px solid #e2e8f0;border-bottom:1px solid #f1f5f9">335</td><td style="border-bottom:1px solid #f1f5f9"></td></tr>
+                        <tr><td style="padding:3px 8px;text-align:center;color:#94a3b8;border-right:1px solid #e2e8f0;border-bottom:1px solid #f1f5f9">325</td><td style="border-bottom:1px solid #f1f5f9"></td></tr>
+                        <tr><td style="padding:3px 8px;text-align:center;color:#94a3b8;border-right:1px solid #e2e8f0;border-bottom:1px solid #f1f5f9">315</td><td style="border-bottom:1px solid #f1f5f9"></td></tr>
+                        <tr><td style="padding:3px 8px;text-align:center;color:#94a3b8;border-right:1px solid #e2e8f0;border-bottom:1px solid #f1f5f9">305</td><td style="border-bottom:1px solid #f1f5f9"></td></tr>
+                        <tr style="background:linear-gradient(90deg,#ecfccb,#f7fee7)">
+                            <td style="padding:5px 8px;text-align:center;font-weight:700;color:#1e1b4b;border-right:1px solid #e2e8f0;background:#a3e635">초간편</td>
+                            <td style="padding:5px 12px;font-weight:600;color:#1e1b4b">가장 비싼 보험</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <!-- 보험료 화살표 오버레이 (클릭 시 표시) -->
+                <div id="premium-arrow" style="position:absolute;right:24px;top:44px;bottom:8px;width:80px;opacity:0;transition:opacity .5s cubic-bezier(.16,1,.3,1);display:flex;flex-direction:column;align-items:center;pointer-events:none">
+                    <div style="background:linear-gradient(135deg,#6d28d9,#8b5cf6);border-radius:8px;padding:4px 12px;color:#fff;font-size:12px;font-weight:800;white-space:nowrap">보험료 −</div>
+                    <div style="flex:1;position:relative;width:100%;display:flex;justify-content:center;margin:4px 0">
+                        <div style="width:2px;height:100%;background:linear-gradient(180deg,#8b5cf6 0%,#a1a1aa 50%,#ef4444 100%);border-radius:1px"></div>
+                        <div style="position:absolute;top:-1px;color:#8b5cf6;font-size:10px">▲</div>
+                        <div style="position:absolute;bottom:-1px;color:#ef4444;font-size:10px">▼</div>
                     </div>
-                    <div style="flex:1;overflow:hidden;display:flex;flex-direction:column;font-size:12px">
-                        <!-- 건강고지형 3105 하이라이트 -->
-                        <div style="display:grid;grid-template-columns:130px 70px 1fr;background:#fef9c3;border-bottom:1px solid #e2e8f0">
-                            <div style="padding:7px 14px;font-weight:800;color:#1e1b4b;border-right:1px solid #e2e8f0;display:flex;align-items:center">건강고지형<br/><span style="font-size:10px;color:#8b5cf6;font-weight:600">(할인플랜)</span></div>
-                            <div style="padding:7px 8px;text-align:center;font-weight:700;color:#1e1b4b;border-right:1px solid #e2e8f0">3105</div>
-                            <div style="padding:7px 12px;font-weight:700;color:#1e1b4b">고객이 가입할 수 있는 가장 유리한 보험</div>
-                        </div>
-                        <!-- 395~365 -->
-                        <div style="display:grid;grid-template-columns:130px 70px 1fr;border-bottom:1px solid #f1f5f9">
-                            <div style="border-right:1px solid #e2e8f0"></div>
-                            <div style="padding:4px 8px;text-align:center;color:#94a3b8;border-right:1px solid #e2e8f0">395</div>
-                            <div></div>
-                        </div>
-                        <div style="display:grid;grid-template-columns:130px 70px 1fr;border-bottom:1px solid #f1f5f9">
-                            <div style="border-right:1px solid #e2e8f0"></div>
-                            <div style="padding:4px 8px;text-align:center;color:#94a3b8;border-right:1px solid #e2e8f0">385</div>
-                            <div></div>
-                        </div>
-                        <div style="display:grid;grid-template-columns:130px 70px 1fr;border-bottom:1px solid #f1f5f9">
-                            <div style="border-right:1px solid #e2e8f0"></div>
-                            <div style="padding:4px 8px;text-align:center;color:#94a3b8;border-right:1px solid #e2e8f0">375</div>
-                            <div></div>
-                        </div>
-                        <div style="display:grid;grid-template-columns:130px 70px 1fr;border-bottom:2px solid #e2e8f0">
-                            <div style="border-right:1px solid #e2e8f0"></div>
-                            <div style="padding:4px 8px;text-align:center;color:#94a3b8;border-right:1px solid #e2e8f0">365</div>
-                            <div></div>
-                        </div>
-                        <!-- 표준형 -->
-                        <div style="display:grid;grid-template-columns:130px 70px 1fr;border-bottom:2px solid #e2e8f0">
-                            <div style="padding:7px 14px;font-weight:800;color:#1e1b4b;border-right:1px solid #e2e8f0">표준형</div>
-                            <div style="padding:7px 8px;text-align:center;color:#64748b;border-right:1px solid #e2e8f0">355</div>
-                            <div style="padding:7px 12px;color:#475569">일반적으로 제안 받는 표준형</div>
-                        </div>
-                        <!-- 경증간편형 -->
-                        <div style="display:grid;grid-template-columns:130px 70px 1fr;border-bottom:2px solid #e2e8f0">
-                            <div style="padding:7px 14px;font-weight:800;color:#1e1b4b;border-right:1px solid #e2e8f0">경증간편형</div>
-                            <div style="padding:7px 8px;text-align:center;color:#64748b;border-right:1px solid #e2e8f0">31010</div>
-                            <div style="padding:7px 12px;color:#475569">유병자 보험 중 가장 저렴한 플랜</div>
-                        </div>
-                        <!-- 유병자보험 -->
-                        <div style="display:grid;grid-template-columns:130px 70px 1fr;border-bottom:1px solid #f1f5f9">
-                            <div style="padding:5px 14px;font-weight:800;color:#1e1b4b;border-right:1px solid #e2e8f0">유병자보험</div>
-                            <div style="padding:3px 8px;text-align:center;color:#94a3b8;border-right:1px solid #e2e8f0">345</div>
-                            <div></div>
-                        </div>
-                        <div style="display:grid;grid-template-columns:130px 70px 1fr;border-bottom:1px solid #f1f5f9">
-                            <div style="border-right:1px solid #e2e8f0"></div>
-                            <div style="padding:3px 8px;text-align:center;color:#94a3b8;border-right:1px solid #e2e8f0">335</div>
-                            <div></div>
-                        </div>
-                        <div style="display:grid;grid-template-columns:130px 70px 1fr;border-bottom:1px solid #f1f5f9">
-                            <div style="border-right:1px solid #e2e8f0"></div>
-                            <div style="padding:3px 8px;text-align:center;color:#94a3b8;border-right:1px solid #e2e8f0">325</div>
-                            <div></div>
-                        </div>
-                        <div style="display:grid;grid-template-columns:130px 70px 1fr;border-bottom:1px solid #f1f5f9">
-                            <div style="border-right:1px solid #e2e8f0"></div>
-                            <div style="padding:3px 8px;text-align:center;color:#94a3b8;border-right:1px solid #e2e8f0">315</div>
-                            <div></div>
-                        </div>
-                        <div style="display:grid;grid-template-columns:130px 70px 1fr;border-bottom:1px solid #f1f5f9">
-                            <div style="border-right:1px solid #e2e8f0"></div>
-                            <div style="padding:3px 8px;text-align:center;color:#94a3b8;border-right:1px solid #e2e8f0">305</div>
-                            <div></div>
-                        </div>
-                        <!-- 초간편 -->
-                        <div style="display:grid;grid-template-columns:130px 70px 1fr;background:linear-gradient(90deg,#d9f99d,#ecfccb)">
-                            <div style="border-right:1px solid #e2e8f0"></div>
-                            <div style="padding:5px 8px;text-align:center;font-weight:700;color:#1e1b4b;border-right:1px solid #e2e8f0;background:#a3e635">초간편</div>
-                            <div style="padding:5px 12px;font-weight:600;color:#1e1b4b">가장 비싼 보험</div>
-                        </div>
-                    </div>
-                </div>
-                <!-- 보험료 화살표 (클릭 시 표시) -->
-                <div id="premium-arrow" style="width:100px;flex-shrink:0;opacity:0;transition:opacity .5s cubic-bezier(.16,1,.3,1);display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:10px 0;margin-left:14px">
-                    <div style="text-align:center">
-                        <div style="font-size:18px;font-weight:900;color:#6d28d9;letter-spacing:-0.5px">보험료 −</div>
-                    </div>
-                    <div style="flex:1;display:flex;align-items:center;justify-content:center;position:relative;margin:8px 0;width:100%">
-                        <div style="width:3px;height:100%;background:linear-gradient(180deg,#6d28d9,#a1a1aa,#dc2626);border-radius:2px"></div>
-                        <div style="position:absolute;top:-2px;font-size:16px;color:#6d28d9">▲</div>
-                        <div style="position:absolute;bottom:-2px;font-size:16px;color:#dc2626">▼</div>
-                    </div>
-                    <div style="text-align:center">
-                        <div style="font-size:18px;font-weight:900;color:#dc2626;letter-spacing:-0.5px">보험료 +</div>
-                    </div>
+                    <div style="background:linear-gradient(135deg,#dc2626,#ef4444);border-radius:8px;padding:4px 12px;color:#fff;font-size:12px;font-weight:800;white-space:nowrap">보험료 +</div>
                 </div>
             </div>
             <!-- 핵심 메시지 -->
