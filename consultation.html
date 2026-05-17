@@ -195,11 +195,11 @@ body:hover .nav-dots{opacity:1}
 .sc-instructor .timeline-item .period{font-family:'Space Grotesk',sans-serif;font-weight:600;color:#6d28d9;min-width:100px}
 
 /* Instructor highlight */
-.sc-instructor .role{border:2px solid transparent;border-radius:12px;padding:10px 14px;transition:border-color .5s,background .5s}
+.sc-instructor .role{border:2px solid transparent;border-radius:12px;padding:10px 14px;transition:border-color .5s,background .5s;overflow:hidden}
 .sc-instructor .role.highlighted{border-color:#a78bfa;background:rgba(139,92,246,.04)}
-.sc-instructor .badges{border:2px solid transparent;border-radius:16px;padding:14px;transition:border-color .5s,background .5s}
+.sc-instructor .badges{border:2px solid transparent;border-radius:16px;padding:14px;transition:border-color .5s,background .5s;overflow:hidden}
 .sc-instructor .badges.highlighted{border-color:#a78bfa;background:rgba(139,92,246,.04)}
-.hl-label{position:absolute;top:6px;right:6px;opacity:0;transition:opacity .5s cubic-bezier(.16,1,.3,1);pointer-events:none;border-radius:8px;padding:5px 12px;color:#fff;font-weight:700;font-size:11px;white-space:nowrap;z-index:5}
+.hl-label{position:absolute;top:6px;right:6px;opacity:0;transition:opacity .5s cubic-bezier(.16,1,.3,1);pointer-events:none;border-radius:6px;padding:4px 10px;color:#fff;font-weight:700;font-size:10px;white-space:nowrap;z-index:5}
 .hl-rare{background:linear-gradient(135deg,#6d28d9,#8b5cf6)}
 .hl-authority{background:linear-gradient(135deg,#0d9488,#2dd4bf)}
 
@@ -490,10 +490,11 @@ body:hover .back-btn{opacity:1}
         <div class="step-badge reveal" style="transition-delay:.1s"><i class="fas fa-clipboard-check" style="margin-right:6px"></i>STEP 4</div>
         <h2 class="reveal" style="transition-delay:.2s">문제인식 및 <span class="accent">선택기준</span> 제시</h2>
         <div class="subtitle reveal" style="transition-delay:.3s">가입된 보험, 가입할 보험의 <strong>기준</strong>을 제시</div>
-        <div style="flex:1;display:flex;flex-direction:column;gap:12px;margin-bottom:16px;min-height:0" class="reveal" style="transition-delay:.4s">
+        <div style="flex:1;display:flex;gap:16px;margin-bottom:16px;min-height:0" class="reveal" style="transition-delay:.4s">
+            <!-- 테이블 영역 -->
             <div style="flex:1;position:relative;background:#fff;border-radius:16px;border:1px solid rgba(139,92,246,.08);box-shadow:0 4px 20px rgba(0,0,0,.04);overflow:hidden;min-height:0">
                 <table style="width:100%;font-size:12px;table-layout:fixed;border-spacing:0">
-                    <colgroup><col style="width:120px"/><col style="width:65px"/><col/></colgroup>
+                    <colgroup><col style="width:110px"/><col style="width:60px"/><col/></colgroup>
                     <thead>
                         <tr>
                             <th style="padding:9px 14px;text-align:center;background:#1e1b4b;color:#fff;font-size:12px;font-weight:700;border-right:1px solid rgba(255,255,255,.12)">유형</th>
@@ -540,21 +541,33 @@ body:hover .back-btn{opacity:1}
                         </tr>
                     </tbody>
                 </table>
-                <!-- 보험료 화살표 오버레이 (클릭 시 표시) -->
-                <div id="premium-arrow" style="position:absolute;right:24px;top:44px;bottom:8px;width:80px;opacity:0;transition:opacity .5s cubic-bezier(.16,1,.3,1);display:flex;flex-direction:column;align-items:center;pointer-events:none">
-                    <div style="background:linear-gradient(135deg,#6d28d9,#8b5cf6);border-radius:8px;padding:4px 12px;color:#fff;font-size:12px;font-weight:800;white-space:nowrap">보험료 −</div>
-                    <div style="flex:1;position:relative;width:100%;display:flex;justify-content:center;margin:4px 0">
-                        <div style="width:2px;height:100%;background:linear-gradient(180deg,#8b5cf6 0%,#a1a1aa 50%,#ef4444 100%);border-radius:1px"></div>
-                        <div style="position:absolute;top:-1px;color:#8b5cf6;font-size:10px">▲</div>
-                        <div style="position:absolute;bottom:-1px;color:#ef4444;font-size:10px">▼</div>
-                    </div>
-                    <div style="background:linear-gradient(135deg,#dc2626,#ef4444);border-radius:8px;padding:4px 12px;color:#fff;font-size:12px;font-weight:800;white-space:nowrap">보험료 +</div>
+            </div>
+            <!-- 보험료 화살표 (오른쪽 분리된 카드) -->
+            <div id="premium-arrow" style="width:140px;flex-shrink:0;opacity:0;transition:all .6s cubic-bezier(.16,1,.3,1);transform:translateX(20px);display:flex;flex-direction:column;align-items:center;pointer-events:none;background:linear-gradient(180deg,#f0f0ff 0%,#fff 30%,#fff 70%,#fff5f5 100%);border-radius:20px;border:1px solid rgba(139,92,246,.12);box-shadow:0 8px 32px rgba(139,92,246,.1);padding:20px 12px;position:relative;overflow:hidden">
+                <!-- 상단 블러 장식 -->
+                <div style="position:absolute;top:-20px;left:-20px;width:80px;height:80px;background:radial-gradient(circle,rgba(139,92,246,.12),transparent);border-radius:50%;pointer-events:none"></div>
+                <div style="position:absolute;bottom:-20px;right:-20px;width:80px;height:80px;background:radial-gradient(circle,rgba(239,68,68,.1),transparent);border-radius:50%;pointer-events:none"></div>
+                <!-- 보험료 마이너스 -->
+                <div style="text-align:center;margin-bottom:8px">
+                    <div style="font-size:11px;color:#8b5cf6;font-weight:600;letter-spacing:1px;margin-bottom:4px">PREMIUM</div>
+                    <div style="background:linear-gradient(135deg,#6d28d9,#8b5cf6);border-radius:12px;padding:8px 16px;color:#fff;font-size:22px;font-weight:900;letter-spacing:-0.5px;box-shadow:0 4px 16px rgba(109,40,217,.3)">보험료 −</div>
+                </div>
+                <!-- 화살표 중앙 -->
+                <div style="flex:1;position:relative;width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:60px;margin:4px 0">
+                    <div style="color:#8b5cf6;font-size:18px;font-weight:900;line-height:1">▲</div>
+                    <div style="flex:1;width:3px;background:linear-gradient(180deg,#8b5cf6 0%,#c4b5fd 25%,#e2e8f0 50%,#fca5a5 75%,#ef4444 100%);border-radius:2px;margin:4px 0;min-height:40px"></div>
+                    <div style="color:#ef4444;font-size:18px;font-weight:900;line-height:1">▼</div>
+                </div>
+                <!-- 보험료 플러스 -->
+                <div style="text-align:center;margin-top:8px">
+                    <div style="background:linear-gradient(135deg,#dc2626,#ef4444);border-radius:12px;padding:8px 16px;color:#fff;font-size:22px;font-weight:900;letter-spacing:-0.5px;box-shadow:0 4px 16px rgba(220,38,38,.3)">보험료 +</div>
+                    <div style="font-size:11px;color:#ef4444;font-weight:600;letter-spacing:1px;margin-top:4px">PREMIUM</div>
                 </div>
             </div>
-            <!-- 핵심 메시지 -->
-            <div style="background:linear-gradient(135deg,rgba(139,92,246,.08),rgba(99,102,241,.08));border:1px solid rgba(139,92,246,.15);border-radius:14px;padding:12px 24px;text-align:center;flex-shrink:0">
-                <p style="font-size:13px;color:#334155;line-height:1.6"><strong style="color:#8b5cf6;font-size:14px">핵심 메시지</strong> — 상품 수백 개 중 단 한 개를 고르는 기준입니다. 저는 단순히 상품만 들이미는 사람이 아닙니다. <strong style="color:#8b5cf6">정확하게 진단하고, 최적의 설계 및 추천</strong>을 해드립니다.</p>
-            </div>
+        </div>
+        <!-- 핵심 메시지 -->
+        <div style="background:linear-gradient(135deg,rgba(139,92,246,.08),rgba(99,102,241,.08));border:1px solid rgba(139,92,246,.15);border-radius:14px;padding:12px 24px;text-align:center;flex-shrink:0" class="reveal" style="transition-delay:.5s">
+            <p style="font-size:13px;color:#334155;line-height:1.6"><strong style="color:#8b5cf6;font-size:14px">핵심 메시지</strong> — 상품 수백 개 중 단 한 개를 고르는 기준입니다. 저는 단순히 상품만 들이미는 사람이 아닙니다. <strong style="color:#8b5cf6">정확하게 진단하고, 최적의 설계 및 추천</strong>을 해드립니다.</p>
         </div>
     </div>
 </div>
@@ -734,7 +747,13 @@ function applySubStep(slideIndex, step) {
         }
         case 8: { // Table 보험료 화살표
             const arrow = document.getElementById('premium-arrow');
-            arrow.style.opacity = step >= 1 ? '1' : '0';
+            if (step >= 1) {
+                arrow.style.opacity = '1';
+                arrow.style.transform = 'translateX(0)';
+            } else {
+                arrow.style.opacity = '0';
+                arrow.style.transform = 'translateX(20px)';
+            }
             break;
         }
         case 11: { // Final closing 3-step
