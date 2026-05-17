@@ -378,14 +378,14 @@ body:hover .back-btn{opacity:1}
 </div>
 
 <!-- ==================== SLIDE 6: STEP 1 - INSTRUCTOR ==================== -->
-<div class="slide sc-instructor" data-slide="5">
+<div class="slide sc-instructor" data-slide="5" id="slide-instructor">
     <div class="grid-bg"></div>
     <div class="content">
         <div class="left">
             <div class="eyebrow reveal" style="transition-delay:.1s;font-size:14px;font-weight:700"><i class="fas fa-handshake" style="font-size:12px"></i> STEP 1 — 첫인사 & 약력소개</div>
             <div class="name reveal" style="transition-delay:.25s"><span class="accent">강남규</span></div>
-            <div class="role reveal" style="transition-delay:.35s;position:relative"><span class="role-highlight" id="roleHL">보험학교 DB세일즈학과장<br/>한국보험금융(주) SAG 시그니처 사업부 부지점장</span></div>
-            <div class="badges reveal" style="transition-delay:.45s;position:relative" id="badgesWrap">
+            <div class="role reveal" style="transition-delay:.35s" id="inst-role">보험학교 DB세일즈학과장<br/>한국보험금융(주) SAG 시그니처 사업부 부지점장</div>
+            <div class="badges reveal" style="transition-delay:.45s" id="inst-badges">
                 <div class="badge"><div class="badge-dot"></div>동국대학교 경영학과 졸업</div>
                 <div class="badge"><div class="badge-dot"></div>M생명 변액 상담 전국 최상위</div>
                 <div class="badge"><div class="badge-dot"></div>블로그/유튜브 온라인 영업</div>
@@ -407,18 +407,20 @@ body:hover .back-btn{opacity:1}
                 <div class="photo-overlay"></div>
                 <div class="photo-brand"><img src="img/logo-white.png" alt="시그니처"/></div>
             </div>
-            <!-- Substep annotations - 사진 위에 배치 -->
-            <div class="substep" data-substep="1" style="position:absolute;top:60px;right:50px;z-index:30">
-                <div style="background:rgba(139,92,246,.95);backdrop-filter:blur(8px);border-radius:14px;padding:12px 20px;font-size:14px;color:#fff;font-weight:700;box-shadow:0 8px 24px rgba(139,92,246,.4)">⭕ 희소성<br/><span style="font-size:11px;font-weight:400;opacity:.8">보험학교 학과장 / 시그니처 부지점장</span></div>
+            <!-- 희소성 라벨 (사진 우상단) -->
+            <div class="inst-label substep" data-substep="1" style="position:absolute;top:50px;right:50px;z-index:30;opacity:0;transform:translateY(-10px);transition:opacity .5s,transform .5s">
+                <div style="background:#8b5cf6;border-radius:12px;padding:10px 18px;color:#fff;font-weight:700;font-size:14px;box-shadow:0 6px 20px rgba(139,92,246,.4)">⭕ 희소성<br/><span style="font-size:11px;font-weight:400;opacity:.85">보험학교 학과장 / 시그니처 부지점장</span></div>
             </div>
-            <div class="substep" data-substep="1" style="position:absolute;bottom:140px;right:50px;z-index:30">
-                <div style="background:rgba(249,115,22,.95);backdrop-filter:blur(8px);border-radius:14px;padding:12px 20px;font-size:14px;color:#fff;font-weight:700;box-shadow:0 8px 24px rgba(249,115,22,.4)">⭕ 권위의 법칙 & 후광 효과<br/><span style="font-size:11px;font-weight:400;opacity:.8">4가지 스펙 → 전문가 포지셔닝</span></div>
+            <!-- 권위 라벨 (사진 우하단) -->
+            <div class="inst-label substep" data-substep="1" style="position:absolute;bottom:100px;right:50px;z-index:30;opacity:0;transform:translateY(10px);transition:opacity .5s,transform .5s">
+                <div style="background:#f97316;border-radius:12px;padding:10px 18px;color:#fff;font-weight:700;font-size:14px;box-shadow:0 6px 20px rgba(249,115,22,.4)">⭕ 권위의 법칙 & 후광 효과<br/><span style="font-size:11px;font-weight:400;opacity:.85">4가지 스펙 → 전문가 포지셔닝</span></div>
             </div>
-            <div class="substep" data-substep="2" style="position:absolute;bottom:50px;left:20px;right:40px;z-index:30">
-                <div style="background:linear-gradient(135deg,#1e1b4b,#312e81);border-radius:14px;padding:16px 24px;text-align:center;box-shadow:0 8px 32px rgba(30,27,75,.5)">
-                    <p style="font-size:16px;font-weight:800;color:#fff">경계심을 낮추고, 나에게 <span style="color:#a78bfa">집중</span>하게 만들 것</p>
-                </div>
-            </div>
+        </div>
+    </div>
+    <!-- 경계심 결론 (하단 전체) -->
+    <div class="substep" data-substep="2" style="position:absolute;bottom:30px;left:80px;right:80px;z-index:30">
+        <div style="background:linear-gradient(135deg,#1e1b4b,#312e81);border-radius:14px;padding:16px 28px;text-align:center;box-shadow:0 8px 32px rgba(30,27,75,.4)">
+            <p style="font-size:17px;font-weight:800;color:#fff">경계심을 낮추고, 나에게 <span style="color:#a78bfa">집중</span>하게 만들 것</p>
         </div>
     </div>
 </div>
@@ -471,12 +473,93 @@ body:hover .back-btn{opacity:1}
         <div class="step-badge reveal" style="transition-delay:.1s"><i class="fas fa-clipboard-check" style="margin-right:6px"></i>STEP 4</div>
         <h2 class="reveal" style="transition-delay:.2s">문제인식 및 <span class="accent">선택기준</span> 제시</h2>
         <div class="subtitle reveal" style="transition-delay:.3s">보험사 전체 <strong>고지사항 유형</strong>별 가입 가능 범위를 제시한다</div>
-        <div style="flex:1;display:flex;flex-direction:column;gap:16px;margin-bottom:20px;min-height:0" class="reveal" >
-            <div style="flex:1;display:flex;align-items:center;justify-content:center;background:#fff;border-radius:20px;padding:20px;border:1px solid rgba(139,92,246,.08);box-shadow:0 4px 24px rgba(0,0,0,.04);min-height:0;overflow:hidden">
-                <img src="img/step4-table.png" alt="보험사 전체 고지사항" style="max-width:100%;max-height:100%;object-fit:contain;border-radius:12px"/>
+        <div style="flex:1;display:flex;flex-direction:column;gap:14px;margin-bottom:16px;min-height:0" class="reveal" style="transition-delay:.4s">
+            <div style="flex:1;background:#fff;border-radius:16px;border:1px solid rgba(139,92,246,.08);box-shadow:0 4px 20px rgba(0,0,0,.04);overflow:hidden;display:flex;flex-direction:column;min-height:0">
+                <!-- 헤더 -->
+                <div style="display:grid;grid-template-columns:140px 80px 1fr 220px;background:#1e1b4b;color:#fff;font-size:13px;font-weight:700;flex-shrink:0">
+                    <div style="padding:12px 16px;border-right:1px solid rgba(255,255,255,.1)">보험사 전체 고지사항</div>
+                    <div style="padding:12px 8px;text-align:center;border-right:1px solid rgba(255,255,255,.1)"></div>
+                    <div style="padding:12px 16px;border-right:1px solid rgba(255,255,255,.1)"></div>
+                    <div style="padding:12px 16px;text-align:center">내용</div>
+                </div>
+                <!-- 건강고지형 (할인플랜) - 노란 하이라이트 첫 행 -->
+                <div style="display:grid;grid-template-columns:140px 80px 1fr 220px;border-bottom:1px solid #e2e8f0;background:linear-gradient(90deg,#fefce8,#fff);font-size:13px">
+                    <div style="padding:8px 16px;font-weight:800;color:#1e1b4b;grid-row:span 6;display:flex;align-items:center;border-right:1px solid #e2e8f0">건강고지형<br/><span style="font-size:11px;color:#8b5cf6;font-weight:600">(할인플랜)</span></div>
+                    <div style="padding:6px 8px;text-align:center;font-weight:700;color:#1e1b4b;background:#fef08a;border-right:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0">3105</div>
+                    <div style="padding:6px 12px;font-weight:700;color:#1e1b4b;background:#fef08a;border-right:1px solid #e2e8f0;border-bottom:1px solid #e2e8f0">고객이 가입할 수 있는 가장 유리한 보험</div>
+                    <div style="padding:6px 12px;color:#475569;grid-row:span 6;display:flex;align-items:center;font-size:12px;line-height:1.5;border-left:1px solid #e2e8f0">셋별님이 제안 받은 KB는 3105플랜(고지사항 경과를 적용하여 받아낸 가장 좋은 결과)</div>
+                </div>
+                <div style="display:grid;grid-template-columns:140px 80px 1fr 220px;font-size:13px">
+                    <div style="border-right:1px solid #e2e8f0"></div>
+                    <div style="padding:4px 8px;text-align:center;color:#64748b;border-right:1px solid #e2e8f0;border-bottom:1px solid #f1f5f9">395</div>
+                    <div style="padding:4px 12px;border-bottom:1px solid #f1f5f9"></div>
+                    <div></div>
+                </div>
+                <div style="display:grid;grid-template-columns:140px 80px 1fr 220px;font-size:13px">
+                    <div style="border-right:1px solid #e2e8f0"></div>
+                    <div style="padding:4px 8px;text-align:center;color:#64748b;border-right:1px solid #e2e8f0;border-bottom:1px solid #f1f5f9">385</div>
+                    <div style="padding:4px 12px;border-bottom:1px solid #f1f5f9"></div>
+                    <div></div>
+                </div>
+                <div style="display:grid;grid-template-columns:140px 80px 1fr 220px;font-size:13px">
+                    <div style="border-right:1px solid #e2e8f0"></div>
+                    <div style="padding:4px 8px;text-align:center;color:#64748b;border-right:1px solid #e2e8f0;border-bottom:1px solid #f1f5f9">375</div>
+                    <div style="padding:4px 12px;border-bottom:1px solid #f1f5f9"></div>
+                    <div></div>
+                </div>
+                <div style="display:grid;grid-template-columns:140px 80px 1fr 220px;font-size:13px;border-bottom:2px solid #e2e8f0">
+                    <div style="border-right:1px solid #e2e8f0"></div>
+                    <div style="padding:4px 8px;text-align:center;color:#64748b;border-right:1px solid #e2e8f0">365</div>
+                    <div style="padding:4px 12px"></div>
+                    <div></div>
+                </div>
+                <!-- 표준형 -->
+                <div style="display:grid;grid-template-columns:140px 80px 1fr;font-size:13px;border-bottom:2px solid #e2e8f0">
+                    <div style="padding:10px 16px;font-weight:800;color:#1e1b4b;border-right:1px solid #e2e8f0">표준형</div>
+                    <div style="padding:10px 8px;text-align:center;color:#64748b;border-right:1px solid #e2e8f0">355</div>
+                    <div style="padding:10px 12px;color:#475569">일반적으로 제안 받는 표준형</div>
+                </div>
+                <!-- 경증간편형 -->
+                <div style="display:grid;grid-template-columns:140px 80px 1fr;font-size:13px;border-bottom:2px solid #e2e8f0">
+                    <div style="padding:10px 16px;font-weight:800;color:#1e1b4b;border-right:1px solid #e2e8f0">경증간편형</div>
+                    <div style="padding:10px 8px;text-align:center;color:#64748b;border-right:1px solid #e2e8f0">31010</div>
+                    <div style="padding:10px 12px;color:#475569">유병자 보험 중 가장 저렴한 플랜</div>
+                </div>
+                <!-- 유병자보험 -->
+                <div style="display:grid;grid-template-columns:140px 80px 1fr;font-size:13px">
+                    <div style="padding:6px 16px;font-weight:800;color:#1e1b4b;border-right:1px solid #e2e8f0;grid-row:span 6;display:flex;align-items:center">유병자보험</div>
+                    <div style="padding:3px 8px;text-align:center;color:#64748b;border-right:1px solid #e2e8f0;border-bottom:1px solid #f1f5f9">345</div>
+                    <div style="padding:3px 12px;border-bottom:1px solid #f1f5f9"></div>
+                </div>
+                <div style="display:grid;grid-template-columns:140px 80px 1fr;font-size:13px">
+                    <div style="border-right:1px solid #e2e8f0"></div>
+                    <div style="padding:3px 8px;text-align:center;color:#64748b;border-right:1px solid #e2e8f0;border-bottom:1px solid #f1f5f9">335</div>
+                    <div style="padding:3px 12px;color:#475569;border-bottom:1px solid #f1f5f9">한화손해보험이 속한 곳</div>
+                </div>
+                <div style="display:grid;grid-template-columns:140px 80px 1fr;font-size:13px">
+                    <div style="border-right:1px solid #e2e8f0"></div>
+                    <div style="padding:3px 8px;text-align:center;color:#64748b;border-right:1px solid #e2e8f0;border-bottom:1px solid #f1f5f9">325</div>
+                    <div style="padding:3px 12px;border-bottom:1px solid #f1f5f9"></div>
+                </div>
+                <div style="display:grid;grid-template-columns:140px 80px 1fr;font-size:13px">
+                    <div style="border-right:1px solid #e2e8f0"></div>
+                    <div style="padding:3px 8px;text-align:center;color:#64748b;border-right:1px solid #e2e8f0;border-bottom:1px solid #f1f5f9">315</div>
+                    <div style="padding:3px 12px;border-bottom:1px solid #f1f5f9"></div>
+                </div>
+                <div style="display:grid;grid-template-columns:140px 80px 1fr;font-size:13px">
+                    <div style="border-right:1px solid #e2e8f0"></div>
+                    <div style="padding:3px 8px;text-align:center;color:#64748b;border-right:1px solid #e2e8f0;border-bottom:1px solid #f1f5f9">305</div>
+                    <div style="padding:3px 12px;border-bottom:1px solid #f1f5f9"></div>
+                </div>
+                <div style="display:grid;grid-template-columns:140px 80px 1fr;font-size:13px;background:linear-gradient(90deg,#d9f99d,#ecfccb)">
+                    <div style="border-right:1px solid #e2e8f0"></div>
+                    <div style="padding:4px 8px;text-align:center;font-weight:700;color:#1e1b4b;border-right:1px solid #e2e8f0;background:#a3e635;border-radius:0 0 0 0">초간편</div>
+                    <div style="padding:4px 12px;font-weight:600;color:#1e1b4b">가장 비싼 보험</div>
+                </div>
             </div>
-            <div style="background:linear-gradient(135deg,rgba(139,92,246,.08),rgba(99,102,241,.08));border:1px solid rgba(139,92,246,.15);border-radius:14px;padding:16px 24px;text-align:center;flex-shrink:0">
-                <p style="font-size:14px;color:#334155;line-height:1.6"><strong style="color:#8b5cf6;font-size:15px">핵심 메시지</strong><br/>상품 수백 개 중 단 한 개를 고르는 기준입니다.<br/>저는 단순히 상품 들이미는 사람이 아닙니다. <strong style="color:#8b5cf6">정확하게 진단하고, 최적의 설계 및 추천</strong>을 해드립니다.</p>
+            <!-- 핵심 메시지 -->
+            <div style="background:linear-gradient(135deg,rgba(139,92,246,.08),rgba(99,102,241,.08));border:1px solid rgba(139,92,246,.15);border-radius:14px;padding:14px 24px;text-align:center;flex-shrink:0">
+                <p style="font-size:13px;color:#334155;line-height:1.6"><strong style="color:#8b5cf6;font-size:14px">핵심 메시지</strong> — 상품 수백 개 중 단 한 개를 고르는 기준입니다. 저는 단순히 상품 들이미는 사람이 아닙니다. <strong style="color:#8b5cf6">정확하게 진단하고, 최적의 설계 및 추천</strong>을 해드립니다.</p>
             </div>
         </div>
     </div>
@@ -623,12 +706,29 @@ function applySubStep(slideIndex, step) {
     const slide = slides[slideIndex];
     switch(slideIndex) {
         case 5: { // Instructor highlights
-            const annotations = slide.querySelectorAll('.substep[data-substep="1"]');
+            const roleEl = document.getElementById('inst-role');
+            const badgesEl = document.getElementById('inst-badges');
+            const labels = slide.querySelectorAll('.substep[data-substep="1"]');
             const conclusion = slide.querySelectorAll('.substep[data-substep="2"]');
-            annotations.forEach(el => {
-                if (step >= 1) el.classList.add('visible');
-                else el.classList.remove('visible');
-            });
+            // Step 1: 직책 테두리 + 뱃지 하이라이트 + 라벨
+            if (step >= 1) {
+                roleEl.style.border = '2.5px solid #1e1b4b';
+                roleEl.style.borderRadius = '8px';
+                roleEl.style.padding = '8px 12px';
+                roleEl.style.display = 'inline-block';
+                badgesEl.style.background = 'rgba(251,191,36,.12)';
+                badgesEl.style.borderRadius = '12px';
+                badgesEl.style.padding = '12px';
+                labels.forEach(el => { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; });
+            } else {
+                roleEl.style.border = 'none';
+                roleEl.style.padding = '0';
+                roleEl.style.display = '';
+                badgesEl.style.background = '';
+                badgesEl.style.padding = '';
+                labels.forEach(el => { el.style.opacity = '0'; el.style.transform = ''; });
+            }
+            // Step 2: 결론
             conclusion.forEach(el => {
                 if (step >= 2) el.classList.add('visible');
                 else el.classList.remove('visible');
