@@ -191,12 +191,14 @@ body:hover .nav-dots{opacity:1}
 .sc-instructor .timeline-item::before{content:'';position:absolute;left:0;top:50%;width:6px;height:6px;border-radius:50%;background:#8b5cf6;transform:translateY(-50%)}
 .sc-instructor .timeline-item .period{font-family:'Space Grotesk',sans-serif;font-weight:600;color:#6d28d9;min-width:100px}
 
-/* Instructor highlight labels */
-.hl-label{opacity:0;transform:translateY(8px) scale(.95);transition:all .5s cubic-bezier(.16,1,.3,1);pointer-events:none}
-.hl-rare{font-size:38px;font-weight:900;color:#0f172a;letter-spacing:-1px}
-.hl-authority{font-size:28px;font-weight:900;color:#0f172a;letter-spacing:-0.5px;margin-bottom:8px}
-.sc-instructor .role.highlighted{border:2.5px solid #f59e0b;border-radius:12px;padding:10px 14px;background:rgba(245,158,11,.04);transition:all .4s cubic-bezier(.16,1,.3,1)}
-.sc-instructor .badges.highlighted{border:2.5px solid #f59e0b;border-radius:16px;padding:14px;background:rgba(245,158,11,.04);transition:all .4s cubic-bezier(.16,1,.3,1)}
+/* Instructor highlight */
+.sc-instructor .role{border:2.5px solid transparent;border-radius:12px;padding:10px 14px;transition:border-color .5s,background .5s}
+.sc-instructor .role.highlighted{border-color:#f59e0b;background:rgba(245,158,11,.04)}
+.sc-instructor .badges{border:2.5px solid transparent;border-radius:16px;padding:14px;transition:border-color .5s,background .5s}
+.sc-instructor .badges.highlighted{border-color:#f59e0b;background:rgba(245,158,11,.04)}
+.hl-label{opacity:0;transition:opacity .5s cubic-bezier(.16,1,.3,1);pointer-events:none}
+.hl-rare{font-size:32px;font-weight:900;color:#1e1b4b;letter-spacing:-1px}
+.hl-authority{font-size:22px;font-weight:800;color:#1e1b4b;letter-spacing:-0.3px;margin-top:-4px;margin-bottom:4px}
 
 /* Placeholder slide */
 .sc-placeholder{background:linear-gradient(135deg,#f8f7ff,#f0eeff)}
@@ -727,16 +729,12 @@ function applySubStep(slideIndex, step) {
                 roleEl.classList.add('highlighted');
                 badgesEl.classList.add('highlighted');
                 hlRare.style.opacity = '1';
-                hlRare.style.transform = 'translateY(0) scale(1)';
                 hlAuth.style.opacity = '1';
-                hlAuth.style.transform = 'translateY(0) scale(1)';
             } else {
                 roleEl.classList.remove('highlighted');
                 badgesEl.classList.remove('highlighted');
                 hlRare.style.opacity = '0';
-                hlRare.style.transform = 'translateY(8px) scale(.95)';
                 hlAuth.style.opacity = '0';
-                hlAuth.style.transform = 'translateY(8px) scale(.95)';
             }
             break;
         }
