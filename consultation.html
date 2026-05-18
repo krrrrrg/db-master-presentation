@@ -204,7 +204,7 @@ body:hover .nav-dots{opacity:1}
 .hl-authority{background:linear-gradient(135deg,#0d9488,#2dd4bf)}
 
 /* Step 2: 보장자산 조회 */
-.s2-contract{width:300px;flex-shrink:0;background:none;border-radius:0;padding:0;opacity:0;transform:translateX(-30px);transition:all .6s cubic-bezier(.16,1,.3,1);overflow:hidden;border:none}
+.s2-contract{width:420px;flex-shrink:0;background:none;border-radius:8px;padding:0;opacity:0;transform:translateX(-30px);transition:all .6s cubic-bezier(.16,1,.3,1);overflow:hidden;border:none}
 .s2-contract.visible{opacity:1;transform:translateX(0)}
 .s2-contract-header{margin-bottom:10px}
 .s2-contract-body{display:flex;flex-direction:column;gap:1px}
@@ -212,7 +212,7 @@ body:hover .nav-dots{opacity:1}
 .s2-row:nth-child(even){background:rgba(255,255,255,.02)}
 .s2-row:hover{background:rgba(139,92,246,.08)}
 .s2-row-head{font-weight:700;color:#8b5cf6;font-size:9px;letter-spacing:.5px;border-bottom:1px solid rgba(139,92,246,.15);padding-bottom:6px;margin-bottom:2px}
-.s2-card{background:#fff;border-radius:12px;padding:10px 14px;border:1px solid rgba(139,92,246,.08);box-shadow:0 2px 8px rgba(0,0,0,.03);display:flex;align-items:center;gap:10px;opacity:0;transform:translateY(16px);transition:all .5s cubic-bezier(.16,1,.3,1);cursor:default}
+.s2-card{background:#fff;border-radius:10px;padding:8px 12px;border:1px solid rgba(139,92,246,.08);box-shadow:0 2px 8px rgba(0,0,0,.03);display:flex;align-items:center;gap:8px;opacity:0;transform:translateY(16px);transition:all .5s cubic-bezier(.16,1,.3,1);cursor:default}
 .s2-card.visible{opacity:1;transform:translateY(0)}
 .s2-card:hover{box-shadow:0 8px 24px rgba(139,92,246,.08);transform:translateY(-2px);border-color:rgba(139,92,246,.2)}
 .s2-card.visible:hover{transform:translateY(-2px)}
@@ -221,10 +221,10 @@ body:hover .nav-dots{opacity:1}
 .s2-card-highlight{font-size:16px;font-weight:900;color:#8b5cf6;line-height:1.3;letter-spacing:-.5px}
 .s2-warning{border-left:4px solid #fbbf24;background:linear-gradient(135deg,#fff,#fffbeb)}
 .s2-story{border-left:4px solid #8b5cf6;background:linear-gradient(135deg,#fff,#f5f3ff)}
-.s2-insight{flex-direction:column;align-items:flex-start;background:linear-gradient(135deg,#f8f7ff,#f0eeff);border:1px solid rgba(139,92,246,.12);padding:10px 14px}
+.s2-insight{flex-direction:column;align-items:flex-start;background:linear-gradient(135deg,#f8f7ff,#f0eeff);border:1px solid rgba(139,92,246,.12);padding:8px 12px}
 .s2-killer{border-left:4px solid #ef4444;background:linear-gradient(135deg,#fff,#fef2f2)}
 .s2-job{border-left:4px solid #10b981;background:linear-gradient(135deg,#fff,#f0fdf4)}
-.s2-core{border:2px solid rgba(139,92,246,.2);background:linear-gradient(135deg,#f5f3ff,#ede9fe);justify-content:center;padding:12px 18px}
+.s2-core{border:2px solid rgba(139,92,246,.2);background:linear-gradient(135deg,#f5f3ff,#ede9fe);justify-content:center;padding:10px 14px}
 
 /* Placeholder slide */
 .sc-placeholder{background:linear-gradient(135deg,#f8f7ff,#f0eeff)}
@@ -474,43 +474,36 @@ body:hover .back-btn{opacity:1}
         <div class="subtitle reveal" style="transition-delay:.3s">고객의 <strong>기존 계약</strong>을 함께 보며 이야기를 끌어낸다</div>
         <div style="flex:1;display:flex;gap:20px;min-height:0;overflow:hidden">
             <!-- 좌측: 계약리스트 이미지 -->
-            <div class="s2-contract" id="s2-contract" style="width:300px;flex-shrink:0;overflow:hidden">
-                <img src="img/contract-list.jpg" alt="계약리스트" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block"/>
+            <div class="s2-contract" id="s2-contract" style="width:420px;flex-shrink:0;overflow:hidden;border-radius:8px">
+                <img src="img/contract-list.jpg" alt="계약리스트" style="width:100%;height:100%;object-fit:contain;object-position:top left;display:block"/>
             </div>
             <!-- 우측: 인사이트 카드들 -->
-            <div style="flex:1;display:flex;flex-direction:column;gap:7px;min-height:0;overflow:hidden">
+            <div style="flex:1;display:flex;flex-direction:column;gap:6px;min-height:0;overflow:hidden">
                 <div class="s2-card s2-warning" id="s2-card1">
                     <div class="s2-card-icon">⚠️</div>
                     <div class="s2-card-title">먼저 가치판단은 <span style="color:#fbbf24">금물!</span></div>
                 </div>
                 <div class="s2-card s2-story" id="s2-card2">
                     <div class="s2-card-icon">📖</div>
-                    <div>
-                        <div class="s2-card-title">가입하게 된 계기와 하나하나의 <span style="color:#8b5cf6;font-weight:900">'스토리'</span>를 질문하고 경청</div>
-                    </div>
+                    <div class="s2-card-title">가입하게 된 계기와 하나하나의 <span style="color:#8b5cf6;font-weight:900">'스토리'</span>를 질문하고 경청</div>
                 </div>
                 <div class="s2-card s2-insight" id="s2-card3">
-                    <div style="font-size:11px;color:#a78bfa;font-weight:700;margin-bottom:3px">→ 이 시간이 왜 중요한가</div>
-                    <p style="font-size:12px;color:#334155;line-height:1.55;margin:0">고객님의 <strong style="color:#8b5cf6">성향, 기준, 니즈, 불만족 포인트</strong>를 파악할 수 있는 가장 귀한 시간</p>
-                    <div style="margin-top:6px;padding-top:6px;border-top:1px solid rgba(139,92,246,.1);font-size:11px;color:#64748b;line-height:1.5">또한 고객님이 가장 <strong style="color:#8b5cf6">말을 많이</strong> 하게 되면서, 상담에 있어 <strong style="color:#8b5cf6">릴렉스</strong>하게 되는 과정</div>
+                    <div style="font-size:11px;color:#a78bfa;font-weight:700;margin-bottom:2px">→ 이 시간이 왜 중요한가</div>
+                    <p style="font-size:11px;color:#334155;line-height:1.5;margin:0">고객님의 <strong style="color:#8b5cf6">성향, 기준, 니즈, 불만족 포인트</strong>를 파악할 수 있는 가장 귀한 시간</p>
+                    <div style="margin-top:4px;padding-top:4px;border-top:1px solid rgba(139,92,246,.1);font-size:11px;color:#64748b;line-height:1.45">또한 고객님이 가장 <strong style="color:#8b5cf6">말을 많이</strong> 하게 되면서, 상담에 있어 <strong style="color:#8b5cf6">릴렉스</strong>하게 되는 과정</div>
                 </div>
-                <!-- 필살기 + 직업 나란히 -->
-                <div style="display:flex;gap:7px">
-                    <div class="s2-card s2-killer" id="s2-card4" style="flex:1">
-                        <div class="s2-card-icon">🎯</div>
-                        <div>
-                            <div class="s2-card-title">무뚝뚝한 남성에게 통하는</div>
-                            <div style="font-size:16px;font-weight:900;background:linear-gradient(135deg,#dc2626,#ef4444);-webkit-background-clip:text;-webkit-text-fill-color:transparent">필살기</div>
-                        </div>
-                    </div>
-                    <div class="s2-card s2-job" id="s2-card5" style="flex:1">
-                        <div class="s2-card-icon">💼</div>
-                        <div class="s2-card-title">반드시 <span style="color:#8b5cf6;font-weight:900">'직업'</span>을 체크하라</div>
+                <!-- 필살기 (+ 직업 텍스트가 옆에 추가됨) -->
+                <div class="s2-card s2-killer" id="s2-card4">
+                    <div class="s2-card-icon">🎯</div>
+                    <div class="s2-card-title">무뚝뚝한 남성에게 통하는 <span style="font-size:15px;font-weight:900;background:linear-gradient(135deg,#dc2626,#ef4444);-webkit-background-clip:text;-webkit-text-fill-color:transparent">필살기</span></div>
+                    <div id="s2-job-text" style="opacity:0;transform:translateX(10px);transition:all .5s cubic-bezier(.16,1,.3,1);margin-left:12px;padding-left:12px;border-left:2px solid #10b981;display:flex;align-items:center;gap:6px">
+                        <span style="font-size:18px">💼</span>
+                        <span class="s2-card-title">반드시 <span style="color:#8b5cf6;font-weight:900">'직업'</span>을 체크하라</span>
                     </div>
                 </div>
-                <div class="s2-card s2-core" id="s2-card6">
+                <div class="s2-card s2-core" id="s2-card5">
                     <div style="text-align:center;width:100%">
-                        <div style="font-size:14px;font-weight:900;color:#1e1b4b;line-height:1.5">위 내용들을 내 상담에 <span style="font-size:18px;background:linear-gradient(135deg,#6d28d9,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent">녹여내는 게 핵심</span></div>
+                        <div style="font-size:13px;font-weight:900;color:#1e1b4b;line-height:1.5">위 내용들을 내 상담에 <span style="font-size:17px;background:linear-gradient(135deg,#6d28d9,#8b5cf6);-webkit-background-clip:text;-webkit-text-fill-color:transparent">녹여내는 게 핵심</span></div>
                     </div>
                 </div>
             </div>
@@ -805,19 +798,26 @@ function applySubStep(slideIndex, step) {
         case 6: { // Step 2: 보장자산 조회
             const contract = document.getElementById('s2-contract');
             const cards = [
-                document.getElementById('s2-card1'),
-                document.getElementById('s2-card2'),
-                document.getElementById('s2-card3'),
-                document.getElementById('s2-card4'),
-                document.getElementById('s2-card5'),
-                document.getElementById('s2-card6')
+                document.getElementById('s2-card1'),  // step 2
+                document.getElementById('s2-card2'),  // step 3
+                document.getElementById('s2-card3'),  // step 4
+                document.getElementById('s2-card4'),  // step 5 (필살기)
+                document.getElementById('s2-card5')   // step 7 (핵심)
             ];
+            const jobText = document.getElementById('s2-job-text');
             if (step >= 1) contract.classList.add('visible');
             else contract.classList.remove('visible');
-            cards.forEach((card, i) => {
-                if (step >= i + 2) card.classList.add('visible');
-                else card.classList.remove('visible');
-            });
+            // cards 0-3: step 2~5
+            for (let i = 0; i < 4; i++) {
+                if (step >= i + 2) cards[i].classList.add('visible');
+                else cards[i].classList.remove('visible');
+            }
+            // step 6: 직업 텍스트 (필살기 카드 안)
+            if (step >= 6) { jobText.style.opacity = '1'; jobText.style.transform = 'translateX(0)'; }
+            else { jobText.style.opacity = '0'; jobText.style.transform = 'translateX(10px)'; }
+            // step 7: 핵심
+            if (step >= 7) cards[4].classList.add('visible');
+            else cards[4].classList.remove('visible');
             break;
         }
         case 7: { // Framework 4분면
