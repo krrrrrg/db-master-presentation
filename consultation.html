@@ -203,6 +203,28 @@ body:hover .nav-dots{opacity:1}
 .hl-rare{background:linear-gradient(135deg,#6d28d9,#8b5cf6)}
 .hl-authority{background:linear-gradient(135deg,#0d9488,#2dd4bf)}
 
+/* Step 2: 보장자산 조회 */
+.s2-contract{width:340px;flex-shrink:0;background:linear-gradient(145deg,#1e1b4b,#0f172a);border-radius:16px;padding:16px;opacity:0;transform:translateX(-30px);transition:all .6s cubic-bezier(.16,1,.3,1);overflow-y:auto;overflow-x:hidden;border:1px solid rgba(139,92,246,.15)}
+.s2-contract.visible{opacity:1;transform:translateX(0)}
+.s2-contract-header{margin-bottom:10px}
+.s2-contract-body{display:flex;flex-direction:column;gap:1px}
+.s2-row{display:grid;grid-template-columns:26px 58px 1fr 60px;gap:4px;padding:4px 6px;font-size:10px;color:#cbd5e1;align-items:center;border-radius:4px;transition:background .2s}
+.s2-row:nth-child(even){background:rgba(255,255,255,.02)}
+.s2-row:hover{background:rgba(139,92,246,.08)}
+.s2-row-head{font-weight:700;color:#8b5cf6;font-size:9px;letter-spacing:.5px;border-bottom:1px solid rgba(139,92,246,.15);padding-bottom:6px;margin-bottom:2px}
+.s2-card{background:#fff;border-radius:14px;padding:14px 18px;border:1px solid rgba(139,92,246,.08);box-shadow:0 2px 12px rgba(0,0,0,.03);display:flex;align-items:center;gap:14px;opacity:0;transform:translateY(20px);transition:all .5s cubic-bezier(.16,1,.3,1);cursor:default}
+.s2-card.visible{opacity:1;transform:translateY(0)}
+.s2-card:hover{box-shadow:0 8px 24px rgba(139,92,246,.08);transform:translateY(-2px);border-color:rgba(139,92,246,.2)}
+.s2-card.visible:hover{transform:translateY(-2px)}
+.s2-card-icon{font-size:28px;flex-shrink:0}
+.s2-card-title{font-size:14px;font-weight:700;color:#1e1b4b;line-height:1.4}
+.s2-card-highlight{font-size:18px;font-weight:900;color:#8b5cf6;line-height:1.3;letter-spacing:-.5px}
+.s2-warning{border-left:4px solid #fbbf24;background:linear-gradient(135deg,#fff,#fffbeb)}
+.s2-story{border-left:4px solid #8b5cf6;background:linear-gradient(135deg,#fff,#f5f3ff)}
+.s2-insight{flex-direction:column;align-items:flex-start;background:linear-gradient(135deg,#f8f7ff,#f0eeff);border:1px solid rgba(139,92,246,.12);padding:14px 18px}
+.s2-killer{border-left:4px solid #ef4444;background:linear-gradient(135deg,#fff,#fef2f2)}
+.s2-job{border-left:4px solid #10b981;background:linear-gradient(135deg,#fff,#f0fdf4)}
+
 /* Placeholder slide */
 .sc-placeholder{background:linear-gradient(135deg,#f8f7ff,#f0eeff)}
 .sc-placeholder .content{position:relative;z-index:10;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 80px}
@@ -442,12 +464,83 @@ body:hover .back-btn{opacity:1}
     </div>
 </div>
 
-<!-- ==================== SLIDE 7: STEP 2 - PLACEHOLDER ==================== -->
-<div class="slide sc-placeholder" data-slide="6">
+<!-- ==================== SLIDE 7: STEP 2 - 보장자산 조회 ==================== -->
+<div class="slide sc-step sc-step2" data-slide="6">
+    <div class="grid-bg"></div>
     <div class="content">
-        <div class="icon reveal-scale" style="transition-delay:.3s"><i class="fas fa-file-medical-alt"></i></div>
-        <h2 class="reveal" style="transition-delay:.5s">보장자산 조회 & 스토리 청취</h2>
-        <p class="reveal" style="transition-delay:.65s">자료 첨부 예정입니다</p>
+        <div class="step-badge reveal" style="transition-delay:.1s"><i class="fas fa-search" style="margin-right:6px"></i>STEP 2</div>
+        <h2 class="reveal" style="transition-delay:.2s">보장자산 조회 & <span class="accent">스토리 청취</span></h2>
+        <div class="subtitle reveal" style="transition-delay:.3s">고객의 <strong>기존 계약</strong>을 함께 보며 이야기를 끌어낸다</div>
+        <div style="flex:1;display:flex;gap:20px;min-height:0;overflow:hidden">
+            <!-- 좌측: 계약리스트 카드 -->
+            <div class="s2-contract" id="s2-contract">
+                <div class="s2-contract-header">
+                    <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+                        <div style="background:#8b5cf6;color:#fff;font-weight:900;font-size:14px;padding:4px 12px;border-radius:6px">김</div>
+                        <span style="font-size:12px;color:#94a3b8">(61세, 남자)</span>
+                        <span style="font-size:13px;font-weight:700;color:#e2e8f0">님의 전체 계약리스트</span>
+                    </div>
+                    <div style="display:flex;gap:10px;margin-bottom:10px">
+                        <div style="flex:1;background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,.2);border-radius:10px;padding:8px 12px;text-align:center">
+                            <div style="font-size:10px;color:#a78bfa;margin-bottom:2px">정상계약</div>
+                            <div style="font-size:20px;font-weight:900;color:#fff">10<span style="font-size:11px;font-weight:400;color:#a78bfa"> 건</span></div>
+                        </div>
+                        <div style="flex:1;background:rgba(251,191,36,.1);border:1px solid rgba(251,191,36,.2);border-radius:10px;padding:8px 12px;text-align:center">
+                            <div style="font-size:10px;color:#fbbf24;margin-bottom:2px">월 보험료</div>
+                            <div style="font-size:20px;font-weight:900;color:#fbbf24">611,258<span style="font-size:11px;font-weight:400"> 원</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="s2-contract-body">
+                    <div class="s2-row s2-row-head"><span>NO</span><span>회사</span><span>상품명</span><span>월보험료</span></div>
+                    <div class="s2-row"><span>1</span><span>삼성화재</span><span>명품클 상해보험</span><span style="color:#fbbf24;font-weight:700">28,900</span></div>
+                    <div class="s2-row"><span>2</span><span>삼성화재</span><span>통합보험 수퍼플러스</span><span style="color:#fbbf24;font-weight:700">189,000</span></div>
+                    <div class="s2-row"><span>3</span><span>삼성화재</span><span>재암보험 유비무환</span><span style="color:#fbbf24;font-weight:700">40,000</span></div>
+                    <div class="s2-row"><span>4</span><span>삼성화재</span><span>운전자보험 안전운전</span><span style="color:#fbbf24;font-weight:700">51,583</span></div>
+                    <div class="s2-row"><span>5</span><span>삼성화재</span><span>안전운전 파트너 플러스</span><span style="color:#fbbf24;font-weight:700">20,000</span></div>
+                    <div class="s2-row"><span>6</span><span>삼성화재</span><span>간편보험 325:1 유병장수</span><span style="color:#fbbf24;font-weight:700">139,000</span></div>
+                    <div class="s2-row"><span>7</span><span>AIG손보</span><span>꼭 필요한 상해보험2504</span><span style="color:#fbbf24;font-weight:700">32,833</span></div>
+                    <div class="s2-row"><span>8</span><span>AIG손보</span><span>참 든든한 간편보험2504</span><span style="color:#fbbf24;font-weight:700">33,671</span></div>
+                    <div class="s2-row"><span>9</span><span>AIG손보</span><span>참쉬운상해보험</span><span style="color:#fbbf24;font-weight:700">38,410</span></div>
+                    <div class="s2-row"><span>10</span><span>AIG손보</span><span>참 든든한 간편보험2504</span><span style="color:#fbbf24;font-weight:700">37,857</span></div>
+                </div>
+            </div>
+            <!-- 우측: 인사이트 카드들 -->
+            <div style="flex:1;display:flex;flex-direction:column;gap:10px;min-height:0;overflow:hidden">
+                <div class="s2-card s2-warning" id="s2-card1">
+                    <div class="s2-card-icon">⚠️</div>
+                    <div>
+                        <div class="s2-card-title">먼저 가치판단은 <span style="color:#fbbf24">금물!</span></div>
+                    </div>
+                </div>
+                <div class="s2-card s2-story" id="s2-card2">
+                    <div class="s2-card-icon">📖</div>
+                    <div>
+                        <div class="s2-card-title">가입하게 된 계기와 하나하나의</div>
+                        <div class="s2-card-highlight">'스토리'를 질문하고 경청</div>
+                    </div>
+                </div>
+                <div class="s2-card s2-insight" id="s2-card3">
+                    <div style="font-size:12px;color:#a78bfa;font-weight:700;margin-bottom:4px">→ 이 시간이 왜 중요한가</div>
+                    <p style="font-size:13px;color:#334155;line-height:1.65;margin:0">고객님의 <strong style="color:#8b5cf6">성향, 기준, 니즈, 불만족 포인트</strong>를 파악할 수 있는 가장 귀한 시간</p>
+                    <div style="margin-top:8px;padding-top:8px;border-top:1px solid rgba(139,92,246,.1);font-size:12px;color:#64748b;line-height:1.6">또한 고객님이 가장 <strong style="color:#8b5cf6">말을 많이</strong> 하게 되면서,<br/>상담에 있어 <strong style="color:#8b5cf6">릴렉스</strong>하게 되는 과정</div>
+                </div>
+                <div class="s2-card s2-killer" id="s2-card4">
+                    <div class="s2-card-icon">🎯</div>
+                    <div>
+                        <div class="s2-card-title">무뚝뚝한 남성에게 통하는</div>
+                        <div class="s2-card-highlight" style="background:linear-gradient(135deg,#dc2626,#ef4444);-webkit-background-clip:text;-webkit-text-fill-color:transparent">필살기</div>
+                    </div>
+                </div>
+                <div class="s2-card s2-job" id="s2-card5">
+                    <div class="s2-card-icon">💼</div>
+                    <div>
+                        <div class="s2-card-title">반드시</div>
+                        <div class="s2-card-highlight">'직업'을 체크하라</div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -708,6 +801,7 @@ let isTransitioning = false;
 // Sub-step system
 const slideSteps = {
     5: { total: 2, current: 0 },   // Instructor: 0=normal, 1=highlights
+    6: { total: 7, current: 0 },   // Step2: 0=init, 1=계약리스트, 2=가치판단금물, 3=스토리, 4=인사이트, 5=필살기, 6=직업
     7: { total: 5, current: 0 },   // Framework: 0=empty, 1=진단비, 2=수술비, 3=치료비, 4=간병비
     8: { total: 2, current: 0 },   // Table: 0=normal, 1=보험료 화살표
     11: { total: 3, current: 0 },  // Visual Signature: 0=지식의저주, 1=프로세스, 2=Be your Signature
@@ -732,6 +826,23 @@ function applySubStep(slideIndex, step) {
                 hlRare.style.opacity = '0';
                 hlAuth.style.opacity = '0';
             }
+            break;
+        }
+        case 6: { // Step 2: 보장자산 조회
+            const contract = document.getElementById('s2-contract');
+            const cards = [
+                document.getElementById('s2-card1'),
+                document.getElementById('s2-card2'),
+                document.getElementById('s2-card3'),
+                document.getElementById('s2-card4'),
+                document.getElementById('s2-card5')
+            ];
+            if (step >= 1) contract.classList.add('visible');
+            else contract.classList.remove('visible');
+            cards.forEach((card, i) => {
+                if (step >= i + 2) card.classList.add('visible');
+                else card.classList.remove('visible');
+            });
             break;
         }
         case 7: { // Framework 4분면
