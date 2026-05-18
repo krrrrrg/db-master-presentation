@@ -204,7 +204,7 @@ body:hover .nav-dots{opacity:1}
 .hl-authority{background:linear-gradient(135deg,#0d9488,#2dd4bf)}
 
 /* Step 2: 보장자산 조회 */
-.s2-contract{flex:1;min-width:0;background:none;border-radius:8px;padding:0;opacity:0;transform:translateX(-30px);transition:all .6s cubic-bezier(.16,1,.3,1);overflow:hidden;border:none}
+.s2-contract{background:none;border-radius:8px;padding:0;opacity:0;transform:translateX(-30px);transition:all .6s cubic-bezier(.16,1,.3,1);overflow:hidden;border:none}
 .s2-contract.visible{opacity:1;transform:translateX(0)}
 .s2-contract-header{margin-bottom:10px}
 .s2-contract-body{display:flex;flex-direction:column;gap:1px}
@@ -475,35 +475,35 @@ body:hover .back-btn{opacity:1}
         <div class="step-badge reveal" style="transition-delay:.1s"><i class="fas fa-search" style="margin-right:6px"></i>STEP 2</div>
         <h2 class="reveal" style="transition-delay:.2s">보장자산 조회 & <span class="accent">스토리 청취</span></h2>
         <div class="subtitle reveal" style="transition-delay:.3s">고객의 <strong>기존 계약</strong>을 함께 보며 이야기를 끌어낸다</div>
-        <div style="flex:1;display:flex;gap:12px;min-height:0;overflow:hidden">
-            <!-- 좌측: 계약리스트 이미지 (최대한 크게) -->
+        <div style="flex:1;display:flex;gap:16px;min-height:0;overflow:hidden">
+            <!-- 좌측: 계약리스트 이미지 -->
             <div class="s2-contract" id="s2-contract" style="flex:1;min-width:0;overflow:hidden;border-radius:8px">
-                <img src="img/contract-list.jpg" alt="계약리스트" style="width:100%;height:100%;object-fit:contain;object-position:top center;display:block"/>
+                <img src="img/contract-list.jpg" alt="계약리스트" style="width:100%;height:100%;object-fit:contain;object-position:top left;display:block"/>
             </div>
-            <!-- 우측: 인사이트 카드들 -->
-            <div style="width:200px;flex-shrink:0;display:flex;flex-direction:column;gap:4px;min-height:0;overflow:hidden">
+            <!-- 우측: 인사이트 카드들 (5:5 비율) -->
+            <div style="flex:1;min-width:0;display:flex;flex-direction:column;gap:5px;min-height:0;overflow:hidden">
                 <div class="s2-card s2-warning" id="s2-card1">
-                    <div style="font-size:11px;font-weight:700;color:#1e1b4b">⚠️ 가치판단은 <span style="color:#fbbf24">금물!</span></div>
+                    <div style="font-size:12px;font-weight:700;color:#1e1b4b">⚠️ 먼저 가치판단은 <span style="color:#fbbf24">금물!</span></div>
                 </div>
                 <div class="s2-card s2-story" id="s2-card2">
-                    <div style="font-size:11px;font-weight:700;color:#1e1b4b"><span style="color:#8b5cf6;font-weight:900">'스토리'</span>를 질문하고 경청</div>
+                    <div style="font-size:12px;font-weight:700;color:#1e1b4b">가입하게 된 계기와 <span style="color:#8b5cf6;font-weight:900">'스토리'</span>를 질문하고 경청</div>
                 </div>
                 <div class="s2-card s2-insight" id="s2-card3">
-                    <div style="font-size:9px;color:#a78bfa;font-weight:700;margin-bottom:1px">→ 왜 중요한가</div>
-                    <p style="font-size:9px;color:#334155;line-height:1.4;margin:0"><strong style="color:#8b5cf6">성향, 기준, 니즈</strong>를 파악하는 귀한 시간</p>
-                    <div style="margin-top:2px;padding-top:2px;border-top:1px solid rgba(139,92,246,.1);font-size:9px;color:#64748b;line-height:1.4">고객이 <strong style="color:#8b5cf6">릴렉스</strong>하게 되는 과정</div>
+                    <div style="font-size:10px;color:#a78bfa;font-weight:700;margin-bottom:2px">→ 이 시간이 왜 중요한가</div>
+                    <p style="font-size:10px;color:#334155;line-height:1.4;margin:0">고객님의 <strong style="color:#8b5cf6">성향, 기준, 니즈, 불만족 포인트</strong>를 파악할 수 있는 귀한 시간</p>
+                    <div style="margin-top:3px;padding-top:3px;border-top:1px solid rgba(139,92,246,.1);font-size:10px;color:#64748b;line-height:1.4">고객님이 가장 <strong style="color:#8b5cf6">말을 많이</strong> 하게 되면서 <strong style="color:#8b5cf6">릴렉스</strong>하게 되는 과정</div>
                 </div>
                 <!-- 필살기 + 직업 -->
                 <div class="s2-card s2-killer" id="s2-card4">
-                    <div style="font-size:11px;font-weight:700;color:#1e1b4b">🎯 <span style="font-weight:900;background:linear-gradient(135deg,#dc2626,#ef4444);-webkit-background-clip:text;-webkit-text-fill-color:transparent">필살기</span></div>
-                    <div id="s2-job-text" style="opacity:0;transform:translateX(10px);transition:all .5s cubic-bezier(.16,1,.3,1);margin-left:4px;padding-left:4px;border-left:2px solid #10b981;display:flex;align-items:center">
-                        <span style="font-size:10px;font-weight:700;color:#1e1b4b"><span style="color:#8b5cf6">'직업'</span> 체크</span>
+                    <div style="font-size:12px;font-weight:700;color:#1e1b4b">🎯 남성에게 통하는 <span style="font-weight:900;background:linear-gradient(135deg,#dc2626,#ef4444);-webkit-background-clip:text;-webkit-text-fill-color:transparent">필살기</span></div>
+                    <div id="s2-job-text" style="opacity:0;transform:translateX(10px);transition:all .5s cubic-bezier(.16,1,.3,1);margin-left:8px;padding-left:8px;border-left:2px solid #10b981;display:flex;align-items:center">
+                        <span style="font-size:11px;font-weight:700;color:#1e1b4b">반드시 <span style="color:#8b5cf6;font-weight:900">'직업'</span>을 체크하라</span>
                     </div>
                 </div>
                 <div class="s2-card s2-core" id="s2-card5">
                     <div style="text-align:center;width:100%;position:relative;z-index:2">
-                        <div style="font-size:10px;font-weight:700;color:rgba(255,255,255,.6)">내 상담에</div>
-                        <div style="font-size:16px;font-weight:900;background:linear-gradient(135deg,#a78bfa,#c4b5fd,#e9d5ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.3;letter-spacing:-.5px;margin-top:1px">녹여내는 게 핵심</div>
+                        <div style="font-size:12px;font-weight:700;color:rgba(255,255,255,.65);line-height:1.5">위 내용들을 내 상담에</div>
+                        <div style="font-size:22px;font-weight:900;background:linear-gradient(135deg,#a78bfa,#c4b5fd,#e9d5ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.3;letter-spacing:-1px;margin-top:2px">녹여내는 게 핵심</div>
                     </div>
                 </div>
             </div>
