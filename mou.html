@@ -60,6 +60,35 @@ body:hover .nav-dots{opacity:1}
 .m1 h1{font-size:60px;font-weight:900;color:#fff;line-height:1.2;letter-spacing:-3px;margin-bottom:20px}
 .m1 h1 .accent{background:linear-gradient(135deg,#14b8a6,#2dd4bf);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .m1 .tagline{font-size:17px;color:rgba(255,255,255,.5);line-height:1.8}
+.m1 .logo-chip{background:#fff;border-radius:14px;padding:16px 26px;display:flex;align-items:center;box-shadow:0 12px 34px rgba(0,0,0,.3)}
+.m1 .logo-chip img{height:32px;display:block}
+
+/* ======================== INSTRUCTOR (강남규) ======================== */
+.m-inst{background:linear-gradient(135deg,#fafffe 0%,#eefbf8 100%)}
+.m-inst .grid-bg{position:absolute;top:0;left:0;width:100%;height:100%;background-image:linear-gradient(rgba(20,184,166,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(20,184,166,.03) 1px,transparent 1px);background-size:60px 60px}
+.m-inst .content{position:relative;z-index:10;height:100%;display:flex;padding:0}
+.m-inst .left{flex:0 0 52%;display:flex;flex-direction:column;justify-content:center;padding:50px 40px 50px 80px}
+.m-inst .right{flex:0 0 48%;position:relative;overflow:hidden}
+.m-inst .right .photo-container{position:absolute;top:40px;right:40px;bottom:40px;left:20px;border-radius:24px;overflow:hidden;box-shadow:0 25px 60px rgba(0,0,0,.12)}
+.m-inst .right .photo-container img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform 6s ease}
+.m-inst .right .photo-container:hover img{transform:scale(1.05)}
+.m-inst .right .photo-overlay{position:absolute;bottom:0;left:0;right:0;height:50%;background:linear-gradient(transparent,rgba(15,23,42,.7));z-index:2}
+.m-inst .right .photo-brand{position:absolute;bottom:24px;left:24px;z-index:3}
+.m-inst .right .photo-brand img{height:28px;opacity:.9}
+.m-inst .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'Space Grotesk',sans-serif;font-size:12px;color:#14b8a6;font-weight:500;letter-spacing:2px;margin-bottom:16px}
+.m-inst .name{font-size:52px;font-weight:900;color:#0f172a;letter-spacing:-2px;margin-bottom:6px}
+.m-inst .name .accent{background:linear-gradient(135deg,#0d9488,#14b8a6);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.m-inst .role{font-size:14px;color:#64748b;line-height:1.6;margin-bottom:20px}
+.m-inst .badges{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px}
+.m-inst .badge{background:#fff;border:1px solid rgba(20,184,166,.08);border-radius:10px;padding:9px 14px;font-size:13px;color:#334155;font-weight:500;box-shadow:0 2px 8px rgba(0,0,0,.02);display:flex;align-items:center;gap:8px;transition:all .3s;cursor:default}
+.m-inst .badge:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(20,184,166,.08);border-color:rgba(20,184,166,.2)}
+.m-inst .badge-dot{width:6px;height:6px;background:linear-gradient(135deg,#14b8a6,#0d9488);border-radius:50%}
+.m-inst .timeline{padding-top:16px;border-top:1px solid rgba(20,184,166,.08)}
+.m-inst .timeline-title{font-family:'Space Grotesk',sans-serif;font-size:11px;color:#94a3b8;font-weight:600;letter-spacing:2px;margin-bottom:14px}
+.m-inst .timeline-items{display:flex;flex-direction:column;gap:8px}
+.m-inst .timeline-item{display:flex;align-items:center;gap:12px;font-size:13px;color:#475569;position:relative;padding-left:16px}
+.m-inst .timeline-item::before{content:'';position:absolute;left:0;top:50%;width:6px;height:6px;border-radius:50%;background:#14b8a6;transform:translateY(-50%)}
+.m-inst .timeline-item .period{font-family:'Space Grotesk',sans-serif;font-weight:600;color:#0d9488;min-width:100px}
 
 /* ======================== PLACEHOLDER ======================== */
 .m-placeholder{background:linear-gradient(135deg,#f0fdfa,#e6fffa)}
@@ -155,7 +184,7 @@ body:hover .back-btn{opacity:1}
 <div class="cursor" id="cursor"></div>
 <div class="cursor-dot" id="cursorDot"></div>
 <div class="progress-bar" id="progressBar"></div>
-<div class="slide-num" id="slideNum">01 / 03</div>
+<div class="slide-num" id="slideNum">01 / 04</div>
 <div class="nav-dots" id="navDots"></div>
 
 <div class="presentation" id="presentation">
@@ -166,9 +195,9 @@ body:hover .back-btn{opacity:1}
     <div class="content">
         <div class="eyebrow reveal" style="transition-delay:.2s">BUSINESS PARTNERSHIP PROPOSAL</div>
         <div class="partners reveal" style="transition-delay:.35s">
-            <div class="partner">카존코리아<span class="sub">KAZON KOREA</span></div>
+            <div class="logo-chip"><img src="img/carzone.png" alt="카존 CARZONE"/></div>
             <div class="x-mark">&times;</div>
-            <div class="partner">한국보험금융<span class="sub">시그니처사업부</span></div>
+            <div class="partner" style="text-align:center">시그니처사업부<span class="sub">한국보험금융</span></div>
         </div>
         <h1 class="reveal" style="transition-delay:.55s"><span class="accent">MOU</span> 제안서</h1>
         <div class="tagline reveal" style="transition-delay:.75s">
@@ -177,8 +206,42 @@ body:hover .back-btn{opacity:1}
     </div>
 </div>
 
-<!-- ==================== SLIDE 2: BUSINESS MODEL + CHART ==================== -->
-<div class="slide m-biz" data-slide="1">
+<!-- ==================== SLIDE 2: INSTRUCTOR (강남규) ==================== -->
+<div class="slide m-inst" data-slide="1">
+    <div class="grid-bg"></div>
+    <div class="content">
+        <div class="left">
+            <div class="eyebrow reveal" style="transition-delay:.1s"><i class="fas fa-user" style="font-size:10px"></i> INSTRUCTOR & BRAND</div>
+            <div class="name reveal" style="transition-delay:.25s"><span class="accent">강남규</span></div>
+            <div class="role reveal" style="transition-delay:.35s">보험학교 DB세일즈학과장<br/>한국보험금융(주) SAG 시그니처 사업부 부지점장</div>
+            <div class="badges reveal" style="transition-delay:.45s">
+                <div class="badge"><div class="badge-dot"></div>동국대학교 경영학과 졸업</div>
+                <div class="badge"><div class="badge-dot"></div>M생명 변액 상담 전국 최상위</div>
+                <div class="badge"><div class="badge-dot"></div>블로그/유튜브 온라인 영업</div>
+                <div class="badge"><div class="badge-dot"></div>T플랫폼 4,500명 상담</div>
+            </div>
+            <div class="timeline reveal" style="transition-delay:.55s">
+                <div class="timeline-title">TIME LINE</div>
+                <div class="timeline-items">
+                    <div class="timeline-item"><span class="period">17년 ~ 20년</span>M생명</div>
+                    <div class="timeline-item"><span class="period">20년 ~ 22년</span>G사 온라인팀</div>
+                    <div class="timeline-item"><span class="period">22년 ~ 26년</span>T플랫폼</div>
+                    <div class="timeline-item"><span class="period">26년 ~ 현재</span>한국보험금융 SAG 시그니처 사업부</div>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="photo-container reveal-scale" style="transition-delay:.3s">
+                <img src="img/instructor.jpeg" alt="강남규 강사"/>
+                <div class="photo-overlay"></div>
+                <div class="photo-brand"><img src="img/logo-white.png" alt="시그니처"/></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SLIDE 3: BUSINESS MODEL + CHART ==================== -->
+<div class="slide m-biz" data-slide="2">
     <div class="grid-bg"></div>
     <div class="content">
         <div class="eyebrow reveal" style="transition-delay:.1s">REVENUE GROWTH 2021–2025</div>
@@ -256,8 +319,8 @@ body:hover .back-btn{opacity:1}
     </div>
 </div>
 
-<!-- ==================== SLIDE 3: KEY CONSIDERATIONS ==================== -->
-<div class="slide m-notes" data-slide="2">
+<!-- ==================== SLIDE 4: KEY CONSIDERATIONS ==================== -->
+<div class="slide m-notes" data-slide="3">
     <div class="grid-bg"></div>
     <div class="content">
         <div class="eyebrow reveal" style="transition-delay:.1s">KEY CONSIDERATIONS</div>
