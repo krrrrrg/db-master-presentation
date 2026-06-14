@@ -62,6 +62,8 @@ body:hover .nav-dots{opacity:1}
 .m1 .tagline{font-size:17px;color:rgba(255,255,255,.5);line-height:1.8}
 .m1 .logo-chip{background:#fff;border-radius:14px;padding:16px 26px;display:flex;align-items:center;box-shadow:0 12px 34px rgba(0,0,0,.3)}
 .m1 .logo-chip img{height:32px;display:block}
+.m1 .confid{margin-top:36px;font-family:'Space Grotesk',sans-serif;font-size:11px;letter-spacing:3px;color:rgba(255,255,255,.28);display:flex;align-items:center;gap:10px}
+.m1 .confid::before,.m1 .confid::after{content:'';width:30px;height:1px;background:rgba(255,255,255,.15)}
 
 /* ======================== INSTRUCTOR (강남규) ======================== */
 .m-inst{background:linear-gradient(135deg,#fafffe 0%,#eefbf8 100%)}
@@ -218,6 +220,27 @@ body:hover .nav-dots{opacity:1}
 .m-winwin .note .nbody p{font-size:13.5px;color:rgba(255,255,255,.8);line-height:1.75}
 .m-winwin .note .nbody .em{color:#5eead4;font-weight:700}
 
+/* ======================== SLIDE 7: CLOSING ======================== */
+.m-close{background:#0a0e1a}
+.m-close .bg-mesh{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,rgba(20,184,166,.14) 0%,transparent 58%),radial-gradient(ellipse at 80% 90%,rgba(13,148,136,.1) 0%,transparent 50%);z-index:1}
+.m-close .content{position:relative;z-index:10;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 90px}
+.m-close .eyebrow{font-family:'Space Grotesk',sans-serif;font-size:13px;color:#2dd4bf;letter-spacing:4px;font-weight:500;margin-bottom:24px}
+.m-close h2{font-size:44px;font-weight:900;color:#fff;line-height:1.4;letter-spacing:-2px;margin-bottom:22px}
+.m-close h2 .accent{background:linear-gradient(135deg,#14b8a6,#2dd4bf);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.m-close .sub{font-size:17px;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:46px}
+.m-close .steps{display:flex;align-items:center;justify-content:center;margin-bottom:46px}
+.m-close .step{display:flex;flex-direction:column;align-items:center;gap:10px}
+.m-close .step .sc{width:50px;height:50px;border-radius:50%;border:1px solid rgba(20,184,166,.4);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-weight:700;color:#2dd4bf;font-size:15px;background:rgba(20,184,166,.07);transition:all .4s}
+.m-close .step:hover .sc{background:rgba(20,184,166,.18);transform:translateY(-3px)}
+.m-close .step .st{font-size:13.5px;color:rgba(255,255,255,.7);font-weight:600}
+.m-close .sarrow{color:#14b8a6;font-size:14px;padding:0 22px;margin-bottom:24px}
+.m-close .foot{display:flex;align-items:center;gap:18px}
+.m-close .foot .logo-chip{background:#fff;border-radius:10px;padding:9px 16px;display:flex;align-items:center}
+.m-close .foot .logo-chip img{height:18px;display:block}
+.m-close .foot .x{color:rgba(255,255,255,.3);font-size:16px}
+.m-close .foot .sig img{height:22px;opacity:.85}
+.m-close .thanks{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);font-family:'Space Grotesk',sans-serif;font-size:13px;color:rgba(255,255,255,.32);letter-spacing:3px;z-index:10}
+
 /* Back button */
 .back-btn{position:fixed;top:20px;left:20px;z-index:99998;width:40px;height:40px;border:none;border-radius:10px;background:rgba(15,23,42,.6);backdrop-filter:blur(8px);color:rgba(255,255,255,.6);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;opacity:0}
 body:hover .back-btn{opacity:1}
@@ -229,7 +252,8 @@ body:hover .back-btn{opacity:1}
 <!-- Fullscreen splash -->
 <div id="splash" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#0a0e1a;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:opacity .6s" onclick="enterFullscreen()">
     <img src="img/logo-white.png" alt="시그니처" style="height:36px;opacity:.6;margin-bottom:32px"/>
-    <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;color:rgba(255,255,255,.5);letter-spacing:3px;margin-bottom:40px">MOU 제안서</div>
+    <div style="font-size:18px;color:#fff;font-weight:700;margin-bottom:8px;letter-spacing:-.5px">MOU 제안서</div>
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;color:rgba(255,255,255,.4);letter-spacing:2px;margin-bottom:40px">CARZONE &times; 시그니처사업부</div>
     <div style="padding:14px 40px;border:1px solid rgba(20,184,166,.4);border-radius:12px;font-size:15px;color:#2dd4bf;font-weight:600;letter-spacing:1px;transition:all .3s;animation:glow 2s ease-in-out infinite" onmouseenter="this.style.background='rgba(20,184,166,.1)'" onmouseleave="this.style.background='transparent'">
         <i class="fas fa-expand" style="margin-right:8px"></i>전체화면으로 시작
     </div>
@@ -241,7 +265,7 @@ body:hover .back-btn{opacity:1}
 <div class="cursor" id="cursor"></div>
 <div class="cursor-dot" id="cursorDot"></div>
 <div class="progress-bar" id="progressBar"></div>
-<div class="slide-num" id="slideNum">01 / 06</div>
+<div class="slide-num" id="slideNum">01 / 07</div>
 <div class="nav-dots" id="navDots"></div>
 
 <div class="presentation" id="presentation">
@@ -258,8 +282,10 @@ body:hover .back-btn{opacity:1}
         </div>
         <h1 class="reveal" style="transition-delay:.55s"><span class="accent">MOU</span> 제안서</h1>
         <div class="tagline reveal" style="transition-delay:.75s">
-            상호 협력을 통한 동반 성장 파트너십
+            카존의 압도적인 DB 경쟁력에 시그니처의 장기보험 전문성을 더합니다<br/>
+            <span style="color:#5eead4;font-weight:500">함께 그리는, 새로운 성장 곡선</span>
         </div>
+        <div class="confid reveal" style="transition-delay:.95s">2026 · STRICTLY CONFIDENTIAL</div>
     </div>
 </div>
 
@@ -268,9 +294,9 @@ body:hover .back-btn{opacity:1}
     <div class="grid-bg"></div>
     <div class="content">
         <div class="left">
-            <div class="eyebrow reveal" style="transition-delay:.1s"><i class="fas fa-user" style="font-size:10px"></i> INSTRUCTOR & BRAND</div>
+            <div class="eyebrow reveal" style="transition-delay:.1s"><i class="fas fa-user" style="font-size:10px"></i> PROJECT LEAD · 시그니처사업부</div>
             <div class="name reveal" style="transition-delay:.25s"><span class="accent">강남규</span></div>
-            <div class="role reveal" style="transition-delay:.35s">보험학교 DB세일즈학과장<br/>한국보험금융(주) SAG 시그니처 사업부 부지점장</div>
+            <div class="role reveal" style="transition-delay:.35s">보험학교 DB세일즈학과장<br/>한국보험금융(주) SAG 시그니처 사업부 부지점장<br/><span style="color:#0d9488;font-weight:600">— 이 파트너십을 직접 설계하고 이끕니다</span></div>
             <div class="badges reveal" style="transition-delay:.45s">
                 <div class="badge"><div class="badge-dot"></div>동국대학교 경영학과 졸업</div>
                 <div class="badge"><div class="badge-dot"></div>M생명 변액 상담 전국 최상위</div>
@@ -303,7 +329,7 @@ body:hover .back-btn{opacity:1}
     <div class="content">
         <div class="eyebrow reveal" style="transition-delay:.1s">REVENUE GROWTH 2021–2025</div>
         <h2 class="reveal" style="transition-delay:.2s">주요 사업별 <span class="accent">매출 성장 추이</span></h2>
-        <div class="sub reveal" style="transition-delay:.3s">지속 성장·발전하는 카존</div>
+        <div class="sub reveal" style="transition-delay:.3s">지속 성장·발전하는 카존 — 자동차보험은 정점에, 장기보험은 이제 시작입니다</div>
         <div class="body">
             <div class="chart-col reveal-scale" style="transition-delay:.4s">
                 <div class="chart-head">
@@ -369,7 +395,7 @@ body:hover .back-btn{opacity:1}
                 </div>
                 <div class="biz-card focus reveal" style="transition-delay:.7s">
                     <div class="ic">🎯</div>
-                    <div><h3>'장기보험' 확대 필요</h3><p>매출 신장을 위한 다음 단계 — 성장의 새 동력</p></div>
+                    <div><h3>'장기보험'이 다음 동력</h3><p>7 → 10, 아직 미미한 장기보험. 이 미개척 영역이 매출 신장의 핵심</p></div>
                 </div>
             </div>
         </div>
@@ -466,6 +492,29 @@ body:hover .back-btn{opacity:1}
     </div>
 </div>
 
+<!-- ==================== SLIDE 7: CLOSING ==================== -->
+<div class="slide m-close" data-slide="6">
+    <div class="bg-mesh"></div>
+    <div class="content">
+        <div class="eyebrow reveal" style="transition-delay:.15s">LET'S GROW TOGETHER</div>
+        <h2 class="reveal" style="transition-delay:.3s">카존의 <span class="accent">DB 경쟁력</span>에<br/>시그니처의 <span class="accent">장기보험 전문성</span>을 더합니다</h2>
+        <div class="sub reveal" style="transition-delay:.5s">검증된 시스템과 투명한 수익 구조로,<br/>지속 가능한 동반 성장을 제안합니다</div>
+        <div class="steps reveal" style="transition-delay:.65s">
+            <div class="step"><div class="sc">01</div><div class="st">MOU 체결</div></div>
+            <div class="sarrow"><i class="fas fa-arrow-right"></i></div>
+            <div class="step"><div class="sc">02</div><div class="st">시범 운영</div></div>
+            <div class="sarrow"><i class="fas fa-arrow-right"></i></div>
+            <div class="step"><div class="sc">03</div><div class="st">성과 기반 확대</div></div>
+        </div>
+        <div class="foot reveal" style="transition-delay:.82s">
+            <div class="logo-chip"><img src="img/carzone.png" alt="카존 CARZONE"/></div>
+            <div class="x">&times;</div>
+            <div class="sig"><img src="img/logo-white.png" alt="시그니처사업부"/></div>
+        </div>
+    </div>
+    <div class="thanks reveal-blur" style="transition-delay:1s">감사합니다</div>
+</div>
+
 </div>
 
 <script>
@@ -523,7 +572,7 @@ for (let i = 0; i < total; i++) {
     navDots.appendChild(dot);
 }
 
-const darkSlides = [0, 4];
+const darkSlides = [0, 4, 6];
 
 function updateUI() {
     progressBar.style.width = ((current + 1) / total * 100) + '%';
@@ -534,16 +583,42 @@ function updateUI() {
 
 const EASE = 'cubic-bezier(.22,1,.36,1)';
 
+function countUp(el, dur) {
+    if (!el.dataset.val) el.dataset.val = el.textContent.trim();
+    const target = parseInt(el.dataset.val.replace(/[^0-9]/g, '')) || 0;
+    const start = performance.now();
+    el.textContent = '0';
+    function tick(now) {
+        const p = Math.min((now - start) / dur, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * eased).toLocaleString();
+        if (p < 1) requestAnimationFrame(tick);
+        else el.textContent = target.toLocaleString();
+    }
+    requestAnimationFrame(tick);
+}
+
 function animateBars(slide) {
     const bars = slide.querySelectorAll('.bar[data-h]');
     bars.forEach((b, i) => {
         b.classList.remove('grown');
         b.style.height = '3px';
-        setTimeout(() => { b.style.height = b.dataset.h; b.classList.add('grown'); }, 360 + i * 70);
+        const bv = b.querySelector('.bv');
+        if (bv && !bv.dataset.val) bv.dataset.val = bv.textContent.trim();
+        setTimeout(() => {
+            b.style.height = b.dataset.h;
+            b.classList.add('grown');
+            if (bv) countUp(bv, 950);
+        }, 360 + i * 70);
     });
 }
 function resetBars(slide) {
-    slide.querySelectorAll('.bar[data-h]').forEach(b => { b.classList.remove('grown'); b.style.height = '3px'; });
+    slide.querySelectorAll('.bar[data-h]').forEach(b => {
+        b.classList.remove('grown');
+        b.style.height = '3px';
+        const bv = b.querySelector('.bv');
+        if (bv && bv.dataset.val) bv.textContent = '0';
+    });
 }
 
 function triggerReveals(slide) {
