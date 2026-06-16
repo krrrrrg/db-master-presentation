@@ -11,9 +11,9 @@
 body{font-family:'Noto Sans KR',sans-serif;background:#000;overflow:hidden;width:100vw;height:100vh;display:flex;align-items:center;justify-content:center;cursor:none}
 
 /* Lock screen */
-#lock-screen{position:fixed;top:0;left:0;width:100vw;height:100vh;background:#000;z-index:100000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px}
+#lock-screen{position:fixed;top:0;left:0;width:100vw;height:100vh;background:#000;z-index:100000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:20px;cursor:default}
 #lock-screen.hidden{display:none}
-#lock-screen input{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:8px;padding:12px 20px;font-size:16px;color:#fff;width:280px;text-align:center;outline:none;font-family:'Noto Sans KR',sans-serif;transition:border-color .3s}
+#lock-screen input{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);border-radius:8px;padding:12px 20px;font-size:16px;color:#fff;width:280px;text-align:center;outline:none;font-family:'Noto Sans KR',sans-serif;transition:border-color .3s;cursor:text}
 #lock-screen input:focus{border-color:#3b82f6}
 #lock-screen input::placeholder{color:rgba(255,255,255,0.3)}
 #lock-screen .lock-title{font-size:14px;color:rgba(255,255,255,0.4);letter-spacing:4px;text-transform:uppercase;font-family:'Space Grotesk',sans-serif}
@@ -470,7 +470,7 @@ body:hover .nav-dots{opacity:1}
 <div class="cursor" id="cursor"></div>
 <div class="cursor-dot" id="cursorDot"></div>
 <div class="progress-bar" id="progressBar"></div>
-<div class="slide-num" id="slideNum">01 / 13</div>
+<div class="slide-num" id="slideNum">01 / 17</div>
 <div class="nav-dots" id="navDots"></div>
 
 <div class="presentation" id="presentation">
@@ -727,13 +727,25 @@ body:hover .nav-dots{opacity:1}
             <img src="img/db-generations.png" alt="1~3세대 마케팅 DB 진화"/>
         </div>
         <div class="bottom-bar reveal" style="transition-delay:.7s">
-            <p>퍼미션 → 리워드 → <span class="accent">상품기반 인바운드</span> — 3세대 DB로 갈수록 전환율이 높다</p>
+            <p><span class="accent">3세대 DB</span>까지 갖추는 게 경쟁력</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SLIDE: SUCCESS STRATEGY 3 (인바운드 & 제휴 DB) ==================== -->
+<div class="slide s-gen" data-slide="7">
+    <div class="content">
+        <div class="eyebrow reveal" style="transition-delay:.1s"><i class="fas fa-database" style="font-size:10px"></i> SUCCESS STRATEGY 3</div>
+        <h2 class="reveal" style="transition-delay:.2s">대면 DB <span class="accent">성공전략 3</span></h2>
+        <div class="subtitle reveal" style="transition-delay:.3s">어떻게 DB를 <strong>안정적으로 확보</strong>할 것인가?</div>
+        <div class="gen-img-wrap reveal-scale" style="transition-delay:.45s">
+            <img src="img/inbound-partnership-db.jpg" alt="인바운드 & 제휴 DB의 필요성"/>
         </div>
     </div>
 </div>
 
 <!-- ==================== SLIDE 6.6: BASEBALL ==================== -->
-<div class="slide s-baseball" data-slide="7">
+<div class="slide s-baseball" data-slide="8">
     <div class="content">
         <div class="baseball-icon reveal-scale" style="transition-delay:.3s">⚾️</div>
         <div class="main-quote reveal" style="transition-delay:.4s">
@@ -750,7 +762,7 @@ body:hover .nav-dots{opacity:1}
 </div>
 
 <!-- ==================== SLIDE 6.5: COMMISSION REFORM ==================== -->
-<div class="slide s-reform" data-slide="8">
+<div class="slide s-reform" data-slide="9">
     <div class="content">
         <div class="eyebrow reveal" style="transition-delay:.1s"><i class="fas fa-chart-line" style="font-size:10px"></i> COMMISSION REFORM</div>
         <h2 class="reveal" style="transition-delay:.2s">수수료제도 <span class="accent">개편</span></h2>
@@ -782,7 +794,7 @@ body:hover .nav-dots{opacity:1}
 </div>
 
 <!-- ==================== SLIDE 8: CUSTOMER MANAGEMENT ==================== -->
-<div class="slide s9" data-slide="9">
+<div class="slide s9" data-slide="10">
     <div class="content">
         <div class="eyebrow reveal" style="transition-delay:.1s"><i class="fas fa-heart" style="font-size:10px"></i> CUSTOMER MANAGEMENT</div>
         <h2 class="reveal" style="transition-delay:.2s">어떤 유형의 영업이든, <span class="accent">'고객관리'</span>를 꾸준히 해야</h2>
@@ -810,7 +822,7 @@ body:hover .nav-dots{opacity:1}
 </div>
 
 <!-- ==================== SLIDE 9: DELEGATION ==================== -->
-<div class="slide s7" data-slide="10">
+<div class="slide s7" data-slide="11">
     <div class="content">
         <div class="eyebrow reveal" style="transition-delay:.1s;display:inline-flex;align-items:center;gap:8px;font-family:'Space Grotesk',sans-serif;font-size:12px;color:#3b82f6;font-weight:500;letter-spacing:2px;margin-bottom:12px"><i class="fas fa-users" style="font-size:10px"></i> DELEGATION</div>
         <h2 class="reveal" style="transition-delay:.2s">나머지는 <span class="accent">조직에 위탁</span>하라</h2>
@@ -843,7 +855,7 @@ body:hover .nav-dots{opacity:1}
 </div>
 
 <!-- ==================== SLIDE 8: EVIDENCE ==================== -->
-<div class="slide s8" data-slide="11">
+<div class="slide s8" data-slide="12">
     <div class="content">
         <div class="eyebrow reveal" style="transition-delay:.1s"><i class="fas fa-briefcase" style="font-size:10px"></i> ORGANIZATION SUPPORT</div>
         <h2 class="reveal" style="transition-delay:.2s">조직이 <span class="accent">실제로 하는 일</span></h2>
@@ -868,7 +880,7 @@ body:hover .nav-dots{opacity:1}
 </div>
 
 <!-- ==================== SLIDE: EVIDENCE 2 ==================== -->
-<div class="slide s-ev2" data-slide="12">
+<div class="slide s-ev2" data-slide="13">
     <div class="content">
         <div class="eyebrow reveal" style="transition-delay:.1s"><i class="fas fa-briefcase" style="font-size:10px"></i> ORGANIZATION SUPPORT 2</div>
         <h2 class="reveal" style="transition-delay:.2s">조직이 <span class="accent">실제로 하는 일</span> 2</h2>
@@ -893,7 +905,7 @@ body:hover .nav-dots{opacity:1}
 </div>
 
 <!-- ==================== SLIDE 10: ROADMAP ==================== -->
-<div class="slide s10" data-slide="13">
+<div class="slide s10" data-slide="14">
     <div class="content">
         <div class="eyebrow reveal" style="transition-delay:.1s">ROADMAP</div>
         <h2 class="reveal" style="transition-delay:.2s">DB시장 <span class="accent">졸업 로드맵</span></h2>
@@ -945,7 +957,7 @@ body:hover .nav-dots{opacity:1}
 </div>
 
 <!-- ==================== SLIDE 11: CLOSING ==================== -->
-<div class="slide s11" data-slide="14">
+<div class="slide s11" data-slide="15">
     <div class="bg-img"><img src="img/door-sign1.png" alt=""/></div>
     <div class="bg-gradient"></div>
     <div class="content">
@@ -1063,9 +1075,9 @@ let isTransitioning = false;
 const slideSteps = {
     2: { total: 4, current: 0 },  // Market: 0=initial, 1=RED, 2=BLUE, 3=PURPLE
     3: { total: 11, current: 0 }, // 3Types: 0=hidden, 1=frames, 2=대면장단, 3=온라인장, 4=블로그, 5=문의카톡, 6=온라인단, 7=플랫폼장, 8=토스증거, 9=플랫폼단, 10=CORE
-    9: { total: 2, current: 0 },  // Customer: 0=process only, 1=brand+text
-    13: { total: 2, current: 0 }, // Roadmap: 0=phases, 1=action box
-    14: { total: 3, current: 0 }, // Closing: 0=sigh, 1=deep breath, 2=cheer
+    10: { total: 2, current: 0 }, // Customer: 0=process only, 1=brand+text
+    14: { total: 2, current: 0 }, // Roadmap: 0=phases, 1=action box
+    15: { total: 3, current: 0 }, // Closing: 0=sigh, 1=deep breath, 2=cheer
 };
 
 function applySubStep(slideIndex, step) {
@@ -1106,7 +1118,7 @@ function applySubStep(slideIndex, step) {
             coreBadge.style.pointerEvents = step >= 10 ? 'auto' : 'none';
             break;
         }
-        case 9: { // Customer management
+        case 10: { // Customer management
             const els = slide.querySelectorAll('.substep[data-substep="1"]');
             els.forEach(el => {
                 if (step >= 1) el.classList.add('visible');
@@ -1114,7 +1126,7 @@ function applySubStep(slideIndex, step) {
             });
             break;
         }
-        case 13: { // Roadmap action box
+        case 14: { // Roadmap action box
             const actionBox = slide.querySelector('.action-box.substep');
             if (step >= 1) {
                 actionBox.classList.add('visible');
@@ -1123,7 +1135,7 @@ function applySubStep(slideIndex, step) {
             }
             break;
         }
-        case 14: { // Closing 3-step
+        case 15: { // Closing 3-step
             const steps = slide.querySelectorAll('.closing-step');
             steps.forEach(s => {
                 const idx = parseInt(s.dataset.closing);
@@ -1153,7 +1165,7 @@ for (let i = 0; i < total; i++) {
     navDots.appendChild(dot);
 }
 
-const darkSlides = [0, 4, 7, 8, 14];
+const darkSlides = [0, 4, 8, 9, 15];
 
 function updateUI() {
     progressBar.style.width = ((current + 1) / total * 100) + '%';
