@@ -8,7 +8,7 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Noto Sans KR',sans-serif;background:#000;overflow:hidden;width:100vw;height:100vh;display:flex;align-items:center;justify-content:center;cursor:none;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+body{font-family:'Noto Sans KR',sans-serif;background:#000;overflow:hidden;width:100vw;height:100vh;height:100dvh;display:flex;align-items:center;justify-content:center;cursor:none;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 .slide *{word-break:keep-all;overflow-wrap:break-word}
 table{border-collapse:collapse}
 table td,table th{vertical-align:middle}
@@ -16,7 +16,7 @@ table td,table th{vertical-align:middle}
 .cursor{position:fixed;width:20px;height:20px;border:2px solid rgba(139,92,246,0.8);border-radius:50%;pointer-events:none;z-index:99999;transition:transform .15s ease,opacity .3s;mix-blend-mode:difference}
 .cursor-dot{position:fixed;width:6px;height:6px;background:#8b5cf6;border-radius:50%;pointer-events:none;z-index:99999;transition:transform .05s,opacity .3s}
 
-.presentation{position:relative;width:1280px;height:720px;transform-origin:center center;overflow:hidden;border-radius:4px;box-shadow:0 0 80px rgba(0,0,0,0.5)}
+.presentation{position:relative;flex-shrink:0;width:1280px;height:720px;transform-origin:center center;overflow:hidden;border-radius:4px;box-shadow:0 0 80px rgba(0,0,0,0.5)}
 
 /* Slide system */
 .slide{position:absolute;top:0;left:0;width:1280px;height:720px;opacity:0;visibility:hidden;transition:none;overflow:hidden}
@@ -989,13 +989,24 @@ document.querySelector('.presentation').addEventListener('click', e => {
     }
 });
 
-// Scale
+// Scale — 모바일/태블릿 주소창·툴바로 인한 잘림 방지: '실제 보이는 영역' 기준으로 맞춤
 function scalePresentation() {
     const p = document.getElementById('presentation');
-    const s = Math.min(window.innerWidth / 1280, window.innerHeight / 720);
+    const vw = (window.visualViewport && window.visualViewport.width)  || window.innerWidth;
+    const vh = (window.visualViewport && window.visualViewport.height) || window.innerHeight;
+    // 중앙정렬 기준 박스를 보이는 영역과 일치시켜 세로 잘림 제거 (100vh != 실제 가시영역 문제 해결)
+    document.body.style.width  = vw + 'px';
+    document.body.style.height = vh + 'px';
+    const s = Math.min(vw / 1280, vh / 720);
     p.style.transform = `scale(${s})`;
 }
 window.addEventListener('resize', scalePresentation);
+window.addEventListener('orientationchange', () => { scalePresentation(); setTimeout(scalePresentation, 300); });
+window.addEventListener('load', scalePresentation);
+if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', scalePresentation);
+    window.visualViewport.addEventListener('scroll', scalePresentation);
+}
 scalePresentation();
 
 // Init
