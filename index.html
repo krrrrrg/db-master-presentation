@@ -1346,8 +1346,11 @@ darkSlides.forEach(i => addParticles(slides[i]));
 
 <script>
 async function sha256(msg){const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(msg));return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('')}
-async function unlockPresentation(){const pw=document.getElementById('lock-pw').value;const hash=await sha256(pw);if(hash==='203b7df61a742c704a032495263001cc0fcb70d6ec79322d03ee4448c4a61525'){document.getElementById('lock-screen').classList.add('hidden');document.getElementById('menu-screen').style.display='flex'}else{const err=document.getElementById('lock-error');err.textContent='비밀번호가 올바르지 않습니다.';err.style.opacity='1';setTimeout(()=>{err.style.opacity='0'},2000)}}
+function showMenu(){document.getElementById('lock-screen').classList.add('hidden');document.getElementById('menu-screen').style.display='flex';document.getElementById('menu-screen').style.opacity='1'}
+async function unlockPresentation(){const pw=document.getElementById('lock-pw').value;const hash=await sha256(pw);if(hash==='203b7df61a742c704a032495263001cc0fcb70d6ec79322d03ee4448c4a61525'){sessionStorage.setItem('sig_unlocked','1');showMenu()}else{const err=document.getElementById('lock-error');err.textContent='비밀번호가 올바르지 않습니다.';err.style.opacity='1';setTimeout(()=>{err.style.opacity='0'},2000)}}
 document.getElementById('lock-pw').addEventListener('keydown',e=>{if(e.key==='Enter')unlockPresentation()});
+// 세션 중 이미 잠금해제했으면 비번 건너뛰고 바로 메뉴로 (강의 간 전환 시 재입력 방지)
+if(sessionStorage.getItem('sig_unlocked')==='1'){showMenu()}
 function selectPresentation(type){document.getElementById('menu-screen').style.opacity='0';setTimeout(()=>{document.getElementById('menu-screen').style.display='none';if(type==='consultation'){window.location.href='consultation.html'}else if(type==='mou'){window.location.href='mou.html'}else{document.getElementById('splash').style.display='flex'}},500)}
 </script>
 </body>
