@@ -251,6 +251,20 @@ body:hover .nav-dots{opacity:1}
 .back-btn{position:fixed;top:20px;left:20px;z-index:99998;width:40px;height:40px;border:none;border-radius:10px;background:rgba(15,23,42,.6);backdrop-filter:blur(8px);color:rgba(255,255,255,.6);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;opacity:0}
 body:hover .back-btn{opacity:1}
 .back-btn:hover{background:rgba(20,184,166,.5);color:#fff}
+
+/* ======================== V2 STYLE KIT ======================== */
+/* 아이브로우 연장선 */
+.m-biz .eyebrow,.m-notes .eyebrow,.m-strategy .eyebrow,.m-winwin .eyebrow,.m-inst .eyebrow{display:flex;width:100%;align-items:center;gap:14px;font-weight:600;border:none;background:transparent}
+.m-biz .eyebrow::after,.m-notes .eyebrow::after,.m-strategy .eyebrow::after,.m-winwin .eyebrow::after,.m-inst .eyebrow::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(20,184,166,.35),transparent)}
+/* 고스트 섹션 넘버 */
+.slide .content::before{position:absolute;top:50%;right:-6px;transform:translateY(-50%);font-family:'Space Grotesk',sans-serif;font-size:290px;font-weight:700;line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(20,184,166,.10);z-index:-1;pointer-events:none;letter-spacing:-8px}
+.m-strategy .content::before{-webkit-text-stroke-color:rgba(255,255,255,.055)}
+.slide[data-slide="2"] .content::before{content:'01'}
+.slide[data-slide="3"] .content::before{content:'02'}
+.slide[data-slide="4"] .content::before{content:'03'}
+.slide[data-slide="5"] .content::before{content:'04'}
+/* 강사 사진 인셋 링 */
+.m-inst .right .photo-container::after{content:'';position:absolute;inset:14px;border:1px solid rgba(255,255,255,.35);border-radius:14px;z-index:3;pointer-events:none}
 </style>
 </head>
 <body>
