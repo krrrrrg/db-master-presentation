@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>마이어시스트 DB 세션 - 시그니처</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=Montserrat:wght@800;900&display=swap" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Noto Sans KR',sans-serif;background:#000;overflow:hidden;width:100vw;height:100vh;height:100dvh;display:flex;align-items:center;justify-content:center;cursor:none;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.slide *{word-break:keep-all;overflow-wrap:break-word}
+table{border-collapse:collapse}
+table td,table th{vertical-align:middle}
+
+.cursor{position:fixed;width:20px;height:20px;border:2px solid rgba(245,158,11,0.8);border-radius:50%;pointer-events:none;z-index:99999;transition:transform .15s ease,opacity .3s;mix-blend-mode:difference}
+.cursor-dot{position:fixed;width:6px;height:6px;background:#f59e0b;border-radius:50%;pointer-events:none;z-index:99999;transition:transform .05s,opacity .3s}
+
+.presentation{position:relative;flex-shrink:0;width:1280px;height:720px;transform-origin:center center;overflow:hidden;border-radius:4px;box-shadow:0 0 80px rgba(0,0,0,0.5)}
+
+/* Slide system */
+.slide{position:absolute;top:0;left:0;width:1280px;height:720px;opacity:0;visibility:hidden;transition:none;overflow:hidden}
+.slide.active{opacity:1;visibility:visible}
+
+/* Animated elements */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.reveal.show{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-50px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.reveal-left.show{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(50px);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.reveal-right.show{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(.85);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
+.reveal-scale.show{opacity:1;transform:scale(1)}
+.reveal-blur{opacity:0;filter:blur(10px);transition:opacity 1s cubic-bezier(.16,1,.3,1),filter 1s cubic-bezier(.16,1,.3,1)}
+.reveal-blur.show{opacity:1;filter:blur(0)}
+
+/* Sub-step system */
+.substep{opacity:0;transform:translateY(24px);pointer-events:none;transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
+.substep.visible{opacity:1;transform:translateY(0);pointer-events:auto}
+.substep-fade{opacity:0;pointer-events:none;transition:opacity .7s cubic-bezier(.16,1,.3,1)}
+.substep-fade.visible{opacity:1;pointer-events:auto}
+
+/* Progress bar */
+.progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#f59e0b,#fbbf24);z-index:9999;transition:width .5s cubic-bezier(.16,1,.3,1)}
+
+/* Slide number */
+.slide-num{position:fixed;bottom:30px;right:40px;font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:rgba(255,255,255,0.5);z-index:9998;letter-spacing:2px;transition:color .3s}
+
+/* Navigation dots */
+.nav-dots{position:fixed;right:30px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:12px;z-index:9998;opacity:0;transition:opacity .3s}
+body:hover .nav-dots{opacity:1}
+.nav-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.2);cursor:pointer;transition:all .3s;position:relative}
+.nav-dot.active{background:#f59e0b;box-shadow:0 0 12px rgba(245,158,11,0.5)}
+.nav-dot:hover{background:rgba(255,255,255,0.5);transform:scale(1.3)}
+.nav-dot.active:hover{background:#f59e0b}
+
+/* Particles */
+.particle{position:absolute;border-radius:50%;pointer-events:none;animation:float linear infinite}
+@keyframes float{0%{transform:translateY(0) rotate(0deg);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-720px) rotate(720deg);opacity:0}}
+
+/* Pulse */
+@keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
+@keyframes glow{0%,100%{box-shadow:0 0 20px rgba(245,158,11,0.2)}50%{box-shadow:0 0 40px rgba(245,158,11,0.4)}}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
+@keyframes gradient-shift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+
+/* ======================== SLIDE 1: TITLE (표지) ======================== */
+.ma1{background:#050508}
+.ma1 .bg-mesh{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 28% 78%,rgba(245,158,11,0.13) 0%,transparent 52%),radial-gradient(ellipse at 75% 22%,rgba(99,102,241,0.10) 0%,transparent 50%),radial-gradient(ellipse at 50% 120%,rgba(245,158,11,0.06) 0%,transparent 60%);z-index:1}
+.ma1 .bg-grid{position:absolute;top:0;left:0;width:100%;height:100%;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:64px 64px;mask-image:radial-gradient(ellipse at 50% 45%,rgba(0,0,0,.8) 0%,transparent 70%);-webkit-mask-image:radial-gradient(ellipse at 50% 45%,rgba(0,0,0,.8) 0%,transparent 70%);z-index:2}
+.ma1 .orb{position:absolute;border-radius:50%;filter:blur(70px);z-index:2;pointer-events:none}
+.ma1 .orb-a{width:460px;height:460px;left:-130px;bottom:-160px;background:radial-gradient(circle,rgba(245,158,11,.20),transparent 70%);animation:orbDrift 14s ease-in-out infinite}
+.ma1 .orb-b{width:400px;height:400px;right:-110px;top:-130px;background:radial-gradient(circle,rgba(99,102,241,.18),transparent 70%);animation:orbDrift 18s ease-in-out infinite reverse}
+@keyframes orbDrift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(44px,-32px) scale(1.1)}}
+.ma1 .content{position:relative;z-index:10;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 80px}
+.ma1 .eyebrow{display:inline-flex;align-items:center;gap:11px;font-family:'Space Grotesk',sans-serif;font-size:12.5px;color:#fbbf24;letter-spacing:4px;margin-bottom:52px;font-weight:600;padding:11px 24px;border:1px solid rgba(245,158,11,.35);border-radius:100px;background:rgba(245,158,11,.06)}
+.ma1 .eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:#f59e0b;box-shadow:0 0 10px rgba(245,158,11,.9);animation:pulse 2s ease-in-out infinite}
+.ma1 .ma-logo{font-family:'Montserrat',sans-serif;font-size:140px;font-weight:900;letter-spacing:-6px;line-height:1;text-transform:lowercase;display:inline-block;padding-bottom:14px;border-bottom:9px solid #fff;margin-bottom:50px;background:linear-gradient(110deg,#fff 42%,#fde68a 50%,#fff 58%);background-size:250% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:logoSheen 5.5s ease-in-out infinite;filter:drop-shadow(0 0 34px rgba(255,255,255,.12))}
+@keyframes logoSheen{0%,18%{background-position:115% 0}52%,100%{background-position:-15% 0}}
+.ma1 h1{font-size:54px;font-weight:900;color:#fff;line-height:1.25;letter-spacing:-2px;margin-bottom:24px}
+.ma1 h1 .accent{background:linear-gradient(135deg,#f59e0b,#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.ma1 .divider{width:68px;height:3px;border-radius:2px;background:linear-gradient(90deg,#f59e0b,#fbbf24);margin-bottom:0;box-shadow:0 0 16px rgba(245,158,11,.5)}
+.ma1 .logo-bottom{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);z-index:10}
+.ma1 .logo-bottom img{height:26px;opacity:.4}
+
+/* ======================== SLIDE 2: INSTRUCTOR ======================== */
+.ma2{background:linear-gradient(135deg,#fffdfa 0%,#faf5ec 100%)}
+.ma2 .grid-bg{position:absolute;top:0;left:0;width:100%;height:100%;background-image:linear-gradient(rgba(245,158,11,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(245,158,11,.04) 1px,transparent 1px);background-size:60px 60px}
+.ma2 .content{position:relative;z-index:10;height:100%;display:flex;padding:0}
+.ma2 .left{flex:0 0 52%;display:flex;flex-direction:column;justify-content:center;padding:50px 40px 50px 80px}
+.ma2 .right{flex:0 0 48%;position:relative;overflow:hidden}
+.ma2 .right .photo-container{position:absolute;top:40px;right:40px;bottom:40px;left:20px;border-radius:24px;overflow:hidden;box-shadow:0 25px 60px rgba(0,0,0,.12)}
+.ma2 .right .photo-container img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform 6s ease}
+.ma2 .right .photo-container:hover img{transform:scale(1.05)}
+.ma2 .right .photo-overlay{position:absolute;bottom:0;left:0;right:0;height:50%;background:linear-gradient(transparent,rgba(15,23,42,.7));z-index:2}
+.ma2 .right .photo-brand{position:absolute;bottom:26px;left:26px;z-index:4}
+.ma2 .right .photo-brand img{height:28px;opacity:.9}
+.ma2 .eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'Space Grotesk',sans-serif;font-size:12px;color:#d97706;font-weight:500;letter-spacing:2px;margin-bottom:16px}
+.ma2 .name{font-size:64px;font-weight:900;color:#0f172a;letter-spacing:-2.5px;margin-bottom:8px}
+.ma2 .name .accent{background:linear-gradient(135deg,#b45309,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.ma2 .role{font-size:16.5px;color:#475569;line-height:1.65;margin-bottom:24px;font-weight:500}
+.ma2 .badges{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px}
+.ma2 .badge{background:#fff;border:1px solid rgba(245,158,11,.12);border-radius:12px;padding:11px 16px;font-size:14.5px;color:#334155;font-weight:600;box-shadow:0 3px 12px rgba(180,83,9,.05);display:flex;align-items:center;gap:9px;transition:all .3s;cursor:default}
+.ma2 .badge:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(245,158,11,.1);border-color:rgba(245,158,11,.25)}
+.ma2 .badge-dot{width:6px;height:6px;background:linear-gradient(135deg,#f59e0b,#b45309);border-radius:50%}
+.ma2 .timeline{padding-top:16px;border-top:1px solid rgba(245,158,11,.12)}
+.ma2 .timeline-title{font-family:'Space Grotesk',sans-serif;font-size:11px;color:#94a3b8;font-weight:600;letter-spacing:2px;margin-bottom:14px}
+.ma2 .timeline-items{display:flex;flex-direction:column;gap:8px}
+.ma2 .timeline-item{display:flex;align-items:center;gap:14px;font-size:14.5px;color:#475569;position:relative;padding-left:18px;font-weight:500}
+.ma2 .timeline-item::before{content:'';position:absolute;left:0;top:50%;width:6px;height:6px;border-radius:50%;background:#f59e0b;transform:translateY(-50%)}
+.ma2 .timeline-item .period{font-family:'Space Grotesk',sans-serif;font-weight:600;color:#b45309;min-width:110px}
+.ma2 .right .photo-container::after{content:'';position:absolute;inset:14px;border:1px solid rgba(255,255,255,.35);border-radius:14px;z-index:3;pointer-events:none}
+
+/* ======================== SLIDE 3: SESSION OVERVIEW ======================== */
+.ma3{background:#050508}
+.ma3 .bg-mesh{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 28% 78%,rgba(245,158,11,0.10) 0%,transparent 50%),radial-gradient(ellipse at 75% 22%,rgba(99,102,241,0.08) 0%,transparent 50%);z-index:1}
+.ma3 .state{position:absolute;top:0;left:0;width:100%;height:100%;z-index:10}
+.ma3 .intro-state{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 100px;transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1),filter .7s cubic-bezier(.16,1,.3,1)}
+.ma3 .intro-state:not(.visible){transform:translateY(-30px);filter:blur(8px)}
+.ma3 .intro-state .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-size:12.5px;color:#fbbf24;letter-spacing:4px;margin-bottom:48px;font-weight:600;padding:10px 22px;border:1px solid rgba(245,158,11,.35);border-radius:100px;background:rgba(245,158,11,.06)}
+.ma3 .intro-state .eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:#f59e0b;box-shadow:0 0 10px rgba(245,158,11,.9);animation:pulse 2s ease-in-out infinite}
+.ma3 .intro-state .l1{font-size:30px;font-weight:600;color:rgba(255,255,255,.42);margin-bottom:18px;letter-spacing:-.5px}
+.ma3 .intro-state .l2{font-size:52px;font-weight:900;color:#fff;letter-spacing:-2px;line-height:1.3;margin-bottom:12px}
+.ma3 .intro-state .l3{font-size:96px;font-weight:900;letter-spacing:-3.5px;background:linear-gradient(120deg,#f59e0b,#fbbf24,#f59e0b);background-size:200% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.25;animation:gradient-shift 4.5s ease infinite;filter:drop-shadow(0 10px 44px rgba(245,158,11,.32))}
+.ma3 .agenda-state{display:flex;flex-direction:column;justify-content:center;padding:54px 100px}
+.ma3 .agenda-state .eyebrow{font-family:'Space Grotesk',sans-serif;font-size:12px;color:#f59e0b;letter-spacing:4px;font-weight:600;margin-bottom:22px;display:flex;align-items:center;gap:14px}
+.ma3 .agenda-state .eyebrow::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(245,158,11,.35),transparent)}
+.ma3 .agenda-list{display:flex;flex-direction:column;gap:12px;margin-bottom:22px}
+.ma3 .agenda-item{display:flex;align-items:center;gap:22px;background:rgba(255,255,255,.03);border:1px solid rgba(245,158,11,.14);border-radius:15px;padding:17px 30px;opacity:0;transition:border-color .3s,background .3s,transform .3s;cursor:default}
+.ma3 .agenda-state.visible .agenda-item{animation:ma3ItemIn .55s cubic-bezier(.16,1,.3,1) both}
+.ma3 .agenda-state.visible .agenda-item:nth-child(1){animation-delay:.05s}
+.ma3 .agenda-state.visible .agenda-item:nth-child(2){animation-delay:.13s}
+.ma3 .agenda-state.visible .agenda-item:nth-child(3){animation-delay:.21s}
+.ma3 .agenda-state.visible .agenda-item:nth-child(4){animation-delay:.29s}
+.ma3 .agenda-state.visible .agenda-item:nth-child(5){animation-delay:.37s}
+.ma3 .agenda-state.visible .agenda-item:hover{border-color:rgba(245,158,11,.4);background:rgba(245,158,11,.05);transform:translateX(4px)}
+@keyframes ma3ItemIn{from{opacity:0;transform:translateX(-32px) scale(.98)}to{opacity:1;transform:translateX(0) scale(1)}}
+.ma3 .agenda-item .num{font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;background:linear-gradient(135deg,#f59e0b,#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;min-width:46px;line-height:1}
+.ma3 .agenda-item .vline{width:1px;height:30px;background:rgba(245,158,11,.25);flex-shrink:0}
+.ma3 .agenda-item .txt{font-size:19.5px;font-weight:700;color:#fff;line-height:1.45;letter-spacing:-.4px}
+.ma3 .agenda-item .txt .hl{color:#fbbf24}
+.ma3 .apply-bar{background:linear-gradient(135deg,rgba(245,158,11,.13),rgba(251,191,36,.07));border:1px solid rgba(245,158,11,.32);border-radius:15px;padding:19px 30px;text-align:center;font-size:19.5px;font-weight:800;color:#fff;letter-spacing:-.3px;opacity:0;box-shadow:0 0 34px rgba(245,158,11,.08)}
+.ma3 .agenda-state.visible .apply-bar{animation:ma3BarIn .6s cubic-bezier(.16,1,.3,1) .5s both}
+@keyframes ma3BarIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.ma3 .apply-bar i{color:#fbbf24;margin-right:10px}
+.ma3 .apply-bar .accent{color:#fbbf24}
+
+/* ======================== SLIDE 4: POINT 01 — 포트폴리오 ======================== */
+.ma4{background:linear-gradient(135deg,#fffdfa 0%,#faf5ec 100%)}
+.ma4 .grid-bg{position:absolute;top:0;left:0;width:100%;height:100%;background-image:linear-gradient(rgba(245,158,11,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(245,158,11,.04) 1px,transparent 1px);background-size:60px 60px}
+.ma4 .content{position:relative;z-index:10;height:100%;padding:54px 90px;display:flex;flex-direction:column}
+.ma4 .eyebrow{font-family:'Space Grotesk',sans-serif;font-size:12px;color:#d97706;font-weight:600;letter-spacing:3px;margin-bottom:14px;display:flex;align-items:center;gap:14px}
+.ma4 .eyebrow::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(217,119,6,.25),transparent)}
+.ma4 h2{font-size:42px;font-weight:900;color:#0f172a;letter-spacing:-1.5px;line-height:1.3}
+.ma4 h2 .accent{background:linear-gradient(135deg,#b45309,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.ma4 .body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:30px}
+.ma4 .quote-card{background:#fff;border:1px solid rgba(245,158,11,.14);border-radius:24px;padding:40px 62px;display:flex;align-items:center;gap:34px;box-shadow:0 16px 50px rgba(180,83,9,.09);max-width:900px}
+.ma4 .quote-card .q-icon{font-size:62px;line-height:1;flex-shrink:0}
+.ma4 .quote-card .q-body{display:flex;flex-direction:column;gap:12px}
+.ma4 .quote-card .q-label{display:inline-flex;align-self:flex-start;background:rgba(245,158,11,.1);border-radius:8px;padding:6px 14px;font-size:13px;font-weight:700;color:#b45309;letter-spacing:1.5px}
+.ma4 .quote-card .q-text{font-size:33px;font-weight:800;color:#1e293b;letter-spacing:-1px;line-height:1.4}
+.ma4 .quote-card .q-text .qm{color:#f59e0b;font-family:'Space Grotesk',sans-serif}
+.ma4 .q-row{display:flex;align-items:center;gap:26px;min-height:64px}
+.ma4 .q-row .question{font-size:28px;font-weight:800;color:#334155;letter-spacing:-.8px}
+.ma4 .stamp{font-family:'Space Grotesk',sans-serif;font-size:42px;font-weight:700;color:#ef4444;border:4px solid #ef4444;border-radius:12px;padding:7px 26px;transform:rotate(-7deg);letter-spacing:1px;opacity:0;box-shadow:0 8px 24px rgba(239,68,68,.22);background:rgba(255,255,255,.72)}
+.ma4 .stamp.visible{animation:ma4StampIn .45s cubic-bezier(.34,1.56,.64,1) both,ma4Shake .45s ease-in-out .5s both}
+@keyframes ma4Shake{0%,100%{transform:rotate(-7deg) scale(1)}30%{transform:rotate(-9.5deg) scale(1.03)}65%{transform:rotate(-5.5deg) scale(1)}}
+@keyframes ma4StampIn{0%{opacity:0;transform:rotate(-7deg) scale(2.4)}60%{opacity:1;transform:rotate(-7deg) scale(.94)}100%{opacity:1;transform:rotate(-7deg) scale(1)}}
+.ma4 .key-bar{background:linear-gradient(135deg,#1e293b,#0f172a);border-radius:18px;padding:24px 36px;text-align:center;box-shadow:0 16px 44px rgba(15,23,42,.22)}
+.ma4 .key-bar p{font-size:22.5px;font-weight:800;color:#fff;letter-spacing:-.5px}
+.ma4 .key-bar .hl{color:#fbbf24;font-weight:800;position:relative}
+.ma4 .key-bar .hl::after{content:'';position:absolute;bottom:-3px;left:0;width:100%;height:2px;background:#f59e0b;border-radius:1px}
+
+/* ======================== SLIDE 5: DB 포트폴리오 구성 ======================== */
+.ma5{background:#050508}
+.ma5 .bg-mesh{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 30% 25%,rgba(245,158,11,0.08) 0%,transparent 50%),radial-gradient(ellipse at 72% 80%,rgba(99,102,241,0.07) 0%,transparent 50%);z-index:1}
+.ma5 .content{position:relative;z-index:10;height:100%;padding:54px 90px;display:flex;flex-direction:column;justify-content:center}
+.ma5 .eyebrow{font-family:'Space Grotesk',sans-serif;font-size:12px;color:#f59e0b;font-weight:600;letter-spacing:4px;margin-bottom:14px;display:flex;align-items:center;gap:14px}
+.ma5 .eyebrow::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(245,158,11,.35),transparent)}
+.ma5 h2{font-size:40px;font-weight:900;color:#fff;letter-spacing:-1.5px;margin-bottom:32px;line-height:1.3}
+.ma5 h2 .accent{background:linear-gradient(135deg,#f59e0b,#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.ma5 .db-grid{display:flex;gap:16px;margin-bottom:26px}
+.ma5 .db-card{flex:1;position:relative;background:rgba(255,255,255,.03);border:1px solid rgba(245,158,11,.15);border-radius:20px;padding:34px 20px 30px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px;transition:all .35s;cursor:default}
+.ma5 .db-card:hover{background:rgba(245,158,11,.06);border-color:rgba(245,158,11,.45);transform:translateY(-5px);box-shadow:0 18px 40px rgba(245,158,11,.08)}
+.ma5 .db-card .db-num{position:absolute;top:16px;left:20px;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;color:rgba(245,158,11,.45);letter-spacing:1px}
+.ma5 .db-card .icon-wrap{width:74px;height:74px;border-radius:20px;background:linear-gradient(135deg,rgba(245,158,11,.17),rgba(251,191,36,.08));border:1px solid rgba(245,158,11,.28);display:flex;align-items:center;justify-content:center}
+.ma5 .db-card .icon-wrap i{font-size:30px;color:#fbbf24}
+.ma5 .db-card .db-name{font-size:21px;font-weight:800;color:#fff;letter-spacing:-.5px}
+.ma5 .db-card .db-tag{display:inline-flex;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:100px;padding:6px 16px;font-size:14px;font-weight:600;color:rgba(255,255,255,.7)}
+.ma5 .reason-bar{background:linear-gradient(135deg,rgba(245,158,11,.13),rgba(251,191,36,.07));border:1px solid rgba(245,158,11,.32);border-radius:14px;padding:18px 28px;text-align:center;margin-bottom:16px}
+.ma5 .reason-bar p{font-size:23px;font-weight:800;color:#fff;letter-spacing:-.5px}
+.ma5 .reason-bar .hl{color:#fbbf24;position:relative}
+.ma5 .reason-bar .hl::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2px;background:#f59e0b;border-radius:1px}
+.ma5 .warn-line{display:flex;align-items:center;justify-content:center;gap:11px;font-size:18px;font-weight:500;color:rgba(255,255,255,.58);letter-spacing:-.3px}
+.ma5 .warn-line i{color:#f87171;font-size:16px}
+.ma5 .warn-line .danger{color:#f87171;font-weight:700}
+
+/* ======================== SLIDE 6: POINT 02 — 왜 마스케어인가 ======================== */
+.ma6{background:linear-gradient(135deg,#fffdfa 0%,#faf5ec 100%)}
+.ma6 .grid-bg{position:absolute;top:0;left:0;width:100%;height:100%;background-image:linear-gradient(rgba(245,158,11,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(245,158,11,.04) 1px,transparent 1px);background-size:60px 60px}
+.ma6 .content{position:relative;z-index:10;height:100%;padding:48px 90px;display:flex;flex-direction:column}
+.ma6 .eyebrow{font-family:'Space Grotesk',sans-serif;font-size:12px;color:#d97706;font-weight:600;letter-spacing:3px;margin-bottom:12px;display:flex;align-items:center;gap:14px}
+.ma6 .eyebrow::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(217,119,6,.25),transparent)}
+.ma6 h2{font-size:37px;font-weight:900;color:#0f172a;letter-spacing:-1.3px;line-height:1.3;margin-bottom:8px}
+.ma6 h2 .accent{background:linear-gradient(135deg,#b45309,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.ma6 .subtitle{font-size:17px;color:#64748b;font-weight:500;letter-spacing:-.3px;margin-bottom:20px}
+.ma6 .hero-row{display:flex;align-items:center;gap:18px;margin-bottom:18px;min-height:52px}
+.ma6 .hero-chip{display:inline-flex;align-items:center;gap:10px;background:linear-gradient(135deg,#f59e0b,#fbbf24);border-radius:100px;padding:12px 26px;font-size:19px;font-weight:900;color:#1c1200;letter-spacing:-.4px;box-shadow:0 10px 26px rgba(245,158,11,.32)}
+.ma6 .hero-chip i{font-size:16px}
+.ma6 .hero-lead{font-size:20px;font-weight:800;color:#334155;letter-spacing:-.4px}
+.ma6 .reasons{display:flex;gap:16px;margin-bottom:18px}
+.ma6 .r-card{flex:1;position:relative;background:#fff;border:1px solid rgba(245,158,11,.13);border-radius:18px;padding:22px 22px 20px;box-shadow:0 8px 26px rgba(180,83,9,.06);display:flex;flex-direction:column;gap:12px;opacity:0;transition:box-shadow .3s,transform .3s,border-color .3s;cursor:default}
+.ma6 .reasons.visible .r-card{animation:ma6CardIn .5s cubic-bezier(.16,1,.3,1) both}
+.ma6 .reasons.visible .r-card:nth-child(1){animation-delay:.04s}
+.ma6 .reasons.visible .r-card:nth-child(2){animation-delay:.13s}
+.ma6 .reasons.visible .r-card:nth-child(3){animation-delay:.22s}
+.ma6 .reasons.visible .r-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(180,83,9,.12);border-color:rgba(245,158,11,.35)}
+@keyframes ma6CardIn{from{opacity:0;transform:translateY(26px) scale(.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+.ma6 .r-card .r-head{display:flex;align-items:center;gap:12px}
+.ma6 .r-card .r-num{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;background:linear-gradient(135deg,#b45309,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1}
+.ma6 .r-card .r-ico{width:40px;height:40px;border-radius:12px;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.2);display:flex;align-items:center;justify-content:center;margin-left:auto}
+.ma6 .r-card .r-ico i{font-size:16px;color:#d97706}
+.ma6 .r-card .r-txt{font-size:17.5px;font-weight:800;color:#1e293b;line-height:1.45;letter-spacing:-.4px}
+.ma6 .solve-row{display:flex;align-items:stretch;border-radius:18px;overflow:hidden;border:1px solid rgba(245,158,11,.18);box-shadow:0 10px 30px rgba(180,83,9,.07);margin-bottom:16px;opacity:0}
+.ma6 .solve-row.visible{animation:ma6CardIn .55s cubic-bezier(.16,1,.3,1) both}
+.ma6 .solve-left{flex:0 0 44%;background:#f1f5f9;padding:16px 26px;display:flex;flex-direction:column;justify-content:center;gap:5px}
+.ma6 .solve-left .p-label{font-size:12.5px;font-weight:800;color:#64748b;letter-spacing:1.5px;margin-bottom:3px}
+.ma6 .solve-left .p-line{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:600;color:#7c8698}
+.ma6 .solve-left .p-line i{font-size:11px;color:#f87171}
+.ma6 .solve-arrow{flex:0 0 64px;display:flex;align-items:center;justify-content:center;background:linear-gradient(90deg,#f1f5f9,#fff7e8)}
+.ma6 .solve-arrow i{font-size:22px;color:#f59e0b}
+.ma6 .solve-right{flex:1;background:linear-gradient(135deg,#fff7e8,#fff);display:flex;align-items:center;padding:16px 30px}
+.ma6 .solve-right p{font-size:20.5px;font-weight:800;color:#1e293b;letter-spacing:-.5px;line-height:1.45}
+.ma6 .solve-right .hl{color:#b45309;position:relative}
+.ma6 .solve-right .hl::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2.5px;background:#f59e0b;border-radius:2px}
+.ma6 .final-bar{background:linear-gradient(135deg,#1e293b,#0f172a);border-radius:18px;padding:21px 32px;text-align:center;box-shadow:0 16px 44px rgba(15,23,42,.2)}
+.ma6 .final-bar p{font-size:21.5px;font-weight:800;color:#fff;letter-spacing:-.5px}
+.ma6 .final-bar i{color:#fbbf24;margin-right:12px}
+.ma6 .final-bar .hl{color:#fbbf24;position:relative}
+.ma6 .final-bar .hl::after{content:'';position:absolute;bottom:-3px;left:0;width:100%;height:2px;background:#f59e0b;border-radius:1px}
+
+/* ======================== SLIDE 7: POINT 03 — 인바운드 접근법 ======================== */
+.ma7{background:#050508}
+.ma7 .bg-mesh{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 22% 30%,rgba(148,163,184,0.06) 0%,transparent 50%),radial-gradient(ellipse at 78% 70%,rgba(245,158,11,0.10) 0%,transparent 52%);z-index:1}
+.ma7 .content{position:relative;z-index:10;height:100%;padding:52px 90px;display:flex;flex-direction:column}
+.ma7 .eyebrow{font-family:'Space Grotesk',sans-serif;font-size:12px;color:#f59e0b;font-weight:600;letter-spacing:4px;margin-bottom:14px;display:flex;align-items:center;gap:14px}
+.ma7 .eyebrow::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(245,158,11,.35),transparent)}
+.ma7 h2{font-size:37px;font-weight:900;color:#fff;letter-spacing:-1.3px;margin-bottom:28px;line-height:1.3}
+.ma7 h2 .accent{background:linear-gradient(135deg,#f59e0b,#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.ma7 .compare{position:relative;display:flex;gap:22px;flex:1;align-items:stretch}
+.ma7 .cmp-card{flex:1;border-radius:20px;padding:26px 30px;display:flex;flex-direction:column;gap:16px}
+.ma7 .cmp-out{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.1)}
+.ma7 .cmp-in{background:rgba(245,158,11,.05);border:1px solid rgba(245,158,11,.42);box-shadow:0 0 44px rgba(245,158,11,.09)}
+.ma7 .cmp-head{display:flex;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,.08)}
+.ma7 .cmp-out .cmp-head .chip{display:inline-flex;align-items:center;gap:9px;background:rgba(255,255,255,.08);border-radius:100px;padding:9px 20px;font-size:16px;font-weight:800;color:rgba(255,255,255,.75)}
+.ma7 .cmp-in .cmp-head{border-bottom-color:rgba(245,158,11,.2)}
+.ma7 .cmp-in .cmp-head .chip{display:inline-flex;align-items:center;gap:9px;background:linear-gradient(135deg,#f59e0b,#fbbf24);border-radius:100px;padding:9px 20px;font-size:16px;font-weight:900;color:#1c1200;box-shadow:0 8px 22px rgba(245,158,11,.3)}
+.ma7 .cmp-head .sub{font-size:12.5px;color:rgba(255,255,255,.35);font-weight:600;letter-spacing:1px;font-family:'Space Grotesk',sans-serif;margin-left:auto}
+.ma7 .cmp-list{display:flex;flex-direction:column;gap:14px}
+.ma7 .cmp-item{display:flex;gap:13px;align-items:flex-start}
+.ma7 .cmp-item .mark{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.ma7 .cmp-out .cmp-item .mark{background:rgba(255,255,255,.08)}
+.ma7 .cmp-out .cmp-item .mark i{font-size:10px;color:rgba(255,255,255,.5)}
+.ma7 .cmp-in .cmp-item .mark{background:rgba(245,158,11,.16);border:1px solid rgba(245,158,11,.35)}
+.ma7 .cmp-in .cmp-item .mark i{font-size:11px;color:#fbbf24}
+.ma7 .cmp-item p{font-size:16.5px;color:rgba(255,255,255,.72);line-height:1.6;letter-spacing:-.3px;font-weight:500}
+.ma7 .cmp-in .cmp-item p{color:rgba(255,255,255,.85)}
+.ma7 .cmp-item p .hl{color:#fbbf24;font-weight:800}
+.ma7 .cmp-item p b{color:#fff;font-weight:800}
+.ma7 .vs{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:58px;height:58px;border-radius:50%;background:#0a0a10;border:2px solid rgba(245,158,11,.6);display:flex;align-items:center;justify-content:center;font-family:'Space Grotesk',sans-serif;font-size:18px;font-weight:700;color:#fbbf24;z-index:20;box-shadow:0 0 30px rgba(245,158,11,.25);opacity:0}
+.ma7 .vs.visible{animation:ma7VsIn .5s cubic-bezier(.34,1.56,.64,1) both}
+@keyframes ma7VsIn{from{opacity:0;transform:translate(-50%,-50%) scale(.3)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+
+/* ======================== SLIDE 8: POINT 04 장표 ======================== */
+.ma8{background:#050508}
+.ma8 .bg-mesh{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 25% 72%,rgba(245,158,11,0.14) 0%,transparent 52%),radial-gradient(ellipse at 80% 18%,rgba(99,102,241,0.09) 0%,transparent 50%);z-index:1}
+.ma8 .ghost{position:absolute;right:24px;top:50%;transform:translateY(-50%);font-family:'Space Grotesk',sans-serif;font-size:430px;font-weight:700;line-height:1;color:transparent;-webkit-text-stroke:2px rgba(245,158,11,.15);z-index:2;letter-spacing:-12px;user-select:none;pointer-events:none}
+.ma8 .content{position:relative;z-index:10;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:0 110px}
+.ma8 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-size:12.5px;color:#fbbf24;letter-spacing:4px;margin-bottom:36px;font-weight:600;padding:10px 22px;border:1px solid rgba(245,158,11,.35);border-radius:100px;background:rgba(245,158,11,.06)}
+.ma8 .eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:#f59e0b;box-shadow:0 0 10px rgba(245,158,11,.9);animation:pulse 2s ease-in-out infinite}
+.ma8 h2{font-size:58px;font-weight:900;color:#fff;letter-spacing:-2.5px;line-height:1.28;margin-bottom:32px}
+.ma8 h2 .accent{background:linear-gradient(120deg,#f59e0b,#fbbf24,#f59e0b);background-size:200% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:gradient-shift 4.5s ease infinite}
+.ma8 .rule{width:78px;height:4px;border-radius:2px;background:linear-gradient(90deg,#f59e0b,#fbbf24);box-shadow:0 0 18px rgba(245,158,11,.5);margin-bottom:48px}
+.ma8 .points{display:flex;align-items:center}
+.ma8 .pt{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;color:rgba(255,255,255,.22);letter-spacing:2px;display:flex;align-items:center}
+.ma8 .pt::after{content:'';width:30px;height:1px;background:rgba(255,255,255,.14);margin:0 14px}
+.ma8 .pt:last-child::after{display:none}
+.ma8 .pt.active{color:#fbbf24;text-shadow:0 0 20px rgba(245,158,11,.6)}
+
+/* ======================== SLIDE 9: POINT 05 — 수익 프로세스 ======================== */
+.ma9{background:linear-gradient(135deg,#fffdfa 0%,#faf5ec 100%)}
+.ma9 .grid-bg{position:absolute;top:0;left:0;width:100%;height:100%;background-image:linear-gradient(rgba(245,158,11,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(245,158,11,.04) 1px,transparent 1px);background-size:60px 60px}
+.ma9 .content{position:relative;z-index:10;height:100%;padding:52px 80px;display:flex;flex-direction:column;justify-content:center}
+.ma9 .eyebrow{font-family:'Space Grotesk',sans-serif;font-size:12px;color:#d97706;font-weight:600;letter-spacing:3px;margin-bottom:12px;display:flex;align-items:center;gap:14px}
+.ma9 .eyebrow::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(217,119,6,.25),transparent)}
+.ma9 h2{font-size:37px;font-weight:900;color:#0f172a;letter-spacing:-1.3px;line-height:1.35;margin-bottom:30px}
+.ma9 h2 .accent{background:linear-gradient(135deg,#b45309,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.ma9 .flow{display:flex;align-items:stretch;margin-bottom:24px}
+.ma9 .f-card{flex:1;position:relative;background:#fff;border:1px solid rgba(245,158,11,.14);border-radius:18px;padding:26px 14px 24px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:14px;box-shadow:0 8px 26px rgba(180,83,9,.06);opacity:0;transition:transform .3s,box-shadow .3s,border-color .3s;cursor:default;overflow:hidden}
+.ma9 .f-card::before{content:'';position:absolute;top:0;left:18px;right:18px;height:3px;border-radius:0 0 4px 4px;background:linear-gradient(90deg,#f59e0b,#fbbf24)}
+.ma9 .flow.visible .f-card{animation:ma6CardIn .5s cubic-bezier(.16,1,.3,1) both}
+.ma9 .flow.visible .f-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(180,83,9,.12);border-color:rgba(245,158,11,.35)}
+.ma9 .f-arrow{flex:0 0 42px;display:flex;align-items:center;justify-content:center;opacity:0}
+.ma9 .flow.visible .f-arrow{animation:ma6CardIn .5s cubic-bezier(.16,1,.3,1) both}
+.ma9 .f-arrow i{font-size:20px;color:#f59e0b;animation:pulse 2s ease-in-out infinite}
+.ma9 .f-step{font-family:'Space Grotesk',sans-serif;font-size:11.5px;font-weight:700;color:#b45309;letter-spacing:2px;background:rgba(245,158,11,.1);border-radius:100px;padding:5px 14px}
+.ma9 .f-ico{width:58px;height:58px;border-radius:17px;background:linear-gradient(135deg,rgba(245,158,11,.15),rgba(251,191,36,.07));border:1px solid rgba(245,158,11,.26);display:flex;align-items:center;justify-content:center}
+.ma9 .f-ico i{font-size:23px;color:#d97706}
+.ma9 .f-label{font-size:17px;font-weight:800;color:#1e293b;line-height:1.42;letter-spacing:-.4px}
+.ma9 .punch-bar{background:linear-gradient(135deg,#1e293b,#0f172a);border-radius:18px;padding:23px 34px;text-align:center;box-shadow:0 16px 44px rgba(15,23,42,.22)}
+.ma9 .punch-bar p{font-size:23px;font-weight:800;color:#fff;letter-spacing:-.5px}
+.ma9 .punch-bar i{color:#fbbf24;margin-right:12px}
+.ma9 .punch-bar .hl{color:#fbbf24;position:relative}
+.ma9 .punch-bar .hl::after{content:'';position:absolute;bottom:-3px;left:0;width:100%;height:2.5px;background:#f59e0b;border-radius:2px}
+
+/* Back button */
+.back-btn{position:fixed;top:20px;left:20px;z-index:99998;width:40px;height:40px;border:none;border-radius:10px;background:rgba(15,23,42,.6);backdrop-filter:blur(8px);color:rgba(255,255,255,.6);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;opacity:0}
+body:hover .back-btn{opacity:1}
+.back-btn:hover{background:rgba(245,158,11,.5);color:#fff}
+</style>
+</head>
+<body>
+
+<!-- Fullscreen splash -->
+<div id="splash" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#050508;z-index:99999;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;transition:opacity .6s" onclick="enterFullscreen()">
+    <img src="img/logo-white.png" alt="시그니처" style="height:36px;opacity:.6;margin-bottom:32px"/>
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:16px;color:rgba(255,255,255,.5);letter-spacing:3px;margin-bottom:40px">마이어시스트 DB 세션</div>
+    <div style="padding:14px 40px;border:1px solid rgba(245,158,11,.4);border-radius:12px;font-size:15px;color:#fbbf24;font-weight:600;letter-spacing:1px;transition:all .3s;animation:glow 2s ease-in-out infinite" onmouseenter="this.style.background='rgba(245,158,11,.1)'" onmouseleave="this.style.background='transparent'">
+        <i class="fas fa-expand" style="margin-right:8px"></i>전체화면으로 시작
+    </div>
+    <div style="font-size:12px;color:rgba(255,255,255,.2);margin-top:20px">또는 아무 곳이나 클릭하세요</div>
+</div>
+
+<button class="back-btn" onclick="window.location.href='index.html'" title="메뉴로 돌아가기"><i class="fas fa-arrow-left"></i></button>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="progress-bar" id="progressBar"></div>
+<div class="slide-num" id="slideNum">01 / 09</div>
+<div class="nav-dots" id="navDots"></div>
+
+<div class="presentation" id="presentation">
+
+<!-- ==================== SLIDE 1: TITLE (표지) ==================== -->
+<div class="slide ma1 active" data-slide="0">
+    <div class="bg-mesh"></div>
+    <div class="bg-grid"></div>
+    <div class="orb orb-a"></div>
+    <div class="orb orb-b"></div>
+    <div class="content">
+        <div class="eyebrow reveal" style="transition-delay:.2s">SIGNATURE MASTER CLASS &middot; CHAPTER 04</div>
+        <div class="ma-logo reveal-scale" style="transition-delay:.4s">myassist</div>
+        <h1 class="reveal" style="transition-delay:.65s">마이어시스트 <span class="accent">DB 세션</span></h1>
+        <div class="divider reveal" style="transition-delay:.85s"></div>
+    </div>
+    <div class="logo-bottom reveal" style="transition-delay:1s"><img src="img/logo-white.png" alt="시그니처"/></div>
+</div>
+
+<!-- ==================== SLIDE 2: INSTRUCTOR ==================== -->
+<div class="slide ma2" data-slide="1">
+    <div class="grid-bg"></div>
+    <div class="content">
+        <div class="left">
+            <div class="eyebrow reveal" style="transition-delay:.1s"><i class="fas fa-user" style="font-size:10px"></i> INSTRUCTOR &amp; BRAND</div>
+            <div class="name reveal" style="transition-delay:.25s"><span class="accent">강남규</span></div>
+            <div class="role reveal" style="transition-delay:.35s">보험학교 DB세일즈학과장<br/>시그니처 사업부 DB총괄</div>
+            <div class="badges reveal" style="transition-delay:.45s">
+                <div class="badge"><div class="badge-dot"></div>동국대학교 경영학과 졸업</div>
+                <div class="badge"><div class="badge-dot"></div>M생명 변액 상담 전국 최상위</div>
+                <div class="badge"><div class="badge-dot"></div>블로그/유튜브 온라인 영업</div>
+                <div class="badge"><div class="badge-dot"></div>T플랫폼 4,500명 상담</div>
+            </div>
+            <div class="timeline reveal" style="transition-delay:.55s">
+                <div class="timeline-title">TIME LINE</div>
+                <div class="timeline-items">
+                    <div class="timeline-item"><span class="period">17년 ~ 20년</span>M생명</div>
+                    <div class="timeline-item"><span class="period">20년 ~ 22년</span>G사 온라인팀</div>
+                    <div class="timeline-item"><span class="period">22년 ~ 26년</span>T플랫폼</div>
+                    <div class="timeline-item"><span class="period">26년 ~ 현재</span>한국보험금융 시그니처 사업부</div>
+                </div>
+            </div>
+        </div>
+        <div class="right">
+            <div class="photo-container reveal-scale" style="transition-delay:.3s">
+                <img src="img/instructor.jpeg" alt="강남규 강사"/>
+                <div class="photo-overlay"></div>
+                <div class="photo-brand"><img src="img/logo-white.png" alt="시그니처"/></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SLIDE 3: SESSION OVERVIEW ==================== -->
+<div class="slide ma3" data-slide="2">
+    <div class="bg-mesh"></div>
+    <div class="state intro-state substep-fade visible" id="ma3-intro">
+        <div class="eyebrow reveal" style="transition-delay:.15s">SESSION OVERVIEW</div>
+        <div class="l1 reveal" style="transition-delay:.3s">단순 플레이어가 아닌</div>
+        <div class="l2 reveal" style="transition-delay:.45s">직접 교육하고 성과를 만들어 내는</div>
+        <div class="l3 reveal" style="transition-delay:.6s">관리자 시점</div>
+    </div>
+    <div class="state agenda-state substep-fade" id="ma3-agenda">
+        <div class="eyebrow">SESSION OVERVIEW &middot; 5 KEY POINTS</div>
+        <div class="agenda-list">
+            <div class="agenda-item"><div class="num">01</div><div class="vline"></div><div class="txt">DB영업도 포트폴리오가 필요하다.</div></div>
+            <div class="agenda-item"><div class="num">02</div><div class="vline"></div><div class="txt">아웃바운드, 인바운드, 플랫폼, 온라인디비 모두 사용해본 지점장이 선택한 <span class="hl">'인바운드 라이트'</span></div></div>
+            <div class="agenda-item"><div class="num">03</div><div class="vline"></div><div class="txt">아웃바운드와 다른 인바운드 디비 접근법</div></div>
+            <div class="agenda-item"><div class="num">04</div><div class="vline"></div><div class="txt">인바운드 디비 상담 및 청약 실전 프로세스</div></div>
+            <div class="agenda-item"><div class="num">05</div><div class="vline"></div><div class="txt">1개의 인바운드 디비로 퍼미션디비 이상의 수익을 내는 방법</div></div>
+        </div>
+        <div class="apply-bar"><i class="fas fa-bolt"></i>5가지 핵심 포인트로 <span class="accent">바로 적용하기</span></div>
+    </div>
+</div>
+
+<!-- ==================== SLIDE 4: POINT 01 — 포트폴리오 ==================== -->
+<div class="slide ma4" data-slide="3">
+    <div class="grid-bg"></div>
+    <div class="content">
+        <div class="eyebrow reveal" style="transition-delay:.1s">POINT 01 &middot; PORTFOLIO</div>
+        <h2 class="reveal" style="transition-delay:.25s">DB영업 <span class="accent">포트폴리오</span>가 있는가?</h2>
+        <div class="body">
+            <div class="quote-card reveal-scale" style="transition-delay:.45s">
+                <div class="q-icon">&#129530;</div>
+                <div class="q-body">
+                    <div class="q-label">투자 격언</div>
+                    <div class="q-text"><span class="qm">&ldquo;</span> 계란을 한 바구니에 담지 마라. <span class="qm">&rdquo;</span></div>
+                </div>
+            </div>
+            <div class="q-row substep" id="ma4-q">
+                <div class="question">여러 DB 업체를 사용하면 되는 걸까?</div>
+                <div class="stamp" id="ma4-no">NO!</div>
+            </div>
+        </div>
+        <div class="key-bar substep" id="ma4-key">
+            <p>중요한 건 <span class="hl">다른 종류의 DB</span>를 사용하는 게 핵심</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SLIDE 5: DB 포트폴리오 구성 ==================== -->
+<div class="slide ma5" data-slide="4">
+    <div class="bg-mesh"></div>
+    <div class="content">
+        <div class="eyebrow reveal" style="transition-delay:.1s">POINT 01 &middot; DB PORTFOLIO</div>
+        <h2 class="reveal" style="transition-delay:.22s">DB <span class="accent">포트폴리오</span> 구성</h2>
+        <div class="db-grid">
+            <div class="db-card reveal" style="transition-delay:.35s">
+                <div class="db-num">01</div>
+                <div class="icon-wrap"><i class="fas fa-headset"></i></div>
+                <div class="db-name">인바운드디비</div>
+                <div class="db-tag">마스케어</div>
+            </div>
+            <div class="db-card reveal" style="transition-delay:.45s">
+                <div class="db-num">02</div>
+                <div class="icon-wrap"><i class="fas fa-phone-volume"></i></div>
+                <div class="db-name">아웃바운드디비</div>
+                <div class="db-tag">G사, S사</div>
+            </div>
+            <div class="db-card reveal" style="transition-delay:.55s">
+                <div class="db-num">03</div>
+                <div class="icon-wrap"><i class="fas fa-chart-pie"></i></div>
+                <div class="db-name">재무설계디비</div>
+                <div class="db-tag">제휴</div>
+            </div>
+            <div class="db-card reveal" style="transition-delay:.65s">
+                <div class="db-num">04</div>
+                <div class="icon-wrap"><i class="fas fa-bullhorn"></i></div>
+                <div class="db-name">자체광고디비</div>
+                <div class="db-tag">사업부</div>
+            </div>
+        </div>
+        <div class="reason-bar substep" id="ma5-reason">
+            <p>이렇게 쓰는 이유는 <span class="hl">'변동성'</span>을 줄이기 위함</p>
+        </div>
+        <div class="warn-line substep" id="ma5-warn">
+            <i class="fas fa-triangle-exclamation"></i>
+            <span>단순히 한 개의 시장에만 속해 있으면, <span class="danger">변동성에 속수무책</span> 당하게 된다.</span>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SLIDE 6: POINT 02 — 왜 마스케어인가 ==================== -->
+<div class="slide ma6" data-slide="5">
+    <div class="grid-bg"></div>
+    <div class="content">
+        <div class="eyebrow reveal" style="transition-delay:.1s">POINT 02 &middot; WHY MASCARE</div>
+        <h2 class="reveal" style="transition-delay:.22s">왜 '인바운드 Light'인가? 왜 <span class="accent">'마스케어'</span>인가?</h2>
+        <div class="subtitle reveal" style="transition-delay:.34s">아웃바운드, 인바운드, 플랫폼, 온라인 모두 경험한 지점장의 선택</div>
+        <div class="hero-row substep" id="ma6-hero">
+            <div class="hero-chip"><i class="fas fa-crown"></i>마스케어 인바운드 Light</div>
+            <div class="hero-lead">3가지 이유가 있습니다.</div>
+        </div>
+        <div class="reasons" id="ma6-reasons">
+            <div class="r-card">
+                <div class="r-head"><div class="r-num">01</div><div class="r-ico"><i class="fas fa-tags"></i></div></div>
+                <div class="r-txt">합리적인 가격</div>
+            </div>
+            <div class="r-card">
+                <div class="r-head"><div class="r-num">02</div><div class="r-ico"><i class="fas fa-calendar-check"></i></div></div>
+                <div class="r-txt">원활한 소통 및<br/>스케쥴별 적정 공급</div>
+            </div>
+            <div class="r-card">
+                <div class="r-head"><div class="r-num">03</div><div class="r-ico"><i class="fas fa-list-check"></i></div></div>
+                <div class="r-txt">고객 니즈 기반의 DB<br/>+ 디테일한 수집항목</div>
+            </div>
+        </div>
+        <div class="solve-row" id="ma6-solve">
+            <div class="solve-left">
+                <div class="p-label">대부분의 DB 업체</div>
+                <div class="p-line"><i class="fas fa-xmark"></i>질 낮은 광고</div>
+                <div class="p-line"><i class="fas fa-xmark"></i>디테일하지 않은 정보</div>
+                <div class="p-line"><i class="fas fa-xmark"></i>공급 프로세스 불명확</div>
+            </div>
+            <div class="solve-arrow"><i class="fas fa-arrow-right-long"></i></div>
+            <div class="solve-right">
+                <p>마스케어 인바운드 Light는<br/><span class="hl">모든 문제를 해결</span>한다.</p>
+            </div>
+        </div>
+        <div class="final-bar substep" id="ma6-final">
+            <p><i class="fas fa-baseball-bat-ball"></i>결국 디비영업은 얼마만큼 <span class="hl">타석에 들어갈 수 있느냐</span>의 싸움</p>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SLIDE 7: POINT 03 — 인바운드 접근법 ==================== -->
+<div class="slide ma7" data-slide="6">
+    <div class="bg-mesh"></div>
+    <div class="content">
+        <div class="eyebrow reveal" style="transition-delay:.1s">POINT 03 &middot; APPROACH</div>
+        <h2 class="reveal" style="transition-delay:.22s">아웃바운드와 다른 <span class="accent">인바운드 디비 접근법</span></h2>
+        <div class="compare">
+            <div class="cmp-card cmp-out substep" id="ma7-out">
+                <div class="cmp-head">
+                    <div class="chip"><i class="fas fa-phone-volume"></i>아웃바운드 &middot; 퍼미션</div>
+                    <div class="sub">OUTBOUND</div>
+                </div>
+                <div class="cmp-list">
+                    <div class="cmp-item"><div class="mark"><i class="fas fa-minus"></i></div><p><b>TA를 최소화</b> 하는 게 핵심이다.</p></div>
+                    <div class="cmp-item"><div class="mark"><i class="fas fa-minus"></i></div><p>무조건 <b>약속 잡는 것</b> 외에는 다른 이야기를 하지 않아야 한다.</p></div>
+                </div>
+            </div>
+            <div class="vs" id="ma7-vs">VS</div>
+            <div class="cmp-card cmp-in substep" id="ma7-in">
+                <div class="cmp-head">
+                    <div class="chip"><i class="fas fa-headset"></i>인바운드</div>
+                    <div class="sub">MASCARE LIGHT</div>
+                </div>
+                <div class="cmp-list">
+                    <div class="cmp-item"><div class="mark"><i class="fas fa-check"></i></div><p>고객의 니즈 기반으로 <span class="hl">1차 상담이 TA에서</span> 이루어져야 한다.</p></div>
+                    <div class="cmp-item"><div class="mark"><i class="fas fa-check"></i></div><p>특히 마스케어에서 제공하는 <span class="hl">디테일한 수집항목</span>을 사용해서, 고객의 니즈를 다시금 불러 일으키는 게 핵심이다.</p></div>
+                    <div class="cmp-item"><div class="mark"><i class="fas fa-check"></i></div><p>기본적으로 광고내용의 플랜 예시안을 준비해 두되, <b>구체적인 보험사 / 상품명은 언급하지 않아야</b> 한다.</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SLIDE 8: POINT 04 장표 ==================== -->
+<div class="slide ma8" data-slide="7">
+    <div class="bg-mesh"></div>
+    <div class="ghost">04</div>
+    <div class="content">
+        <div class="eyebrow reveal" style="transition-delay:.15s">POINT 04 &middot; PRACTICAL PROCESS</div>
+        <h2 class="reveal" style="transition-delay:.3s"><span class="accent">인바운드 Light</span> 상담 및 청약<br/>실전 프로세스</h2>
+        <div class="rule reveal" style="transition-delay:.5s"></div>
+        <div class="points reveal" style="transition-delay:.65s">
+            <div class="pt">01</div><div class="pt">02</div><div class="pt">03</div><div class="pt active">04</div><div class="pt">05</div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SLIDE 9: POINT 05 — 수익 프로세스 ==================== -->
+<div class="slide ma9" data-slide="8">
+    <div class="grid-bg"></div>
+    <div class="content">
+        <div class="eyebrow reveal" style="transition-delay:.1s">POINT 05 &middot; REVENUE PROCESS</div>
+        <h2 class="reveal" style="transition-delay:.22s">1개의 인바운드 Light 디비로<br/>퍼미션디비 이상의 <span class="accent">수익</span>을 내는 방법</h2>
+        <div class="flow" id="ma9-flow">
+            <div class="f-card" style="animation-delay:.05s">
+                <div class="f-step">STEP 01</div>
+                <div class="f-ico"><i class="fas fa-lightbulb"></i></div>
+                <div class="f-label">니즈 증폭 및<br/>가벼운 해결</div>
+            </div>
+            <div class="f-arrow" style="animation-delay:.18s"><i class="fas fa-chevron-right"></i></div>
+            <div class="f-card" style="animation-delay:.24s">
+                <div class="f-step">STEP 02</div>
+                <div class="f-ico"><i class="fas fa-user-plus"></i></div>
+                <div class="f-label">고객등록 유도</div>
+            </div>
+            <div class="f-arrow" style="animation-delay:.37s"><i class="fas fa-chevron-right"></i></div>
+            <div class="f-card" style="animation-delay:.43s">
+                <div class="f-step">STEP 03</div>
+                <div class="f-ico"><i class="fas fa-magnifying-glass-chart"></i></div>
+                <div class="f-label">보장분석 &amp;<br/>플랜심사</div>
+            </div>
+            <div class="f-arrow" style="animation-delay:.56s"><i class="fas fa-chevron-right"></i></div>
+            <div class="f-card" style="animation-delay:.62s">
+                <div class="f-step">STEP 04</div>
+                <div class="f-ico"><i class="fas fa-handshake"></i></div>
+                <div class="f-label">만남 유도</div>
+            </div>
+        </div>
+        <div class="punch-bar substep" id="ma9-punch">
+            <p><i class="fas fa-people-arrows"></i>중요한 건 <span class="hl">'대면 전환'</span>이다.</p>
+        </div>
+    </div>
+</div>
+
+</div><!-- /presentation -->
+
+<script>
+// Fullscreen
+function enterFullscreen() {
+    const el = document.documentElement;
+    if (el.requestFullscreen) el.requestFullscreen();
+    else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+    else if (el.msRequestFullscreen) el.msRequestFullscreen();
+    document.getElementById('splash').style.opacity = '0';
+    setTimeout(() => {
+        document.getElementById('splash').style.display = 'none';
+    }, 600);
+}
+
+function updateFsButton() {}
+document.addEventListener('fullscreenchange', updateFsButton);
+document.addEventListener('webkitfullscreenchange', updateFsButton);
+
+// Custom cursor
+const cursor = document.getElementById('cursor');
+const cursorDot = document.getElementById('cursorDot');
+let mouseX = 0, mouseY = 0, cursorX = 0, cursorY = 0;
+
+let hideTimer = null;
+function showCursor() {
+    document.body.style.cursor = '';
+    cursor.style.opacity = '1';
+    cursorDot.style.opacity = '1';
+}
+function hideCursor() {
+    const isFs = !!(document.fullscreenElement || document.webkitFullscreenElement);
+    if (!isFs) return;
+    document.body.style.cursor = 'none';
+    cursor.style.opacity = '0';
+    cursorDot.style.opacity = '0';
+}
+
+document.addEventListener('mousemove', e => {
+    mouseX = e.clientX; mouseY = e.clientY;
+    cursorDot.style.left = (mouseX - 3) + 'px';
+    cursorDot.style.top = (mouseY - 3) + 'px';
+    showCursor();
+    clearTimeout(hideTimer);
+    hideTimer = setTimeout(hideCursor, 2000);
+});
+
+function animateCursor() {
+    cursorX += (mouseX - cursorX) * 0.35;
+    cursorY += (mouseY - cursorY) * 0.35;
+    cursor.style.left = (cursorX - 10) + 'px';
+    cursor.style.top = (cursorY - 10) + 'px';
+    requestAnimationFrame(animateCursor);
+}
+animateCursor();
+
+document.querySelectorAll('.insight-card,.sum-card,.badge').forEach(el => {
+    el.addEventListener('mouseenter', () => { cursor.style.transform = 'scale(1.8)'; cursor.style.borderColor = 'rgba(245,158,11,0.4)'; });
+    el.addEventListener('mouseleave', () => { cursor.style.transform = 'scale(1)'; cursor.style.borderColor = 'rgba(245,158,11,0.8)'; });
+});
+
+// Slide system
+let current = 0;
+const slides = document.querySelectorAll('.slide');
+const total = slides.length;
+const progressBar = document.getElementById('progressBar');
+const slideNum = document.getElementById('slideNum');
+const navDots = document.getElementById('navDots');
+let isTransitioning = false;
+
+// Sub-step system (슬라이드 추가 시 여기에 등록)
+const slideSteps = {
+    2: { total: 2, current: 0 },   // Session Overview: 0=관리자 시점 문구, 1=5가지 주제
+    3: { total: 4, current: 0 },   // Point01 포트폴리오: 0=격언, 1=질문, 2=NO!, 3=핵심
+    4: { total: 3, current: 0 },   // Point01 포트폴리오 구성: 0=4종 카드, 1=이유, 2=경고
+    5: { total: 5, current: 0 },   // Point02 왜 마스케어: 0=질문, 1=히어로, 2=3가지 이유, 3=문제해결, 4=타석
+    6: { total: 3, current: 0 },   // Point03 접근법: 0=타이틀, 1=아웃바운드, 2=인바운드+VS
+    8: { total: 3, current: 0 },   // Point05 수익: 0=타이틀, 1=4단계 플로우, 2=대면 전환
+};
+
+function applySubStep(slideIndex, step) {
+    switch(slideIndex) {
+        case 2: { // Session Overview
+            const intro = document.getElementById('ma3-intro');
+            const agenda = document.getElementById('ma3-agenda');
+            if (step >= 1) {
+                intro.classList.remove('visible');
+                agenda.classList.add('visible');
+            } else {
+                intro.classList.add('visible');
+                agenda.classList.remove('visible');
+            }
+            break;
+        }
+        case 3: { // Point01 포트폴리오
+            document.getElementById('ma4-q').classList.toggle('visible', step >= 1);
+            document.getElementById('ma4-no').classList.toggle('visible', step >= 2);
+            document.getElementById('ma4-key').classList.toggle('visible', step >= 3);
+            break;
+        }
+        case 4: { // Point01 포트폴리오 구성
+            document.getElementById('ma5-reason').classList.toggle('visible', step >= 1);
+            document.getElementById('ma5-warn').classList.toggle('visible', step >= 2);
+            break;
+        }
+        case 5: { // Point02 왜 마스케어
+            document.getElementById('ma6-hero').classList.toggle('visible', step >= 1);
+            document.getElementById('ma6-reasons').classList.toggle('visible', step >= 2);
+            document.getElementById('ma6-solve').classList.toggle('visible', step >= 3);
+            document.getElementById('ma6-final').classList.toggle('visible', step >= 4);
+            break;
+        }
+        case 6: { // Point03 접근법
+            document.getElementById('ma7-out').classList.toggle('visible', step >= 1);
+            document.getElementById('ma7-in').classList.toggle('visible', step >= 2);
+            document.getElementById('ma7-vs').classList.toggle('visible', step >= 2);
+            break;
+        }
+        case 8: { // Point05 수익 프로세스
+            document.getElementById('ma9-flow').classList.toggle('visible', step >= 1);
+            document.getElementById('ma9-punch').classList.toggle('visible', step >= 2);
+            break;
+        }
+        default: break;
+    }
+}
+
+function resetSubSteps(slideIndex) {
+    if (slideSteps[slideIndex]) {
+        slideSteps[slideIndex].current = 0;
+        applySubStep(slideIndex, 0);
+    }
+}
+
+// Create nav dots
+for (let i = 0; i < total; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'nav-dot' + (i === 0 ? ' active' : '');
+    dot.addEventListener('click', () => goToSlide(i));
+    navDots.appendChild(dot);
+}
+
+const darkSlides = [0, 2, 4, 6, 7];
+
+function updateUI() {
+    progressBar.style.width = ((current + 1) / total * 100) + '%';
+    slideNum.textContent = String(current + 1).padStart(2, '0') + ' / ' + String(total).padStart(2, '0');
+    slideNum.style.color = darkSlides.includes(current) ? 'rgba(255,255,255,0.5)' : 'rgba(0,0,0,0.2)';
+    document.querySelectorAll('.nav-dot').forEach((d, i) => d.classList.toggle('active', i === current));
+}
+
+function triggerReveals(slide) {
+    const els = slide.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale,.reveal-blur');
+    els.forEach(el => el.classList.remove('show'));
+    requestAnimationFrame(() => {
+        setTimeout(() => {
+            els.forEach(el => el.classList.add('show'));
+        }, 100);
+    });
+}
+
+function resetReveals(slide) {
+    slide.querySelectorAll('.reveal,.reveal-left,.reveal-right,.reveal-scale,.reveal-blur').forEach(el => el.classList.remove('show'));
+}
+
+function goToSlide(n) {
+    if (n === current || isTransitioning || n < 0 || n >= total) return;
+    isTransitioning = true;
+
+    const oldCurrent = current;
+    const oldSlide = slides[current];
+    const newSlide = slides[n];
+    const direction = n > current ? 1 : -1;
+
+    oldSlide.style.transition = 'opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1)';
+    newSlide.style.transition = 'opacity .6s cubic-bezier(.16,1,.3,1), transform .6s cubic-bezier(.16,1,.3,1)';
+
+    newSlide.style.opacity = '0';
+    newSlide.style.transform = `translateX(${direction * 60}px)`;
+    newSlide.style.visibility = 'visible';
+    newSlide.classList.add('active');
+
+    requestAnimationFrame(() => {
+        oldSlide.style.opacity = '0';
+        oldSlide.style.transform = `translateX(${-direction * 60}px)`;
+        newSlide.style.opacity = '1';
+        newSlide.style.transform = 'translateX(0)';
+    });
+
+    setTimeout(() => {
+        oldSlide.classList.remove('active');
+        oldSlide.style.transition = 'none';
+        oldSlide.style.transform = '';
+        oldSlide.style.opacity = '';
+        newSlide.style.transition = 'none';
+        newSlide.style.transform = '';
+        resetReveals(oldSlide);
+        resetSubSteps(oldCurrent);
+        current = n;
+        updateUI();
+        triggerReveals(newSlide);
+        if (slideSteps[current]) {
+            applySubStep(current, 0);
+        }
+        isTransitioning = false;
+    }, 650);
+}
+
+function changeSlide(dir) {
+    if (slideSteps[current]) {
+        const ss = slideSteps[current];
+        if (dir === 1 && ss.current < ss.total - 1) {
+            ss.current++;
+            applySubStep(current, ss.current);
+            return;
+        }
+        if (dir === -1 && ss.current > 0) {
+            ss.current--;
+            applySubStep(current, ss.current);
+            return;
+        }
+    }
+    const next = current + dir;
+    if (next >= 0 && next < total) goToSlide(next);
+}
+
+// Keyboard
+document.addEventListener('keydown', e => {
+    if (['ArrowRight','ArrowDown',' ','PageDown'].includes(e.key)) { e.preventDefault(); changeSlide(1); }
+    else if (['ArrowLeft','ArrowUp','PageUp'].includes(e.key)) { e.preventDefault(); changeSlide(-1); }
+    else if (e.key === 'Home') { e.preventDefault(); goToSlide(0); }
+    else if (e.key === 'End') { e.preventDefault(); goToSlide(total - 1); }
+    else if (e.key === 'Escape') { window.location.href = 'index.html'; }
+});
+
+// Touch / wheel
+let touchStartX = 0;
+document.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; });
+document.addEventListener('touchend', e => {
+    const diff = touchStartX - e.changedTouches[0].clientX;
+    if (Math.abs(diff) > 50) changeSlide(diff > 0 ? 1 : -1);
+});
+
+let wheelLock = false;
+document.addEventListener('wheel', e => {
+    if (wheelLock) return;
+    wheelLock = true;
+    if (e.deltaY > 30) changeSlide(1);
+    else if (e.deltaY < -30) changeSlide(-1);
+    setTimeout(() => { wheelLock = false; }, 800);
+}, { passive: true });
+
+// Click to advance
+document.querySelector('.presentation').addEventListener('click', e => {
+    if (e.target.closest('.nav-dot') || e.target.closest('.back-btn')) return;
+    if (slideSteps[current] && slideSteps[current].current < slideSteps[current].total - 1) {
+        changeSlide(1);
+    }
+});
+
+// Scale — 모바일/태블릿 주소창·툴바로 인한 잘림 방지: '실제 보이는 영역' 기준으로 맞춤
+function scalePresentation() {
+    const p = document.getElementById('presentation');
+    const vw = (window.visualViewport && window.visualViewport.width)  || window.innerWidth;
+    const vh = (window.visualViewport && window.visualViewport.height) || window.innerHeight;
+    document.body.style.width  = vw + 'px';
+    document.body.style.height = vh + 'px';
+    const s = Math.min(vw / 1280, vh / 720);
+    p.style.transform = `scale(${s})`;
+}
+window.addEventListener('resize', scalePresentation);
+window.addEventListener('orientationchange', () => { scalePresentation(); setTimeout(scalePresentation, 300); });
+window.addEventListener('load', scalePresentation);
+if (window.visualViewport) {
+    window.visualViewport.addEventListener('resize', scalePresentation);
+    window.visualViewport.addEventListener('scroll', scalePresentation);
+}
+scalePresentation();
+
+// Init
+updateUI();
+triggerReveals(slides[0]);
+
+// Particles on dark slides
+function addParticles(slide) {
+    for (let i = 0; i < 15; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.bottom = '-10px';
+        p.style.width = p.style.height = (Math.random() * 3 + 1) + 'px';
+        p.style.background = `rgba(245,158,11,${Math.random() * 0.3 + 0.1})`;
+        p.style.animationDuration = (Math.random() * 15 + 10) + 's';
+        p.style.animationDelay = (Math.random() * 10) + 's';
+        slide.appendChild(p);
+    }
+}
+darkSlides.forEach(i => addParticles(slides[i]));
+</script>
+</body>
+</html>

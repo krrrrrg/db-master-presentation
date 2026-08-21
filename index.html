@@ -436,8 +436,8 @@ body:hover .nav-dots{opacity:1}
 <!-- Menu selection screen -->
 <div id="menu-screen" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#0a0e1a;z-index:99999;display:none;flex-direction:column;align-items:center;justify-content:center;transition:opacity .6s">
     <img src="img/logo-white.png" alt="시그니처" style="height:36px;opacity:.6;margin-bottom:20px"/>
-    <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;color:rgba(255,255,255,.4);letter-spacing:3px;margin-bottom:48px">SIGNATURE MASTER CLASS</div>
-    <div style="display:flex;flex-direction:column;gap:20px;width:360px">
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;color:rgba(255,255,255,.4);letter-spacing:3px;margin-bottom:36px">SIGNATURE MASTER CLASS</div>
+    <div style="display:flex;flex-direction:column;gap:16px;width:360px">
         <div onclick="selectPresentation('main')" style="background:rgba(255,255,255,.03);border:1px solid rgba(59,130,246,.3);border-radius:16px;padding:28px 32px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden" onmouseenter="this.style.borderColor='rgba(59,130,246,.6)';this.style.background='rgba(59,130,246,.06)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(59,130,246,.3)';this.style.background='rgba(255,255,255,.03)';this.style.transform='translateY(0)'">
             <div style="font-size:11px;color:#3b82f6;font-family:'Space Grotesk',sans-serif;letter-spacing:2px;margin-bottom:10px;font-weight:600">CHAPTER 01</div>
             <div style="font-size:22px;font-weight:800;color:#fff;margin-bottom:6px">DB 영업의 모든것</div>
@@ -452,6 +452,11 @@ body:hover .nav-dots{opacity:1}
             <div style="font-size:11px;color:#14b8a6;font-family:'Space Grotesk',sans-serif;letter-spacing:2px;margin-bottom:10px;font-weight:600">CHAPTER 03</div>
             <div style="font-size:22px;font-weight:800;color:#fff;margin-bottom:6px">MOU 제안서</div>
             <div style="font-size:13px;color:rgba(255,255,255,.4)">카존코리아 &times; 한국보험금융 시그니처사업부</div>
+        </div>
+        <div onclick="selectPresentation('myassist')" style="background:rgba(255,255,255,.03);border:1px solid rgba(245,158,11,.3);border-radius:16px;padding:28px 32px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden" onmouseenter="this.style.borderColor='rgba(245,158,11,.6)';this.style.background='rgba(245,158,11,.06)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(245,158,11,.3)';this.style.background='rgba(255,255,255,.03)';this.style.transform='translateY(0)'">
+            <div style="font-size:11px;color:#f59e0b;font-family:'Space Grotesk',sans-serif;letter-spacing:2px;margin-bottom:10px;font-weight:600">CHAPTER 04</div>
+            <div style="font-size:22px;font-weight:800;color:#fff;margin-bottom:6px">마이어시스트 DB 세션</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.4)">myassist DB 활용 실전 세션</div>
         </div>
     </div>
     <div style="font-size:12px;color:rgba(255,255,255,.15);margin-top:40px">선택 후 전체화면으로 시작됩니다</div>
@@ -491,7 +496,7 @@ body:hover .nav-dots{opacity:1}
         <div class="slogan reveal" style="transition-delay:.65s">Be your <b>Signature</b>.</div>
         <div class="presenter reveal" style="transition-delay:.8s">
             <div class="presenter-avatar"><img src="img/instructor.jpeg" alt="강남규"/></div>
-            <div><div class="presenter-name">강남규</div><div class="presenter-role">보험학교 DB세일즈학과장 · 시그니처 사업부 지점장</div></div>
+            <div><div class="presenter-name">강남규</div><div class="presenter-role">보험학교 DB세일즈학과장 · 시그니처 사업부 DB총괄</div></div>
         </div>
     </div>
     <div class="toc-box reveal-right" style="transition-delay:1s">
@@ -510,7 +515,7 @@ body:hover .nav-dots{opacity:1}
         <div class="left">
             <div class="eyebrow reveal" style="transition-delay:.1s"><i class="fas fa-user" style="font-size:10px"></i> INSTRUCTOR & BRAND</div>
             <div class="name reveal" style="transition-delay:.25s"><span class="accent">강남규</span></div>
-            <div class="role reveal" style="transition-delay:.35s">보험학교 DB세일즈학과장<br/>한국보험금융(주) SAG 시그니처 사업부 지점장</div>
+            <div class="role reveal" style="transition-delay:.35s">보험학교 DB세일즈학과장<br/>시그니처 사업부 DB총괄</div>
             <div class="badges reveal" style="transition-delay:.45s">
                 <div class="badge"><div class="badge-dot"></div>동국대학교 경영학과 졸업</div>
                 <div class="badge"><div class="badge-dot"></div>M생명 변액 상담 전국 최상위</div>
@@ -523,7 +528,7 @@ body:hover .nav-dots{opacity:1}
                     <div class="timeline-item"><span class="period">17년 ~ 20년</span>M생명</div>
                     <div class="timeline-item"><span class="period">20년 ~ 22년</span>G사 온라인팀</div>
                     <div class="timeline-item"><span class="period">22년 ~ 26년</span>T플랫폼</div>
-                    <div class="timeline-item"><span class="period">26년 ~ 현재</span>한국보험금융 SAG 시그니처 사업부</div>
+                    <div class="timeline-item"><span class="period">26년 ~ 현재</span>한국보험금융 시그니처 사업부</div>
                 </div>
             </div>
         </div>
@@ -1351,7 +1356,7 @@ async function unlockPresentation(){const pw=document.getElementById('lock-pw').
 document.getElementById('lock-pw').addEventListener('keydown',e=>{if(e.key==='Enter')unlockPresentation()});
 // 세션 중 이미 잠금해제했으면 비번 건너뛰고 바로 메뉴로 (강의 간 전환 시 재입력 방지)
 if(sessionStorage.getItem('sig_unlocked')==='1'){showMenu()}
-function selectPresentation(type){document.getElementById('menu-screen').style.opacity='0';setTimeout(()=>{document.getElementById('menu-screen').style.display='none';if(type==='consultation'){window.location.href='consultation.html'}else if(type==='mou'){window.location.href='mou.html'}else{document.getElementById('splash').style.display='flex'}},500)}
+function selectPresentation(type){document.getElementById('menu-screen').style.opacity='0';setTimeout(()=>{document.getElementById('menu-screen').style.display='none';if(type==='consultation'){window.location.href='consultation.html'}else if(type==='mou'){window.location.href='mou.html'}else if(type==='myassist'){window.location.href='myassist.html'}else{document.getElementById('splash').style.display='flex'}},500)}
 </script>
 </body>
 </html>
