@@ -41,7 +41,7 @@ table td,table th{vertical-align:middle}
 .substep-fade.visible{opacity:1;pointer-events:auto}
 
 /* Progress bar */
-.progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#8b5cf6,#a78bfa);z-index:9999;transition:width .5s cubic-bezier(.16,1,.3,1)}
+.progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#8b5cf6,#a78bfa);z-index:9999;transition:width .5s cubic-bezier(.16,1,.3,1);box-shadow:0 0 12px rgba(139,92,246,.55)}
 
 /* Slide number */
 .slide-num{position:fixed;bottom:30px;right:40px;font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:rgba(255,255,255,0.5);z-index:9998;letter-spacing:2px;transition:color .3s}
@@ -64,14 +64,19 @@ body:hover .nav-dots{opacity:1}
 @keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.02)}}
 @keyframes gradient-shift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 @keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes orbDrift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(44px,-32px) scale(1.1)}}
 
 /* ======================== SLIDE 1: TITLE ======================== */
 .sc1{background:#0a0e1a}
 .sc1 .bg-mesh{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 30% 70%,rgba(139,92,246,0.12) 0%,transparent 50%),radial-gradient(ellipse at 70% 30%,rgba(99,102,241,0.15) 0%,transparent 50%),radial-gradient(ellipse at 50% 50%,rgba(15,23,42,0.5) 0%,transparent 70%);z-index:1}
 .sc1 .content{position:relative;z-index:10;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 80px}
-.sc1 .eyebrow{font-family:'Space Grotesk',sans-serif;font-size:13px;color:#8b5cf6;letter-spacing:4px;margin-bottom:24px;font-weight:500}
-.sc1 h1{font-size:64px;font-weight:900;color:#fff;line-height:1.2;letter-spacing:-3px;margin-bottom:20px}
-.sc1 h1 .accent{background:linear-gradient(135deg,#8b5cf6,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sc1 .orb{position:absolute;border-radius:50%;filter:blur(70px);z-index:2;pointer-events:none}
+.sc1 .orb-a{width:440px;height:440px;left:-130px;bottom:-150px;background:radial-gradient(circle,rgba(139,92,246,.20),transparent 70%);animation:orbDrift 14s ease-in-out infinite}
+.sc1 .orb-b{width:380px;height:380px;right:-100px;top:-120px;background:radial-gradient(circle,rgba(99,102,241,.20),transparent 70%);animation:orbDrift 18s ease-in-out infinite reverse}
+.sc1 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-size:12.5px;color:#a78bfa;letter-spacing:4px;margin-bottom:30px;font-weight:600;padding:10px 22px;border:1px solid rgba(139,92,246,.35);border-radius:100px;background:rgba(139,92,246,.07)}
+.sc1 .eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:#8b5cf6;box-shadow:0 0 10px rgba(139,92,246,.9);animation:pulse 2s ease-in-out infinite}
+.sc1 h1{font-size:70px;font-weight:900;color:#fff;line-height:1.2;letter-spacing:-3px;margin-bottom:22px}
+.sc1 h1 .accent{background:linear-gradient(120deg,#8b5cf6,#a78bfa,#c4b5fd,#8b5cf6);background-size:250% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:gradient-shift 5s ease infinite}
 .sc1 .tagline{font-size:18px;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:40px}
 .sc1 .presenter{display:flex;align-items:center;gap:16px;padding:16px 24px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:16px}
 .sc1 .presenter-avatar{width:44px;height:44px;border-radius:50%;overflow:hidden;border:2px solid rgba(139,92,246,.3)}
@@ -84,7 +89,7 @@ body:hover .nav-dots{opacity:1}
 .sc-p .bg-mesh{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 20% 80%,rgba(139,92,246,.08) 0%,transparent 50%),radial-gradient(ellipse at 80% 20%,rgba(99,102,241,.06) 0%,transparent 50%);z-index:1}
 .sc-p .content{position:relative;z-index:10;height:100%;padding:50px 80px;display:flex;flex-direction:column}
 .sc-p .principle-num{font-family:'Space Grotesk',sans-serif;font-size:12px;color:#8b5cf6;font-weight:600;letter-spacing:3px;margin-bottom:16px}
-.sc-p h2{font-size:38px;font-weight:900;color:#fff;letter-spacing:-1px;margin-bottom:8px;line-height:1.3}
+.sc-p h2{font-size:40px;font-weight:900;color:#fff;letter-spacing:-1px;margin-bottom:8px;line-height:1.3}
 .sc-p h2 .accent{color:#a78bfa}
 .sc-p .subtitle{font-size:16px;color:rgba(255,255,255,.5);margin-bottom:32px;line-height:1.6}
 .sc-p .subtitle strong{color:#a78bfa}
@@ -104,7 +109,7 @@ body:hover .nav-dots{opacity:1}
 .sc-sum{background:linear-gradient(135deg,#f8f7ff,#f0eeff)}
 .sc-sum .content{position:relative;z-index:10;height:100%;padding:50px 80px;display:flex;flex-direction:column}
 .sc-sum .eyebrow{font-family:'Space Grotesk',sans-serif;font-size:12px;color:#8b5cf6;font-weight:600;letter-spacing:2px;margin-bottom:16px}
-.sc-sum h2{font-size:38px;font-weight:900;color:#1e1b4b;letter-spacing:-1px;margin-bottom:32px}
+.sc-sum h2{font-size:40px;font-weight:900;color:#1e1b4b;letter-spacing:-1px;margin-bottom:32px}
 .sc-sum h2 .accent{color:#8b5cf6}
 .sc-sum .summary-cards{display:flex;gap:20px;flex:1;align-items:stretch;margin-bottom:24px}
 .sc-sum .sum-card{flex:1;background:#fff;border-radius:20px;padding:32px 28px;display:flex;flex-direction:column;border:1px solid rgba(139,92,246,.08);box-shadow:0 4px 24px rgba(139,92,246,.06);transition:all .4s;cursor:default;position:relative;overflow:hidden}
@@ -123,7 +128,7 @@ body:hover .nav-dots{opacity:1}
 .sc-step .grid-bg{position:absolute;top:0;left:0;width:100%;height:100%;background-image:linear-gradient(rgba(139,92,246,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(139,92,246,.03) 1px,transparent 1px);background-size:60px 60px}
 .sc-step .content{position:relative;z-index:10;height:100%;padding:50px 80px;display:flex;flex-direction:column;overflow:hidden}
 .sc-step .step-badge{display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,#8b5cf6,#6366f1);color:#fff;padding:6px 16px;border-radius:20px;font-size:12px;font-weight:700;letter-spacing:1px;margin-bottom:16px;width:fit-content}
-.sc-step h2{font-size:36px;font-weight:900;color:#1e1b4b;letter-spacing:-1px;margin-bottom:8px}
+.sc-step h2{font-size:38px;font-weight:900;color:#1e1b4b;letter-spacing:-1px;margin-bottom:8px}
 .sc-step h2 .accent{color:#8b5cf6}
 .sc-step .subtitle{font-size:15px;color:#64748b;margin-bottom:32px;line-height:1.6}
 .sc-step .subtitle strong{color:#8b5cf6}
@@ -159,7 +164,7 @@ body:hover .nav-dots{opacity:1}
 .sc-close{background:#0a0e1a}
 .sc-close .bg-mesh{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 50% 50%,rgba(139,92,246,.1) 0%,transparent 60%);z-index:1}
 .sc-close .content{position:relative;z-index:10;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 80px}
-.sc-close h2{font-size:40px;font-weight:900;color:#fff;letter-spacing:-1px;margin-bottom:16px;line-height:1.4}
+.sc-close h2{font-size:43px;font-weight:900;color:#fff;letter-spacing:-1px;margin-bottom:16px;line-height:1.4}
 .sc-close h2 .accent{background:linear-gradient(135deg,#8b5cf6,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .sc-close .sub{font-size:18px;color:rgba(255,255,255,.5);line-height:1.8;margin-bottom:40px}
 .sc-close .cta-box{background:linear-gradient(135deg,rgba(139,92,246,.12),rgba(99,102,241,.12));border:1px solid rgba(139,92,246,.25);border-radius:20px;padding:32px 48px;max-width:700px}
@@ -241,7 +246,7 @@ body:hover .nav-dots{opacity:1}
 .sc-final .bg-mesh{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 50% 50%,rgba(139,92,246,.08) 0%,transparent 60%);z-index:1}
 .sc-final .content{position:relative;z-index:10;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 80px}
 .sc-final .closing-step{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100%;padding:0 80px}
-.sc-final .closing-text{font-size:40px;font-weight:900;color:#fff;letter-spacing:-1px;line-height:1.5}
+.sc-final .closing-text{font-size:44px;font-weight:900;color:#fff;letter-spacing:-1px;line-height:1.5}
 .sc-final .closing-text .glow{background:linear-gradient(135deg,#8b5cf6,#a78bfa,#c4b5fd);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200% 200%;animation:gradient-shift 3s ease infinite;position:relative}
 .sc-final .closing-text .glow::after{content:'';position:absolute;bottom:-4px;left:0;width:100%;height:3px;background:linear-gradient(90deg,#8b5cf6,#a78bfa);border-radius:2px}
 .sc-final .closing-sub{font-size:20px;color:rgba(255,255,255,.4);margin-top:24px}
@@ -256,11 +261,11 @@ body:hover .nav-dots{opacity:1}
 .sc-signature .bg-gradient{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 50% 50%,transparent 0%,#0a0e1a 70%);z-index:1}
 .sc-signature .content{position:relative;z-index:10;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
 .sc-signature .sig-text{display:flex;flex-direction:column;align-items:center;gap:16px}
-.sc-signature .sig-main{font-family:'Space Grotesk',sans-serif;font-size:52px;font-weight:700;color:#fff;letter-spacing:-1px}
+.sc-signature .sig-main{font-family:'Space Grotesk',sans-serif;font-size:58px;font-weight:700;color:#fff;letter-spacing:-1px;filter:drop-shadow(0 6px 30px rgba(139,92,246,.35))}
 .sc-signature .sig-accent{background:linear-gradient(135deg,#8b5cf6,#a78bfa,#c4b5fd);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200% 200%;animation:gradient-shift 3s ease infinite}
 .sc-signature .sig-sub{font-size:16px;color:rgba(255,255,255,.3);font-weight:400;letter-spacing:4px;text-transform:uppercase}
 .sc-signature .closing-step{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:100%;padding:0 80px}
-.sc-signature .closing-text{font-size:40px;font-weight:900;color:#fff;letter-spacing:-1px;line-height:1.5;text-align:center}
+.sc-signature .closing-text{font-size:44px;font-weight:900;color:#fff;letter-spacing:-1.5px;line-height:1.5;text-align:center}
 .sc-signature .closing-text .glow{background:linear-gradient(135deg,#8b5cf6,#a78bfa,#c4b5fd);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200% 200%;animation:gradient-shift 3s ease infinite;position:relative}
 .sc-signature .closing-text .glow::after{content:'';position:absolute;bottom:-4px;left:0;width:100%;height:3px;background:linear-gradient(90deg,#8b5cf6,#a78bfa);border-radius:2px}
 .sc-signature .logo-bottom{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:10}
@@ -297,6 +302,8 @@ body:hover .back-btn{opacity:1}
 <!-- ==================== SLIDE 1: TITLE ==================== -->
 <div class="slide sc1 active" data-slide="0">
     <div class="bg-mesh"></div>
+    <div class="orb orb-a"></div>
+    <div class="orb orb-b"></div>
     <div class="content">
         <div class="eyebrow reveal" style="transition-delay:.2s">PRACTICAL CONSULTATION FLOW</div>
         <h1 class="reveal" style="transition-delay:.4s">실전 <span class="accent">상담 플로우</span></h1>

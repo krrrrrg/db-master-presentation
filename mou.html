@@ -29,7 +29,7 @@ body{font-family:'Noto Sans KR',sans-serif;background:#000;overflow:hidden;width
 .reveal-blur.show{opacity:1;filter:blur(0)}
 
 /* Progress bar */
-.progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#14b8a6,#2dd4bf);z-index:9999;transition:width .5s cubic-bezier(.16,1,.3,1)}
+.progress-bar{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,#14b8a6,#2dd4bf);z-index:9999;transition:width .5s cubic-bezier(.16,1,.3,1);box-shadow:0 0 12px rgba(20,184,166,.55)}
 
 /* Slide number */
 .slide-num{position:fixed;bottom:30px;right:40px;font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:600;color:rgba(255,255,255,0.5);z-index:9998;letter-spacing:2px;transition:color .3s}
@@ -47,18 +47,24 @@ body:hover .nav-dots{opacity:1}
 @keyframes float{0%{transform:translateY(0) rotate(0deg);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(-720px) rotate(720deg);opacity:0}}
 @keyframes glow{0%,100%{box-shadow:0 0 20px rgba(20,184,166,0.2)}50%{box-shadow:0 0 40px rgba(20,184,166,0.4)}}
 @keyframes gradient-shift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
+@keyframes orbDrift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(44px,-32px) scale(1.1)}}
 
 /* ======================== SLIDE 1: TITLE ======================== */
 .m1{background:#0a0e1a}
 .m1 .bg-mesh{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 30% 70%,rgba(20,184,166,0.12) 0%,transparent 50%),radial-gradient(ellipse at 70% 30%,rgba(13,148,136,0.15) 0%,transparent 50%),radial-gradient(ellipse at 50% 50%,rgba(15,23,42,0.5) 0%,transparent 70%);z-index:1}
 .m1 .content{position:relative;z-index:10;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 80px}
-.m1 .eyebrow{font-family:'Space Grotesk',sans-serif;font-size:13px;color:#14b8a6;letter-spacing:4px;margin-bottom:28px;font-weight:500}
+.m1 .orb{position:absolute;border-radius:50%;filter:blur(70px);z-index:2;pointer-events:none}
+.m1 .orb-a{width:440px;height:440px;left:-130px;bottom:-150px;background:radial-gradient(circle,rgba(20,184,166,.18),transparent 70%);animation:orbDrift 14s ease-in-out infinite}
+.m1 .orb-b{width:380px;height:380px;right:-100px;top:-120px;background:radial-gradient(circle,rgba(13,148,136,.20),transparent 70%);animation:orbDrift 18s ease-in-out infinite reverse}
+.m1 .eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:'Space Grotesk',sans-serif;font-size:12.5px;color:#2dd4bf;letter-spacing:4px;margin-bottom:32px;font-weight:600;padding:10px 22px;border:1px solid rgba(20,184,166,.35);border-radius:100px;background:rgba(20,184,166,.07)}
+.m1 .eyebrow::before{content:'';width:6px;height:6px;border-radius:50%;background:#14b8a6;box-shadow:0 0 10px rgba(20,184,166,.9);animation:pulse 2s ease-in-out infinite}
 .m1 .partners{display:flex;align-items:center;gap:28px;margin-bottom:28px}
-.m1 .partner{font-size:30px;font-weight:900;color:#fff;letter-spacing:-1px}
+.m1 .partner{font-size:33px;font-weight:900;color:#fff;letter-spacing:-1px}
 .m1 .partner .sub{display:block;font-size:13px;font-weight:500;color:rgba(255,255,255,.4);letter-spacing:0;margin-top:6px}
 .m1 .x-mark{font-size:24px;color:#2dd4bf;font-weight:300}
-.m1 h1{font-size:60px;font-weight:900;color:#fff;line-height:1.2;letter-spacing:-3px;margin-bottom:20px}
-.m1 h1 .accent{background:linear-gradient(135deg,#14b8a6,#2dd4bf);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.m1 h1{font-size:66px;font-weight:900;color:#fff;line-height:1.2;letter-spacing:-3px;margin-bottom:22px}
+.m1 h1 .accent{background:linear-gradient(120deg,#14b8a6,#2dd4bf,#5eead4,#14b8a6);background-size:250% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:gradient-shift 5s ease infinite}
 .m1 .tagline{font-size:17px;color:rgba(255,255,255,.5);line-height:1.8}
 .m1 .logo-chip{background:#fff;border-radius:14px;padding:16px 26px;display:flex;align-items:center;box-shadow:0 12px 34px rgba(0,0,0,.3)}
 .m1 .logo-chip img{height:32px;display:block}
@@ -104,7 +110,7 @@ body:hover .nav-dots{opacity:1}
 .m-biz .grid-bg{position:absolute;top:0;left:0;width:100%;height:100%;background-image:linear-gradient(rgba(20,184,166,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(20,184,166,.03) 1px,transparent 1px);background-size:60px 60px}
 .m-biz .content{position:relative;z-index:10;height:100%;padding:40px 60px;display:flex;flex-direction:column}
 .m-biz .eyebrow{font-family:'Space Grotesk',sans-serif;font-size:12px;color:#14b8a6;font-weight:600;letter-spacing:2px;margin-bottom:8px}
-.m-biz h2{font-size:30px;font-weight:900;color:#0f3d39;letter-spacing:-1px;margin-bottom:4px}
+.m-biz h2{font-size:32px;font-weight:900;color:#0f3d39;letter-spacing:-1px;margin-bottom:4px}
 .m-biz h2 .accent{color:#14b8a6}
 .m-biz .sub{font-size:13px;color:#5b7a76;margin-bottom:20px}
 .m-biz .body{display:flex;gap:30px;flex:1;align-items:stretch;min-height:0}
@@ -152,7 +158,7 @@ body:hover .nav-dots{opacity:1}
 .m-notes .grid-bg{position:absolute;top:0;left:0;width:100%;height:100%;background-image:linear-gradient(rgba(20,184,166,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(20,184,166,.03) 1px,transparent 1px);background-size:60px 60px}
 .m-notes .content{position:relative;z-index:10;height:100%;padding:54px 70px;display:flex;flex-direction:column}
 .m-notes .eyebrow{font-family:'Space Grotesk',sans-serif;font-size:12px;color:#14b8a6;font-weight:600;letter-spacing:2px;margin-bottom:10px}
-.m-notes h2{font-size:38px;font-weight:900;color:#0f3d39;letter-spacing:-1px;line-height:1.3}
+.m-notes h2{font-size:40px;font-weight:900;color:#0f3d39;letter-spacing:-1px;line-height:1.3}
 .m-notes h2 .accent{color:#14b8a6}
 .m-notes .subtitle{font-size:15px;color:#5b7a76;margin-top:10px}
 .m-notes .cards{display:flex;gap:22px;flex:1;align-items:stretch;margin-top:34px}
@@ -169,7 +175,7 @@ body:hover .nav-dots{opacity:1}
 .m-strategy .bg-mesh{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 50% 0%,rgba(20,184,166,.12) 0%,transparent 55%),radial-gradient(ellipse at 85% 90%,rgba(13,148,136,.1) 0%,transparent 50%);z-index:1}
 .m-strategy .content{position:relative;z-index:10;height:100%;padding:54px 64px;display:flex;flex-direction:column}
 .m-strategy .eyebrow{font-family:'Space Grotesk',sans-serif;font-size:12px;color:#2dd4bf;font-weight:600;letter-spacing:2px;margin-bottom:10px}
-.m-strategy h2{font-size:36px;font-weight:900;color:#fff;letter-spacing:-1px;line-height:1.3}
+.m-strategy h2{font-size:38px;font-weight:900;color:#fff;letter-spacing:-1px;line-height:1.3}
 .m-strategy h2 .accent{background:linear-gradient(135deg,#14b8a6,#2dd4bf);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .m-strategy .subtitle{font-size:15px;color:rgba(255,255,255,.45);margin-top:10px}
 .m-strategy .flow{display:flex;align-items:stretch;flex:1;margin-top:34px}
@@ -187,7 +193,7 @@ body:hover .nav-dots{opacity:1}
 .m-winwin .grid-bg{position:absolute;top:0;left:0;width:100%;height:100%;background-image:linear-gradient(rgba(20,184,166,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(20,184,166,.03) 1px,transparent 1px);background-size:60px 60px}
 .m-winwin .content{position:relative;z-index:10;height:100%;padding:46px 64px;display:flex;flex-direction:column}
 .m-winwin .eyebrow{font-family:'Space Grotesk',sans-serif;font-size:12px;color:#14b8a6;font-weight:600;letter-spacing:2px;margin-bottom:8px}
-.m-winwin h2{font-size:34px;font-weight:900;color:#0f3d39;letter-spacing:-1px;line-height:1.3}
+.m-winwin h2{font-size:36px;font-weight:900;color:#0f3d39;letter-spacing:-1px;line-height:1.3}
 .m-winwin h2 .accent{color:#14b8a6}
 .m-winwin .subtitle{font-size:14px;color:#5b7a76;margin-top:8px}
 .m-winwin .compare{display:flex;gap:16px;align-items:stretch;flex:1;margin-top:22px}
@@ -225,7 +231,7 @@ body:hover .nav-dots{opacity:1}
 .m-close .bg-mesh{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 50% 40%,rgba(20,184,166,.14) 0%,transparent 58%),radial-gradient(ellipse at 80% 90%,rgba(13,148,136,.1) 0%,transparent 50%);z-index:1}
 .m-close .content{position:relative;z-index:10;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 90px}
 .m-close .eyebrow{font-family:'Space Grotesk',sans-serif;font-size:13px;color:#2dd4bf;letter-spacing:4px;font-weight:500;margin-bottom:24px}
-.m-close h2{font-size:44px;font-weight:900;color:#fff;line-height:1.4;letter-spacing:-2px;margin-bottom:22px}
+.m-close h2{font-size:48px;font-weight:900;color:#fff;line-height:1.4;letter-spacing:-2px;margin-bottom:22px}
 .m-close h2 .accent{background:linear-gradient(135deg,#14b8a6,#2dd4bf);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .m-close .sub{font-size:17px;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:46px}
 .m-close .steps{display:flex;align-items:center;justify-content:center;margin-bottom:46px}
@@ -273,6 +279,8 @@ body:hover .back-btn{opacity:1}
 <!-- ==================== SLIDE 1: TITLE ==================== -->
 <div class="slide m1 active" data-slide="0">
     <div class="bg-mesh"></div>
+    <div class="orb orb-a"></div>
+    <div class="orb orb-b"></div>
     <div class="content">
         <div class="eyebrow reveal" style="transition-delay:.2s">BUSINESS PARTNERSHIP PROPOSAL</div>
         <div class="partners reveal" style="transition-delay:.35s">
