@@ -235,7 +235,7 @@ body:hover .nav-dots{opacity:1}
 .ma6 .solve-right .hl{color:#b45309;position:relative}
 .ma6 .solve-right .hl::after{content:'';position:absolute;bottom:-2px;left:0;width:100%;height:2.5px;background:#f59e0b;border-radius:2px}
 .ma6 .final-bar{background:linear-gradient(135deg,#1e293b,#0f172a);border-radius:18px;padding:21px 32px;text-align:center;box-shadow:0 16px 44px rgba(15,23,42,.2)}
-.ma6 .final-bar p{font-size:21.5px;font-weight:800;color:#fff;letter-spacing:-.5px}
+.ma6 .final-bar p{font-size:23px;font-weight:900;color:#fff;letter-spacing:-.5px}
 .ma6 .final-bar i{color:#fbbf24;margin-right:12px}
 .ma6 .final-bar .hl{color:#fbbf24;position:relative}
 .ma6 .final-bar .hl::after{content:'';position:absolute;bottom:-3px;left:0;width:100%;height:2px;background:#f59e0b;border-radius:1px}
@@ -309,7 +309,8 @@ body:hover .nav-dots{opacity:1}
 .ma9 .f-ico i{font-size:23px;color:#d97706}
 .ma9 .f-label{font-size:17px;font-weight:800;color:#1e293b;line-height:1.42;letter-spacing:-.4px}
 .ma9 .punch-bar{background:linear-gradient(135deg,#1e293b,#0f172a);border-radius:18px;padding:23px 34px;text-align:center;box-shadow:0 16px 44px rgba(15,23,42,.22)}
-.ma9 .punch-bar p{font-size:23px;font-weight:800;color:#fff;letter-spacing:-.5px}
+.ma9 .punch-bar p{font-size:25px;font-weight:900;color:#fff;letter-spacing:-.5px}
+.ma9 .punch-bar .hl{font-size:27px}
 .ma9 .punch-bar i{color:#fbbf24;margin-right:12px}
 .ma9 .punch-bar .hl{color:#fbbf24;position:relative}
 .ma9 .punch-bar .hl::after{content:'';position:absolute;bottom:-3px;left:0;width:100%;height:2.5px;background:#f59e0b;border-radius:2px}
@@ -369,7 +370,8 @@ body:hover .nav-dots{opacity:1}
 .mc2 .tl-item::before{content:'';position:absolute;left:-30px;top:16px;width:11px;height:11px;border-radius:50%;background:#fff;border:3px solid #f59e0b;box-shadow:0 0 0 3px rgba(245,158,11,.15)}
 .mc2 .tl-item b{color:#0f172a;font-weight:800}
 .mc2 .tl-item .hl{color:#b45309;font-weight:800}
-.mc2 .tl-item.final{background:linear-gradient(135deg,#1e293b,#0f172a);border-color:transparent;color:#fff;font-size:16.5px;font-weight:700;box-shadow:0 12px 30px rgba(15,23,42,.2)}
+.mc2 .tl-item.final{background:linear-gradient(135deg,#1e293b,#0f172a);border-color:transparent;color:#fff;font-size:19.5px;font-weight:800;padding:15px 22px;box-shadow:0 14px 36px rgba(15,23,42,.24)}
+.mc2 .tl-item.final .hl{font-size:22px;font-weight:900}
 .mc2 .tl-item.final::before{background:#fbbf24;border-color:#f59e0b}
 .mc2 .tl-item.final .hl{color:#fbbf24}
 
@@ -391,8 +393,57 @@ body:hover .nav-dots{opacity:1}
 .mc3 .prop-card i{font-size:26px;color:#d97706}
 .mc3 .prop-card .pl{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;color:#0f172a;letter-spacing:1px}
 .mc3 .prop-vs{width:42px;height:42px;border-radius:50%;background:#0f172a;color:#fbbf24;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 6px 16px rgba(15,23,42,.25)}
-.mc3 .prop-cap{background:linear-gradient(135deg,#1e293b,#0f172a);border-radius:14px;padding:15px 22px;font-size:15px;font-weight:700;color:#fff;line-height:1.55;text-align:center}
+.mc3 .prop-cap{background:linear-gradient(135deg,#1e293b,#0f172a);border-radius:15px;padding:18px 24px;font-size:17px;font-weight:800;color:#fff;line-height:1.55;text-align:center;box-shadow:0 14px 34px rgba(15,23,42,.2)}
 .mc3 .prop-cap .hl{color:#fbbf24}
+
+/* ======================== CASE SOLO (홍OO 고객 1건씩) ======================== */
+@keyframes punchIn{0%{opacity:0;transform:translateY(24px) scale(.94)}70%{opacity:1;transform:translateY(-3px) scale(1.02)}100%{opacity:1;transform:translateY(0) scale(1)}}
+.mc1b.solo .solo-wrap{flex:1;display:flex;flex-direction:column;justify-content:center}
+.mc1b.solo .cust-card{padding:36px 50px;gap:17px;max-width:920px;width:100%;margin:0 auto}
+.mc1b.solo .cust-tag{font-size:15px;padding:8px 22px}
+.mc1b.solo .cust-title{font-size:23px}
+.mc1b.solo .nz-rows{display:flex;flex-direction:column;gap:10px}
+.mc1b.solo .nz-rows .nz-row{opacity:0;font-size:20px;line-height:1.6;gap:12px}
+.mc1b.solo .nz-rows.visible .nz-row{animation:ma6CardIn .45s cubic-bezier(.16,1,.3,1) both}
+.mc1b.solo .nz-rows.visible .nz-row:nth-child(1){animation-delay:.03s}
+.mc1b.solo .nz-rows.visible .nz-row:nth-child(2){animation-delay:.11s}
+.mc1b.solo .nz-rows.visible .nz-row:nth-child(3){animation-delay:.19s}
+.mc1b.solo .nz-rows.visible .nz-row:nth-child(4){animation-delay:.27s}
+.mc1b.solo .nz-rows.visible .nz-row:nth-child(5){animation-delay:.35s}
+.mc1b.solo .nz-row i{font-size:14px;margin-top:8px}
+.mc1b.solo .nz-rows .nz-solve{opacity:0;font-size:17px;padding:15px 22px;line-height:1.6}
+.mc1b.solo .nz-rows.visible .nz-solve{animation:ma6CardIn .45s cubic-bezier(.16,1,.3,1) .35s both}
+.mc1b.solo .cust-result{opacity:0;font-size:18px;padding:19px 28px;border-radius:16px;line-height:1.55;box-shadow:0 16px 40px rgba(15,23,42,.22)}
+.mc1b.solo .cust-result.visible{animation:punchIn .55s cubic-bezier(.16,1,.3,1) both}
+.mc1b.solo .cust-result .hl{font-size:21px;font-weight:900}
+.mc1b.solo .cust-result i{font-size:19px;margin-top:5px}
+
+/* ======================== KEY TAKEAWAY (반드시 알아야 하는 포인트) ======================== */
+.mckey{background:#050508}
+.mckey .bg-mesh{position:absolute;top:0;left:0;width:100%;height:100%;background:radial-gradient(ellipse at 26% 76%,rgba(245,158,11,0.12) 0%,transparent 52%),radial-gradient(ellipse at 76% 20%,rgba(99,102,241,0.08) 0%,transparent 50%);z-index:1}
+.mckey .content{position:relative;z-index:10;height:100%;padding:48px 92px;display:flex;flex-direction:column;justify-content:center}
+.mckey .eyebrow{font-family:'Space Grotesk',sans-serif;font-size:12px;color:#f59e0b;font-weight:600;letter-spacing:4px;margin-bottom:14px;display:flex;align-items:center;gap:14px}
+.mckey .eyebrow::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(245,158,11,.35),transparent)}
+.mckey h2{font-size:38px;font-weight:900;color:#fff;letter-spacing:-1.3px;line-height:1.32;margin-bottom:26px}
+.mckey h2 .accent{background:linear-gradient(120deg,#f59e0b,#fbbf24,#f59e0b);background-size:200% 100%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;animation:gradient-shift 4.5s ease infinite}
+.mckey .k-card{background:rgba(255,255,255,.03);border:1px solid rgba(245,158,11,.16);border-radius:18px;padding:20px 30px;margin-bottom:16px;opacity:0}
+.mckey .k-card.visible{animation:ma6CardIn .5s cubic-bezier(.16,1,.3,1) both}
+.mckey .k-label{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.mckey .k-label .n{width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,#f59e0b,#fbbf24);color:#1c1200;font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.mckey .k-label .t{font-size:21.5px;font-weight:800;color:#fff;letter-spacing:-.4px}
+.mckey .k-row{display:flex;gap:11px;align-items:flex-start;font-size:18px;color:rgba(255,255,255,.82);line-height:1.6;padding:3px 0;font-weight:500}
+.mckey .k-row::before{content:'';width:6px;height:6px;border-radius:50%;background:#f59e0b;margin-top:12px;flex-shrink:0}
+.mckey .k-row b{color:#fff;font-weight:800}
+.mckey .kflow{display:flex;align-items:stretch;margin-top:6px}
+.mckey .kf{flex:1;background:rgba(255,255,255,.04);border:1px solid rgba(245,158,11,.2);border-radius:15px;padding:18px 12px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px}
+.mckey .kf .s{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;color:#fbbf24;letter-spacing:1.5px}
+.mckey .kf .l{font-size:16px;font-weight:800;color:#fff;line-height:1.4;letter-spacing:-.3px}
+.mckey .kf.win{background:linear-gradient(135deg,#f59e0b,#fbbf24);border-color:transparent;box-shadow:0 0 48px rgba(245,158,11,.42);animation:breathe 3s ease-in-out infinite}
+.mckey .kf.win .s{color:rgba(28,18,0,.6)}
+.mckey .kf.win .l{color:#1c1200;font-size:22px;font-weight:900}
+.mckey .kfa{flex:0 0 36px;display:flex;align-items:center;justify-content:center}
+.mckey .kfa i{font-size:17px;color:#f59e0b;animation:pulse 2s ease-in-out infinite}
+.mckey .k-note{display:flex;align-items:center;gap:10px;align-self:center;background:rgba(245,158,11,.09);border:1px dashed rgba(245,158,11,.45);border-radius:100px;padding:10px 26px;font-size:16.5px;font-weight:700;color:#fbbf24;margin-top:16px}
 
 /* Back button */
 .back-btn{position:fixed;top:20px;left:20px;z-index:99998;width:40px;height:40px;border:none;border-radius:10px;background:rgba(15,23,42,.6);backdrop-filter:blur(8px);color:rgba(255,255,255,.6);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;opacity:0}
@@ -417,7 +468,7 @@ body:hover .back-btn{opacity:1}
 <div class="cursor" id="cursor"></div>
 <div class="cursor-dot" id="cursorDot"></div>
 <div class="progress-bar" id="progressBar"></div>
-<div class="slide-num" id="slideNum">01 / 13</div>
+<div class="slide-num" id="slideNum">01 / 14</div>
 <div class="nav-dots" id="navDots"></div>
 
 <div class="presentation" id="presentation">
@@ -650,64 +701,53 @@ body:hover .back-btn{opacity:1}
     </div>
 </div>
 
-<!-- ==================== SLIDE 9: 사례1-A 홍OO ==================== -->
-<div class="slide mcase mc1a" data-slide="8">
+<!-- ==================== SLIDE 9: CASE01 홍OO — 고객 1 ==================== -->
+<div class="slide mcase mc1b solo" data-slide="8">
     <div class="grid-bg"></div>
     <div class="case-ghost">C1</div>
     <div class="content">
         <div class="eyebrow reveal" style="transition-delay:.1s">POINT 04 &middot; REAL CASE 01</div>
         <div class="case-head reveal" style="transition-delay:.2s">
             <div class="case-num">CASE 01</div>
-            <div class="agent-chip"><i class="fas fa-user-tie"></i>홍OO 설계사님</div>
+            <div class="agent-chip"><i class="fas fa-user-tie"></i>홍OO 설계사님 &middot; 실전 상담 &#9312;</div>
         </div>
-        <div class="sec-card reveal" style="transition-delay:.35s">
-            <div class="sec-label"><div class="n">1</div><div class="t">공통점 파악</div></div>
-            <div class="b-row">두 고객 모두 <b>최근 니즈가 올라온</b> 고객</div>
-            <div class="b-row">'무조건 빨리 계약한다'는 생각으로 진행!</div>
-        </div>
-        <div class="sec-card reveal" style="transition-delay:.5s;margin-bottom:16px">
-            <div class="sec-label"><div class="n">2</div><div class="t">계약 전 플로우</div></div>
-            <div class="flow4" id="c1a-flow" style="opacity:1;animation:none;margin-bottom:0;margin-top:4px">
-                <div class="fc"><div class="s">STEP 1</div><div class="l">원하는 정보<br/>파악해서 조율</div></div>
-                <div class="fa"><i class="fas fa-chevron-right"></i></div>
-                <div class="fc"><div class="s">STEP 2</div><div class="l">지속적인 소통으로<br/>원하는 내용 반영</div></div>
-                <div class="fa"><i class="fas fa-chevron-right"></i></div>
-                <div class="fc"><div class="s">STEP 3</div><div class="l">불안함 해소</div></div>
-                <div class="fa"><i class="fas fa-chevron-right"></i></div>
-                <div class="fc win"><div class="s">RESULT</div><div class="l">청약 성공!</div></div>
+        <div class="solo-wrap">
+            <div class="cust-card reveal" style="transition-delay:.35s">
+                <div class="cust-tag">고객 1</div>
+                <div class="cust-title"><span class="n">1.</span>고객의 정보 및 니즈 파악 &mdash; 불안감 해소!</div>
+                <div class="nz-rows" id="c1s1-rows">
+                    <div class="nz-row"><i class="fas fa-circle-chevron-right"></i><span>암 &middot; 혈압 &middot; 당뇨 가족력 <span class="ar">&rarr;</span> 불안해함</span></div>
+                    <div class="nz-row"><i class="fas fa-circle-chevron-right"></i><span>간수치 이력으로 5년 대기 <span class="ar">&rarr;</span> 건강체 가입 희망</span></div>
+                    <div class="nz-row"><i class="fas fa-circle-chevron-right"></i><span>기존 갱신형의 갱신율 부담 <span class="ar">&rarr;</span> 비갱신형으로 변경</span></div>
+                    <div class="nz-row"><i class="fas fa-circle-chevron-right"></i><span>상해보다 <b>질병 보장 90점 이상</b> 희망</span></div>
+                </div>
+                <div class="cust-result" id="c1s1-res"><i class="fas fa-circle-check"></i><span><b>결론</b> &mdash; 원하는 조건 그대로, 가장 좋은 조건의 DB 추천 <span class="hl">&rarr; 만족 가입!</span></span></div>
             </div>
         </div>
-        <div class="quote-note substep" id="c1a-note"><i class="fas fa-comment-dots"></i>고객의 말 속에 원하는 정답이 있다!</div>
     </div>
 </div>
 
-<!-- ==================== SLIDE 10: 사례1-B 고객 케이스 2건 ==================== -->
-<div class="slide mcase mc1b" data-slide="9">
+<!-- ==================== SLIDE 10: CASE01 홍OO — 고객 2 ==================== -->
+<div class="slide mcase mc1b solo" data-slide="9">
     <div class="grid-bg"></div>
+    <div class="case-ghost">C1</div>
     <div class="content">
-        <div class="eyebrow reveal" style="transition-delay:.1s">POINT 04 &middot; REAL CASE 01 &mdash; DETAIL</div>
-        <div class="case-head reveal" style="transition-delay:.2s;margin-bottom:16px">
+        <div class="eyebrow reveal" style="transition-delay:.1s">POINT 04 &middot; REAL CASE 01</div>
+        <div class="case-head reveal" style="transition-delay:.2s">
             <div class="case-num">CASE 01</div>
-            <div class="agent-chip"><i class="fas fa-user-tie"></i>홍OO 설계사님 &middot; 실전 상담 2건</div>
+            <div class="agent-chip"><i class="fas fa-user-tie"></i>홍OO 설계사님 &middot; 실전 상담 &#9313;</div>
         </div>
-        <div class="cust-grid">
-            <div class="cust-card substep" id="c1b-1">
-                <div class="cust-tag">고객 1</div>
-                <div class="cust-title"><span class="n">1.</span>고객의 정보 및 니즈 파악 &mdash; 불안감 해소!</div>
-                <div class="nz-row"><i class="fas fa-circle-chevron-right"></i><span>암 &middot; 혈압 &middot; 당뇨 가족력 <span class="ar">&rarr;</span> 불안해함</span></div>
-                <div class="nz-row"><i class="fas fa-circle-chevron-right"></i><span>간수치 이력으로 5년 대기 <span class="ar">&rarr;</span> 건강체 가입 희망</span></div>
-                <div class="nz-row"><i class="fas fa-circle-chevron-right"></i><span>기존 갱신형의 갱신율 부담 <span class="ar">&rarr;</span> 비갱신형으로 변경</span></div>
-                <div class="nz-row"><i class="fas fa-circle-chevron-right"></i><span>상해보다 <b>질병 보장 90점 이상</b> 희망</span></div>
-                <div class="cust-result"><i class="fas fa-circle-check"></i><span><b>결론</b> &mdash; 원하는 조건 그대로, 가장 좋은 조건의 DB 추천 <span class="hl">&rarr; 만족 가입</span></span></div>
-            </div>
-            <div class="cust-card substep" id="c1b-2">
+        <div class="solo-wrap">
+            <div class="cust-card reveal" style="transition-delay:.35s">
                 <div class="cust-tag">고객 2</div>
                 <div class="cust-title"><span class="n">1.</span>고객의 정보 및 니즈 파악 &mdash; 불안감 해소!</div>
-                <div class="nz-row"><i class="fas fa-circle-chevron-right"></i><span>최근 1달 이내 <b>청약 2건</b> 진행했던 고객</span></div>
-                <div class="nz-row"><i class="fas fa-circle-chevron-right"></i><span><b>진단비 크게</b> 가입하고 싶어함</span></div>
-                <div class="nz-row"><i class="fas fa-circle-chevron-right"></i><span>건강검진 이력 없음 <span class="ar">&rarr;</span> 면책기간 후 검진 예정</span></div>
-                <div class="nz-solve"><span class="n">2.</span><b>불안감 해소</b> &mdash; 면책 후 일반암 감액 없는 메리츠로 진단비 + 암주치 설계, 90일 후 건강검진까지 든든하게 준비!</div>
-                <div class="cust-result"><i class="fas fa-circle-check"></i><span><b>결론</b> &mdash; 원하는 조건 반영, 최적 조건의 메리츠 추천 <span class="hl">&rarr; 만족 가입</span></span></div>
+                <div class="nz-rows" id="c1s2-rows">
+                    <div class="nz-row"><i class="fas fa-circle-chevron-right"></i><span>최근 1달 이내 <b>청약 2건</b> 진행했던 고객</span></div>
+                    <div class="nz-row"><i class="fas fa-circle-chevron-right"></i><span><b>진단비 크게</b> 가입하고 싶어함</span></div>
+                    <div class="nz-row"><i class="fas fa-circle-chevron-right"></i><span>건강검진 이력 없음 <span class="ar">&rarr;</span> 면책기간 후 검진 예정</span></div>
+                    <div class="nz-solve"><span class="n">2.</span><b>불안감 해소</b> &mdash; 면책 후 일반암 감액 없는 메리츠로 진단비 + 암주치 설계, 90일 후 건강검진까지 든든하게 준비!</div>
+                </div>
+                <div class="cust-result" id="c1s2-res"><i class="fas fa-circle-check"></i><span><b>결론</b> &mdash; 원하는 조건 반영, 최적 조건의 메리츠 추천 <span class="hl">&rarr; 만족 가입!</span></span></div>
             </div>
         </div>
     </div>
@@ -769,8 +809,35 @@ body:hover .back-btn{opacity:1}
     </div>
 </div>
 
-<!-- ==================== SLIDE 13: POINT 05 — 수익 프로세스 ==================== -->
-<div class="slide ma9" data-slide="12">
+<!-- ==================== SLIDE 13: KEY TAKEAWAY ==================== -->
+<div class="slide mckey" data-slide="12">
+    <div class="bg-mesh"></div>
+    <div class="content">
+        <div class="eyebrow reveal" style="transition-delay:.1s">POINT 04 &middot; KEY TAKEAWAYS</div>
+        <h2 class="reveal" style="transition-delay:.25s">청약 사례들을 통해<br/><span class="accent">반드시 알아야 하는 포인트</span></h2>
+        <div class="k-card" id="key-1">
+            <div class="k-label"><div class="n">1</div><div class="t">공통점 파악</div></div>
+            <div class="k-row">고객 모두 <b>최근에 니즈가 올라온</b> 고객</div>
+            <div class="k-row">무조건 <b>빨리 계약해야 한다</b>는 생각을 가지고 진행!</div>
+        </div>
+        <div class="k-card" id="key-2" style="margin-bottom:0">
+            <div class="k-label"><div class="n">2</div><div class="t">계약까지 가는 필수 플로우</div></div>
+            <div class="kflow">
+                <div class="kf"><div class="s">STEP 1</div><div class="l">원하는 정보<br/>파악해서 조율</div></div>
+                <div class="kfa"><i class="fas fa-chevron-right"></i></div>
+                <div class="kf"><div class="s">STEP 2</div><div class="l">지속적인 소통으로<br/>원하는 내용 반영</div></div>
+                <div class="kfa"><i class="fas fa-chevron-right"></i></div>
+                <div class="kf"><div class="s">STEP 3</div><div class="l">불안함 해소</div></div>
+                <div class="kfa"><i class="fas fa-chevron-right"></i></div>
+                <div class="kf win"><div class="s">RESULT</div><div class="l">청약 성공!</div></div>
+            </div>
+            <div class="k-note"><i class="fas fa-comment-dots"></i>고객의 말 속에 원하는 정답이 있다!</div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SLIDE 14: POINT 05 — 수익 프로세스 ==================== -->
+<div class="slide ma9" data-slide="13">
     <div class="grid-bg"></div>
     <div class="content">
         <div class="eyebrow reveal" style="transition-delay:.1s">POINT 05 &middot; REVENUE PROCESS</div>
@@ -883,11 +950,12 @@ const slideSteps = {
     4: { total: 3, current: 0 },   // Point01 포트폴리오 구성: 0=4종 카드, 1=이유, 2=경고
     5: { total: 5, current: 0 },   // Point02 왜 마스케어: 0=질문, 1=히어로, 2=3가지 이유, 3=문제해결, 4=타석
     6: { total: 3, current: 0 },   // Point03 접근법: 0=타이틀, 1=아웃바운드, 2=인바운드+VS
-    8: { total: 2, current: 0 },   // 사례1-A: 0=개요, 1=인용 노트
-    9: { total: 3, current: 0 },   // 사례1-B: 0=헤더, 1=고객1, 2=고객2
+    8: { total: 3, current: 0 },   // 사례1 고객1: 0=카드, 1=니즈 항목, 2=결론
+    9: { total: 3, current: 0 },   // 사례1 고객2: 0=카드, 1=니즈+해소, 2=결론
     10: { total: 3, current: 0 },  // 사례2: 0=전화 단계, 1=방문 단계, 2=결과
     11: { total: 3, current: 0 },  // 사례3: 0=인트로, 1=스피드+포인트, 2=제안 비교
-    12: { total: 3, current: 0 },  // Point05 수익: 0=타이틀, 1=4단계 플로우, 2=대면 전환
+    12: { total: 3, current: 0 },  // 핵심 포인트: 0=타이틀, 1=공통점, 2=필수 플로우
+    13: { total: 3, current: 0 },  // Point05 수익: 0=타이틀, 1=4단계 플로우, 2=대면 전환
 };
 
 function applySubStep(slideIndex, step) {
@@ -928,13 +996,14 @@ function applySubStep(slideIndex, step) {
             document.getElementById('ma7-vs').classList.toggle('visible', step >= 2);
             break;
         }
-        case 8: { // 사례1-A
-            document.getElementById('c1a-note').classList.toggle('visible', step >= 1);
+        case 8: { // 사례1 고객1
+            document.getElementById('c1s1-rows').classList.toggle('visible', step >= 1);
+            document.getElementById('c1s1-res').classList.toggle('visible', step >= 2);
             break;
         }
-        case 9: { // 사례1-B 고객 케이스
-            document.getElementById('c1b-1').classList.toggle('visible', step >= 1);
-            document.getElementById('c1b-2').classList.toggle('visible', step >= 2);
+        case 9: { // 사례1 고객2
+            document.getElementById('c1s2-rows').classList.toggle('visible', step >= 1);
+            document.getElementById('c1s2-res').classList.toggle('visible', step >= 2);
             break;
         }
         case 10: { // 사례2 여정
@@ -948,7 +1017,12 @@ function applySubStep(slideIndex, step) {
             document.getElementById('c3-right').classList.toggle('visible', step >= 2);
             break;
         }
-        case 12: { // Point05 수익 프로세스
+        case 12: { // 핵심 포인트
+            document.getElementById('key-1').classList.toggle('visible', step >= 1);
+            document.getElementById('key-2').classList.toggle('visible', step >= 2);
+            break;
+        }
+        case 13: { // Point05 수익 프로세스
             document.getElementById('ma9-flow').classList.toggle('visible', step >= 1);
             document.getElementById('ma9-punch').classList.toggle('visible', step >= 2);
             break;
@@ -972,7 +1046,7 @@ for (let i = 0; i < total; i++) {
     navDots.appendChild(dot);
 }
 
-const darkSlides = [0, 2, 4, 6, 7];
+const darkSlides = [0, 2, 4, 6, 7, 12];
 
 function updateUI() {
     progressBar.style.width = ((current + 1) / total * 100) + '%';
