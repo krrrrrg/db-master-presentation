@@ -375,35 +375,56 @@ body:hover .nav-dots{opacity:1}
 .mc2 .tl-item.final::before{background:#fbbf24;border-color:#f59e0b}
 .mc2 .tl-item.final .hl{color:#fbbf24}
 
-/* SLIDE 12: 사례3 — 스피드 & 비교 (v2) */
-.mc3 .content{padding:42px 84px}
-.mc3 .duo{display:flex;gap:16px;margin-bottom:14px}
-.mc3 .d-card{flex:1;background:#fff;border:1px solid rgba(245,158,11,.13);border-radius:16px;padding:17px 24px;display:flex;gap:16px;align-items:center;box-shadow:0 8px 24px rgba(180,83,9,.06)}
+/* SLIDE 12: 사례3 — 광고 캐치 (v3) */
+.mc3 .content{padding:38px 80px 40px}
+.mc3 .stage{flex:1;display:flex;gap:34px;min-height:0;align-items:center}
+.mc3 .phone{flex:0 0 292px;background:#0f172a;border-radius:34px;padding:13px 11px 15px;box-shadow:0 26px 60px rgba(15,23,42,.28);position:relative}
+.mc3 .phone .notch{width:86px;height:5px;border-radius:3px;background:rgba(255,255,255,.16);margin:0 auto 9px}
+.mc3 .screen{background:#f6f8fb;border-radius:22px;padding:12px;display:flex;flex-direction:column;gap:9px;height:376px}
+.mc3 .ad-top{display:flex;align-items:center;gap:8px}
+.mc3 .ad-ava{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#f59e0b,#fbbf24);flex-shrink:0}
+.mc3 .ad-name{font-size:11.5px;font-weight:700;color:#334155}
+.mc3 .ad-tag{margin-left:auto;font-size:9px;font-weight:700;color:#94a3b8;border:1px solid #cbd5e1;border-radius:4px;padding:2px 6px;font-family:'Space Grotesk',sans-serif;letter-spacing:1px}
+.mc3 .ad-photo{border-radius:13px;overflow:hidden;height:142px;flex-shrink:0}
+.mc3 .ad-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.mc3 .ah-box{position:relative;background:linear-gradient(135deg,#fff7e8,#ffedc4);border-radius:12px;padding:11px 12px;text-align:center}
+.mc3 .ah-box .ah-t{font-size:18px;font-weight:900;color:#78350f;letter-spacing:-.4px}
+.mc3 .ah-box .ah-s{font-size:11.5px;color:#b45309;font-weight:600;margin-top:2px}
+.mc3 .catch-ring{position:absolute;inset:-8px;border:3px solid #f59e0b;border-radius:17px;opacity:0;pointer-events:none;z-index:5}
+.mc3 .catch-ring.visible{animation:catchIn .5s cubic-bezier(.34,1.56,.64,1) both,catchPulse 2.2s ease-in-out .55s infinite}
+@keyframes catchIn{0%{opacity:0;transform:scale(1.4)}100%{opacity:1;transform:scale(1)}}
+@keyframes catchPulse{0%,100%{box-shadow:0 0 0 5px rgba(245,158,11,.16),0 0 24px rgba(245,158,11,.3)}50%{box-shadow:0 0 0 10px rgba(245,158,11,.08),0 0 42px rgba(245,158,11,.5)}}
+.mc3 .catch-tag{position:absolute;top:-17px;right:-11px;background:#f59e0b;color:#1c1200;font-size:12.5px;font-weight:900;border-radius:100px;padding:6px 14px;transform:rotate(6deg);box-shadow:0 8px 20px rgba(245,158,11,.45);white-space:nowrap}
+.mc3 .ad-line{height:8px;border-radius:4px;background:#e2e8f0}
+.mc3 .ad-line.w90{width:90%}.mc3 .ad-line.w75{width:75%}
+.mc3 .ad-cta{margin-top:auto;background:#0f172a;color:#fff;border-radius:10px;padding:11px;text-align:center;font-size:12.5px;font-weight:700}
+.mc3 .rcol{flex:1;display:flex;flex-direction:column;gap:12px;justify-content:center;min-width:0}
+.mc3 .r1{display:flex;flex-direction:column;gap:12px}
+.mc3 .d-card{background:#fff;border:1px solid rgba(245,158,11,.13);border-radius:15px;padding:14px 22px;display:flex;gap:15px;align-items:center;box-shadow:0 8px 24px rgba(180,83,9,.06)}
 .mc3 .d-card.speed{border:1.5px solid rgba(245,158,11,.5);background:linear-gradient(135deg,#fff,#fff5e0);animation:glow 2.5s ease-in-out infinite}
-.mc3 .d-ico{width:52px;height:52px;border-radius:15px;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.22);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.mc3 .d-ico i{font-size:21px;color:#d97706}
+.mc3 .d-ico{width:46px;height:46px;border-radius:14px;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.22);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.mc3 .d-ico i{font-size:19px;color:#d97706}
 .mc3 .d-card.speed .d-ico{background:linear-gradient(135deg,#f59e0b,#fbbf24);border:none}
 .mc3 .d-card.speed .d-ico i{color:#1c1200}
-.mc3 .d-tit{font-size:18.5px;font-weight:800;color:#0f172a;letter-spacing:-.4px;margin-bottom:3px}
-.mc3 .d-sub{font-size:14.5px;color:#64748b;font-weight:500}
+.mc3 .d-tit{font-size:17.5px;font-weight:800;color:#0f172a;letter-spacing:-.4px;margin-bottom:2px}
+.mc3 .d-sub{font-size:14px;color:#64748b;font-weight:500}
 .mc3 .d-card.speed .d-sub{color:#b45309;font-weight:700}
-.mc3 .point-band{background:linear-gradient(135deg,#1e293b,#0f172a);border-radius:16px;padding:15px 30px;display:flex;align-items:center;justify-content:center;gap:15px;margin-bottom:14px;box-shadow:0 14px 34px rgba(15,23,42,.2);opacity:0}
-.mc3 .point-band.visible{animation:ma6CardIn .5s cubic-bezier(.16,1,.3,1) both}
-.mc3 .point-band i{color:#fbbf24;font-size:23px}
-.mc3 .point-band .pb-t{font-size:18px;color:rgba(255,255,255,.75);font-weight:600}
-.mc3 .point-band .pb-big{font-size:29px;font-weight:900;background:linear-gradient(135deg,#fbbf24,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-.6px}
-.mc3 .cmp-zone{display:flex;align-items:stretch;gap:18px;flex:1;min-height:0;opacity:0}
+.mc3 .catch-card{background:linear-gradient(135deg,#1e293b,#0f172a);border-radius:15px;padding:15px 24px;display:flex;align-items:center;gap:14px;box-shadow:0 14px 34px rgba(15,23,42,.22);opacity:0}
+.mc3 .catch-card.visible{animation:punchIn .5s cubic-bezier(.16,1,.3,1) both}
+.mc3 .catch-card .ci{font-size:22px}
+.mc3 .catch-card .ct{font-size:16px;color:rgba(255,255,255,.75);font-weight:600}
+.mc3 .catch-card .cb{font-size:24px;font-weight:900;background:linear-gradient(135deg,#fbbf24,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-.5px;margin-left:auto}
+.mc3 .cmp-zone{display:flex;align-items:stretch;gap:14px;opacity:0}
 .mc3 .cmp-zone.visible{animation:ma6CardIn .55s cubic-bezier(.16,1,.3,1) both}
-.mc3 .doc{flex:1;background:#fff;border:1px solid rgba(245,158,11,.16);border-radius:18px;padding:18px 24px;box-shadow:0 10px 28px rgba(180,83,9,.08);display:flex;flex-direction:column;gap:10px;transition:transform .3s,box-shadow .3s}
-.mc3 .cmp-zone.visible .doc:hover{transform:translateY(-4px);box-shadow:0 18px 38px rgba(180,83,9,.14)}
-.mc3 .doc-head{display:flex;align-items:center;gap:10px;padding-bottom:10px;border-bottom:1px solid rgba(245,158,11,.14)}
-.mc3 .doc-head i{color:#d97706;font-size:17px}
-.mc3 .doc-head .t{font-family:'Space Grotesk',sans-serif;font-size:15.5px;font-weight:700;color:#0f172a;letter-spacing:.5px}
-.mc3 .skel{height:9px;border-radius:5px;background:#eef2f7}
+.mc3 .doc{flex:1;background:#fff;border:1px solid rgba(245,158,11,.16);border-radius:15px;padding:14px 18px;box-shadow:0 8px 24px rgba(180,83,9,.07);display:flex;flex-direction:column;gap:8px}
+.mc3 .doc-head{display:flex;align-items:center;gap:9px;padding-bottom:8px;border-bottom:1px solid rgba(245,158,11,.14)}
+.mc3 .doc-head i{color:#d97706;font-size:15px}
+.mc3 .doc-head .t{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;color:#0f172a;letter-spacing:.5px}
+.mc3 .skel{height:7px;border-radius:4px;background:#eef2f7}
 .mc3 .skel.w85{width:85%}.mc3 .skel.w70{width:70%}.mc3 .skel.w60{width:60%}
-.mc3 .doc-hl{display:flex;align-items:center;gap:9px;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.32);border-radius:10px;padding:9px 13px;font-size:14px;font-weight:800;color:#b45309}
-.mc3 .doc-hl i{font-size:12px}
-.mc3 .vs-big{width:56px;height:56px;border-radius:50%;background:#0f172a;color:#fbbf24;font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;align-self:center;box-shadow:0 0 30px rgba(245,158,11,.3);border:2px solid rgba(245,158,11,.5)}
+.mc3 .doc-hl{display:flex;align-items:center;gap:8px;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.32);border-radius:9px;padding:7px 11px;font-size:12.5px;font-weight:800;color:#b45309}
+.mc3 .doc-hl i{font-size:10.5px}
+.mc3 .vs-big{width:46px;height:46px;border-radius:50%;background:#0f172a;color:#fbbf24;font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;align-self:center;box-shadow:0 0 26px rgba(245,158,11,.3);border:2px solid rgba(245,158,11,.5)}
 .mc3 .final-choice{margin-top:14px;background:linear-gradient(135deg,#f59e0b,#fbbf24);border-radius:16px;padding:17px 30px;text-align:center;font-size:20px;font-weight:900;color:#1c1200;letter-spacing:-.4px;box-shadow:0 16px 40px rgba(245,158,11,.35);opacity:0}
 .mc3 .final-choice.visible{animation:punchIn .55s cubic-bezier(.16,1,.3,1) both}
 .mc3 .final-choice i{margin-right:10px}
@@ -805,40 +826,55 @@ body:hover .back-btn{opacity:1}
             <div class="case-num">CASE 03</div>
             <div class="agent-chip"><i class="fas fa-user-tie"></i>장OO 설계사님</div>
         </div>
-        <div class="duo">
-            <div class="d-card reveal" style="transition-delay:.35s">
-                <div class="d-ico"><i class="fas fa-bullhorn"></i></div>
-                <div><div class="d-tit">광고 내용에 니즈가 있던 고객</div><div class="d-sub">이미 이야기를 들어줄 준비가 되어 있었다</div></div>
+        <div class="stage">
+            <div class="phone reveal-scale" style="transition-delay:.35s">
+                <div class="notch"></div>
+                <div class="screen">
+                    <div class="ad-top"><div class="ad-ava"></div><div class="ad-name">보험 안내</div><div class="ad-tag">AD</div></div>
+                    <div class="ad-photo"><img src="img/ad-care.jpg" alt="간병 광고"/></div>
+                    <div class="ah-box">
+                        <div class="ah-t">간병인 사용일당</div>
+                        <div class="ah-s">간병비 부담, 미리 준비하세요</div>
+                        <div class="catch-ring" id="c3-ring"><div class="catch-tag">&#127919; 캐치!</div></div>
+                    </div>
+                    <div class="ad-line w90"></div>
+                    <div class="ad-line w75"></div>
+                    <div class="ad-cta">자세히 보기</div>
+                </div>
             </div>
-            <div class="d-card speed reveal" style="transition-delay:.5s">
-                <div class="d-ico"><i class="fas fa-stopwatch"></i></div>
-                <div><div class="d-tit">디비 분배 즉시 &mdash; 빠른 전화</div><div class="d-sub"><i class="fas fa-bolt"></i> 스피드가 첫 통화의 승부를 가른다</div></div>
-            </div>
-        </div>
-        <div class="point-band" id="c3-band">
-            <i class="fas fa-user-nurse"></i>
-            <span class="pb-t">공략 포인트는 단 하나 &mdash;</span>
-            <span class="pb-big">간병인 사용일당</span>
-        </div>
-        <div class="cmp-zone" id="c3-cmp">
-            <div class="doc">
-                <div class="doc-head"><i class="fas fa-file-lines"></i><div class="t">제안서 A</div></div>
-                <div class="skel w85"></div>
-                <div class="skel w70"></div>
-                <div class="doc-hl"><i class="fas fa-star"></i>간병인 사용일당</div>
-                <div class="skel w60"></div>
-                <div class="skel w85"></div>
-                <div class="skel w70"></div>
-            </div>
-            <div class="vs-big">VS</div>
-            <div class="doc">
-                <div class="doc-head"><i class="fas fa-file-lines"></i><div class="t">제안서 B</div></div>
-                <div class="skel w70"></div>
-                <div class="skel w85"></div>
-                <div class="doc-hl"><i class="fas fa-star"></i>간병인 사용일당</div>
-                <div class="skel w60"></div>
-                <div class="skel w70"></div>
-                <div class="skel w85"></div>
+            <div class="rcol">
+                <div class="r1 substep" id="c3-r1">
+                    <div class="d-card">
+                        <div class="d-ico"><i class="fas fa-bullhorn"></i></div>
+                        <div><div class="d-tit">광고 내용에 니즈가 있던 고객</div><div class="d-sub">이미 이야기를 들어줄 준비가 되어 있었다</div></div>
+                    </div>
+                    <div class="d-card speed">
+                        <div class="d-ico"><i class="fas fa-stopwatch"></i></div>
+                        <div><div class="d-tit">디비 분배 즉시 &mdash; 빠른 전화</div><div class="d-sub"><i class="fas fa-bolt"></i> 스피드가 첫 통화의 승부를 가른다</div></div>
+                    </div>
+                </div>
+                <div class="catch-card" id="c3-catch">
+                    <span class="ci">&#127919;</span>
+                    <span class="ct">광고 속 포인트를 캐치!</span>
+                    <span class="cb">간병인 사용일당</span>
+                </div>
+                <div class="cmp-zone" id="c3-cmp">
+                    <div class="doc">
+                        <div class="doc-head"><i class="fas fa-file-lines"></i><div class="t">제안서 A</div></div>
+                        <div class="skel w85"></div>
+                        <div class="doc-hl"><i class="fas fa-star"></i>간병인 사용일당</div>
+                        <div class="skel w60"></div>
+                        <div class="skel w70"></div>
+                    </div>
+                    <div class="vs-big">VS</div>
+                    <div class="doc">
+                        <div class="doc-head"><i class="fas fa-file-lines"></i><div class="t">제안서 B</div></div>
+                        <div class="skel w70"></div>
+                        <div class="doc-hl"><i class="fas fa-star"></i>간병인 사용일당</div>
+                        <div class="skel w85"></div>
+                        <div class="skel w60"></div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="final-choice" id="c3-final"><i class="fas fa-circle-check"></i>제안서 2가지를 빠르게 준비 &mdash; 비교를 통해 확실히 좋은 것을 스스로 선택하게 한 케이스!</div>
@@ -1047,9 +1083,11 @@ function applySubStep(slideIndex, step) {
             document.getElementById('c2-g3').classList.toggle('visible', step >= 2);
             break;
         }
-        case 11: { // 사례3
-            document.getElementById('c3-band').classList.toggle('visible', step >= 1);
-            document.getElementById('c3-cmp').classList.toggle('visible', step >= 2);
+        case 11: { // 사례3 (광고 캐치)
+            document.getElementById('c3-r1').classList.toggle('visible', step >= 1);
+            document.getElementById('c3-ring').classList.toggle('visible', step >= 2);
+            document.getElementById('c3-catch').classList.toggle('visible', step >= 2);
+            document.getElementById('c3-cmp').classList.toggle('visible', step >= 3);
             document.getElementById('c3-final').classList.toggle('visible', step >= 3);
             break;
         }
