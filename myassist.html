@@ -314,6 +314,86 @@ body:hover .nav-dots{opacity:1}
 .ma9 .punch-bar .hl{color:#fbbf24;position:relative}
 .ma9 .punch-bar .hl::after{content:'';position:absolute;bottom:-3px;left:0;width:100%;height:2.5px;background:#f59e0b;border-radius:2px}
 
+/* ======================== CASE SLIDES 공통 (POINT 04 본문) ======================== */
+.mcase{background:linear-gradient(135deg,#fffdfa 0%,#faf5ec 100%)}
+.mcase .grid-bg{position:absolute;top:0;left:0;width:100%;height:100%;background-image:linear-gradient(rgba(245,158,11,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(245,158,11,.04) 1px,transparent 1px);background-size:60px 60px}
+.mcase .content{position:relative;z-index:10;height:100%;padding:46px 84px;display:flex;flex-direction:column}
+.mcase .eyebrow{font-family:'Space Grotesk',sans-serif;font-size:12px;color:#d97706;font-weight:600;letter-spacing:3px;margin-bottom:14px;display:flex;align-items:center;gap:14px}
+.mcase .eyebrow::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(217,119,6,.25),transparent)}
+.mcase .case-head{display:flex;align-items:center;gap:22px;margin-bottom:20px}
+.mcase .case-num{font-family:'Space Grotesk',sans-serif;font-size:46px;font-weight:700;background:linear-gradient(135deg,#b45309,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;letter-spacing:-1px}
+.mcase .agent-chip{display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid rgba(245,158,11,.22);border-radius:100px;padding:11px 24px;font-size:19px;font-weight:800;color:#1e293b;box-shadow:0 6px 20px rgba(180,83,9,.09)}
+.mcase .agent-chip i{color:#d97706;font-size:16px}
+.mcase .case-ghost{position:absolute;top:50%;right:-4px;transform:translateY(-50%);font-family:'Space Grotesk',sans-serif;font-size:250px;font-weight:700;line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(245,158,11,.10);z-index:0;pointer-events:none;letter-spacing:-6px;user-select:none}
+
+/* SLIDE 9: 사례1-A */
+.mc1a .sec-card{background:#fff;border:1px solid rgba(245,158,11,.13);border-radius:18px;padding:19px 28px;box-shadow:0 8px 26px rgba(180,83,9,.06);margin-bottom:14px}
+.mc1a .sec-label{display:flex;align-items:center;gap:11px;margin-bottom:11px}
+.mc1a .sec-label .n{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,#f59e0b,#fbbf24);color:#1c1200;font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center}
+.mc1a .sec-label .t{font-size:19px;font-weight:800;color:#0f172a;letter-spacing:-.4px}
+.mc1a .b-row{display:flex;align-items:flex-start;gap:10px;font-size:16px;color:#334155;line-height:1.55;font-weight:500;padding:3px 0}
+.mc1a .b-row::before{content:'';width:6px;height:6px;border-radius:50%;background:#f59e0b;margin-top:9px;flex-shrink:0}
+.mc1a .flow4{display:flex;align-items:stretch;margin-bottom:12px;opacity:0}
+.mc1a .flow4.visible{animation:ma6CardIn .5s cubic-bezier(.16,1,.3,1) both}
+.mc1a .fc{flex:1;background:#fff;border:1px solid rgba(245,158,11,.14);border-radius:15px;padding:16px 12px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:8px;box-shadow:0 6px 20px rgba(180,83,9,.05)}
+.mc1a .fc .s{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:700;color:#b45309;letter-spacing:1.5px}
+.mc1a .fc .l{font-size:15px;font-weight:800;color:#1e293b;line-height:1.4;letter-spacing:-.3px}
+.mc1a .fc.win{background:linear-gradient(135deg,#f59e0b,#fbbf24);border-color:transparent;box-shadow:0 12px 28px rgba(245,158,11,.32)}
+.mc1a .fc.win .s{color:rgba(28,18,0,.6)}
+.mc1a .fc.win .l{color:#1c1200;font-size:17px}
+.mc1a .fa{flex:0 0 34px;display:flex;align-items:center;justify-content:center}
+.mc1a .fa i{font-size:16px;color:#f59e0b;animation:pulse 2s ease-in-out infinite}
+.mc1a .quote-note{display:flex;align-items:center;gap:10px;align-self:center;background:rgba(245,158,11,.09);border:1px dashed rgba(245,158,11,.4);border-radius:100px;padding:9px 22px;font-size:15px;font-weight:700;color:#b45309;opacity:0}
+.mc1a .quote-note.visible{animation:ma6CardIn .5s cubic-bezier(.16,1,.3,1) .25s both}
+
+/* SLIDE 10: 사례1-B 고객 케이스 */
+.mc1b .cust-grid{display:flex;gap:18px;flex:1}
+.mc1b .cust-card{flex:1;background:#fff;border:1px solid rgba(245,158,11,.13);border-radius:20px;padding:22px 24px;box-shadow:0 10px 30px rgba(180,83,9,.07);display:flex;flex-direction:column;gap:10px}
+.mc1b .cust-tag{align-self:flex-start;background:linear-gradient(135deg,#f59e0b,#fbbf24);color:#1c1200;border-radius:100px;padding:6px 16px;font-size:13px;font-weight:900;letter-spacing:.5px}
+.mc1b .cust-title{font-size:16.5px;font-weight:800;color:#0f172a;letter-spacing:-.3px}
+.mc1b .cust-title .n{color:#b45309;font-family:'Space Grotesk',sans-serif;margin-right:6px}
+.mc1b .nz-row{display:flex;align-items:flex-start;gap:9px;font-size:14.5px;color:#334155;line-height:1.5;font-weight:500}
+.mc1b .nz-row i{color:#f59e0b;font-size:11px;margin-top:5px;flex-shrink:0}
+.mc1b .nz-row .ar{color:#d97706;font-weight:800}
+.mc1b .nz-solve{background:rgba(245,158,11,.08);border:1px solid rgba(245,158,11,.22);border-radius:12px;padding:11px 15px;font-size:14px;color:#78350f;line-height:1.55;font-weight:600}
+.mc1b .nz-solve .n{color:#b45309;font-family:'Space Grotesk',sans-serif;font-weight:700;margin-right:5px}
+.mc1b .cust-result{margin-top:auto;background:linear-gradient(135deg,#1e293b,#0f172a);border-radius:13px;padding:13px 18px;font-size:14.5px;font-weight:700;color:#fff;line-height:1.5;display:flex;gap:9px;align-items:flex-start}
+.mc1b .cust-result i{color:#fbbf24;margin-top:4px;flex-shrink:0}
+.mc1b .cust-result .hl{color:#fbbf24}
+
+/* SLIDE 11: 사례2 여정 타임라인 */
+.mc2 .tl-wrap{position:relative;display:flex;flex-direction:column;gap:11px;padding-left:36px;flex:1;justify-content:center}
+.mc2 .tl-wrap::before{content:'';position:absolute;left:12px;top:10px;bottom:10px;width:2px;background:linear-gradient(180deg,#f59e0b,rgba(245,158,11,.12));border-radius:1px}
+.mc2 .tl-g{display:flex;flex-direction:column;gap:11px}
+.mc2 .tl-item{position:relative;font-size:15px;color:#334155;line-height:1.55;letter-spacing:-.2px;font-weight:500;background:#fff;border:1px solid rgba(245,158,11,.1);border-radius:13px;padding:11px 18px;box-shadow:0 4px 16px rgba(180,83,9,.04)}
+.mc2 .tl-item::before{content:'';position:absolute;left:-30px;top:16px;width:11px;height:11px;border-radius:50%;background:#fff;border:3px solid #f59e0b;box-shadow:0 0 0 3px rgba(245,158,11,.15)}
+.mc2 .tl-item b{color:#0f172a;font-weight:800}
+.mc2 .tl-item .hl{color:#b45309;font-weight:800}
+.mc2 .tl-item.final{background:linear-gradient(135deg,#1e293b,#0f172a);border-color:transparent;color:#fff;font-size:16.5px;font-weight:700;box-shadow:0 12px 30px rgba(15,23,42,.2)}
+.mc2 .tl-item.final::before{background:#fbbf24;border-color:#f59e0b}
+.mc2 .tl-item.final .hl{color:#fbbf24}
+
+/* SLIDE 12: 사례3 */
+.mc3 .body3{flex:1;display:flex;gap:30px;align-items:center}
+.mc3 .col-l{flex:1.15;display:flex;flex-direction:column;gap:18px}
+.mc3 .intro{font-size:19px;color:#1e293b;line-height:1.65;font-weight:600;letter-spacing:-.3px}
+.mc3 .speed-note{display:flex;align-items:flex-start;gap:11px;background:rgba(245,158,11,.09);border:1px dashed rgba(245,158,11,.4);border-radius:14px;padding:13px 18px;font-size:15px;font-weight:700;color:#b45309;line-height:1.5;opacity:0}
+.mc3 .speed-note.visible{animation:ma6CardIn .5s cubic-bezier(.16,1,.3,1) both}
+.mc3 .speed-note i{margin-top:3px}
+.mc3 .point-card{background:#fff;border:1px solid rgba(245,158,11,.15);border-radius:18px;padding:20px 26px;box-shadow:0 10px 28px rgba(180,83,9,.08);font-size:17px;color:#334155;font-weight:600;line-height:1.6;opacity:0}
+.mc3 .point-card.visible{animation:ma6CardIn .5s cubic-bezier(.16,1,.3,1) .15s both}
+.mc3 .point-card .big{font-size:27px;font-weight:900;background:linear-gradient(135deg,#b45309,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-.7px}
+.mc3 .col-r{flex:1;display:flex;flex-direction:column;gap:14px;opacity:0}
+.mc3 .col-r.visible{animation:ma6CardIn .55s cubic-bezier(.16,1,.3,1) both}
+.mc3 .prop-row{display:flex;align-items:center;gap:14px}
+.mc3 .prop-card{flex:1;background:#fff;border:1px solid rgba(245,158,11,.16);border-radius:17px;padding:22px 16px;display:flex;flex-direction:column;align-items:center;gap:10px;box-shadow:0 8px 24px rgba(180,83,9,.07);transition:transform .3s,box-shadow .3s}
+.mc3 .prop-card:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(180,83,9,.13)}
+.mc3 .prop-card i{font-size:26px;color:#d97706}
+.mc3 .prop-card .pl{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;color:#0f172a;letter-spacing:1px}
+.mc3 .prop-vs{width:42px;height:42px;border-radius:50%;background:#0f172a;color:#fbbf24;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 6px 16px rgba(15,23,42,.25)}
+.mc3 .prop-cap{background:linear-gradient(135deg,#1e293b,#0f172a);border-radius:14px;padding:15px 22px;font-size:15px;font-weight:700;color:#fff;line-height:1.55;text-align:center}
+.mc3 .prop-cap .hl{color:#fbbf24}
+
 /* Back button */
 .back-btn{position:fixed;top:20px;left:20px;z-index:99998;width:40px;height:40px;border:none;border-radius:10px;background:rgba(15,23,42,.6);backdrop-filter:blur(8px);color:rgba(255,255,255,.6);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .3s;opacity:0}
 body:hover .back-btn{opacity:1}
@@ -337,7 +417,7 @@ body:hover .back-btn{opacity:1}
 <div class="cursor" id="cursor"></div>
 <div class="cursor-dot" id="cursorDot"></div>
 <div class="progress-bar" id="progressBar"></div>
-<div class="slide-num" id="slideNum">01 / 09</div>
+<div class="slide-num" id="slideNum">01 / 13</div>
 <div class="nav-dots" id="navDots"></div>
 
 <div class="presentation" id="presentation">
@@ -570,8 +650,127 @@ body:hover .back-btn{opacity:1}
     </div>
 </div>
 
-<!-- ==================== SLIDE 9: POINT 05 — 수익 프로세스 ==================== -->
-<div class="slide ma9" data-slide="8">
+<!-- ==================== SLIDE 9: 사례1-A 홍OO ==================== -->
+<div class="slide mcase mc1a" data-slide="8">
+    <div class="grid-bg"></div>
+    <div class="case-ghost">C1</div>
+    <div class="content">
+        <div class="eyebrow reveal" style="transition-delay:.1s">POINT 04 &middot; REAL CASE 01</div>
+        <div class="case-head reveal" style="transition-delay:.2s">
+            <div class="case-num">CASE 01</div>
+            <div class="agent-chip"><i class="fas fa-user-tie"></i>홍OO 설계사님</div>
+        </div>
+        <div class="sec-card reveal" style="transition-delay:.35s">
+            <div class="sec-label"><div class="n">1</div><div class="t">공통점 파악</div></div>
+            <div class="b-row">두 고객 모두 <b>최근 니즈가 올라온</b> 고객</div>
+            <div class="b-row">'무조건 빨리 계약한다'는 생각으로 진행!</div>
+        </div>
+        <div class="sec-card reveal" style="transition-delay:.5s;margin-bottom:16px">
+            <div class="sec-label"><div class="n">2</div><div class="t">계약 전 플로우</div></div>
+            <div class="flow4" id="c1a-flow" style="opacity:1;animation:none;margin-bottom:0;margin-top:4px">
+                <div class="fc"><div class="s">STEP 1</div><div class="l">원하는 정보<br/>파악해서 조율</div></div>
+                <div class="fa"><i class="fas fa-chevron-right"></i></div>
+                <div class="fc"><div class="s">STEP 2</div><div class="l">지속적인 소통으로<br/>원하는 내용 반영</div></div>
+                <div class="fa"><i class="fas fa-chevron-right"></i></div>
+                <div class="fc"><div class="s">STEP 3</div><div class="l">불안함 해소</div></div>
+                <div class="fa"><i class="fas fa-chevron-right"></i></div>
+                <div class="fc win"><div class="s">RESULT</div><div class="l">청약 성공!</div></div>
+            </div>
+        </div>
+        <div class="quote-note substep" id="c1a-note"><i class="fas fa-comment-dots"></i>고객의 말 속에 원하는 정답이 있다!</div>
+    </div>
+</div>
+
+<!-- ==================== SLIDE 10: 사례1-B 고객 케이스 2건 ==================== -->
+<div class="slide mcase mc1b" data-slide="9">
+    <div class="grid-bg"></div>
+    <div class="content">
+        <div class="eyebrow reveal" style="transition-delay:.1s">POINT 04 &middot; REAL CASE 01 &mdash; DETAIL</div>
+        <div class="case-head reveal" style="transition-delay:.2s;margin-bottom:16px">
+            <div class="case-num">CASE 01</div>
+            <div class="agent-chip"><i class="fas fa-user-tie"></i>홍OO 설계사님 &middot; 실전 상담 2건</div>
+        </div>
+        <div class="cust-grid">
+            <div class="cust-card substep" id="c1b-1">
+                <div class="cust-tag">고객 1</div>
+                <div class="cust-title"><span class="n">1.</span>고객의 정보 및 니즈 파악 &mdash; 불안감 해소!</div>
+                <div class="nz-row"><i class="fas fa-circle-chevron-right"></i><span>암 &middot; 혈압 &middot; 당뇨 가족력 <span class="ar">&rarr;</span> 불안해함</span></div>
+                <div class="nz-row"><i class="fas fa-circle-chevron-right"></i><span>간수치 이력으로 5년 대기 <span class="ar">&rarr;</span> 건강체 가입 희망</span></div>
+                <div class="nz-row"><i class="fas fa-circle-chevron-right"></i><span>기존 갱신형의 갱신율 부담 <span class="ar">&rarr;</span> 비갱신형으로 변경</span></div>
+                <div class="nz-row"><i class="fas fa-circle-chevron-right"></i><span>상해보다 <b>질병 보장 90점 이상</b> 희망</span></div>
+                <div class="cust-result"><i class="fas fa-circle-check"></i><span><b>결론</b> &mdash; 원하는 조건 그대로, 가장 좋은 조건의 DB 추천 <span class="hl">&rarr; 만족 가입</span></span></div>
+            </div>
+            <div class="cust-card substep" id="c1b-2">
+                <div class="cust-tag">고객 2</div>
+                <div class="cust-title"><span class="n">1.</span>고객의 정보 및 니즈 파악 &mdash; 불안감 해소!</div>
+                <div class="nz-row"><i class="fas fa-circle-chevron-right"></i><span>최근 1달 이내 <b>청약 2건</b> 진행했던 고객</span></div>
+                <div class="nz-row"><i class="fas fa-circle-chevron-right"></i><span><b>진단비 크게</b> 가입하고 싶어함</span></div>
+                <div class="nz-row"><i class="fas fa-circle-chevron-right"></i><span>건강검진 이력 없음 <span class="ar">&rarr;</span> 면책기간 후 검진 예정</span></div>
+                <div class="nz-solve"><span class="n">2.</span><b>불안감 해소</b> &mdash; 면책 후 일반암 감액 없는 메리츠로 진단비 + 암주치 설계, 90일 후 건강검진까지 든든하게 준비!</div>
+                <div class="cust-result"><i class="fas fa-circle-check"></i><span><b>결론</b> &mdash; 원하는 조건 반영, 최적 조건의 메리츠 추천 <span class="hl">&rarr; 만족 가입</span></span></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SLIDE 11: 사례2 김OO 여정 ==================== -->
+<div class="slide mcase mc2" data-slide="10">
+    <div class="grid-bg"></div>
+    <div class="case-ghost">C2</div>
+    <div class="content">
+        <div class="eyebrow reveal" style="transition-delay:.1s">POINT 04 &middot; REAL CASE 02 &mdash; 대면 전환의 정석</div>
+        <div class="case-head reveal" style="transition-delay:.2s">
+            <div class="case-num">CASE 02</div>
+            <div class="agent-chip"><i class="fas fa-user-tie"></i>김OO 설계사님</div>
+        </div>
+        <div class="tl-wrap">
+            <div class="tl-g reveal" style="transition-delay:.35s">
+                <div class="tl-item">니즈가 있던 고객 &mdash; <b>소통을 먼저 이끌어내는 것</b>부터 시작</div>
+                <div class="tl-item">링크 인증이 계속 어긋남 <span class="hl">&rarr;</span> 암 &middot; 뇌 &middot; 심 진단이력, 입원 &middot; 수술 여부를 <b>먼저 이야기하게 이끈 뒤</b> 링크 전송 <span class="hl">&rarr; 인증 성공</span></div>
+                <div class="tl-item">"10~15분만 내주시면 찾아뵙고 <b>눈으로 보여드리겠다</b>" <span class="hl">&rarr; 방문 약속 확정</span></div>
+            </div>
+            <div class="tl-g substep" id="c2-g2">
+                <div class="tl-item">방문 후 편안한 분위기 조성 &mdash; 가족력과 걱정 포인트를 물으며 <b>라포 형성에 집중</b> <span class="hl">&rarr; 고객이 마음을 열다</span></div>
+                <div class="tl-item">부모님 &middot; 남편 &middot; 형제 &middot; 자녀까지 <b>전부 맡기겠다는 확답</b> &rarr; 진행 확정</div>
+                <div class="tl-item">2차 방문엔 기본 틀만 준비 &mdash; <b>고객과 함께 담보를 보며 설계</b> &rarr; 이 과정 자체를 좋아하심</div>
+            </div>
+            <div class="tl-g substep" id="c2-g3">
+                <div class="tl-item final">그 이후로는 설계안만 보내면 <span class="hl">바로 OK</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SLIDE 12: 사례3 장OO ==================== -->
+<div class="slide mcase mc3" data-slide="11">
+    <div class="grid-bg"></div>
+    <div class="case-ghost">C3</div>
+    <div class="content">
+        <div class="eyebrow reveal" style="transition-delay:.1s">POINT 04 &middot; REAL CASE 03 &mdash; 스피드 &amp; 비교</div>
+        <div class="case-head reveal" style="transition-delay:.2s">
+            <div class="case-num">CASE 03</div>
+            <div class="agent-chip"><i class="fas fa-user-tie"></i>장OO 설계사님</div>
+        </div>
+        <div class="body3">
+            <div class="col-l">
+                <div class="intro reveal" style="transition-delay:.35s">광고 내용에 니즈가 있던 고객 &mdash;<br/>이미 <b>이야기를 들어줄 준비</b>가 되어 있었다.</div>
+                <div class="speed-note" id="c3-note"><i class="fas fa-bolt"></i>디비 분배 즉시, 빠른 전화가 승부를 가른다</div>
+                <div class="point-card" id="c3-point">포인트는 단 하나 &mdash;<br/><span class="big">간병인 사용일당</span></div>
+            </div>
+            <div class="col-r" id="c3-right">
+                <div class="prop-row">
+                    <div class="prop-card"><i class="fas fa-file-lines"></i><div class="pl">제안서 A</div></div>
+                    <div class="prop-vs">VS</div>
+                    <div class="prop-card"><i class="fas fa-file-lines"></i><div class="pl">제안서 B</div></div>
+                </div>
+                <div class="prop-cap">제안서 2가지를 <span class="hl">빠르게 준비</span> &mdash; 비교를 통해<br/>확실히 좋은 것을 <span class="hl">스스로 선택</span>하게 한 케이스!</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== SLIDE 13: POINT 05 — 수익 프로세스 ==================== -->
+<div class="slide ma9" data-slide="12">
     <div class="grid-bg"></div>
     <div class="content">
         <div class="eyebrow reveal" style="transition-delay:.1s">POINT 05 &middot; REVENUE PROCESS</div>
@@ -684,7 +883,11 @@ const slideSteps = {
     4: { total: 3, current: 0 },   // Point01 포트폴리오 구성: 0=4종 카드, 1=이유, 2=경고
     5: { total: 5, current: 0 },   // Point02 왜 마스케어: 0=질문, 1=히어로, 2=3가지 이유, 3=문제해결, 4=타석
     6: { total: 3, current: 0 },   // Point03 접근법: 0=타이틀, 1=아웃바운드, 2=인바운드+VS
-    8: { total: 3, current: 0 },   // Point05 수익: 0=타이틀, 1=4단계 플로우, 2=대면 전환
+    8: { total: 2, current: 0 },   // 사례1-A: 0=개요, 1=인용 노트
+    9: { total: 3, current: 0 },   // 사례1-B: 0=헤더, 1=고객1, 2=고객2
+    10: { total: 3, current: 0 },  // 사례2: 0=전화 단계, 1=방문 단계, 2=결과
+    11: { total: 3, current: 0 },  // 사례3: 0=인트로, 1=스피드+포인트, 2=제안 비교
+    12: { total: 3, current: 0 },  // Point05 수익: 0=타이틀, 1=4단계 플로우, 2=대면 전환
 };
 
 function applySubStep(slideIndex, step) {
@@ -725,7 +928,27 @@ function applySubStep(slideIndex, step) {
             document.getElementById('ma7-vs').classList.toggle('visible', step >= 2);
             break;
         }
-        case 8: { // Point05 수익 프로세스
+        case 8: { // 사례1-A
+            document.getElementById('c1a-note').classList.toggle('visible', step >= 1);
+            break;
+        }
+        case 9: { // 사례1-B 고객 케이스
+            document.getElementById('c1b-1').classList.toggle('visible', step >= 1);
+            document.getElementById('c1b-2').classList.toggle('visible', step >= 2);
+            break;
+        }
+        case 10: { // 사례2 여정
+            document.getElementById('c2-g2').classList.toggle('visible', step >= 1);
+            document.getElementById('c2-g3').classList.toggle('visible', step >= 2);
+            break;
+        }
+        case 11: { // 사례3
+            document.getElementById('c3-note').classList.toggle('visible', step >= 1);
+            document.getElementById('c3-point').classList.toggle('visible', step >= 1);
+            document.getElementById('c3-right').classList.toggle('visible', step >= 2);
+            break;
+        }
+        case 12: { // Point05 수익 프로세스
             document.getElementById('ma9-flow').classList.toggle('visible', step >= 1);
             document.getElementById('ma9-punch').classList.toggle('visible', step >= 2);
             break;
