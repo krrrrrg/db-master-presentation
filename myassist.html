@@ -375,25 +375,38 @@ body:hover .nav-dots{opacity:1}
 .mc2 .tl-item.final::before{background:#fbbf24;border-color:#f59e0b}
 .mc2 .tl-item.final .hl{color:#fbbf24}
 
-/* SLIDE 12: 사례3 */
-.mc3 .body3{flex:1;display:flex;gap:30px;align-items:center}
-.mc3 .col-l{flex:1.15;display:flex;flex-direction:column;gap:18px}
-.mc3 .intro{font-size:19px;color:#1e293b;line-height:1.65;font-weight:600;letter-spacing:-.3px}
-.mc3 .speed-note{display:flex;align-items:flex-start;gap:11px;background:rgba(245,158,11,.09);border:1px dashed rgba(245,158,11,.4);border-radius:14px;padding:13px 18px;font-size:15px;font-weight:700;color:#b45309;line-height:1.5;opacity:0}
-.mc3 .speed-note.visible{animation:ma6CardIn .5s cubic-bezier(.16,1,.3,1) both}
-.mc3 .speed-note i{margin-top:3px}
-.mc3 .point-card{background:#fff;border:1px solid rgba(245,158,11,.15);border-radius:18px;padding:20px 26px;box-shadow:0 10px 28px rgba(180,83,9,.08);font-size:17px;color:#334155;font-weight:600;line-height:1.6;opacity:0}
-.mc3 .point-card.visible{animation:ma6CardIn .5s cubic-bezier(.16,1,.3,1) .15s both}
-.mc3 .point-card .big{font-size:27px;font-weight:900;background:linear-gradient(135deg,#b45309,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-.7px}
-.mc3 .col-r{flex:1;display:flex;flex-direction:column;gap:14px;opacity:0}
-.mc3 .col-r.visible{animation:ma6CardIn .55s cubic-bezier(.16,1,.3,1) both}
-.mc3 .prop-row{display:flex;align-items:center;gap:14px}
-.mc3 .prop-card{flex:1;background:#fff;border:1px solid rgba(245,158,11,.16);border-radius:17px;padding:22px 16px;display:flex;flex-direction:column;align-items:center;gap:10px;box-shadow:0 8px 24px rgba(180,83,9,.07);transition:transform .3s,box-shadow .3s}
-.mc3 .prop-card:hover{transform:translateY(-4px);box-shadow:0 16px 34px rgba(180,83,9,.13)}
-.mc3 .prop-card i{font-size:26px;color:#d97706}
-.mc3 .prop-card .pl{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;color:#0f172a;letter-spacing:1px}
-.mc3 .prop-vs{width:42px;height:42px;border-radius:50%;background:#0f172a;color:#fbbf24;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 6px 16px rgba(15,23,42,.25)}
-.mc3 .prop-cap{background:linear-gradient(135deg,#1e293b,#0f172a);border-radius:15px;padding:18px 24px;font-size:17px;font-weight:800;color:#fff;line-height:1.55;text-align:center;box-shadow:0 14px 34px rgba(15,23,42,.2)}
+/* SLIDE 12: 사례3 — 스피드 & 비교 (v2) */
+.mc3 .content{padding:42px 84px}
+.mc3 .duo{display:flex;gap:16px;margin-bottom:14px}
+.mc3 .d-card{flex:1;background:#fff;border:1px solid rgba(245,158,11,.13);border-radius:16px;padding:17px 24px;display:flex;gap:16px;align-items:center;box-shadow:0 8px 24px rgba(180,83,9,.06)}
+.mc3 .d-card.speed{border:1.5px solid rgba(245,158,11,.5);background:linear-gradient(135deg,#fff,#fff5e0);animation:glow 2.5s ease-in-out infinite}
+.mc3 .d-ico{width:52px;height:52px;border-radius:15px;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.22);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.mc3 .d-ico i{font-size:21px;color:#d97706}
+.mc3 .d-card.speed .d-ico{background:linear-gradient(135deg,#f59e0b,#fbbf24);border:none}
+.mc3 .d-card.speed .d-ico i{color:#1c1200}
+.mc3 .d-tit{font-size:18.5px;font-weight:800;color:#0f172a;letter-spacing:-.4px;margin-bottom:3px}
+.mc3 .d-sub{font-size:14.5px;color:#64748b;font-weight:500}
+.mc3 .d-card.speed .d-sub{color:#b45309;font-weight:700}
+.mc3 .point-band{background:linear-gradient(135deg,#1e293b,#0f172a);border-radius:16px;padding:15px 30px;display:flex;align-items:center;justify-content:center;gap:15px;margin-bottom:14px;box-shadow:0 14px 34px rgba(15,23,42,.2);opacity:0}
+.mc3 .point-band.visible{animation:ma6CardIn .5s cubic-bezier(.16,1,.3,1) both}
+.mc3 .point-band i{color:#fbbf24;font-size:23px}
+.mc3 .point-band .pb-t{font-size:18px;color:rgba(255,255,255,.75);font-weight:600}
+.mc3 .point-band .pb-big{font-size:29px;font-weight:900;background:linear-gradient(135deg,#fbbf24,#f59e0b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-.6px}
+.mc3 .cmp-zone{display:flex;align-items:stretch;gap:18px;flex:1;min-height:0;opacity:0}
+.mc3 .cmp-zone.visible{animation:ma6CardIn .55s cubic-bezier(.16,1,.3,1) both}
+.mc3 .doc{flex:1;background:#fff;border:1px solid rgba(245,158,11,.16);border-radius:18px;padding:18px 24px;box-shadow:0 10px 28px rgba(180,83,9,.08);display:flex;flex-direction:column;gap:10px;transition:transform .3s,box-shadow .3s}
+.mc3 .cmp-zone.visible .doc:hover{transform:translateY(-4px);box-shadow:0 18px 38px rgba(180,83,9,.14)}
+.mc3 .doc-head{display:flex;align-items:center;gap:10px;padding-bottom:10px;border-bottom:1px solid rgba(245,158,11,.14)}
+.mc3 .doc-head i{color:#d97706;font-size:17px}
+.mc3 .doc-head .t{font-family:'Space Grotesk',sans-serif;font-size:15.5px;font-weight:700;color:#0f172a;letter-spacing:.5px}
+.mc3 .skel{height:9px;border-radius:5px;background:#eef2f7}
+.mc3 .skel.w85{width:85%}.mc3 .skel.w70{width:70%}.mc3 .skel.w60{width:60%}
+.mc3 .doc-hl{display:flex;align-items:center;gap:9px;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.32);border-radius:10px;padding:9px 13px;font-size:14px;font-weight:800;color:#b45309}
+.mc3 .doc-hl i{font-size:12px}
+.mc3 .vs-big{width:56px;height:56px;border-radius:50%;background:#0f172a;color:#fbbf24;font-family:'Space Grotesk',sans-serif;font-size:16px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;align-self:center;box-shadow:0 0 30px rgba(245,158,11,.3);border:2px solid rgba(245,158,11,.5)}
+.mc3 .final-choice{margin-top:14px;background:linear-gradient(135deg,#f59e0b,#fbbf24);border-radius:16px;padding:17px 30px;text-align:center;font-size:20px;font-weight:900;color:#1c1200;letter-spacing:-.4px;box-shadow:0 16px 40px rgba(245,158,11,.35);opacity:0}
+.mc3 .final-choice.visible{animation:punchIn .55s cubic-bezier(.16,1,.3,1) both}
+.mc3 .final-choice i{margin-right:10px}
 .mc3 .prop-cap .hl{color:#fbbf24}
 
 /* ======================== CASE SOLO (홍OO 고객 1건씩) ======================== */
@@ -792,21 +805,43 @@ body:hover .back-btn{opacity:1}
             <div class="case-num">CASE 03</div>
             <div class="agent-chip"><i class="fas fa-user-tie"></i>장OO 설계사님</div>
         </div>
-        <div class="body3">
-            <div class="col-l">
-                <div class="intro reveal" style="transition-delay:.35s">광고 내용에 니즈가 있던 고객 &mdash;<br/>이미 <b>이야기를 들어줄 준비</b>가 되어 있었다.</div>
-                <div class="speed-note" id="c3-note"><i class="fas fa-bolt"></i>디비 분배 즉시, 빠른 전화가 승부를 가른다</div>
-                <div class="point-card" id="c3-point">포인트는 단 하나 &mdash;<br/><span class="big">간병인 사용일당</span></div>
+        <div class="duo">
+            <div class="d-card reveal" style="transition-delay:.35s">
+                <div class="d-ico"><i class="fas fa-bullhorn"></i></div>
+                <div><div class="d-tit">광고 내용에 니즈가 있던 고객</div><div class="d-sub">이미 이야기를 들어줄 준비가 되어 있었다</div></div>
             </div>
-            <div class="col-r" id="c3-right">
-                <div class="prop-row">
-                    <div class="prop-card"><i class="fas fa-file-lines"></i><div class="pl">제안서 A</div></div>
-                    <div class="prop-vs">VS</div>
-                    <div class="prop-card"><i class="fas fa-file-lines"></i><div class="pl">제안서 B</div></div>
-                </div>
-                <div class="prop-cap">제안서 2가지를 <span class="hl">빠르게 준비</span> &mdash; 비교를 통해<br/>확실히 좋은 것을 <span class="hl">스스로 선택</span>하게 한 케이스!</div>
+            <div class="d-card speed reveal" style="transition-delay:.5s">
+                <div class="d-ico"><i class="fas fa-stopwatch"></i></div>
+                <div><div class="d-tit">디비 분배 즉시 &mdash; 빠른 전화</div><div class="d-sub"><i class="fas fa-bolt"></i> 스피드가 첫 통화의 승부를 가른다</div></div>
             </div>
         </div>
+        <div class="point-band" id="c3-band">
+            <i class="fas fa-user-nurse"></i>
+            <span class="pb-t">공략 포인트는 단 하나 &mdash;</span>
+            <span class="pb-big">간병인 사용일당</span>
+        </div>
+        <div class="cmp-zone" id="c3-cmp">
+            <div class="doc">
+                <div class="doc-head"><i class="fas fa-file-lines"></i><div class="t">제안서 A</div></div>
+                <div class="skel w85"></div>
+                <div class="skel w70"></div>
+                <div class="doc-hl"><i class="fas fa-star"></i>간병인 사용일당</div>
+                <div class="skel w60"></div>
+                <div class="skel w85"></div>
+                <div class="skel w70"></div>
+            </div>
+            <div class="vs-big">VS</div>
+            <div class="doc">
+                <div class="doc-head"><i class="fas fa-file-lines"></i><div class="t">제안서 B</div></div>
+                <div class="skel w70"></div>
+                <div class="skel w85"></div>
+                <div class="doc-hl"><i class="fas fa-star"></i>간병인 사용일당</div>
+                <div class="skel w60"></div>
+                <div class="skel w70"></div>
+                <div class="skel w85"></div>
+            </div>
+        </div>
+        <div class="final-choice" id="c3-final"><i class="fas fa-circle-check"></i>제안서 2가지를 빠르게 준비 &mdash; 비교를 통해 확실히 좋은 것을 스스로 선택하게 한 케이스!</div>
     </div>
 </div>
 
@@ -954,7 +989,7 @@ const slideSteps = {
     8: { total: 3, current: 0 },   // 사례1 고객1: 0=카드, 1=니즈 항목, 2=결론
     9: { total: 3, current: 0 },   // 사례1 고객2: 0=카드, 1=니즈+해소, 2=결론
     10: { total: 3, current: 0 },  // 사례2: 0=전화 단계, 1=방문 단계, 2=결과
-    11: { total: 3, current: 0 },  // 사례3: 0=인트로, 1=스피드+포인트, 2=제안 비교
+    11: { total: 4, current: 0 },  // 사례3: 0=고객+스피드, 1=공략 포인트, 2=제안 비교, 3=선택 결과
     12: { total: 3, current: 0 },  // 핵심 포인트: 0=타이틀, 1=공통점, 2=필수 플로우
     13: { total: 3, current: 0 },  // Point05 수익: 0=타이틀, 1=4단계 플로우, 2=대면 전환
 };
@@ -1013,9 +1048,9 @@ function applySubStep(slideIndex, step) {
             break;
         }
         case 11: { // 사례3
-            document.getElementById('c3-note').classList.toggle('visible', step >= 1);
-            document.getElementById('c3-point').classList.toggle('visible', step >= 1);
-            document.getElementById('c3-right').classList.toggle('visible', step >= 2);
+            document.getElementById('c3-band').classList.toggle('visible', step >= 1);
+            document.getElementById('c3-cmp').classList.toggle('visible', step >= 2);
+            document.getElementById('c3-final').classList.toggle('visible', step >= 3);
             break;
         }
         case 12: { // 핵심 포인트
