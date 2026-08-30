@@ -473,27 +473,32 @@ body:hover .nav-dots{opacity:1}
 <!-- Menu selection screen -->
 <div id="menu-screen" style="position:fixed;top:0;left:0;width:100%;height:100%;background:#0a0e1a;z-index:99999;display:none;flex-direction:column;align-items:center;justify-content:center;transition:opacity .6s">
     <img src="img/logo-white.png" alt="시그니처" style="height:36px;opacity:.6;margin-bottom:20px"/>
-    <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;color:rgba(255,255,255,.4);letter-spacing:3px;margin-bottom:36px">SIGNATURE MASTER CLASS</div>
-    <div style="display:flex;flex-direction:column;gap:16px;width:360px">
-        <div onclick="selectPresentation('main')" style="background:rgba(255,255,255,.03);border:1px solid rgba(59,130,246,.3);border-radius:16px;padding:28px 32px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden" onmouseenter="this.style.borderColor='rgba(59,130,246,.6)';this.style.background='rgba(59,130,246,.06)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(59,130,246,.3)';this.style.background='rgba(255,255,255,.03)';this.style.transform='translateY(0)'">
+    <div style="font-family:'Space Grotesk',sans-serif;font-size:13px;color:rgba(255,255,255,.4);letter-spacing:3px;margin-bottom:24px">SIGNATURE MASTER CLASS</div>
+    <div style="display:flex;flex-direction:column;gap:12px;width:380px">
+        <div onclick="selectPresentation('main')" style="background:rgba(255,255,255,.03);border:1px solid rgba(59,130,246,.3);border-radius:16px;padding:19px 28px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden" onmouseenter="this.style.borderColor='rgba(59,130,246,.6)';this.style.background='rgba(59,130,246,.06)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(59,130,246,.3)';this.style.background='rgba(255,255,255,.03)';this.style.transform='translateY(0)'">
             <div style="font-size:11px;color:#3b82f6;font-family:'Space Grotesk',sans-serif;letter-spacing:2px;margin-bottom:10px;font-weight:600">CHAPTER 01</div>
             <div style="font-size:22px;font-weight:800;color:#fff;margin-bottom:6px">DB 영업의 모든것</div>
             <div style="font-size:13px;color:rgba(255,255,255,.4)">시장분석 · 전략 · 조직 시스템</div>
         </div>
-        <div onclick="selectPresentation('consultation')" style="background:rgba(255,255,255,.03);border:1px solid rgba(139,92,246,.3);border-radius:16px;padding:28px 32px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden" onmouseenter="this.style.borderColor='rgba(139,92,246,.6)';this.style.background='rgba(139,92,246,.06)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(139,92,246,.3)';this.style.background='rgba(255,255,255,.03)';this.style.transform='translateY(0)'">
+        <div onclick="selectPresentation('consultation')" style="background:rgba(255,255,255,.03);border:1px solid rgba(139,92,246,.3);border-radius:16px;padding:19px 28px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden" onmouseenter="this.style.borderColor='rgba(139,92,246,.6)';this.style.background='rgba(139,92,246,.06)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(139,92,246,.3)';this.style.background='rgba(255,255,255,.03)';this.style.transform='translateY(0)'">
             <div style="font-size:11px;color:#8b5cf6;font-family:'Space Grotesk',sans-serif;letter-spacing:2px;margin-bottom:10px;font-weight:600">CHAPTER 02</div>
             <div style="font-size:22px;font-weight:800;color:#fff;margin-bottom:6px">실전 상담 플로우</div>
             <div style="font-size:13px;color:rgba(255,255,255,.4)">3가지 원칙 · 5단계 프로세스</div>
         </div>
-        <div onclick="selectPresentation('mou')" style="background:rgba(255,255,255,.03);border:1px solid rgba(20,184,166,.3);border-radius:16px;padding:28px 32px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden" onmouseenter="this.style.borderColor='rgba(20,184,166,.6)';this.style.background='rgba(20,184,166,.06)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(20,184,166,.3)';this.style.background='rgba(255,255,255,.03)';this.style.transform='translateY(0)'">
+        <div onclick="selectPresentation('mou')" style="background:rgba(255,255,255,.03);border:1px solid rgba(20,184,166,.3);border-radius:16px;padding:19px 28px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden" onmouseenter="this.style.borderColor='rgba(20,184,166,.6)';this.style.background='rgba(20,184,166,.06)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(20,184,166,.3)';this.style.background='rgba(255,255,255,.03)';this.style.transform='translateY(0)'">
             <div style="font-size:11px;color:#14b8a6;font-family:'Space Grotesk',sans-serif;letter-spacing:2px;margin-bottom:10px;font-weight:600">CHAPTER 03</div>
             <div style="font-size:22px;font-weight:800;color:#fff;margin-bottom:6px">MOU 제안서</div>
             <div style="font-size:13px;color:rgba(255,255,255,.4)">카존코리아 &times; 한국보험금융 시그니처사업부</div>
         </div>
-        <div onclick="selectPresentation('myassist')" style="background:rgba(255,255,255,.03);border:1px solid rgba(245,158,11,.3);border-radius:16px;padding:28px 32px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden" onmouseenter="this.style.borderColor='rgba(245,158,11,.6)';this.style.background='rgba(245,158,11,.06)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(245,158,11,.3)';this.style.background='rgba(255,255,255,.03)';this.style.transform='translateY(0)'">
+        <div onclick="selectPresentation('myassist')" style="background:rgba(255,255,255,.03);border:1px solid rgba(245,158,11,.3);border-radius:16px;padding:19px 28px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden" onmouseenter="this.style.borderColor='rgba(245,158,11,.6)';this.style.background='rgba(245,158,11,.06)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(245,158,11,.3)';this.style.background='rgba(255,255,255,.03)';this.style.transform='translateY(0)'">
             <div style="font-size:11px;color:#f59e0b;font-family:'Space Grotesk',sans-serif;letter-spacing:2px;margin-bottom:10px;font-weight:600">CHAPTER 04</div>
             <div style="font-size:22px;font-weight:800;color:#fff;margin-bottom:6px">마이어시스트 DB 강의</div>
             <div style="font-size:13px;color:rgba(255,255,255,.4)">인바운드 Light로 다시 쓰는 DB영업의 정석</div>
+        </div>
+        <div onclick="selectPresentation('signature')" style="background:rgba(255,255,255,.03);border:1px solid rgba(125,95,255,.35);border-radius:16px;padding:19px 28px;cursor:pointer;transition:all .3s;position:relative;overflow:hidden" onmouseenter="this.style.borderColor='rgba(125,95,255,.65)';this.style.background='rgba(125,95,255,.07)';this.style.transform='translateY(-2px)'" onmouseleave="this.style.borderColor='rgba(125,95,255,.35)';this.style.background='rgba(255,255,255,.03)';this.style.transform='translateY(0)'">
+            <div style="font-size:11px;color:#7d5fff;font-family:'Space Grotesk',sans-serif;letter-spacing:2px;margin-bottom:10px;font-weight:600">CHAPTER 05</div>
+            <div style="font-size:22px;font-weight:800;color:#fff;margin-bottom:6px">시그니처人</div>
+            <div style="font-size:13px;color:rgba(255,255,255,.4)">성장하고 싶은 설계사를 위한 3가지 프로세스</div>
         </div>
     </div>
     <div style="font-size:12px;color:rgba(255,255,255,.15);margin-top:40px">선택 후 전체화면으로 시작됩니다</div>
@@ -1395,7 +1400,7 @@ async function unlockPresentation(){const pw=document.getElementById('lock-pw').
 document.getElementById('lock-pw').addEventListener('keydown',e=>{if(e.key==='Enter')unlockPresentation()});
 // 세션 중 이미 잠금해제했으면 비번 건너뛰고 바로 메뉴로 (강의 간 전환 시 재입력 방지)
 if(sessionStorage.getItem('sig_unlocked')==='1'){showMenu()}
-function selectPresentation(type){document.getElementById('menu-screen').style.opacity='0';setTimeout(()=>{document.getElementById('menu-screen').style.display='none';if(type==='consultation'){window.location.href='consultation.html'}else if(type==='mou'){window.location.href='mou.html'}else if(type==='myassist'){window.location.href='myassist.html'}else{document.getElementById('splash').style.display='flex'}},500)}
+function selectPresentation(type){document.getElementById('menu-screen').style.opacity='0';setTimeout(()=>{document.getElementById('menu-screen').style.display='none';if(type==='consultation'){window.location.href='consultation.html'}else if(type==='mou'){window.location.href='mou.html'}else if(type==='myassist'){window.location.href='myassist.html'}else if(type==='signature'){window.location.href='signature-in.html'}else{document.getElementById('splash').style.display='flex'}},500)}
 </script>
 </body>
 </html>
