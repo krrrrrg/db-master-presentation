@@ -152,16 +152,15 @@ body:hover .nav-dots{opacity:1}
 .sf-inst .tl-i .p{font-family:'Space Grotesk',sans-serif;font-weight:600;color:var(--ink);min-width:104px;font-size:13.5px}
 
 /* ===== S2 보험의 본질 (dark) ===== */
-.sf-ess .bgp{position:absolute;inset:0;z-index:0;overflow:hidden}
-.sf-ess .bgp img{width:100%;height:100%;object-fit:cover;object-position:center 40%;filter:brightness(.4) saturate(.9);animation:kenburns 26s ease-in-out infinite alternate}
-.sf-ess .bgp::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 55%,rgba(0,0,0,.2) 0%,rgba(0,0,0,.76) 68%,#000 100%)}
-.sf-ess .ring{position:absolute;left:50%;top:50%;border-radius:50%;border:1px solid rgba(255,255,255,.11);transform:translate(-50%,-50%);z-index:2;pointer-events:none}
-.sf-ess .r1{width:620px;height:620px}
-.sf-ess .r2{width:880px;height:880px;border-color:rgba(255,255,255,.075)}
-.sf-ess .r3{width:1140px;height:1140px;border-color:rgba(255,255,255,.05)}
-.sf-ess.active .r1{animation:ringPulse 6s ease-in-out infinite}
-.sf-ess.active .r2{animation:ringPulse 6s ease-in-out 1s infinite}
-.sf-ess.active .r3{animation:ringPulse 6s ease-in-out 2s infinite}
+.sf-ess .glow{position:absolute;left:50%;top:50%;width:900px;height:900px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle,rgba(34,211,238,.13) 0%,rgba(125,95,255,.07) 38%,transparent 62%);z-index:1;pointer-events:none}
+.sf-ess .ring{position:absolute;left:50%;top:50%;border-radius:50%;border:1px solid rgba(255,255,255,.14);transform:translate(-50%,-50%);z-index:2;pointer-events:none;opacity:0}
+.sf-ess .r1{width:600px;height:600px}
+.sf-ess .r2{width:860px;height:860px;border-color:rgba(255,255,255,.09)}
+.sf-ess .r3{width:1120px;height:1120px;border-color:rgba(255,255,255,.06)}
+@keyframes deploy{0%{opacity:0;transform:translate(-50%,-50%) scale(.55)}100%{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+.sf-ess.active .r1{animation:deploy 1.4s var(--ease) .9s both,ringPulse 7s ease-in-out 2.4s infinite}
+.sf-ess.active .r2{animation:deploy 1.6s var(--ease) 1.05s both,ringPulse 7s ease-in-out 2.8s infinite}
+.sf-ess.active .r3{animation:deploy 1.8s var(--ease) 1.2s both,ringPulse 7s ease-in-out 3.2s infinite}
 .sf-ess .content{position:relative;z-index:10;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 100px}
 .sf-ess .pill{margin-bottom:60px}
 .sf-ess .eq{display:flex;align-items:center;justify-content:center;gap:38px;font-size:112px;font-weight:800;letter-spacing:-.05em;color:#fff;line-height:1}
@@ -414,7 +413,7 @@ body:hover .back-btn{opacity:1}
 
 <!-- 2 보험의 본질 (dark) -->
 <div class="slide dark sf-ess" data-slide="2">
-    <div class="bgp"><img src="img/stars.jpg" alt=""/></div>
+    <div class="glow"></div>
     <div class="ring r1"></div><div class="ring r2"></div><div class="ring r3"></div>
     <div class="lq lq-violet" style="width:520px;height:520px;left:-170px;top:-180px"></div>
     <div class="lq lq-cyan" style="width:460px;height:460px;right:-150px;bottom:-170px;animation-delay:-8s,-6s"></div>
