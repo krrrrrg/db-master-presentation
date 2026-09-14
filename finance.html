@@ -306,10 +306,11 @@ body:hover .nav-dots{opacity:1}
 .sf-real .qtop{display:flex;align-items:center;gap:12px;margin-bottom:26px}
 .sf-real .ctag{font-family:'Space Grotesk',sans-serif;font-size:12px;letter-spacing:3px;color:rgba(255,255,255,.55);font-weight:600}
 .sf-real .cchip{font-size:13px;font-weight:600;color:rgba(255,255,255,.78);padding:7px 14px;border-radius:100px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14)}
-.sf-real .qi{display:block;font-size:26px;background-image:var(--liq);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:18px}
-.sf-real .qt{font-size:40px;font-weight:800;color:#fff;letter-spacing:-.035em;line-height:1.35;margin-bottom:22px}
+.sf-real .qline{width:44px;height:3px;border-radius:2px;background:var(--liq);background-size:200% 100%;animation:liqFlow 6s ease infinite;margin-bottom:22px}
+.sf-real .qt{font-size:36px;font-weight:800;color:#fff;letter-spacing:-.035em;line-height:1.35;margin-bottom:20px}
 .sf-real .qt .liq{font-weight:800}
-.sf-real .qs{font-size:19px;color:rgba(255,255,255,.62);font-weight:500;line-height:1.6}
+.sf-real .qs{font-size:18px;color:rgba(255,255,255,.66);font-weight:500;line-height:1.75;letter-spacing:-.01em}
+.sf-real .qs b{color:#fff;font-weight:700}
 .sf-real .rcol{flex:0 0 396px;position:relative;height:660px;transition:opacity .8s ease,filter .8s ease}
 .sf-real .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .45s ease}
 .sf-real .ph.on{opacity:1;pointer-events:auto}
@@ -553,28 +554,28 @@ body:hover .back-btn{opacity:1}
             <div class="pill reveal" style="transition-delay:.1s"><span class="dot"></span>고객의 목소리</div>
             <div class="qwrap">
                 <div class="q glass" data-c="1">
-                    <div class="qtop"><span class="ctag">CASE 01 / 04</span><span class="cchip">보험금 지급 확인</span></div>
-                    <i class="fas fa-quote-left qi"></i>
-                    <div class="qt">담관염 두건도<br/>방금 들어왔습니다~</div>
-                    <div class="qs">&ldquo;고생 많으셨습니다. 제가 했으면 이만큼 못받았을거 같아요 :)&rdquo;<br/>&ldquo;감사합니다 지점장님!&rdquo;</div>
+                    <div class="qtop"><span class="ctag">CASE 01 / 04</span><span class="cchip">보험금 지급</span></div>
+                    <div class="qline"></div>
+                    <div class="qt">담관염 보험금 2건,<br/><span class="liq">지급 완료</span></div>
+                    <div class="qs">청구 서류를 정리해 드리고, 지급 내역까지 다시 확인해 안내했습니다. 고객은 <b>직접 청구했다면 이만큼 받지 못했을 것</b>이라 평가했고, 가족 보험의 검토도 이어서 요청하셨습니다.</div>
                 </div>
                 <div class="q glass" data-c="2">
-                    <div class="qtop"><span class="ctag">CASE 02 / 04</span><span class="cchip">보험금 지급 + 감사 선물</span></div>
-                    <i class="fas fa-quote-left qi"></i>
-                    <div class="qt">안녕하세요<br/>보험금 나왔어요 감사합니다</div>
-                    <div class="qs">스타벅스 선물을 보냈어요 &middot; &ldquo;앗 제가 감사드리죠!!&rdquo;</div>
+                    <div class="qtop"><span class="ctag">CASE 02 / 04</span><span class="cchip">보험금 지급 &middot; 감사 표시</span></div>
+                    <div class="qline"></div>
+                    <div class="qt">보험금 지급 확인 후,<br/><span class="liq">먼저 감사</span>를 전해 온 고객</div>
+                    <div class="qs">청구 절차를 안내하고 지급 결과까지 확인해 드렸습니다. 고객은 <b>지급 소식을 직접 알려 주며</b> 감사의 선물을 보내오셨습니다.</div>
                 </div>
                 <div class="q glass" data-c="3">
-                    <div class="qtop"><span class="ctag">CASE 03 / 04</span><span class="cchip">감사 선물</span></div>
-                    <i class="fas fa-quote-left qi"></i>
-                    <div class="qt">정말 이것저것<br/>신경써주셔서 감사해용</div>
-                    <div class="qs">투썸플레이스 선물을 보냈어요 &middot; &ldquo;커피라두 한잔 하셔유!!&rdquo;<br/>&ldquo;네넹 설계사님 덕분입니다 ㅎㅎ&rdquo;</div>
+                    <div class="qtop"><span class="ctag">CASE 03 / 04</span><span class="cchip">지속 관리 &middot; 신뢰</span></div>
+                    <div class="qline"></div>
+                    <div class="qt">가입 이후의 관리가<br/><span class="liq">신뢰</span>로 돌아온 사례</div>
+                    <div class="qs">가입 당시 제대로 설계해 둔 보장이 실제로 도움이 되었고, 이후에도 세세한 사항을 계속 챙긴 것에 고객이 감사를 전해 왔습니다. <b>&ldquo;설계사님 덕분&rdquo;</b>이라는 한마디가 관리의 결과입니다.</div>
                 </div>
                 <div class="q glass" data-c="4">
-                    <div class="qtop"><span class="ctag">CASE 04 / 04</span><span class="cchip">청구금 지급 + 가족 추가 가입</span></div>
-                    <i class="fas fa-quote-left qi"></i>
-                    <div class="qt">엄마거는 비자 연장하고<br/><span class="liq">한번에 가입</span>하려고 합니다</div>
-                    <div class="qs">&ldquo;농협보험 청구금 받았어요&rdquo; &middot; &ldquo;801,841, 이렇게 들어왔어요&rdquo;</div>
+                    <div class="qtop"><span class="ctag">CASE 04 / 04</span><span class="cchip">청구 지원 &middot; 가족 추가 가입</span></div>
+                    <div class="qline"></div>
+                    <div class="qt">청구금 확인 후,<br/><span class="liq">어머니 보험까지</span> 맡긴 고객</div>
+                    <div class="qs">농협보험 청구금 <b>801,841원</b>의 지급을 함께 확인해 드렸습니다. 고객은 어머니의 비자 연장 후 <b>보험 가입을 한 번에 진행</b>하겠다고 먼저 말씀하셨습니다.</div>
                 </div>
             </div>
         </div>
